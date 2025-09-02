@@ -1,0 +1,159 @@
+"use client";
+
+import React, { useState, useEffect, useMemo } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@workspace/ui/components/dialog";
+import { Button } from "@workspace/ui/components/button";
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+import { toast } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Share2, Code, Copy, RefreshCw, Save } from "lucide-react";
+import { CodeModal } from "./code-modal";
+
+type DesignEditorDialogProps = {
+  trigger: React.ReactNode;
+  children: React.ReactNode;
+  componentName: string;
+  initialSettings: Record<string, any>;
+};
+
+export function DesignEditorDialog({ trigger, children, componentName, initialSettings }: DesignEditorDialogProps) {
+  const [settings, setSettings] = useState(initialSettings);
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const settingsFromUrl = useMemo(() => {
+    const params = new URLSearchParams(searchParams);
+    const settingsParam = params.get("settings");
+    if (settingsParam) {
+      try {
+        return JSON.parse(atob(settingsParam));
+      } catch (e) {
+        console.error("Failed to parse settings from URL", e);
+      }
+    }
+    return null;
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (settingsFromUrl && settingsFromUrl.componentName === componentName) {
+      setSettings(settingsFromUrl.settings);
+      setIsOpen(true);
+    }
+  }, [settingsFromUrl, componentName]);
+
+  const handleSettingChange = (key: string, value: string) => {
+    setSettings((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleShare = () => {
+    const dataToEncode = { componentName, settings };
+    const encodedSettings = btoa(JSON.stringify(dataToEncode));
+    const url = new URL(window.location.href);
+    url.search = ""; // Clear existing query params
+    url.searchParams.set("settings", encodedSettings);
+    navigator.clipboard.writeText(url.toString());
+    toast("Link copied to clipboard!");
+  };
+
+  const handleReset = () => {
+    setSettings(initialSettings);
+    toast("Settings reset to default values!");
+  };
+
+  const handleSave = () => {
+    toast("Settings saved!");
+  };
+
+  const codeString = useMemo(() => {
+    const propsToString = Object.entries(settings)
+      .map(([key, value]) => {
+        if (typeof value === 'string') {
+          // Handle special cases for props that should not be strings
+          if (key === 'words' && typeof value === 'string') {
+             return `${key}={${JSON.stringify(value.split(','))}}`;
+          }
+          return `${key}="${value}"`;
+        }
+        if (typeof value === 'boolean' || typeof value === 'number') {
+           return `${key}={${value}}`;
+        }
+        return `${key}={${JSON.stringify(value)}}`;
+      })
+      .join(' ');
+    
+    return `<${componentName} ${propsToString} />`;
+  }, [settings, componentName]);
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(codeString);
+    toast("Code copied to clipboard!");
+  };
+
+  const previewComponent = React.isValidElement(children) ? React.cloneElement(children as React.ReactElement<any>, {
+    ...((children as React.ReactElement<any>).props || {}),
+    ...settings,
+    children: settings.buttonText || settings.text || (children as React.ReactElement<any>).props?.children,
+    // Handle specific prop transformations for preview
+    ...(settings.words && { words: settings.words.split(',') })
+  }) : children;
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent className="max-w-4xl">
+        <DialogHeader>
+          <DialogTitle>Customize: {componentName}</DialogTitle>
+        </DialogHeader>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-2 rounded-lg bg-muted/30 flex items-center justify-center p-8 min-h-[300px]">
+            {previewComponent}
+          </div>
+          <div className="space-y-4">
+            <h3 className="font-semibold">Controls</h3>
+            {Object.keys(initialSettings).map((key) => (
+              <div key={key} className="grid gap-2">
+                <Label htmlFor={key} className="capitalize">{key.replace(/([A-Z])/g, ' $1')}</Label>
+                <Input
+                  id={key}
+                  value={settings[key]}
+                  onChange={(e) => handleSettingChange(key, e.target.value)}
+                  type={key.includes('Color') ? 'color' : 'text'}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <DialogFooter className="sm:justify-between flex-col sm:flex-row gap-2 mt-4">
+           <div className="flex gap-2">
+                <Button variant="outline" onClick={handleReset}><RefreshCw className="mr-2 h-4 w-4" /> Reset</Button>
+                <Button variant="secondary" onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Save</Button>
+            </div>
+            <div className="flex gap-2">
+                <CodeModal
+                  componentName={componentName}
+                  componentCode={codeString}
+                  tailwindCode={codeString}
+                  open={false}
+                  onOpenChange={() => {}}
+                />
+                <Button variant="secondary" onClick={handleCopyCode}><Copy className="mr-2 h-4 w-4" /> Copy Code</Button>
+                <Button variant="secondary" onClick={handleShare}><Share2 className="mr-2 h-4 w-4" /> Share</Button>
+                <DialogClose asChild>
+                    <Button>Done</Button>
+                </DialogClose>
+            </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}

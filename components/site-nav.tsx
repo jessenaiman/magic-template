@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
+import { MenuBar } from "./menu-bar";
 
 export function SiteNav() {
   return (
@@ -21,7 +22,8 @@ export function SiteNav() {
 
         <div className="flex flex-1 w-full justify-end">
           <nav className="flex items-center">
-            <ThemeToggle />
+            <MenuBar />
+            <AnimatedThemeToggler />
           </nav>
         </div>
       </div>

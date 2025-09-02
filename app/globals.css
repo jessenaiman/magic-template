@@ -61,7 +61,89 @@
       height: 0;
     }
   }
-}
+
+  --animate-line-shadow: line-shadow 15s linear infinite
+;
+  @keyframes line-shadow {
+  0% {
+    background-position: 0 0;}
+  100% {
+    background-position: 100% -100%;}}
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);}
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);}
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);}
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}}
+  --animate-shiny-text: shiny-text 8s infinite;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;}
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;}}
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;}}
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);}
+  to {
+    transform: translateX(calc(-100% - var(--gap)));}}
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);}
+  to {
+    transform: translateY(calc(-100% - var(--gap)));}}
+  --animate-grid: grid 15s linear infinite;
+  @keyframes grid {
+  0% {
+    transform: translateY(-50%);}
+  100% {
+    transform: translateY(0);}}
+  --animate-ripple: ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite;
+  @keyframes ripple {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);}
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);}}
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;}
+  50% {
+    background-position: 100% 100%;}
+  to {
+    background-position: 0% 0%;}}
+  --animate-meteor: meteor 5s linear infinite;
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;}
+  70% {
+    opacity: 1;}
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;}}
+  --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  @keyframes background-position-spin {
+  0% {
+    background-position: top center;}
+  100% {
+    background-position: bottom center;}}}
 
 :root {
   --font-sans: var(--font-geist-sans);
@@ -149,4 +231,9 @@
     border-top-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
+}
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
