@@ -75,7 +75,7 @@ import {
   AvatarImage,
 } from '@/components/ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { getDesignNavigation } from '@/app/design/navigation.config';
+import { getDesignNavigation } from '@/app/navigation.config';
 import { usePathname } from 'next/navigation'; 
  
 const DATA = {
@@ -217,7 +217,7 @@ const DATA = {
   ],
 };
  
-export const DesignSidebar = () => {
+export const WorkshopSidebar = () => {
   const isMobile = useIsMobile();
   const pathname = usePathname(); 
   const [activeTeam, setActiveTeam] = React.useState(DATA.teams[0]);
