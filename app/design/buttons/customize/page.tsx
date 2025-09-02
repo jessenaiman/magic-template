@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import { Button } from "@workspace/ui/components/button";
-import { Slider } from "@workspace/ui/components/slider";
-import { Label } from "@workspace/ui/components/label";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
 import {
   BaseCustomizerComponent,
   defaultBaseSettings,

@@ -17,21 +17,6 @@ export type NavigationSection = {
 // Main navigation sections
 export const mainNavigation: NavigationSection[] = [
   {
-    label: "General",
-    items: [
-      { label: "Home", href: "/", icon: Home },
-      { 
-        label: "Blog", 
-        href: "/blog", 
-        icon: BookOpen,
-        children: [
-          { label: "Post", href: "/blog/[slug]" },
-        ]
-      },
-      { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    ]
-  },
-  {
     label: "Design",
     items: [
       {

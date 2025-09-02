@@ -1,9 +1,9 @@
 
 import { PreviewTile } from "@/components/design/preview-tile";
-import { MagicCard } from "@workspace/ui/components/magicui/magic-card";
-import { BorderBeam } from "@workspace/ui/components/magicui/border-beam";
-import { NeonGradientCard } from "@workspace/ui/components/magicui/neon-gradient-card";
-import { Meteors } from "@workspace/ui/components/magicui/meteors";
+import { MagicCard } from "@/components/magicui/magic-card";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
+import { Meteors } from "@/components/magicui/meteors";
 
 export default function EffectsPage() {
   return (
