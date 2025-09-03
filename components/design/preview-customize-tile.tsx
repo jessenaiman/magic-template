@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@workspace/ui/components/button";
-import { Label } from "@workspace/ui/components/label";
-import { Input } from "@workspace/ui/components/input";
-import { Slider } from "@workspace/ui/components/slider";
-import { Popover, PopoverTrigger, PopoverContent } from "@workspace/ui/components/animate-ui/radix/popover";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Palette, Play, Pause, RotateCcw, Settings, ExternalLink } from "lucide-react";
 import Link from "next/link";
 

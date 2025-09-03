@@ -128,6 +128,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
   const navMain = React.useMemo(() => buildNav(pathname), [pathname])
 
+  // Hide sidebar on homepage
+  if (pathname === "/") {
+    return null
+  }
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

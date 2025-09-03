@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, Suspense } from "react";
-import { Button } from "@workspace/ui/components/button";
-import { Input } from "@workspace/ui/components/input";
-import { Label } from "@workspace/ui/components/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui/components/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Share2, Code, Copy, RefreshCw, Save, ArrowLeft } from "lucide-react";
 import Link from "next/link";

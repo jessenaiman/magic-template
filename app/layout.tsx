@@ -34,6 +34,10 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies()
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
+  
+  // Get the current path to conditionally render sidebar
+  // Since this is a server component, we'll need to handle this differently
+  // We'll use a client-side wrapper or conditionally render in the app-sidebar
 
   return (
     <html

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui/components/card";
-import { Button } from "@workspace/ui/components/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Download, Heart, Share, Trash2 } from "lucide-react";
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
