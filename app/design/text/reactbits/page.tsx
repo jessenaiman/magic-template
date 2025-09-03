@@ -1,6 +1,10 @@
 import { BlurTextPreview } from "@/components/design/text/blur-text";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ToyBrick } from "lucide-react";
+import { GlitchTextPreview } from "@/components/design/text/glitch-text";
+import { GradientTextPreview } from "@/components/design/text/gradient-text";
+import { RotatingTextPreview } from "@/components/design/text/rotating-text";
+import { ShinyTextPreview } from "@/components/design/text/shiny-text";
+import { TextCursorPreview } from "@/components/design/text/text-cursor";
+import { CountUpPreview } from "@/components/design/text/count-up";
 
 export default function ReactBitsTextPage() {
   return (
@@ -15,21 +19,12 @@ export default function ReactBitsTextPage() {
 
       <div className="grid grid-cols-1 gap-6">
         <BlurTextPreview />
-        
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
-          <CardHeader>
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <ToyBrick className="h-6 w-6" />
-            </div>
-            <CardTitle>More ReactBits Components Coming Soon</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-sm">
-              Additional ReactBits text components are being migrated. Check back soon for GlitchText,
-              ShinyText, TextCursor, and more interactive text animations!
-            </p>
-          </CardContent>
-        </Card>
+        <GlitchTextPreview />
+        <GradientTextPreview />
+        <RotatingTextPreview />
+        <ShinyTextPreview />
+        <TextCursorPreview />
+        <CountUpPreview />
       </div>
     </div>
   );

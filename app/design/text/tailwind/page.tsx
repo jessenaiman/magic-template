@@ -1,7 +1,18 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wind } from "lucide-react";
+'use client';
+
+import { useState } from 'react';
+import { PreviewTile } from "@/components/design/preview-tile";
 
 export default function TailwindTextPage() {
+  const [animationSpeed, setAnimationSpeed] = useState<'normal' | 'fast'>('normal');
+  const [gradientStyle, setGradientStyle] = useState<'rainbow' | 'sunset' | 'ocean'>('rainbow');
+
+  const gradientClasses = {
+    rainbow: 'bg-gradient-to-r from-yellow-400 via-purple-500 to-pink-500',
+    sunset: 'bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400',
+    ocean: 'bg-gradient-to-r from-teal-400 via-blue-400 to-green-400'
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -12,20 +23,223 @@ export default function TailwindTextPage() {
         </p>
       </div>
 
-      <Card className="flex flex-col items-center justify-center p-12 text-center">
-        <CardHeader>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <Wind className="h-8 w-8" />
+      <div className="grid grid-cols-1 gap-6">
+        {/* Gradient Text Animation */}
+        <PreviewTile
+          title="Animated Gradient Text"
+          description="Text with animated gradient background using Tailwind's gradient utilities and animation classes."
+          componentName="GradientTextTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#0a0a0a',
+            textColor: '#ffffff',
+            borderRadius: 20,
+            padding: 24,
+            fontSize: 24
+          }}
+          extraActions={
+            <select
+              value={gradientStyle}
+              onChange={(e) => setGradientStyle(e.target.value as 'rainbow' | 'sunset' | 'ocean')}
+              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors text-white"
+            >
+              <option value="rainbow">Rainbow</option>
+              <option value="sunset">Sunset</option>
+              <option value="ocean">Ocean</option>
+            </select>
+          }
+        >
+          <div className="text-2xl font-semibold">
+            <span className={`${gradientClasses[gradientStyle]} bg-clip-text text-transparent bg-300% animate-gradient`}>
+              Tailwind Gradient
+            </span>
           </div>
-          <CardTitle>TailwindCSS Text Examples</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">
-            This section will showcase text effects implemented with TailwindCSS utilities.
-            Check back soon for utility-first text animations and styling patterns!
-          </p>
-        </CardContent>
-      </Card>
+        </PreviewTile>
+
+        {/* Blur Reveal Text */}
+        <PreviewTile
+          title="Blur Reveal Animation"
+          description="Text that reveals from a blurred state using Tailwind's filter and transition utilities."
+          componentName="BlurTextTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#170D27',
+            textColor: '#ffffff',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 18
+          }}
+        >
+          <div className="text-center">
+            <span className="text-2xl font-semibold blur-sm opacity-0 animate-blur-reveal">
+              Blur Reveal Effect
+            </span>
+          </div>
+        </PreviewTile>
+
+        {/* Shiny Text */}
+        <PreviewTile
+          title="Shiny Text Effect"
+          description="Text with a moving shine effect using Tailwind's background gradient and animation utilities."
+          componentName="ShinyTextTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#1a1a1a',
+            textColor: '#b5b5b5',
+            borderRadius: 8,
+            padding: 24,
+            fontSize: 32
+          }}
+          extraActions={
+            <button
+              onClick={() => setAnimationSpeed(animationSpeed === 'normal' ? 'fast' : 'normal')}
+              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            >
+              Speed: {animationSpeed === 'normal' ? 'Normal' : 'Fast'}
+            </button>
+          }
+        >
+          <div className={`text-4xl font-bold text-gray-400 bg-clip-text bg-200% animate-shine ${animationSpeed === 'fast' ? 'animate-shine-fast' : ''}`}>
+            Shiny Text
+          </div>
+        </PreviewTile>
+
+        {/* Typewriter Effect */}
+        <PreviewTile
+          title="Typewriter Animation"
+          description="Classic typewriter effect using Tailwind's animation and border utilities with monospace font."
+          componentName="TypewriterTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#1a1a1a',
+            textColor: '#00ff00',
+            borderRadius: 8,
+            padding: 24,
+            fontSize: 18
+          }}
+        >
+          <div className="font-mono overflow-hidden border-r-2 border-green-400 whitespace-nowrap animate-typewriter">
+            Hello, Tailwind!
+          </div>
+        </PreviewTile>
+
+        {/* Text Shadow Glow */}
+        <PreviewTile
+          title="Glowing Text Shadow"
+          description="Text with animated glowing shadow effects using Tailwind's text shadow and animation utilities."
+          componentName="GlowTextTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#000000',
+            textColor: '#ffffff',
+            borderRadius: 12,
+            padding: 32,
+            fontSize: 36
+          }}
+        >
+          <div className="text-4xl font-bold text-white animate-pulse-glow">
+            Glowing Text
+          </div>
+        </PreviewTile>
+
+        {/* Bouncing Text */}
+        <PreviewTile
+          title="Bouncing Text Animation"
+          description="Text with bounce animation using Tailwind's animation utilities with custom keyframes."
+          componentName="BounceTextTailwind"
+          category="text"
+          initialCustomization={{
+            backgroundColor: '#1a1a1a',
+            textColor: '#ffffff',
+            borderRadius: 12,
+            padding: 32,
+            fontSize: 32
+          }}
+        >
+          <div className="text-3xl font-bold text-white animate-bounce">
+            Bounce!
+          </div>
+        </PreviewTile>
+      </div>
+
+      <style jsx>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes shine {
+          0% { background-position: 100%; }
+          100% { background-position: -100%; }
+        }
+        
+        @keyframes blurReveal {
+          0% {
+            filter: blur(8px);
+            opacity: 0;
+          }
+          100% {
+            filter: blur(0px);
+            opacity: 1;
+          }
+        }
+        
+        @keyframes typewriter {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+        
+        @keyframes pulseGlow {
+          0%, 100% {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00de, 0 0 20px #ff00de;
+          }
+          50% {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de;
+          }
+        }
+        
+        .animate-gradient {
+          animation: gradient 8s ease infinite;
+        }
+        
+        .animate-shine {
+          background-image: linear-gradient(120deg, 
+            rgba(255, 255, 255, 0) 40%, 
+            rgba(255, 255, 255, 0.8) 50%, 
+            rgba(255, 255, 255, 0) 60%);
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: shine 5s linear infinite;
+        }
+        
+        .animate-shine-fast {
+          animation-duration: 2s;
+        }
+        
+        .animate-blur-reveal {
+          animation: blurReveal 2s ease-out forwards;
+          animation-delay: 0.5s;
+        }
+        
+        .animate-typewriter {
+          animation: typewriter 3.5s steps(40, end) forwards;
+          width: 0;
+        }
+        
+        .animate-pulse-glow {
+          animation: pulseGlow 2s infinite;
+        }
+        
+        .bg-300% {
+          background-size: 300% 300%;
+        }
+        
+        .bg-200% {
+          background-size: 200% 100%;
+        }
+      `}</style>
     </div>
   );
 }
