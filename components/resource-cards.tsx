@@ -117,11 +117,13 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            aria-label={`Visit ${resource.title} (${resource.category}) – opens in new tab`}
+            title={`Visit ${resource.title}`}
+            className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-md"
             onClick={(e) => e.stopPropagation()}
           >
             Visit website
-            <ExternalLink className="ml-1 h-4 w-4" />
+            <ExternalLink className="ml-1 h-4 w-4" aria-hidden="true" />
           </a>
 
             <motion.div
@@ -206,10 +208,11 @@ export const ResourceCards: React.FC<ResourceCardsProps> = ({ className }) => {
           </p>
           <a
             href="mailto:hello@example.com"
-            className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
+            aria-label="Email us to suggest a resource"
+            className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-md"
           >
             Contact us to add your resource
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </a>
         </motion.div>
       </div>
