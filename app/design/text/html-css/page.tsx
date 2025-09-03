@@ -25,6 +25,7 @@ export default function HtmlCssTextPage() {
           description="Pure CSS text blur effect that reveals text with a smooth transition using CSS filters and transitions."
           componentName="BlurTextCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#170D27',
             textColor: '#ffffff',
@@ -52,6 +53,7 @@ export default function HtmlCssTextPage() {
           description="CSS-only animated gradient text using background-clip and keyframe animations for smooth color transitions."
           componentName="GradientTextCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#0a0a0a',
             textColor: '#ffffff',
@@ -79,6 +81,7 @@ export default function HtmlCssTextPage() {
           description="Pure CSS shine effect that moves across text using linear gradients and background animations."
           componentName="ShinyTextCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#b5b5b5',
@@ -106,6 +109,7 @@ export default function HtmlCssTextPage() {
           description="Pure CSS glitch effect using pseudo-elements, clip-path, and animation delays for a digital distortion look."
           componentName="GlitchTextCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#060010',
             textColor: '#ffffff',
@@ -125,6 +129,7 @@ export default function HtmlCssTextPage() {
           description="Classic typewriter effect using CSS animations, steps() timing function, and border blinking cursor."
           componentName="TypewriterCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#00ff00',
@@ -144,6 +149,7 @@ export default function HtmlCssTextPage() {
           description="Dynamic text shadow effects using CSS animations with multiple shadow layers and color transitions."
           componentName="TextShadowCSS"
           category="text"
+          designSystem="html-css"
           initialCustomization={{
             backgroundColor: '#000000',
             textColor: '#ffffff',

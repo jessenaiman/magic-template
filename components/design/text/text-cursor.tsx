@@ -72,6 +72,7 @@ export function TextCursorPreview({ className }: TextCursorPreviewProps) {
       description="Interactive cursor that leaves a trail of text or emoji elements that follow mouse movement with configurable physics and animation behaviors."
       componentName="TextCursor"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install framer-motion @reactbits/text-animations"
       canvasHeight={200}
       initialCustomization={{
@@ -86,7 +87,7 @@ export function TextCursorPreview({ className }: TextCursorPreviewProps) {
           <select
             value={cursorText}
             onChange={(e) => setCursorText(e.target.value)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors text-white"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             {cursorOptions.map(option => (
               <option key={option} value={option}>{option}</option>
@@ -94,18 +95,19 @@ export function TextCursorPreview({ className }: TextCursorPreviewProps) {
           </select>
           <button
             onClick={() => setFollowMouseDirection(!followMouseDirection)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Direction: {followMouseDirection ? 'On' : 'Off'}
           </button>
           <button
             onClick={() => setRandomFloat(!randomFloat)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Float: {randomFloat ? 'On' : 'Off'}
           </button>
         </div>
       }
+      showAdvancedControls={true}
     >
       <div className="w-full h-48 relative border border-dashed border-gray-600 rounded-lg overflow-hidden">
         <TextCursor

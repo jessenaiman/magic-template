@@ -41,6 +41,7 @@ export default function ShadCNTextPage() {
           description="Comprehensive typography system using ShadCN UI components with proper semantic HTML and responsive sizing."
           componentName="TypographySystem"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#ffffff',
             textColor: '#000000',
@@ -103,6 +104,7 @@ export default function ShadCNTextPage() {
           description="Collection of badge components demonstrating different styles and usage patterns for text labels."
           componentName="BadgeCollection"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#f8fafc',
             textColor: '#000000',
@@ -125,6 +127,7 @@ export default function ShadCNTextPage() {
           description="Text-related form components including labels, inputs, and textareas with proper accessibility."
           componentName="FormTextElements"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#ffffff',
             textColor: '#000000',
@@ -155,6 +158,7 @@ export default function ShadCNTextPage() {
           description="Card components with text content demonstrating different text styles and layouts."
           componentName="TextCards"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#f8fafc',
             textColor: '#000000',
@@ -187,6 +191,7 @@ export default function ShadCNTextPage() {
           description="Text elements combined with interactive components like buttons and switches."
           componentName="TextWithActions"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#ffffff',
             textColor: '#000000',
@@ -221,6 +226,7 @@ export default function ShadCNTextPage() {
           description="Text-based status indicators and messages with appropriate styling and icons."
           componentName="StatusMessages"
           category="text"
+          designSystem="shadcn"
           initialCustomization={{
             backgroundColor: '#f8fafc',
             textColor: '#000000',

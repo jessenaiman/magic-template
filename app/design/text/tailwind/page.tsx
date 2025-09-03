@@ -30,6 +30,7 @@ export default function TailwindTextPage() {
           description="Text with animated gradient background using Tailwind's gradient utilities and animation classes."
           componentName="GradientTextTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#0a0a0a',
             textColor: '#ffffff',
@@ -62,6 +63,7 @@ export default function TailwindTextPage() {
           description="Text that reveals from a blurred state using Tailwind's filter and transition utilities."
           componentName="BlurTextTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#170D27',
             textColor: '#ffffff',
@@ -83,6 +85,7 @@ export default function TailwindTextPage() {
           description="Text with a moving shine effect using Tailwind's background gradient and animation utilities."
           componentName="ShinyTextTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#b5b5b5',
@@ -110,6 +113,7 @@ export default function TailwindTextPage() {
           description="Classic typewriter effect using Tailwind's animation and border utilities with monospace font."
           componentName="TypewriterTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#00ff00',
@@ -129,6 +133,7 @@ export default function TailwindTextPage() {
           description="Text with animated glowing shadow effects using Tailwind's text shadow and animation utilities."
           componentName="GlowTextTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#000000',
             textColor: '#ffffff',
@@ -148,6 +153,7 @@ export default function TailwindTextPage() {
           description="Text with bounce animation using Tailwind's animation utilities with custom keyframes."
           componentName="BounceTextTailwind"
           category="text"
+          designSystem="tailwind"
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#ffffff',

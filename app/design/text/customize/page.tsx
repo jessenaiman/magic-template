@@ -196,6 +196,7 @@ export default function CustomizeTextPage() {
           description="Real-time preview of your text customization with interactive controls."
           componentName="TextCustomizer"
           category="text"
+          designSystem="reactbits"
           initialCustomization={{
             backgroundColor: backgroundColor,
             textColor: textColor,

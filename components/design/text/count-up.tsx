@@ -71,6 +71,7 @@ export function CountUpPreview({ className }: CountUpPreviewProps) {
       description="Smooth numerical counting animation that transitions between values with configurable timing, direction, and formatting options."
       componentName="CountUp"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install framer-motion @reactbits/text-animations"
       initialCustomization={{
         backgroundColor: '#1a1a1a',
@@ -83,13 +84,13 @@ export function CountUpPreview({ className }: CountUpPreviewProps) {
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => setDuration(duration === 2 ? 4 : 2)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Speed: {duration === 2 ? 'Fast' : 'Slow'}
           </button>
           <button
             onClick={() => setDirection(direction === 'up' ? 'down' : 'up')}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Direction: {direction}
           </button>
@@ -98,12 +99,13 @@ export function CountUpPreview({ className }: CountUpPreviewProps) {
               setStartValue(0);
               setEndValue(1000);
             }}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Reset Values
           </button>
         </div>
       }
+      showAdvancedControls={true}
     >
       <div className="text-center space-y-2">
         <CountUp
