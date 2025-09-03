@@ -3,14 +3,13 @@ import { toast } from 'sonner';
 import { CodeTab, PreviewTab, TabsLayout } from '../../components/common/TabsLayout';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 
-import RefreshButton from '../../components/common/Preview/RefreshButton';
+import { PreviewRefreshButton } from '../../design/preview-controls/preview-refresh-button';
+import { PreviewSlider } from '../../design/preview-controls/preview-slider';
+import { PreviewPropTable } from '../../design/preview-controls/preview-prop-table';
+
 import CodeExample from '../../components/code/CodeExample';
 import Dependencies from '../../components/code/Dependencies';
 import useForceRerender from '../../hooks/useForceRerender';
-import PropTable from '../../components/common/Preview/PropTable';
-
-import Customize from '../../components/common/Preview/Customize';
-import PreviewSlider from '../../components/common/Preview/PreviewSlider';
 
 import BlurText from '../../content/TextAnimations/BlurText/BlurText';
 import { blurText } from '../../constants/code/TextAnimations/blurTextCode';
@@ -77,7 +76,7 @@ const BlurTextDemo = () => {
     <TabsLayout>
       <PreviewTab>
         <Box position="relative" className="demo-container" minH={400} overflow="hidden">
-          <RefreshButton onClick={forceRerender} />
+          <PreviewRefreshButton onClick={forceRerender} />
           <BlurText
             key={key}
             text="Isn't this so cool?!"
@@ -88,7 +87,10 @@ const BlurTextDemo = () => {
             className="blur-text-demo"
           />
         </Box>
-        <Customize>
+        <Box mt={6}>
+          <Text fontSize="xl" mb={3}>
+            Customize
+          </Text>
           <Flex gap={4} wrap="wrap">
             <Button
               fontSize="xs"
@@ -123,21 +125,21 @@ const BlurTextDemo = () => {
           </Flex>
 
           <PreviewSlider
-            title="Delay"
+            label="Delay"
             min={50}
             max={500}
             step={10}
             value={delay}
             valueUnit="ms"
-            onChange={val => {
+            onChange={(val) => {
               setDelay(val);
               forceRerender();
             }}
-            width={200}
+            widthPx={200}
           />
-        </Customize>
+        </Box>
 
-        <PropTable data={propData} />
+        <PreviewPropTable propsList={propData} />
         <Dependencies dependencyList={['motion']} />
       </PreviewTab>
 

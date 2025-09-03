@@ -1,112 +1,59 @@
-import { Table, Box, Text } from '@chakra-ui/react';
+/**
+ * DEPRECATED: Use components/design/preview-controls/preview-prop-table instead.
+ * Shim that adapts legacy PropTable `data` prop to the new PreviewPropTable `propsList` API.
+ *
+ * Legacy shape:
+ *   <PropTable data={[{ name, type, default, description }]} />
+ *
+ * New shape:
+ *   <PreviewPropTable propsList={[{ name, type, default, description }]} />
+ *
+ * NOTES:
+ * - Styling, copy buttons, filtering, and required highlighting are now handled by the new table.
+ * - This shim purposefully keeps only the legacy surface. Prefer migrating to the new component directly.
+ */
+import React from 'react';
 
-const CodeCell = ({ content = '' }) => {
+const LazyPropTable = React.lazy(() =>
+  import('@/components/design/preview-controls/preview-prop-table').then(m => ({
+    default: m.PreviewPropTable || m.default
+  }))
+);
+
+const DeprecatedPropTable = ({ data = [] }) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(window).__DEPRECATED_PREVIEW_PROP_TABLE_WARNED) {
+      console.warn(
+        '[Deprecated] components/common/Preview/PropTable is deprecated. Use components/design/preview-controls/preview-prop-table'
+      );
+      (window).__DEPRECATED_PREVIEW_PROP_TABLE_WARNED = true;
+    }
+  }
+
+  // Basic normalization (ensure required field presence)
+  const normalized = Array.isArray(data)
+    ? data.map(row => ({
+        name: row.name ?? '',
+        type: row.type ?? '—',
+        default: row.default,
+        description: row.description,
+        // best-effort heuristic: mark required if default is undefined/null and description contains 'required'
+        required:
+          row.required === true ||
+          (!row.default && typeof row.description === 'string' && /required/i.test(row.description))
+      }))
+    : [];
+
   return (
-    <Box
-      fontFamily="monospace"
-      py={1}
-      px={2}
-      ml={2}
-      borderRadius="5px"
-      width="fit-content"
-      fontWeight={500}
-      color="#e9e9e9"
-      backgroundColor="#271E37"
-    >
-      {content}
-    </Box>
+    <React.Suspense fallback={null}>
+      <LazyPropTable
+        title="Props"
+        propsList={normalized}
+        highlightRequired
+        showCopyButtons
+      />
+    </React.Suspense>
   );
 };
 
-const PropTable = ({ data }) => {
-  return (
-    <Box mt={12}>
-      <h2 className="demo-title-extra">Props</h2>
-      <Box overflowX="auto" mt={6}>
-        <Table.Root variant="line" size="sm" className="props-table">
-          <Table.Header borderBottom="1px solid #392e4e">
-            <Table.Row backgroundColor="#170D27" borderRadius="20px">
-              <Table.ColumnHeader
-                letterSpacing="-.5px"
-                borderRight="1px solid #392e4e"
-                textTransform={'capitalize'}
-                fontSize={'l'}
-                p={4}
-                color="white"
-              >
-                Property
-              </Table.ColumnHeader>
-              <Table.ColumnHeader
-                letterSpacing="-.5px"
-                borderRight="1px solid #392e4e"
-                textTransform={'capitalize'}
-                fontSize={'l'}
-                p={4}
-                color="white"
-              >
-                Type
-              </Table.ColumnHeader>
-              <Table.ColumnHeader
-                letterSpacing="-.5px"
-                borderRight="1px solid #392e4e"
-                textTransform={'capitalize'}
-                fontSize={'l'}
-                p={4}
-                color="white"
-              >
-                Default
-              </Table.ColumnHeader>
-              <Table.ColumnHeader letterSpacing="-.5px" textTransform={'capitalize'} fontSize={'l'} p={4} color="white">
-                Description
-              </Table.ColumnHeader>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {data.map((prop, index) => (
-              <Table.Row key={index} borderBottom={index === data.length - 1 ? 'none' : '1px solid #392e4e'}>
-                <Table.Cell
-                  borderColor="#271E37"
-                  p={2}
-                  color="white"
-                  width={0}
-                  borderRight="1px solid #392e4e"
-                  bg={'#060010'}
-                >
-                  <CodeCell rightJustified content={prop.name} />
-                </Table.Cell>
-                <Table.Cell
-                  borderColor="#271E37"
-                  p={4}
-                  color="white"
-                  whiteSpace="nowrap"
-                  width={'120px'}
-                  borderRight="1px solid #392e4e"
-                  bg={'#060010'}
-                >
-                  <Text fontFamily="monospace" fontWeight={500}>
-                    {prop.type}
-                  </Text>
-                </Table.Cell>
-                <Table.Cell
-                  borderColor="#271E37"
-                  p={2}
-                  color="white"
-                  borderRight="1px solid #392e4e"
-                  whiteSpace="nowrap"
-                  bg={'#060010'}
-                >
-                  <CodeCell content={prop.default && prop.default.length ? prop.default : '—'} />
-                </Table.Cell>
-                <Table.Cell borderColor="#271E37" p={4} color="white" bg={'#060010'}>
-                  <Text maxW={300}>{prop.description}</Text>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table.Root>
-      </Box>
-    </Box>
-  );
-};
-
-export default PropTable;
+export default DeprecatedPropTable;

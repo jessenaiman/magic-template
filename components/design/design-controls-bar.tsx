@@ -1,9 +1,9 @@
 "use client";
 
 import { useDesignControls } from "@/hooks/use-design-controls";
-import { ManagementBar } from "@workspace/ui/components/animate-ui/ui-elements/management-bar";
-import { IconButton } from "@workspace/ui/components/animate-ui/buttons/icon";
-import { cn } from "@workspace/ui/lib/utils";
+import { ManagementBar } from "../animate-ui/ui-elements/management-bar";
+import { IconButton } from "../animate-ui/buttons/icon";
+import { cn } from "../../lib/utils";
 import { Play, Square, RefreshCcw } from "lucide-react";
 
 // Using the modified ManagementBar component from animate-ui that now supports custom content

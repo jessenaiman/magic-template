@@ -1,18 +1,45 @@
-import { Flex, Switch, Text } from '@chakra-ui/react';
+/**
+ * DEPRECATED: Use components/design/preview-controls/preview-switch instead.
+ * Shim mapping legacy PreviewSwitch (Chakra) API to new design-system switch.
+ *
+ * Legacy props:
+ *  - title      -> label
+ *  - isChecked  -> checked
+ *  - onChange   -> onChange
+ *  - isDisabled -> disabled
+ */
+import React from 'react';
 
-const PreviewSwitch = ({ title, isChecked, onChange, isDisabled }) => {
-  const handleChange = ({ checked }) => onChange?.(checked);
+const LazySwitch = React.lazy(() =>
+  import('@/components/design/preview-controls/preview-switch').then(m => ({
+    default: m.PreviewSwitch || m.default
+  }))
+);
+
+const DeprecatedPreviewSwitch = ({
+  title = '',
+  isChecked = false,
+  onChange,
+  isDisabled = false,
+}) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(window).__DEPRECATED_PREVIEW_SWITCH_WARNED) {
+      console.warn('[Deprecated] components/common/Preview/PreviewSwitch is deprecated. Use components/design/preview-controls/preview-switch');
+      (window).__DEPRECATED_PREVIEW_SWITCH_WARNED = true;
+    }
+  }
 
   return (
-    <Flex align="center" gap="4" my={6}>
-      <Text fontSize="sm">{title}</Text>
-
-      <Switch.Root checked={isChecked} onCheckedChange={handleChange} disabled={isDisabled}>
-        <Switch.HiddenInput />
-        <Switch.Control />
-      </Switch.Root>
-    </Flex>
+    <React.Suspense fallback={null}>
+      <LazySwitch
+        label={title}
+        checked={isChecked}
+        onChange={onChange}
+        disabled={isDisabled}
+        size="md"
+      />
+    </React.Suspense>
   );
 };
 
-export default PreviewSwitch;
+export default DeprecatedPreviewSwitch;

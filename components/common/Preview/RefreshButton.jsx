@@ -1,27 +1,42 @@
-import { Button, Icon } from '@chakra-ui/react';
-import { FiRefreshCw } from 'react-icons/fi';
+/**
+ * DEPRECATED: Use components/design/preview-controls/preview-refresh-button instead.
+ * Shim mapping the legacy RefreshButton (Chakra) to the new design-system PreviewRefreshButton.
+ *
+ * Legacy:
+ *   <RefreshButton onClick={...} />
+ *
+ * New:
+ *   <PreviewRefreshButton onClick={...} size="sm" />
+ *
+ * Differences:
+ * - Styling / positioning now handled by consumer. This shim preserves only behavior + accessible label.
+ */
+import React from 'react';
 
-const RefreshButton = ({ onClick }) => {
+const LazyRefresh = React.lazy(() =>
+  import('@/components/design/preview-controls/preview-refresh-button').then(m => ({
+    default: m.PreviewRefreshButton || m.default
+  }))
+);
+
+const DeprecatedRefreshButton = ({ onClick }) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(window).__DEPRECATED_PREVIEW_REFRESH_BUTTON_WARNED) {
+      console.warn('[Deprecated] components/common/Preview/RefreshButton is deprecated. Use components/design/preview-controls/preview-refresh-button');
+      (window).__DEPRECATED_PREVIEW_REFRESH_BUTTON_WARNED = true;
+    }
+  }
+
   return (
-    <Button
-      transition="background-color 0.3s ease"
-      _active={{ backgroundColor: '#271E37' }}
-      _hover={{ backgroundColor: '#271E37' }}
-      backgroundColor="#170D27"
-      position="absolute"
-      onClick={onClick}
-      border="1px solid #392e4e"
-      zIndex={2}
-      color="white"
-      rounded="xl"
-      right={3}
-      size="md"
-      top={3}
-      p={2}
-    >
-      <Icon as={FiRefreshCw} boxSize={4} />
-    </Button>
+    <React.Suspense fallback={null}>
+      <LazyRefresh
+        onClick={onClick}
+        size="sm"
+        className="!absolute top-3 right-3"
+        tooltip="Replay"
+      />
+    </React.Suspense>
   );
 };
 
-export default RefreshButton;
+export default DeprecatedRefreshButton;

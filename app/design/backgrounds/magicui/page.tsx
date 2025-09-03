@@ -174,8 +174,8 @@ export default function MagicUIBackgroundsPage() {
             <CardContent>
               <CodeBlock
                 language="tsx"
-                code={`import { AnimatedGridPattern } from "@workspace/ui/components/magicui/animated-grid-pattern";
-import { cn } from "@workspace/ui/lib/utils";
+                code={`import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
+import { cn } from "@/lib/utils";
 
 <div className="relative">
   <AnimatedGridPattern
@@ -200,8 +200,8 @@ import { cn } from "@workspace/ui/lib/utils";
             <CardContent>
               <CodeBlock
                 language="tsx"
-                code={`import { DotPattern } from "@workspace/ui/components/magicui/dot-pattern";
-import { cn } from "@workspace/ui/lib/utils";
+                code={`import { DotPattern } from "@/components/magicui/dot-pattern";
+import { cn } from "@/lib/utils";
 
 <div className="relative">
   <DotPattern
@@ -226,7 +226,7 @@ import { cn } from "@workspace/ui/lib/utils";
             <CardContent>
               <CodeBlock
                 language="tsx"
-                code={`import { RetroGrid } from "@workspace/ui/components/magicui/retro-grid";
+                code={`import { RetroGrid } from "@/components/magicui/retro-grid";
 
 <div className="relative flex items-center justify-center">
   <div className="z-10">Your content here</div>

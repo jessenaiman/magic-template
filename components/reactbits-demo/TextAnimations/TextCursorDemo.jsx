@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { CodeTab, PreviewTab, TabsLayout } from '../../components/common/TabsLayout';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Flex } from '@chakra-ui/react';
 
-import Customize from '../../components/common/Preview/Customize';
-import PreviewSwitch from '../../components/common/Preview/PreviewSwitch';
+import { PreviewInput } from '../../design/preview-controls/preview-input';
+import { PreviewSwitch } from '../../design/preview-controls/preview-switch';
+import { PreviewPropTable } from '../../design/preview-controls/preview-prop-table';
+
 import CodeExample from '../../components/code/CodeExample';
-
-import PropTable from '../../components/common/Preview/PropTable';
 import Dependencies from '../../components/code/Dependencies';
 import useForceRerender from '../../hooks/useForceRerender';
 
 import TextCursor from '../../content/TextAnimations/TextCursor/TextCursor';
 import { textCursor } from '../../constants/code/TextAnimations/textCursorCode';
-import PreviewInput from '../../components/common/Preview/PreviewInput';
 
 const TextCursorDemo = () => {
   const [text, setText] = useState('⚛️');
@@ -90,35 +89,39 @@ const TextCursorDemo = () => {
           </Text>
         </Box>
 
-        <Customize>
-          <PreviewInput
-            title="Text"
-            value={text}
-            placeholder="Enter text..."
-            width={160}
-            maxLength={10}
-            onChange={setText}
-          />
+        <Box mt={6}>
+          <Text fontSize="xl" mb={3}>
+            Customize
+          </Text>
+          <Flex gap={6} wrap="wrap">
+            <PreviewInput
+              label="Text"
+              value={text}
+              placeholder="Enter text..."
+              widthPx={160}
+              maxLength={10}
+              onChange={setText}
+            />
+            <PreviewSwitch
+              label="Follow Mouse Direction"
+              checked={followMouseDirection}
+              onChange={(checked) => {
+                setFollowMouseDirection(checked);
+                forceRerender();
+              }}
+            />
+            <PreviewSwitch
+              label="Enable Random Floating"
+              checked={randomFloat}
+              onChange={(checked) => {
+                setRandomFloat(checked);
+                forceRerender();
+              }}
+            />
+          </Flex>
+        </Box>
 
-          <PreviewSwitch
-            title="Follow Mouse Direction"
-            isChecked={followMouseDirection}
-            onChange={checked => {
-              setFollowMouseDirection(checked);
-              forceRerender();
-            }}
-          />
-          <PreviewSwitch
-            title="Enable Random Floating"
-            isChecked={randomFloat}
-            onChange={checked => {
-              setRandomFloat(checked);
-              forceRerender();
-            }}
-          />
-        </Customize>
-
-        <PropTable data={propData} />
+        <PreviewPropTable propsList={propData} />
         <Dependencies dependencyList={['motion']} />
       </PreviewTab>
 

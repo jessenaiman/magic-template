@@ -1,6 +1,23 @@
-import { Flex, Slider, Text } from '@chakra-ui/react';
+/**
+ * DEPRECATED: Use components/design/preview-controls/preview-slider instead.
+ * This shim maps the legacy PreviewSlider (Chakra-based) props to the new design-system slider.
+ *
+ * Legacy props:
+ *  - title        -> label
+ *  - min          -> min
+ *  - max          -> max
+ *  - step         -> step
+ *  - value        -> value
+ *  - valueUnit    -> valueUnit
+ *  - width        -> widthPx
+ *  - isDisabled   -> disabled
+ *  - onChange(n)  -> onChange(n)
+ */
+import React from 'react';
 
-const PreviewSlider = ({
+const LazySlider = React.lazy(() => import('@/components/design/preview-controls/preview-slider').then(m => ({ default: m.PreviewSlider || m.default })));
+
+const DeprecatedPreviewSlider = ({
   title = '',
   min = 0,
   max = 100,
@@ -9,36 +26,30 @@ const PreviewSlider = ({
   valueUnit = '',
   width = 150,
   isDisabled = false,
-  onChange
+  onChange,
 }) => {
-  const handleChange = ({ value: next }) => onChange?.(next[0]);
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(window).__DEPRECATED_PREVIEW_SLIDER_WARNED) {
+      console.warn('[Deprecated] components/common/Preview/PreviewSlider is deprecated. Use components/design/preview-controls/preview-slider');
+      (window).__DEPRECATED_PREVIEW_SLIDER_WARNED = true;
+    }
+  }
 
   return (
-    <Flex gap="4" align="center" my={6}>
-      <Text fontSize="sm">{title}</Text>
-      <Slider.Root
+    <React.Suspense fallback={null}>
+      <LazySlider
+        label={title}
+        value={value}
         min={min}
         max={max}
         step={step}
-        value={[value]}
-        onValueChange={handleChange}
-        width={`${width}px`}
+        valueUnit={valueUnit}
+        widthPx={width}
         disabled={isDisabled}
-      >
-        <Slider.Control>
-          <Slider.Track>
-            <Slider.Range />
-          </Slider.Track>
-          <Slider.Thumbs />
-        </Slider.Control>
-      </Slider.Root>
-
-      <Text fontSize="sm">
-        {value}
-        {valueUnit}
-      </Text>
-    </Flex>
+        onChange={onChange}
+      />
+    </React.Suspense>
   );
 };
 
-export default PreviewSlider;
+export default DeprecatedPreviewSlider;

@@ -31,7 +31,7 @@ export default function ShadcnButtonsPage() {
           <CardContent className="space-y-4">
             <Button>Default Button</Button>
             <CodeBlock
-              code={`import { Button } from "@workspace/ui/components/button"
+              code={`import { Button } from "@/components/ui/button"
 
 export default function MyComponent() {
   return <Button>Default Button</Button>

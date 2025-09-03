@@ -2,11 +2,11 @@ import { useState, useRef } from 'react';
 import { CodeTab, PreviewTab, TabsLayout } from '../../components/common/TabsLayout';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 
-import PropTable from '../../components/common/Preview/PropTable';
+import { PreviewSlider } from '../../design/preview-controls/preview-slider';
+import { PreviewPropTable } from '../../design/preview-controls/preview-prop-table';
 
 import CodeExample from '../../components/code/CodeExample';
 import Dependencies from '../../components/code/Dependencies';
-import PreviewSlider from '../../components/common/Preview/PreviewSlider';
 
 import VariableProximity from '../../content/TextAnimations/VariableProximity/VariableProximity';
 import { variableProximity } from '../../constants/code/TextAnimations/variableProximityCode';
@@ -59,7 +59,14 @@ const VariableProximityDemo = () => {
   return (
     <TabsLayout>
       <PreviewTab>
-        <Box ref={containerRef} position="relative" className="demo-container" minH={400} overflow="hidden" p={4}>
+        <Box
+          ref={containerRef}
+            position="relative"
+            className="demo-container"
+            minH={400}
+            overflow="hidden"
+            p={4}
+        >
           <VariableProximity
             label={'Hover me! And then star React Bits on GitHub, or else...'}
             className={'variable-proximity-demo'}
@@ -71,19 +78,19 @@ const VariableProximityDemo = () => {
           />
         </Box>
 
-        <Box mt={6} className="preview-options">
+        <Box mt={6}>
           <Text fontSize="xl" mb={2}>
             Customize
           </Text>
           <PreviewSlider
-            title="Radius"
+            label="Radius"
             min={50}
             max={300}
             step={10}
             value={radius}
             valueUnit="px"
-            onChange={val => setRadius(val)}
-            width={200}
+            onChange={setRadius}
+            widthPx={200}
           />
 
           <Flex gap={4} align="center" mt={4}>
@@ -104,7 +111,7 @@ const VariableProximityDemo = () => {
           </Flex>
         </Box>
 
-        <PropTable data={propData} />
+        <PreviewPropTable propsList={propData} />
         <Dependencies dependencyList={['motion']} />
       </PreviewTab>
 
