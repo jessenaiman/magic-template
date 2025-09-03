@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Copy, Check, Code2, Palette, ExternalLink } from 'lucide-react';
+import { Copy, Check, Code2, Palette, ExternalLink, Settings } from 'lucide-react';
 import Link from 'next/link';
 
 import { PreviewProvider, usePreviewContext } from './preview-controls/preview-context';
@@ -15,8 +15,8 @@ import { cn } from '@/lib/utils';
 import CodeHighlighter from '@/components/code/CodeHighlighter';
 
 /**
- * Maintains backward compatibility with legacy PreviewTile props while
- * delegating state management to the new PreviewContext + modular controls.
+ * Enhanced PreviewTile component with unified design system support
+ * Maintains backward compatibility while integrating new preview-controls system
  */
 interface CodeExample {
   language: string;
@@ -69,6 +69,18 @@ export interface PreviewTileProps {
    * Height of preview canvas area.
    */
   canvasHeight?: number;
+  /**
+   * Design system type for specialized styling
+   */
+  designSystem?: 'reactbits' | 'html-css' | 'tailwind' | 'shadcn' | 'magicui' | 'animate-ui';
+  /**
+   * Show advanced controls (play/pause, text editing, etc.)
+   */
+  showAdvancedControls?: boolean;
+  /**
+   * Custom field configurations for the customization panel
+   */
+  customFields?: any[];
 }
 
 /* -------------------------------- Internal Body -------------------------------- */
@@ -86,7 +98,10 @@ function PreviewTileInner({
   defaultCustomizeOpen = false,
   extraActions,
   className,
-  canvasHeight = 200
+  canvasHeight = 200,
+  designSystem = 'reactbits',
+  showAdvancedControls = true,
+  customFields
 }: PreviewTileProps) {
   const { state } = usePreviewContext();
 
@@ -108,12 +123,40 @@ function PreviewTileInner({
 
   const hasCode = codeExamples.length > 0;
 
+  // Design system specific styling
+  const designSystemStyles = {
+    'reactbits': 'border-blue-500/20 hover:border-blue-500/40',
+    'html-css': 'border-green-500/20 hover:border-green-500/40', 
+    'tailwind': 'border-purple-500/20 hover:border-purple-500/40',
+    'shadcn': 'border-orange-500/20 hover:border-orange-500/40',
+    'magicui': 'border-pink-500/20 hover:border-pink-500/40',
+    'animate-ui': 'border-cyan-500/20 hover:border-cyan-500/40'
+  };
+
   return (
-    <div className={cn('space-y-4', className)}>
-      <Card className="relative flex flex-col transition-all duration-300 hover:shadow-lg">
+    <div className={cn('space-y-4 group', className)}>
+      <Card className={cn(
+        'relative flex flex-col transition-all duration-300 hover:shadow-lg border-2',
+        designSystemStyles[designSystem],
+        'bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm'
+      )}>
         {/* Floating top-right controls cluster */}
         <div className="absolute top-3 right-3 z-20 flex items-center gap-1">
           {extraActions}
+          
+          {/* Design system badge */}
+          <div className={cn(
+            'px-2 py-1 text-[10px] font-medium rounded-full border',
+            designSystem === 'reactbits' && 'bg-blue-500/10 text-blue-600 border-blue-500/20',
+            designSystem === 'html-css' && 'bg-green-500/10 text-green-600 border-green-500/20',
+            designSystem === 'tailwind' && 'bg-purple-500/10 text-purple-600 border-purple-500/20',
+            designSystem === 'shadcn' && 'bg-orange-500/10 text-orange-600 border-orange-500/20',
+            designSystem === 'magicui' && 'bg-pink-500/10 text-pink-600 border-pink-500/20',
+            designSystem === 'animate-ui' && 'bg-cyan-500/10 text-cyan-600 border-cyan-500/20'
+          )}>
+            {designSystem.toUpperCase()}
+          </div>
+
           {documentationUrl && (
             <Button
               variant="ghost"
@@ -142,7 +185,8 @@ function PreviewTileInner({
               </DialogTrigger>
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                  <DialogTitle>
+                  <DialogTitle className="flex items-center gap-2">
+                    <Code2 className="h-5 w-5" />
                     {componentName} - Implementation
                   </DialogTitle>
                 </DialogHeader>
@@ -151,7 +195,7 @@ function PreviewTileInner({
                     <div className="p-4 bg-muted rounded-lg">
                       <div className="text-sm font-medium mb-2">Installation</div>
                       <div className="flex items-center justify-between bg-background rounded px-3 py-2">
-                        <code className="text-sm">{installCommand}</code>
+                        <code className="text-sm font-mono">{installCommand}</code>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -265,53 +309,51 @@ function PreviewTileInner({
               variant="ghost"
               size="sm"
               className={cn(
-                'h-8 w-8 p-0',
-                customizeOpen && 'bg-muted/60'
+                'h-8 w-8 p-0 transition-all',
+                customizeOpen && 'bg-primary/10 text-primary'
               )}
               aria-label="Customize"
               onClick={() => setCustomizeOpen(o => !o)}
             >
-              <Palette className="h-3.5 w-3.5" />
+              <Settings className="h-3.5 w-3.5" />
             </Button>
           )}
+        </div>
 
-          {/* Storybook link - kept for parity */}
-          <Button
-            variant="outline"
-            size="sm"
-            className="h-8 px-2 py-1 flex items-center gap-1"
-            asChild
-            aria-label="View in Storybook"
-          >
-            <a
-              href={`http://localhost:6006/?path=/docs/design-buttons-${componentName.toLowerCase()}--docs`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="h-3.5 w-3.5 mr-1" />
-              <span className="text-[11px] font-medium">Storybook</span>
-            </a>
-          </Button>
+        {/* Component title and description */}
+        <div className="p-4 pb-2">
+          <h3 className="text-lg font-semibold tracking-tight text-foreground">
+            {title}
+          </h3>
+          {description && (
+            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
 
         {/* Top overlay controls bar (new modular bar) */}
-        <div className="p-3 pt-16 pb-0">
-          <PreviewControlsBar
-            className="w-full"
-            onShowCode={hasCode ? () => setCodeOpen(true) : undefined}
-          />
-        </div>
+        {showAdvancedControls && (
+          <div className="px-4 pb-2">
+            <PreviewControlsBar
+              className="w-full"
+              onShowCode={hasCode ? () => setCodeOpen(true) : undefined}
+              compact={true}
+              size="sm"
+            />
+          </div>
+        )}
 
-        <CardContent className="relative">
+        <CardContent className="relative pt-0">
           <div
             className={cn(
-              'bg-muted/30 rounded-md mt-4 overflow-hidden transition-all duration-300 relative flex items-center justify-center',
-              'border border-dashed border-border/40'
+              'bg-muted/20 rounded-lg mt-2 overflow-hidden transition-all duration-300 relative flex items-center justify-center',
+              'border border-dashed border-border/30 group-hover:border-border/50'
             )}
             style={{
               minHeight: canvasHeight,
               maxHeight: canvasHeight,
-              opacity: state.playing ? 1 : 0.55,
+              opacity: state.playing ? 1 : 0.7,
               backgroundColor: state.customization.backgroundColor,
               color: state.customization.textColor,
               borderRadius: state.customization.borderRadius,
@@ -334,25 +376,22 @@ function PreviewTileInner({
             </div>
 
             {/* Label overlay bottom-left */}
-            <div className="absolute bottom-3 left-3 bg-background/90 backdrop-blur-sm rounded px-3 py-1 text-xs font-medium shadow-sm border">
-              {state.displayText}
-            </div>
-          </div>
-
-          {/* Description (optional) */}
-            {description && (
-              <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
-                {description}
-              </p>
+            {showAdvancedControls && (
+              <div className="absolute bottom-2 left-2 bg-background/90 backdrop-blur-sm rounded px-2 py-1 text-xs font-medium shadow-sm border">
+                {state.displayText}
+              </div>
             )}
+          </div>
 
           {/* Customization panel */}
           {(alwaysShowCustomization || customizeOpen) && (
-            <div className="mt-5">
+            <div className="mt-4">
               <PreviewCustomizationPanel
                 collapsible
                 defaultCollapsed={false}
                 allowReset
+                title={`Customize ${title}`}
+                fields={customFields}
               />
             </div>
           )}
@@ -368,25 +407,70 @@ export function PreviewTile(props: PreviewTileProps) {
   const {
     title,
     initialCustomization,
+    designSystem = 'reactbits',
     ...rest
   } = props;
+
+  // Default customization based on design system
+  const systemDefaults = {
+    'reactbits': {
+      backgroundColor: '#060010',
+      textColor: '#ffffff',
+      borderRadius: 12,
+      padding: 32,
+      fontSize: 24
+    },
+    'html-css': {
+      backgroundColor: '#1a1a1a',
+      textColor: '#ffffff',
+      borderRadius: 8,
+      padding: 24,
+      fontSize: 18
+    },
+    'tailwind': {
+      backgroundColor: '#0a0a0a',
+      textColor: '#ffffff',
+      borderRadius: 12,
+      padding: 24,
+      fontSize: 20
+    },
+    'shadcn': {
+      backgroundColor: '#ffffff',
+      textColor: '#000000',
+      borderRadius: 12,
+      padding: 24,
+      fontSize: 16
+    },
+    'magicui': {
+      backgroundColor: '#0a0a0a',
+      textColor: '#ffffff',
+      borderRadius: 16,
+      padding: 32,
+      fontSize: 24
+    },
+    'animate-ui': {
+      backgroundColor: '#170D27',
+      textColor: '#ffffff',
+      borderRadius: 12,
+      padding: 28,
+      fontSize: 22
+    }
+  };
+
+  const mergedCustomization = {
+    ...systemDefaults[designSystem],
+    ...initialCustomization
+  };
 
   return (
     <PreviewProvider
       initialText={title}
-      initialCustomization={initialCustomization}
+      initialCustomization={mergedCustomization}
     >
-      <PreviewTileInner title={title} {...rest} />
+      <PreviewTileInner title={title} designSystem={designSystem} {...rest} />
     </PreviewProvider>
   );
 }
 
 export default PreviewTile;
 
-/**
- * Deprecated notes:
- * - Legacy internal state (isRunning, displayText, customizationSettings) replaced by context.
- * - Controls replaced by PreviewControlsBar + PreviewCustomizationPanel.
- * - Code examples dialog retained; simplified multi-tab logic preserved.
- * - Provided backward-compatible props.
- */

@@ -66,6 +66,7 @@ export function RotatingTextPreview({ className }: RotatingTextPreviewProps) {
       description="Text that smoothly rotates through multiple phrases with configurable animation timing, splitting behavior, and automatic rotation."
       componentName="RotatingText"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install framer-motion @reactbits/text-animations"
       initialCustomization={{
         backgroundColor: '#1a1a1a',
@@ -78,24 +79,25 @@ export function RotatingTextPreview({ className }: RotatingTextPreviewProps) {
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => setRotationInterval(rotationInterval === 2000 ? 1000 : 2000)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Speed: {rotationInterval === 2000 ? 'Normal' : 'Fast'}
           </button>
           <button
             onClick={() => setSplitBy(splitBy === 'words' ? 'characters' : 'words')}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Split: {splitBy}
           </button>
           <button
             onClick={() => setAutoRotate(!autoRotate)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Auto: {autoRotate ? 'On' : 'Off'}
           </button>
         </div>
       }
+      showAdvancedControls={true}
     >
       <RotatingText
         texts={texts}

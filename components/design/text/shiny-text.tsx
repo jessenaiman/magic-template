@@ -45,6 +45,7 @@ export function ShinyTextPreview({ className }: ShinyTextPreviewProps) {
       description="Text with a shimmering shine effect that moves across the characters, creating a metallic or glossy appearance."
       componentName="ShinyText"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install @reactbits/text-animations"
       initialCustomization={{
         backgroundColor: '#1a1a1a',
@@ -57,18 +58,19 @@ export function ShinyTextPreview({ className }: ShinyTextPreviewProps) {
         <div className="flex gap-2">
           <button
             onClick={() => setSpeed(speed === 5 ? 2 : 5)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Speed: {speed === 5 ? 'Normal' : 'Fast'}
           </button>
           <button
             onClick={() => setDisabled(!disabled)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Animation: {disabled ? 'Off' : 'On'}
           </button>
         </div>
       }
+      showAdvancedControls={true}
     >
       <ShinyText
         text="Shiny Effect"

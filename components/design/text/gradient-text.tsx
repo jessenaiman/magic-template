@@ -58,6 +58,7 @@ export function GradientTextPreview({ className }: GradientTextPreviewProps) {
       description="Text with a smoothly animated gradient background that cycles through colors with customizable speed and border effects."
       componentName="GradientText"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install @reactbits/text-animations"
       initialCustomization={{
         backgroundColor: '#0a0a0a',
@@ -70,20 +71,20 @@ export function GradientTextPreview({ className }: GradientTextPreviewProps) {
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => setAnimationSpeed(animationSpeed === 8 ? 4 : 8)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Speed: {animationSpeed === 8 ? 'Normal' : 'Fast'}
           </button>
           <button
             onClick={() => setShowBorder(!showBorder)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Border: {showBorder ? 'On' : 'Off'}
           </button>
           <select
             value={colorPreset}
             onChange={(e) => setColorPreset(e.target.value as 'rainbow' | 'sunset' | 'ocean')}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors text-white"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             <option value="rainbow">Rainbow</option>
             <option value="sunset">Sunset</option>
@@ -91,6 +92,7 @@ export function GradientTextPreview({ className }: GradientTextPreviewProps) {
           </select>
         </div>
       }
+      showAdvancedControls={true}
     >
       <GradientText
         colors={colorPresets[colorPreset]}

@@ -52,11 +52,12 @@ export function GlitchTextPreview({ className }: GlitchTextPreviewProps) {
       description="Text with a digital glitch effect that creates distorted, shifting layers with optional hover activation."
       componentName="GlitchText"
       category="text"
+      designSystem="reactbits"
       installCommand="npm install @reactbits/text-animations"
       initialCustomization={{
         backgroundColor: '#060010',
         textColor: '#ffffff',
-        borderRadius: 8,
+        borderRadius: 12,
         padding: 32,
         fontSize: 48
       }}
@@ -64,24 +65,25 @@ export function GlitchTextPreview({ className }: GlitchTextPreviewProps) {
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => setSpeed(speed === 0.5 ? 1 : 0.5)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Speed: {speed === 0.5 ? 'Fast' : 'Slow'}
           </button>
           <button
             onClick={() => setEnableShadows(!enableShadows)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Shadows: {enableShadows ? 'On' : 'Off'}
           </button>
           <button
             onClick={() => setEnableOnHover(!enableOnHover)}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
+            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 transition-colors text-white"
           >
             Hover: {enableOnHover ? 'On' : 'Off'}
           </button>
         </div>
       }
+      showAdvancedControls={true}
     >
       <GlitchText
         speed={speed}
