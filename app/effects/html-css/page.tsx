@@ -1,22 +1,120 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code } from "lucide-react";
+import { PreviewSurface } from '@/components/preview-controls/preview-surface';
+import { PreviewTile } from '@/components/preview-tile';
 
 export default function HtmlCssEffectsPage() {
   return (
-    <div className="space-y-4">
-      <Card className="flex flex-col items-center justify-center p-8 text-center">
-        <CardHeader>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <Code className="h-8 w-8" />
-          </div>
-          <CardTitle>HTML/CSS Effects</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">
-            This section is under construction. Check back soon for effect examples using HTML and CSS.
-          </p>
-        </CardContent>
-      </Card>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight">HTML & CSS Effects</h2>
+        <p className="text-muted-foreground">
+          A collection of modern web design effects created with only HTML and CSS.
+        </p>
+      </div>
+
+      <PreviewSurface>
+        <PulsingButtonPreview />
+        <GradientBorderCardPreview />
+        <FlippingCardPreview />
+      </PreviewSurface>
     </div>
+  );
+}
+
+function PulsingButtonPreview() {
+  return (
+    <PreviewTile title="Pulsing Button" componentName="PulsingButton" category="button">
+      <style>{`
+        .pulsing-button {
+          animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+        }
+      `}</style>
+      <button className="pulsing-button px-4 py-2 bg-blue-500 text-white rounded-md">
+        Click Me
+      </button>
+    </PreviewTile>
+  );
+}
+
+function GradientBorderCardPreview() {
+  return (
+    <PreviewTile title="Gradient Border Card" componentName="GradientBorderCard" category="card">
+      <style>{`
+        .gradient-border-card {
+          position: relative;
+          background: #1a202c;
+          border-radius: 0.5rem;
+          padding: 1.5rem;
+          color: white;
+        }
+        .gradient-border-card::before {
+          content: '';
+          position: absolute;
+          top: -2px; left: -2px;
+          right: -2px; bottom: -2px;
+          background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+          border-radius: inherit;
+          z-index: -1;
+        }
+      `}</style>
+      <div className="gradient-border-card">
+        <h3 className="text-lg font-bold">Card Title</h3>
+        <p>This card has a beautiful gradient border.</p>
+      </div>
+    </PreviewTile>
+  );
+}
+
+function FlippingCardPreview() {
+  return (
+    <PreviewTile title="Flipping Card" componentName="FlippingCard" category="card">
+      <style>{`
+        .flipping-card-container {
+          perspective: 1000px;
+        }
+        .flipping-card {
+          width: 100%;
+          height: 150px;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+        }
+        .flipping-card-container:hover .flipping-card {
+          transform: rotateY(180deg);
+        }
+        .flipping-card-front, .flipping-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          border-radius: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        }
+        .flipping-card-front {
+          background-color: #3182ce;
+        }
+        .flipping-card-back {
+          background-color: #2c5282;
+          transform: rotateY(180deg);
+        }
+      `}</style>
+      <div className="flipping-card-container">
+        <div className="flipping-card">
+          <div className="flipping-card-front">
+            <p>Hover over me!</p>
+          </div>
+          <div className="flipping-card-back">
+            <p>See? I flipped!</p>
+          </div>
+        </div>
+      </div>
+    </PreviewTile>
   );
 }
