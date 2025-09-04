@@ -109,7 +109,7 @@ export function AppSidebar() {
             <SidebarGroupLabel>{section.label}</SidebarGroupLabel>
             <SidebarMenu>
               {section.items.map((item) => (
-                <NavMenuItem key={item.href} item={item} />
+                <NavMenuItem key={item.label} item={item} />
               ))}
             </SidebarMenu>
           </SidebarGroup>

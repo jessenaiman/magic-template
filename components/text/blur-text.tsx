@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { PreviewTile } from "@/components/preview-tile";
 import BlurText from "@/components/reactbits/TextAnimations/BlurText/BlurText";
 import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
-import { usePreviewContext } from "@/components/preview-controls/preview-context";
+import { PreviewProvider usePreviewContext } from "@/components/preview-controls/preview-context";
 
 interface BlurTextPreviewProps {
   className?: string;

@@ -5,6 +5,7 @@ import { RotatingTextPreview } from "@/components/text/rotating-text";
 import { ShinyTextPreview } from "@/components/text/shiny-text";
 import { TextCursorPreview } from "@/components/text/text-cursor";
 import { CountUpPreview } from "@/components/text/count-up";
+import { PreviewSurface } from "@/components/preview-controls/preview-surface";
 
 export default function ReactBitsTextPage() {
   return (
@@ -17,7 +18,7 @@ export default function ReactBitsTextPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
+      <PreviewSurface>
         <BlurTextPreview />
         <GlitchTextPreview />
         <GradientTextPreview />
@@ -25,7 +26,7 @@ export default function ReactBitsTextPage() {
         <ShinyTextPreview />
         <TextCursorPreview />
         <CountUpPreview />
-      </div>
+      </PreviewSurface>
     </div>
   );
 }
