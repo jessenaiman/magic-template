@@ -279,17 +279,35 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
 
     case 'slider': {
       const sliderField = field as SliderFieldConfig;
+      // Memoize the slider value to prevent unnecessary re-renders
+      const sliderValue = React.useMemo(() => {
+        const value = (settings as any)[sliderField.id];
+        return value !== undefined ? value : sliderField.min;
+      }, [(settings as any)[sliderField.id], sliderField.min]);
+
+      // Memoize the onChange handler
+      const handleChange = React.useCallback(
+        (v: number) => {
+          if ((settings as any)[sliderField.id] !== v) {
+            onChange(sliderField.id, v);
+          }
+        },
+        [sliderField.id, onChange, settings]
+      );
+
       return (
-        <PreviewSlider
-          label={sliderField.label}
-          value={(settings as any)[sliderField.id] ?? sliderField.min}
-          min={sliderField.min}
+        <div className="space-y-1.5">
+          <PreviewSlider
+            label={sliderField.label}
+            value={sliderValue}
+            min={sliderField.min}
             max={sliderField.max}
             step={sliderField.step}
             valueUnit={sliderField.unit}
             description={field.description}
-            onChange={(v) => onChange(sliderField.id, v)}
+            onChange={handleChange}
           />
+        </div>
       );
     }
 

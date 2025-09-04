@@ -1,9 +1,9 @@
 'use client';
 
-import { PreviewSurface } from '@/components/preview-controls/preview-surface';
+import { PreviewSurface } from '@/components/preview-surface';
 import { PreviewTile } from '@/components/preview-tile';
-import { usePreviewContext } from '@/components/design/preview-context';
-import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
+import { usePreviewContext } from '@/components/preview-context';
+import { mergeWithBaseOptions } from "@/components/base-category-options";
 
 // Import the actual components being demonstrated
 import BlurText from "@/components/reactbits/TextAnimations/BlurText/BlurText";
