@@ -1,6 +1,6 @@
 // app/effects/html-css/page.tsx
-import { PreviewTile } from '@/components/preview-controls/preview-tile';
-import { usePreviewContext } from '@/components/preview-controls/preview-context';
+import { PreviewTile } from '@/components/preview-tile';
+import { usePreviewContext } from '@/components/design/preview-context';
 
 export default function HtmlCssEffectsPage() {
   return (

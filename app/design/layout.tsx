@@ -1,4 +1,6 @@
-import { PreviewSurface } from '@/components/preview-controls/preview-surface';
+'use client';
+
+import { PreviewSurface } from '@/components/preview-surface';
 import { DesignPageProvider } from '@/components/design-page-context';
 import { DesignPageHero } from '@/components/design-page-hero';
 
@@ -10,7 +12,7 @@ export default function DesignLayout({
   return (
     <PreviewSurface>
       <DesignPageProvider>
-        {/* The Hero is now part of the layout, creating a consistent structure */}
+        {/* The Hero is rendered by the layout, creating a consistent structure */}
         <DesignPageHero />
         
         {/* The page content will be rendered here */}

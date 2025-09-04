@@ -1,4 +1,3 @@
-// components/preview-tile.tsx
 'use client';
 
 import * as React from 'react';
@@ -8,10 +7,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Button } from '@/components/ui/button';
 import { Code2, Settings, Play, Pause, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { usePreviewContext, CustomizationSettings } from '@/components/preview-controls/preview-context';
-import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview-controls/preview-customization-panel';
-import { usePreviewTileExpansion } from '@/components/preview-controls/preview-surface';
-import { CodeHighlighter } from '@/components/code/code-highlighter';
+import { usePreviewContext, CustomizationSettings } from '@/components/preview-context';
+import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview-customization-panel';
+import { usePreviewTileExpansion } from '@/components/design-page-context'; // Updated import path
+import { CodeHighlighter } from '@/components/code-highlighter';
 
 export interface PreviewTileProps {
   title: string;
@@ -47,11 +46,11 @@ export function PreviewTile({
     setExpandedTile(current => (current === title ? null : title));
     setShowCode(false);
   };
-
+  
   const handleShowCode = () => {
     setShowCode(current => !current);
     if (!isExpanded) {
-      setExpandedTile(title);
+       setExpandedTile(title);
     }
   };
 
@@ -88,7 +87,7 @@ export function PreviewTile({
                   <CodeHighlighter language="tsx" code={code} />
                 ) : (
                   <PreviewCustomizationPanel
-                    fields={customFields}
+                    fields={customFields || []}
                     currentSettings={localCustomization}
                     onSettingsChange={setLocalCustomization}
                     actions={<Button size="sm" variant="outline" onClick={resetTileCustomization}>Reset Tile</Button>}

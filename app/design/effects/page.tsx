@@ -1,5 +1,5 @@
 
-import { PreviewTile } from "@/components/preview-controls/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";

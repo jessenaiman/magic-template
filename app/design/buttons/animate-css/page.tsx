@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Heart, Download, Share, Zap, Sparkles } from "lucide-react";
-import { PreviewTile } from "@/components/preview-controls/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
   return (

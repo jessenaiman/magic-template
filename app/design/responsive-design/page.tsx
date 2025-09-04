@@ -1,5 +1,5 @@
 
-import { PreviewTile } from "@/components/preview-controls/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import { FileText, Globe, GraduationCap } from "lucide-react";
 

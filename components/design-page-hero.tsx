@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
-import { usePreviewContext } from '@/components/preview-controls/preview-context';
-import PreviewCustomizationPanel from '@/components/preview-controls/preview-customization-panel';
+import { usePreviewContext } from './preview-context';
+import PreviewCustomizationPanel from './preview-customization-panel';
 // ... other imports
 
 export function DesignPageHero() {

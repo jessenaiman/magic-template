@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { PreviewTile } from "@/components/preview-controls/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
-import { usePreviewContext } from "@/components/preview-controls/preview-context";
+import { usePreviewContext } from "@/components/design/preview-context";
 
 export default function HtmlCssTextPage() {
   const [expanded, setExpanded] = useState<string | null>(null);

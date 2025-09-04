@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
 import { PreviewTile, PreviewTileProps } from '@/components/preview-tile';
-import { FieldConfig } from '@/components/preview-controls/preview-customization-panel';
+import { FieldConfig } from '@/components/preview-customization-panel';
 
 // This small component's only job is to send this page's specific
 // configuration up to the parent layout's hero component.

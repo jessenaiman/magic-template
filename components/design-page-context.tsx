@@ -1,8 +1,9 @@
 'use client';
 
-import *d React from 'react';
-import { FieldConfig } from '@/components/preview-controls/preview-customization-panel';
+import * as React from 'react';
+import { FieldConfig } from '@/components/preview-customization-panel';
 
+// Context for the hero content (title, description, fields)
 interface DesignPageContextType {
   title: string;
   description: string;
@@ -14,16 +15,28 @@ interface DesignPageContextType {
 
 const DesignPageContext = React.createContext<DesignPageContextType | undefined>(undefined);
 
+// Context for managing which preview tile is expanded
+interface PreviewTileExpansionContextType {
+  expandedTile: string | null;
+  setExpandedTile: React.Dispatch<React.SetStateAction<string | null>>;
+}
+export const PreviewTileExpansionContext = React.createContext<PreviewTileExpansionContextType | undefined>(undefined);
+
+
 export function DesignPageProvider({ children }: { children: React.ReactNode }) {
   const [title, setTitle] = React.useState('');
   const [description, setDescription] = React.useState('');
   const [fields, setFields] = React.useState<FieldConfig[]>([]);
+  const [expandedTile, setExpandedTile] = React.useState<string | null>(null);
 
-  const value = { title, description, fields, setTitle, setDescription, setFields };
+  const designPageValue = { title, description, fields, setTitle, setDescription, setFields };
+  const expansionValue = { expandedTile, setExpandedTile };
 
   return (
-    <DesignPageContext.Provider value={value}>
-      {children}
+    <DesignPageContext.Provider value={designPageValue}>
+      <PreviewTileExpansionContext.Provider value={expansionValue}>
+        {children}
+      </PreviewTileExpansionContext.Provider>
     </DesignPageContext.Provider>
   );
 }
@@ -35,3 +48,11 @@ export function useDesignPage() {
   }
   return context;
 }
+
+export const usePreviewTileExpansion = () => {
+    const context = React.useContext(PreviewTileExpansionContext);
+    if (!context) {
+        throw new Error('usePreviewTileExpansion must be used within a PreviewSurface');
+    }
+    return context;
+};
