@@ -1,6 +1,5 @@
 // app/effects/html-css/page.tsx
-import { PreviewSurface } from '@/components/preview-controls/preview-surface';
-import { PreviewTile } from '@/components/preview-tile';
+import { PreviewTile } from '@/components/preview-controls/preview-tile';
 import { usePreviewContext } from '@/components/preview-controls/preview-context';
 
 export default function HtmlCssEffectsPage() {
@@ -13,11 +12,9 @@ export default function HtmlCssEffectsPage() {
         </p>
       </div>
 
-      <PreviewSurface>
-        <PulsingButtonPreview />
-        <GradientBorderCardPreview />
-        <FlippingCardPreview />
-      </PreviewSurface>
+      <PulsingButtonPreview />
+      <GradientBorderCardPreview />
+      <FlippingCardPreview />
     </div>
   );
 }

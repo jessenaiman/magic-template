@@ -1,7 +1,7 @@
 'use client';
 
 import { PreviewSurface } from '@/components/preview-controls/preview-surface';
-import { PreviewTile } from '@/components/preview-tile';
+import { PreviewTile } from '@/components/preview-controls/preview-tile';
 import { usePreviewContext } from '@/components/preview-controls/preview-context';
 import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
 

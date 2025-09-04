@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview-controls/preview-tile";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

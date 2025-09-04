@@ -21,86 +21,86 @@ export const mainNavigation: NavigationSection[] = [
     items: [
       {
         label: "Backgrounds",
-        href: "/backgrounds",
+        href: "/design/backgrounds",
         icon: Palette,
         description: "Animated and static background patterns",
         children: [
-          { label: "Overview", href: "/backgrounds" },
-          { label: "Animate UI", href: "/backgrounds/animate-ui" },
-          { label: "HTML CSS", href: "/backgrounds/html-css" },
-          { label: "MagicUI", href: "/backgrounds/magicui" },
-          { label: "ReactBits", href: "/backgrounds/reactbits" },
-          { label: "Tailwind", href: "/backgrounds/tailwind" },
+          { label: "Overview", href: "/design/backgrounds" },
+          { label: "Animate UI", href: "/design/backgrounds/animate-ui" },
+          { label: "HTML CSS", href: "/design/backgrounds/html-css" },
+          { label: "MagicUI", href: "/design/backgrounds/magicui" },
+          { label: "ReactBits", href: "/design/backgrounds/reactbits" },
+          { label: "Tailwind", href: "/design/backgrounds/tailwind" },
         ]
       },
       {
         label: "Buttons",
-        href: "/buttons",
+        href: "/design/buttons",
         icon: Zap,
         description: "Interactive button components and animations",
         children: [
-          { label: "Overview", href: "/buttons" },
-          { label: "Animate CSS", href: "/buttons/animate-css" },
-          { label: "Customize", href: "/buttons/customize" },
-          { label: "HTML CSS", href: "/buttons/html-css" },
-          { label: "Magic", href: "/buttons/magic" },
-          { label: "Shadcn", href: "/buttons/shadcn" },
-          { label: "Tailwind", href: "/buttons/tailwind" }
+          { label: "Overview", href: "/design/buttons" },
+          { label: "Animate CSS", href: "/design/buttons/animate-css" },
+          { label: "Customize", href: "/design/buttons/customize" },
+          { label: "HTML CSS", href: "/design/buttons/html-css" },
+          { label: "Magic", href: "/design/buttons/magic" },
+          { label: "Shadcn", href: "/design/buttons/shadcn" },
+          { label: "Tailwind", href: "/design/buttons/tailwind" }
         ]
       },
       {
         label: "Responsive Design",
-        href: "/responsive-design",
+        href: "/design/responsive-design",
         icon: Layout,
         description: "Mobile-first design patterns",
         children: [
-          { label: "Overview", href: "/responsive-design" },
-          { label: "Customize", href: "/responsive-design/customize" },
-          { label: "HTML CSS", href: "/responsive-design/html-css" },
-          { label: "MagicUI", href: "/responsive-design/magicui" },
-          { label: "Next.js", href: "/responsive-design/nextjs" }
+          { label: "Overview", href: "/design/responsive-design" },
+          { label: "Customize", href: "/design/responsive-design/customize" },
+          { label: "HTML CSS", href: "/design/responsive-design/html-css" },
+          { label: "MagicUI", href: "/design/responsive-design/magicui" },
+          { label: "Next.js", href: "/design/responsive-design/nextjs" }
         ]
       },
       {
         label: "Effects",
-        href: "/effects",
+        href: "/design/effects",
         icon: Sparkles,
         description: "Visual effects and animations",
         children: [
-          { label: "Overview", href: "/effects" },
-          { label: "Customize", href: "/effects/customize" },
-          { label: "HTML CSS", href: "/effects/html-css" },
-          { label: "MagicUI", href: "/effects/magicui" },
-          { label: "Tailwind", href: "/effects/tailwind" }
+          { label: "Overview", href: "/design/effects" },
+          { label: "Customize", href: "/design/effects/customize" },
+          { label: "HTML CSS", href: "/design/effects/html-css" },
+          { label: "MagicUI", href: "/design/effects/magicui" },
+          { label: "Tailwind", href: "/design/effects/tailwind" }
         ]
       },
       {
         label: "Page Transitions",
-        href: "/page-transitions",
+        href: "/design/page-transitions",
         icon: ArrowRightLeft,
         description: "Smooth page transition effects",
         children: [
-          { label: "Overview", href: "/page-transitions" },
-          { label: "Customize", href: "/page-transitions/customize" },
-          { label: "HTML CSS", href: "/page-transitions/html-css" },
-          { label: "MagicUI", href: "/page-transitions/magicui" },
-          { label: "Next.js", href: "/page-transitions/nextjs" },
-          { label: "Tailwind", href: "/page-transitions/tailwind" }
+          { label: "Overview", href: "/design/page-transitions" },
+          { label: "Customize", href: "/design/page-transitions/customize" },
+          { label: "HTML CSS", href: "/design/page-transitions/html-css" },
+          { label: "MagicUI", href: "/design/page-transitions/magicui" },
+          { label: "Next.js", href: "/design/page-transitions/nextjs" },
+          { label: "Tailwind", href: "/design/page-transitions/tailwind" }
         ]
       },
       {
         label: "Text",
-        href: "/text",
+        href: "/design/text",
         icon: Type,
         description: "Typography and text effects",
         children: [
-          { label: "Overview", href: "/text" },
-          { label: "Customize", href: "/text/customize" },
-          { label: "HTML CSS", href: "/text/html-css" },
-          { label: "MagicUI", href: "/text/magicui" },
-          { label: "ReactBits", href: "/text/reactbits" },
-          { label: "Shadcn", href: "/text/shadcn" },
-          { label: "Tailwind", href: "/text/tailwind" }
+          { label: "Overview", href: "/design/text" },
+          { label: "Customize", href: "/design/text/customize" },
+          { label: "HTML CSS", href: "/design/text/html-css" },
+          { label: "MagicUI", href: "/design/text/magicui" },
+          { label: "ReactBits", href: "/design/text/reactbits" },
+          { label: "Shadcn", href: "/design/text/shadcn" },
+          { label: "Tailwind", href: "/design/text/tailwind" }
         ]
       }
     ]
@@ -109,22 +109,22 @@ export const mainNavigation: NavigationSection[] = [
     label: "Projects",
     items: [
       {
-        label: "Design Engineering",
+        label: "Event Planning & Game Hosting",
         href: "#",
         icon: Frame,
-        description: "External design engineering workshop"
+        description: "External event planning and game hosting workshop"
       },
       {
-        label: "Sales & Marketing",
+        label: "D&D and Tabletop Games",
         href: "#",
         icon: PieChart,
-        description: "External sales and marketing workshop"
+        description: "External D&D and tabletop games workshop"
       },
       {
-        label: "Travel",
+        label: "AI & Machine Learning",
         href: "#",
         icon: Map,
-        description: "External travel workshop"
+        description: "External AI and machine learning workshop"
       }
     ]
   }
