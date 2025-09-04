@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import { PreviewTile } from "@/components/preview-tile";
+import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
+import { usePreviewContext } from "@/components/preview-controls/preview-context";
+
+
 
 export default function HtmlCssTextPage() {
-  const [blurSpeed, setBlurSpeed] = useState('normal');
-  const [gradientSpeed, setGradientSpeed] = useState('normal');
-  const [shineSpeed, setShineSpeed] = useState('normal');
-
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -17,6 +16,7 @@ export default function HtmlCssTextPage() {
           without JavaScript dependencies.
         </p>
       </div>
+
 
       <div className="grid grid-cols-1 gap-6">
         {/* Blur Text Animation */}
@@ -33,16 +33,8 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 18
           }}
-          extraActions={
-            <button
-              onClick={() => setBlurSpeed(blurSpeed === 'normal' ? 'fast' : 'normal')}
-              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-            >
-              Speed: {blurSpeed === 'normal' ? 'Normal' : 'Fast'}
-            </button>
-          }
         >
-          <div className="css-blur-text" data-speed={blurSpeed}>
+          <div className="css-blur-text">
             <span>Pure CSS Blur Effect</span>
           </div>
         </PreviewTile>
@@ -61,16 +53,8 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 24
           }}
-          extraActions={
-            <button
-              onClick={() => setGradientSpeed(gradientSpeed === 'normal' ? 'fast' : 'normal')}
-              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-            >
-              Speed: {gradientSpeed === 'normal' ? 'Normal' : 'Fast'}
-            </button>
-          }
         >
-          <div className="css-gradient-text" data-speed={gradientSpeed}>
+          <div className="css-gradient-text">
             CSS Gradient Magic
           </div>
         </PreviewTile>
@@ -89,16 +73,8 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 32
           }}
-          extraActions={
-            <button
-              onClick={() => setShineSpeed(shineSpeed === 'normal' ? 'fast' : 'normal')}
-              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-            >
-              Speed: {shineSpeed === 'normal' ? 'Normal' : 'Fast'}
-            </button>
-          }
         >
-          <div className="css-shiny-text" data-speed={shineSpeed}>
+          <div className="css-shiny-text">
             Shiny Effect
           </div>
         </PreviewTile>
