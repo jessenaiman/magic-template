@@ -1,4 +1,4 @@
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { RetroGrid } from "@/components/magicui/retro-grid";

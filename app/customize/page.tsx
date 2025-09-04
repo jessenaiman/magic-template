@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Share2, Code, Copy, RefreshCw, Save, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useNotifications } from "@/components/design/notification-provider";
+import { useNotifications } from "@/components/notification-provider";
 // Removed non-existent animate-ui imports
 
 type CustomizePageProps = {

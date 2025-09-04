@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { Copy, Github, Star, Send, FileDown, Droplets } from "lucide-react";
 import { useState } from "react";
 

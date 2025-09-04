@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 
 export default function TailwindTextPage() {
   const [animationSpeed, setAnimationSpeed] = useState<'normal' | 'fast'>('normal');

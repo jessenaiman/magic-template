@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import CountUp from "@/components/reactbits/TextAnimations/CountUp/CountUp";
 
 interface CountUpPreviewProps {

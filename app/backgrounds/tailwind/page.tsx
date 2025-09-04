@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { Code } from "lucide-react";
 
 function CodeBlock({ code, language }: { code: string; language: string }) {

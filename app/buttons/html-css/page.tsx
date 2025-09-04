@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { createCodeExamples, generateButtonClasses } from "@/lib/code-examples";
 
 export default function HtmlCssButtonsPage() {

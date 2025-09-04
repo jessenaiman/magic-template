@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Rows4 } from "lucide-react";
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { BlurFade } from "@/components/magicui/blur-fade";
 
 export default function PageTransitionsPage() {

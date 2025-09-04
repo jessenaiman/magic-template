@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { BaseCustomizerComponent, defaultBaseSettings, type BaseCustomizationSettings } from "@/components/design/base-customizer";
+import { BaseCustomizerComponent, defaultBaseSettings, type BaseCustomizationSettings } from "@/components/base-customizer";
 
 export default function CustomizePageTransitionsPage() {
   const [settings, setSettings] = useState(defaultBaseSettings);

@@ -8,7 +8,7 @@ import {
   BaseCustomizerComponent,
   defaultBaseSettings,
   type BaseCustomizationSettings,
-} from "@/components/design/base-customizer";
+} from "@/components/base-customizer";
 
 export default function CustomizeButtonsPage() {
   const [settings, setSettings] = useState(defaultBaseSettings);

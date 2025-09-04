@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PreviewTile } from "@/components/design/preview-tile";
+import { PreviewTile } from "@/components/preview-tile";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { CheckIcon, ChevronRightIcon, ArrowRight } from "lucide-react";
 

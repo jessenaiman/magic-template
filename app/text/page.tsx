@@ -1,4 +1,4 @@
-import { DesignTabs } from "@/components/design/design-tabs";
+import { DesignTabs } from "@/components/design-tabs";
 import ReactBitsTextPage from "./reactbits/page";
 import HtmlCssTextPage from "./html-css/page";
 import TailwindTextPage from "./tailwind/page";
