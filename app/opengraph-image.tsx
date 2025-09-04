@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Blog - Magic UI";
+export const alt = "Magic UI";
 export const size = {
   width: 1200,
   height: 630,
@@ -113,9 +113,9 @@ export default async function Image() {
               width={100}
               height={100}
             />
-            <h1 style={styles.title}>Blog</h1>
+            <h1 style={styles.title}>Magic UI</h1>
             <p style={styles.description}>
-              A blog about design, development, and other things.
+              Beautiful UI components for modern web applications.
             </p>
           </div>
         </div>

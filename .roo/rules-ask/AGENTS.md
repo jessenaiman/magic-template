@@ -1,7 +1,0 @@
-# Project Documentation Rules (Non-Obvious Only)
-
-- **Multi-technology design system**: This is the landing page for a "web developer workshop" and the design system application which allows for previewing and exporting design ideas. It showcases MagicUI, Animate-UI, and ShadCN implementations side-by-side.
-- **Reactbits Preview Component and Demo**: reactbits has a complex and professional solution to providing controls on screen to modify design elements. We have .jsx and .js files as references that should be migrated into the project as typescript and react/nextjs pages and components.
-- **Component categorization**: Components are organized by both technology stack AND category (backgrounds, buttons, text, effects) - this dual organization is critical for understanding
-- **Demo presentation pattern**: All design components should be wrapped in a preview component that provides customization options, ui and code previews, as well as on screen overlaid controls.
-- **Animation reference system**: Custom CSS animations are centralized in app/global to remain consistent with tailwindcss and shadcn themes and design syntax. Individual design components can have custom .css files but they should be added to the same style directory currently in the root

@@ -1,4 +1,3 @@
-import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import React from "react";
 import {
@@ -39,7 +38,6 @@ function Author({ id }: AuthorProps) {
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
-    ...defaultMdxComponents,
     MediaViewer,
     ImageViewer,
     VideoViewer,

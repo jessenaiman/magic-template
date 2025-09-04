@@ -1,36 +1,25 @@
 # AGENTS.md
 
-This file provides guidance to agents when working with code in this repository.
+Concise guidance for agents—retain only non-obvious, project-specific rules.
 
-## Project Architecture
-
-**Non-obvious structure**: This is a Next.js 15 blog with an extensive design system showcasing multiple UI libraries:
-- MagicUI components in `components/magicui/` 
-- ReactBits components in `components/reactbits/` (200+ animation components)
-- Animate-UI components in `components/animate-ui/`
-- ShadCN UI components in `components/ui/`
-
-**Design system organization**: Components are organized by technology stack across multiple directories:
-- `/design/backgrounds/` - Background animation components
-- `/design/buttons/` - Button components  
-- `/design/text/` - Text animation components
-- `/design/effects/` - Special effects components
-- Each category has subdirectories for different implementations (reactbits, magicui, html-css, tailwind, customize)
-
-## Critical Patterns
-
-**Component imports**: Always use absolute imports with `@/` prefix (configured in tsconfig.json paths)
-**Styling**: Uses `cn()` utility from `@/lib/utils` for conditional Tailwind classes
-**Animation libraries**: Uses both Framer Motion (`motion/react`) and custom CSS animations
-
-## Build & Development
-
-**MDX processing**: Requires `fumadocs-mdx` preprocessing - scripts include `fumadocs-mdx &&` prefix
-**Package manager**: Uses pnpm (not npm or yarn) - install with `pnpm install`
-**Development**: Run with `pnpm dev` (uses Next.js 15 with Turbopack)
-
-## Gotchas
-
-**DesignTabs component**: Used in design pages to showcase multiple technology implementations side-by-side
-**PreviewTile pattern**: Components use PreviewTile wrapper for consistent demo presentation
-**Custom animations**: Extensive custom CSS animations defined in `app/globals.css` with `--animate-*` variables
+- MDX requires `fumadocs-mdx` preprocessing in all scripts (see package.json).
+- `transpilePackages: ["geist"]` is set in next.config.ts for Geist font support.
+- Design system is split by technology stack: MagicUI, ReactBits, Animate-UI, ShadCN, each in its own directory.
+- Design directories (backgrounds, buttons, text, effects) have subfolders for each tech (magicui, reactbits, html-css, tailwind, customize).
+- `DesignTabs` component is used to showcase multiple implementations side-by-side.
+- `PreviewTile` wrapper ensures consistent demo presentation across components.
+- Custom CSS animations use `--animate-*` variables in app/globals.css.
+- Some components rely on absolute imports via `@/` (see tsconfig.json).
+- Hidden coupling: some design pages depend on both DesignTabs and PreviewTile for layout.
+- Silent MDX build failures if `fumadocs-mdx` is omitted.
+- Geist font requires explicit transpilation or fonts may not load.
+- Not all design system components are exported from a single index—import paths vary.
+- Some animation demos require both Framer Motion and custom CSS.
+- PreviewTile pattern is required for demo consistency, not just visual style.
+- Some directories (e.g., /customize) contain experimental or non-standard implementations.
+- Environment setup: pnpm, Next.js 15, Turbopack, and custom MDX pipeline.
+- Extensive use of custom hooks and context providers in components/context/.
+- Some assets (SVG, icons) are referenced via absolute paths.
+- Do not assume all UI libraries are available in every design category.
+- Some demo pages expect specific directory structure for auto-discovery.
+- Performance: custom CSS animations may impact initial load if overused.
