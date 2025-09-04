@@ -1,10 +1,10 @@
-import { BlurTextPreview } from "@/components/design/text/blur-text";
-import { GlitchTextPreview } from "@/components/design/text/glitch-text";
-import { GradientTextPreview } from "@/components/design/text/gradient-text";
-import { RotatingTextPreview } from "@/components/design/text/rotating-text";
-import { ShinyTextPreview } from "@/components/design/text/shiny-text";
-import { TextCursorPreview } from "@/components/design/text/text-cursor";
-import { CountUpPreview } from "@/components/design/text/count-up";
+import { BlurTextPreview } from "@/components/text/blur-text";
+import { GlitchTextPreview } from "@/components/text/glitch-text";
+import { GradientTextPreview } from "@/components/text/gradient-text";
+import { RotatingTextPreview } from "@/components/text/rotating-text";
+import { ShinyTextPreview } from "@/components/text/shiny-text";
+import { TextCursorPreview } from "@/components/text/text-cursor";
+import { CountUpPreview } from "@/components/text/count-up";
 
 export default function ReactBitsTextPage() {
   return (

@@ -39,15 +39,7 @@ export interface PreviewTileProps {
   /**
    * Initial customization overrides (optional).
    */
-  initialCustomization?: Partial<{
-    backgroundColor: string;
-    textColor: string;
-    borderRadius: number;
-    padding: number;
-    fontSize: number;
-    fontWeight?: number;
-    shadowIntensity?: number;
-  }>;
+  initialCustomization?: Partial<import('./preview-controls/preview-context').CustomizationSettings>;
   /**
    * When true, shows the customization panel inline (always visible).
    * Otherwise panel is toggled with a button.

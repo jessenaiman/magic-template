@@ -3,15 +3,85 @@
 import { useState } from 'react';
 import { PreviewTile } from "@/components/preview-tile";
 import BlurText from "@/components/reactbits/TextAnimations/BlurText/BlurText";
+import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
+import { usePreviewContext } from "@/components/preview-controls/preview-context";
 
 interface BlurTextPreviewProps {
   className?: string;
 }
 
 export function BlurTextPreview({ className }: BlurTextPreviewProps) {
-  const [animateBy, setAnimateBy] = useState<'words' | 'letters'>('words');
-  const [direction, setDirection] = useState<'top' | 'bottom'>('top');
-  const [delay, setDelay] = useState(200);
+  const { state } = usePreviewContext();
+  const customization = state.customization;
+  const customFields = mergeWithBaseOptions('text', [
+    {
+      id: 'animateBy',
+      label: 'Animate By',
+      type: 'custom',
+      render: ({ settings, update }) => (
+        <div className="flex gap-2">
+          <button
+            onClick={() => update({ animateBy: 'words' })}
+            className={`px-3 py-1 text-xs rounded border transition-colors ${
+              settings.animateBy === 'words' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-secondary hover:bg-secondary/80'
+            }`}
+          >
+            Words
+          </button>
+          <button
+            onClick={() => update({ animateBy: 'letters' })}
+            className={`px-3 py-1 text-xs rounded border transition-colors ${
+              settings.animateBy === 'letters' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-secondary hover:bg-secondary/80'
+            }`}
+          >
+            Letters
+          </button>
+        </div>
+      )
+    },
+    {
+      id: 'direction',
+      label: 'Direction',
+      type: 'custom',
+      render: ({ settings, update }) => (
+        <div className="flex gap-2">
+          <button
+            onClick={() => update({ direction: 'top' })}
+            className={`px-3 py-1 text-xs rounded border transition-colors ${
+              settings.direction === 'top' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-secondary hover:bg-secondary/80'
+            }`}
+          >
+            Top
+          </button>
+          <button
+            onClick={() => update({ direction: 'bottom' })}
+            className={`px-3 py-1 text-xs rounded border transition-colors ${
+              settings.direction === 'bottom' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-secondary hover:bg-secondary/80'
+            }`}
+          >
+            Bottom
+          </button>
+        </div>
+      )
+    },
+    {
+      id: 'delay',
+      label: 'Animation Delay',
+      type: 'slider',
+      min: 50,
+      max: 500,
+      step: 50,
+      unit: 'ms'
+    }
+  ]);
 
   const propData = [
     {
@@ -77,30 +147,20 @@ export function BlurTextPreview({ className }: BlurTextPreviewProps) {
         textColor: '#ffffff',
         borderRadius: 12,
         padding: 24,
-        fontSize: 18
+        fontSize: 18,
+        displayText: "Isn't this so cool?!",
+        animateBy: 'words',
+        direction: 'top',
+        delay: 200
       }}
-      extraActions={
-        <div className="flex gap-2">
-          <button
-            onClick={() => setAnimateBy(animateBy === 'words' ? 'letters' : 'words')}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-          >
-            Animate By: {animateBy}
-          </button>
-          <button
-            onClick={() => setDirection(direction === 'top' ? 'bottom' : 'top')}
-            className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-          >
-            Direction: {direction}
-          </button>
-        </div>
-      }
+      customFields={customFields}
+      showAdvancedControls={true}
     >
       <BlurText
-        text="Isn't this so cool?!"
-        animateBy={animateBy}
-        direction={direction}
-        delay={delay}
+        text={customization.displayText || "Isn't this so cool?!"}
+        animateBy={customization.animateBy || 'words'}
+        direction={customization.direction || 'top'}
+        delay={customization.delay || 200}
         className="text-2xl font-semibold"
       />
     </PreviewTile>

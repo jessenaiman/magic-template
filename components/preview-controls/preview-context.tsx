@@ -10,6 +10,20 @@ export interface CustomizationSettings {
   fontSize: number;
   fontWeight?: number;
   shadowIntensity?: number;
+  // New fields for content editing
+  displayText?: string;
+  buttonText?: string;
+  // Animation controls
+  duration?: number;
+  delay?: number;
+  // Card/layout options
+  gap?: number;
+  shadow?: number;
+  // Component-specific options (extensible)
+  animateBy?: 'words' | 'letters';
+  direction?: 'top' | 'bottom';
+  // Allow any additional custom properties
+  [key: string]: any;
 }
 
 export const defaultCustomization: CustomizationSettings = {
@@ -19,7 +33,15 @@ export const defaultCustomization: CustomizationSettings = {
   padding: 16,
   fontSize: 14,
   fontWeight: 500,
-  shadowIntensity: 0
+  shadowIntensity: 0,
+  displayText: 'Component',
+  buttonText: 'Click me',
+  duration: 1.0,
+  delay: 0,
+  gap: 8,
+  shadow: 0,
+  animateBy: 'words',
+  direction: 'top'
 };
 
 interface PreviewState {
