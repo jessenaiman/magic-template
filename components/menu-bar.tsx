@@ -2,7 +2,7 @@
 
 import type * as React from "react"
 import { motion } from "framer-motion"
-import { Home, Palette, FileText, User } from "lucide-react"
+import { Home, Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type } from "lucide-react"
 import { useTheme } from "next-themes"
 
 interface MenuItem {
@@ -23,24 +23,45 @@ const menuItems: MenuItem[] = [
   },
   {
     icon: <Palette className="h-5 w-5" />,
-    label: "Design",
-    href: "/design",
+    label: "Backgrounds",
+    href: "/design/backgrounds",
     gradient: "radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(126,34,206,0) 100%)",
     iconColor: "text-purple-500",
   },
   {
-    icon: <FileText className="h-5 w-5" />,
-    label: "Blog",
-    href: "/blog",
+    icon: <Zap className="h-5 w-5" />,
+    label: "Buttons",
+    href: "/design/buttons",
+    gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(21,128,61,0.06) 50%, rgba(22,101,52,0) 100%)",
+    iconColor: "text-green-500",
+  },
+  {
+    icon: <Layout className="h-5 w-5" />,
+    label: "Responsive Design",
+    href: "/design/responsive-design",
     gradient: "radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(217,119,6,0.06) 50%, rgba(180,83,9,0) 100%)",
     iconColor: "text-amber-500",
   },
   {
-    icon: <User className="h-5 w-5" />,
-    label: "About",
-    href: "/about",
+    icon: <Sparkles className="h-5 w-5" />,
+    label: "Effects",
+    href: "/design/effects",
     gradient: "radial-gradient(circle, rgba(244,63,94,0.15) 0%, rgba(225,29,72,0.06) 50%, rgba(190,18,60,0) 100%)",
     iconColor: "text-rose-500",
+  },
+  {
+    icon: <ArrowRightLeft className="h-5 w-5" />,
+    label: "Page Transitions",
+    href: "/design/page-transitions",
+    gradient: "radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(219,39,119,0.06) 50%, rgba(201,17,95,0) 100%)",
+    iconColor: "text-pink-500",
+  },
+  {
+    icon: <Type className="h-5 w-5" />,
+    label: "Text",
+    href: "/design/text",
+    gradient: "radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(8,145,178,0.06) 50%, rgba(5,124,154,0) 100%)",
+    iconColor: "text-cyan-500",
   },
 ]
 
