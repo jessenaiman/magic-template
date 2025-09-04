@@ -7,7 +7,7 @@ import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
 import { cookies } from "next/headers"
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
 import {
   SidebarInset,
   SidebarProvider,
@@ -52,10 +52,14 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* SidebarProvider now sets defaultOpen to false on home, true elsewhere */}
+          {/* SidebarProvider now sets defaultOpen to false on home, true elsewhere */}
           <SidebarProvider defaultOpen={defaultOpen}>
             <AppSidebar />
             <SidebarInset>
-              {children}
+              <main className="flex-1 p-4">
+                {children}
+              </main>
             </SidebarInset>
           </SidebarProvider>
           <Footer />

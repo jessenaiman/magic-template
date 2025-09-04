@@ -1,151 +1,120 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import {
-  AudioWaveform,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-} from "lucide-react"
-import type { LucideIcon } from "lucide-react"
-import { usePathname } from "next/navigation"
-
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import * as React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
   SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar"
-import { mainNavigation } from "@/navigation.config"
+} from '@/components/ui/sidebar';
+import { ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mainNavigation, type NavItem, getBreadcrumbItems } from '@/app/navigation.config';
 
-// Base (sample) user / team / project data (unchanged UI)
-const baseContextData = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+function NavMenuItem({ item }: { item: NavItem }) {
+  const pathname = usePathname();
+  const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href + '/'));
+  const hasChildren = item.children && item.children.length > 0;
+
+  return (
+    <SidebarMenuItem>
+      {hasChildren ? (
+        <>
+          <SidebarMenuButton asChild>
+            <Link href={item.href} className={cn(isActive && 'bg-accent text-accent-foreground')}>
+              {item.icon && <item.icon className="h-4 w-4" />}
+              <span>{item.label}</span>
+              <ChevronRight className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/sidebar-menu-item:rotate-90" />
+            </Link>
+          </SidebarMenuButton>
+          <SidebarMenuSub>
+            {item.children?.map((child) => (
+              <SidebarMenuSubItem key={child.href}>
+                <SidebarMenuSubButton asChild>
+                  <Link
+                    href={child.href}
+                    className={cn(pathname === child.href && 'bg-accent text-accent-foreground')}
+                  >
+                    <span>{child.label}</span>
+                  </Link>
+                </SidebarMenuSubButton>
+              </SidebarMenuSubItem>
+            ))}
+          </SidebarMenuSub>
+        </>
+      ) : (
+        <SidebarMenuButton asChild>
+          <Link href={item.href} className={cn(isActive && 'bg-accent text-accent-foreground')}>
+            {item.icon && <item.icon className="h-4 w-4" />}
+            <span>{item.label}</span>
+          </Link>
+        </SidebarMenuButton>
+      )}
+    </SidebarMenuItem>
+  );
 }
 
-// Runtime transform so we can use pathname for active state
-// Design requirement: Promote each Design child category to its own top-level entry.
-function buildNav(pathname: string) {
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/"
-    return pathname === href || pathname.startsWith(href + "/")
-  }
+function Breadcrumbs() {
+  const pathname = usePathname();
+  const breadcrumbItems = getBreadcrumbItems(pathname);
 
-  const result: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
-    items?: { title: string; url: string }[]
-  }[] = []
-
-  for (const item of mainNavigation) {
-    // Promote Design's children
-    if (item.label === "Design" && item.children) {
-      for (const child of item.children) {
-        const subItems =
-          child.children?.map((gc) => ({
-            title: gc.label,
-            url: gc.href,
-          })) ?? undefined
-        result.push({
-          title: child.label,
-          url: child.href,
-          // Optionally reuse the parent icon. Omitted to keep UI minimal; add `icon: item.icon as LucideIcon` if desired.
-          isActive: isActive(child.href),
-          items: subItems,
-        })
-      }
-      continue
-    }
-
-    // Normal (non-Design) item handling (one-level flatten like before)
-    const subItems = item.children
-      ? item.children.map((child) => ({
-          title: child.label,
-          url: child.href,
-        }))
-      : undefined
-
-    result.push({
-      title: item.label,
-      url: item.href,
-      icon: item.icon as LucideIcon,
-      isActive: isActive(item.href),
-      items: subItems,
-    })
-  }
-
-  return result
-}
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname()
-  const navMain = React.useMemo(() => buildNav(pathname), [pathname])
-
-  // Hide sidebar on homepage
-  if (pathname === "/") {
-    return null
+  if (breadcrumbItems.length <= 1) {
+    return null; // Don't show breadcrumbs on home page
   }
 
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={baseContextData.teams} />
+    <div className="px-4 py-3 border-b border-border">
+      <nav className="flex items-center gap-1 text-sm text-muted-foreground">
+        {breadcrumbItems.map((item, index) => (
+          <div key={item.href} className="flex items-center gap-1">
+            {index > 0 && <ChevronRight className="h-3 w-3" />}
+            <Link
+              href={item.href}
+              className={cn(
+                "transition-colors hover:text-foreground",
+                index === breadcrumbItems.length - 1 && "text-foreground font-medium"
+              )}
+            >
+              {item.label}
+            </Link>
+          </div>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+export function AppSidebar() {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  
+  // SidebarProvider controls open/collapsed state; Sidebar does not accept defaultOpen.
+  return (
+    <Sidebar>
+      <SidebarHeader className="p-0 border-none">
+        <Breadcrumbs />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={navMain} />
-        <NavProjects projects={baseContextData.projects} />
+        {mainNavigation.map((section) => (
+          <SidebarGroup key={section.label}>
+            <SidebarGroupLabel>{section.label}</SidebarGroupLabel>
+            <SidebarMenu>
+              {section.items.map((item) => (
+                <NavMenuItem key={item.href} item={item} />
+              ))}
+            </SidebarMenu>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={baseContextData.user} />
-      </SidebarFooter>
-      <SidebarRail />
     </Sidebar>
-  )
+  );
 }
