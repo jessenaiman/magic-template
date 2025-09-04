@@ -1,4 +1,4 @@
-import { Home, BookOpen, LayoutDashboard, PenTool, Palette, Folder, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map } from "lucide-react";
+import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map } from "lucide-react";
 
 export type NavItem = {
   label: string;

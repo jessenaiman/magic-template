@@ -1,5 +1,7 @@
+// app/effects/html-css/page.tsx
 import { PreviewSurface } from '@/components/preview-controls/preview-surface';
 import { PreviewTile } from '@/components/preview-tile';
+import { usePreviewContext } from '@/components/preview-controls/preview-context';
 
 export default function HtmlCssEffectsPage() {
   return (
@@ -21,8 +23,17 @@ export default function HtmlCssEffectsPage() {
 }
 
 function PulsingButtonPreview() {
+  const { state } = usePreviewContext();
+
   return (
-    <PreviewTile title="Pulsing Button" componentName="PulsingButton" category="button">
+    <PreviewTile
+      title="Pulsing Button"
+      componentName="PulsingButton"
+      category="button"
+      initialCustomization={{
+        buttonText: 'Click Me',
+      }}
+    >
       <style>{`
         .pulsing-button {
           animation: pulse 2s infinite;
@@ -34,7 +45,7 @@ function PulsingButtonPreview() {
         }
       `}</style>
       <button className="pulsing-button px-4 py-2 bg-blue-500 text-white rounded-md">
-        Click Me
+        {state.customization.buttonText || 'Click Me'}
       </button>
     </PreviewTile>
   );

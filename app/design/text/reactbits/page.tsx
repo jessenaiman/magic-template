@@ -114,9 +114,10 @@ function GlitchTextPreview() {
             }}
         >
             <GlitchText
-                text={state.customization.displayText || "Cyberpunk 2077"}
-                className="text-3xl font-bold font-mono"
-            />
+                // GlitchText expects its content as children
+            >
+                {state.customization.displayText || "Cyberpunk 2077"}
+            </GlitchText>
         </PreviewTile>
     );
 }
@@ -135,10 +136,13 @@ function GradientTextPreview() {
             }}
         >
             <GradientText
-                text={state.customization.displayText || "Stunning Gradients"}
+                // GradientText uses children as the content
                 className="text-4xl font-extrabold"
-                gradient="linear-gradient(to right, #ec4899, #8b5cf6)"
-            />
+                // Keep gradient via colors prop if desired; passing via style-like prop isn't part of its API
+                colors={["#ec4899", "#8b5cf6"]}
+            >
+                {state.customization.displayText || "Stunning Gradients"}
+            </GradientText>
         </PreviewTile>
     );
 }
@@ -159,8 +163,9 @@ function RotatingTextPreview() {
             }}
         >
             <RotatingText
-                text={state.customization.displayText || "Magic UI is;Awesome;Beautiful;Powerful"}
-                className="text-2xl font-semibold"
+                // RotatingText expects `texts` as an array
+                texts={(state.customization.displayText || "Magic UI is;Awesome;Beautiful;Powerful").split(';')}
+                mainClassName="text-2xl font-semibold"
             />
         </PreviewTile>
     );
@@ -180,6 +185,7 @@ function ShinyTextPreview() {
             }}
         >
             <ShinyText
+                // ShinyText expects `text` prop
                 text={state.customization.displayText || "Get Started"}
                 className="text-3xl font-bold"
             />
@@ -201,10 +207,11 @@ function TextCursorPreview() {
                 displayText: "This is a typing effect.",
             }}
         >
-            <TextCursor
-                text={state.customization.displayText || "This is a typing effect."}
-                className="text-2xl"
-            />
+                        <div className="text-2xl">
+                            <TextCursor
+                                text={state.customization.displayText || "This is a typing effect."}
+                            />
+                        </div>
         </PreviewTile>
     );
 }
@@ -235,7 +242,7 @@ function CountUpPreview() {
         >
             <div className="text-4xl font-bold">
                 <CountUp
-                    endValue={Number(state.customization.endValue) || 12345}
+                    to={Number(state.customization.endValue) || 12345}
                     duration={2}
                 />
             </div>
