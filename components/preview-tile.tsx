@@ -25,6 +25,14 @@ interface CodeExample {
 }
 
 export interface PreviewTileProps {
+  /**
+   * If true, expands the tile to full width (for responsive/animated focus)
+   */
+  expanded?: boolean;
+  /**
+   * Handler for when the customize button is pressed (for single-open logic)
+   */
+  onCustomize?: () => void;
   title: string;
   /**
    * Optional descriptive text displayed below the canvas.
@@ -93,7 +101,9 @@ function PreviewTileInner({
   canvasHeight = 200,
   designSystem = 'reactbits',
   showAdvancedControls = true,
-  customFields
+  customFields,
+  expanded = false,
+  onCustomize
 }: PreviewTileProps) {
   const { state } = usePreviewContext();
 
@@ -125,12 +135,26 @@ function PreviewTileInner({
     'animate-ui': 'border-cyan-500/20 hover:border-cyan-500/40'
   };
 
+  // If expanded, force customizeOpen true
+  React.useEffect(() => {
+    if (expanded) setCustomizeOpen(true);
+    else setCustomizeOpen(false);
+  }, [expanded]);
+
   return (
-    <div className={cn('space-y-4 group', className)}>
+    <div
+      className={cn(
+        'space-y-4 group transition-all duration-300',
+        expanded && 'col-span-full z-30',
+        className
+      )}
+      style={expanded ? { gridColumn: '1 / -1' } : {}}
+    >
       <Card className={cn(
         'relative flex flex-col transition-all duration-300 hover:shadow-lg border-2',
         designSystemStyles[designSystem],
-        'bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm'
+        'bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm',
+        expanded && 'shadow-2xl scale-[1.02]'
       )}>
         {/* Floating top-right controls cluster */}
         <div className="absolute top-3 right-3 z-20 flex items-center gap-1">
@@ -305,7 +329,7 @@ function PreviewTileInner({
                 customizeOpen && 'bg-primary/10 text-primary'
               )}
               aria-label="Customize"
-              onClick={() => setCustomizeOpen(o => !o)}
+              onClick={onCustomize ? onCustomize : () => setCustomizeOpen(o => !o)}
             >
               <Settings className="h-3.5 w-3.5" />
             </Button>

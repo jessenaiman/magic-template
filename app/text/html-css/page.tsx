@@ -1,12 +1,18 @@
-'use client';
+"use client";
 
+import React, { useState } from "react";
 import { PreviewTile } from "@/components/preview-tile";
 import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
 import { usePreviewContext } from "@/components/preview-controls/preview-context";
 
-
-
 export default function HtmlCssTextPage() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  // Helper to handle expand/collapse
+  const handleCustomize = (id: string) => {
+    setExpanded(prev => (prev === id ? null : id));
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -17,8 +23,7 @@ export default function HtmlCssTextPage() {
         </p>
       </div>
 
-
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {/* Blur Text Animation */}
         <PreviewTile
           title="Blur Text Animation"
@@ -33,6 +38,8 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 18
           }}
+          expanded={expanded === 'blur'}
+          onCustomize={() => handleCustomize('blur')}
         >
           <div className="css-blur-text">
             <span>Pure CSS Blur Effect</span>
@@ -53,6 +60,8 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 24
           }}
+          expanded={expanded === 'gradient'}
+          onCustomize={() => handleCustomize('gradient')}
         >
           <div className="css-gradient-text">
             CSS Gradient Magic
@@ -73,11 +82,13 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 32
           }}
+          expanded={expanded === 'shiny'}
+          onCustomize={() => handleCustomize('shiny')}
         >
           <div className="css-shiny-text">
             Shiny Effect
           </div>
-        </PreviewTile>
+  </PreviewTile>
 
         {/* Glitch Text Effect */}
         <PreviewTile
