@@ -2,8 +2,29 @@
 
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
-import { PreviewTile, PreviewTileProps } from '@/components/preview-tile';
+import { PreviewTile } from '@/components/preview-tile';
 import { FieldConfig } from '@/components/preview-customization-panel';
+import { CustomizationSettings } from '@/components/preview-context';
+import { cn } from '@/lib/utils';
+
+// Default values for the preview context
+const defaultCustomization: Partial<CustomizationSettings> = {
+  buttonText: 'Click Me',
+  fontSize: 16,
+  borderRadius: 6,
+  backgroundColor: '#3b82f6',
+  textColor: '#ffffff',
+  paddingX: 16,
+  paddingY: 8,
+  fontWeight: 500,
+  pulseColor: '#3b82f6',
+  pulseSpeed: 2,
+  hoverBackgroundColor: '#2563eb',
+  hoverTranslateY: -2,
+  gradientFrom: '#8b5cf6',
+  gradientTo: '#ec4899',
+  gradientAngle: 135
+};
 
 // This small component's only job is to send this page's specific
 // configuration up to the parent layout's hero component.
@@ -16,91 +37,250 @@ function PageConfigurator() {
     
     // Define the controls that are common to ALL button examples on this page.
     const buttonFields: FieldConfig[] = [
-        { id: 'buttonText', label: 'Button Text', type: 'text', placeholder: 'Click Me' },
-        { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
-        { id: 'borderRadius', label: 'Border Radius', type: 'slider', min: 0, max: 32, step: 2, unit: 'px' },
-        { id: 'backgroundColor', label: 'Background', type: 'color' },
+      { 
+        id: 'buttonText', 
+        label: 'Button Text', 
+        type: 'text',
+        description: 'The text displayed on the button',
+        placeholder: 'Click Me'
+      },
+      { 
+        id: 'fontSize', 
+        label: 'Font Size', 
+        type: 'slider', 
+        min: 12, 
+        max: 24, 
+        step: 1, 
+        unit: 'px',
+        description: 'Size of the button text'
+      },
+      {
+        id: 'fontWeight',
+        label: 'Font Weight',
+        type: 'slider',
+        min: 400,
+        max: 700,
+        step: 100,
+        description: 'Thickness of the button text'
+      },
+      { 
+        id: 'borderRadius', 
+        label: 'Border Radius', 
+        type: 'slider', 
+        min: 0, 
+        max: 32, 
+        step: 2, 
+        unit: 'px',
+        description: 'Roundness of button corners'
+      },
+      { 
+        id: 'backgroundColor', 
+        label: 'Background', 
+        type: 'color',
+        description: 'Button background color'
+      },
+      {
+        id: 'textColor',
+        label: 'Text Color',
+        type: 'color',
+        description: 'Button text color'
+      },
+      {
+        id: 'paddingX',
+        label: 'Horizontal Padding',
+        type: 'slider',
+        min: 8,
+        max: 48,
+        step: 2,
+        unit: 'px',
+        description: 'Horizontal space inside the button'
+      },
+      {
+        id: 'paddingY',
+        label: 'Vertical Padding',
+        type: 'slider',
+        min: 4,
+        max: 24,
+        step: 1,
+        unit: 'px',
+        description: 'Vertical space inside the button'
+      }
     ];
     setFields(buttonFields);
   }, [setTitle, setDescription, setFields]);
 
-  return null; // This component does not render any UI itself.
+  return null;
 }
 
 // --- Preview Tile Configurations ---
 
-const pulsingButtonConfig: PreviewTileProps = {
-  title: "Pulsing Button",
-  description: "Draws attention with a subtle pulse animation.",
-  componentName: "PulsingButton",
-  code: `<button class="pulsing-button">{buttonText}</button>`,
-  initialCustomization: {
-    buttonText: 'Click Me',
-    backgroundColor: '#3b82f6', // blue-500
-  },
-  children: (customization) => (
-    <>
-      <style>{`
-        .pulsing-button { animation: pulse 2s infinite; background-color: ${customization.backgroundColor}; }
-        @keyframes pulse {
-          0% { box-shadow: 0 0 0 0 ${customization.backgroundColor}b3; }
-          70% { box-shadow: 0 0 0 10px ${customization.backgroundColor}00; }
-          100% { box-shadow: 0 0 0 0 ${customization.backgroundColor}00; }
-        }
-      `}</style>
-      <button 
-        className="pulsing-button px-4 py-2 text-white rounded-md"
-        style={{ fontSize: `${customization.fontSize}px`, borderRadius: `${customization.borderRadius}px` }}
-      >
-        {customization.buttonText || 'Click Me'}
-      </button>
-    </>
-  ),
-};
-
-const hoverEffectButtonConfig: PreviewTileProps = {
-    title: "Hover Effect Button",
-    description: "Changes background on hover.",
-    componentName: "HoverButton",
-    code: `<button class="hover-effect-button">{buttonText}</button>`,
-    initialCustomization: {
-        buttonText: 'Hover Me',
-        backgroundColor: '#10b981', // emerald-500
-        fontSize: 16,
-        borderRadius: 8,
-    },
-    children: (customization) => (
-        <>
-            <style>{`
-                .hover-effect-button { transition: background-color 0.3s; }
-                .hover-effect-button:hover { background-color: #059669 !important; }
-            `}</style>
-             <button
-                className="hover-effect-button px-4 py-2 text-white rounded-md"
-                style={{
-                    backgroundColor: customization.backgroundColor,
-                    fontSize: `${customization.fontSize}px`,
-                    borderRadius: `${customization.borderRadius}px`,
-                }}
-            >
-                {customization.buttonText || 'Hover Me'}
-            </button>
-        </>
-    ),
-};
-
-
-export default function HtmlCssButtonsPage() {
+export default function ButtonsPage() {
   return (
-    <>
+    <div className="grid gap-8">
       <PageConfigurator />
-      
-      {/* The Hero is rendered by the parent layout, not the page */}
+      <PreviewTile
+        title="Basic Button"
+        description="A simple button with hover and focus states. Uses CSS variables for easy theming."
+        componentName="BasicButton"
+        code={`<button
+  className="px-{paddingX} py-{paddingY} rounded-{borderRadius} text-{fontSize} font-{fontWeight} bg-{backgroundColor} text-{textColor} hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{backgroundColor}"
+>
+  {buttonText}
+</button>`}
+        initialCustomization={defaultCustomization}
+        customFields={[
+          { id: 'buttonText', label: 'Button Text', type: 'text' },
+          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
+          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          { id: 'backgroundColor', label: 'Background', type: 'color' },
+          { id: 'textColor', label: 'Text Color', type: 'color' },
+        ]}
+      >
+        {(customization: Partial<CustomizationSettings>) => (
+          <button
+            className={cn(
+              'transition-all duration-200',
+              'px-[var(--paddingX)] py-[var(--paddingY)]',
+              'rounded-[var(--borderRadius)]',
+              'text-[var(--fontSize)]',
+              'font-[var(--fontWeight)]',
+              'bg-[var(--backgroundColor)]',
+              'text-[var(--textColor)]',
+              'hover:bg-opacity-90',
+              'focus:outline-none focus:ring-2 focus:ring-offset-2'
+            )}
+            style={{
+              '--paddingX': `${customization.paddingX}px`,
+              '--paddingY': `${customization.paddingY}px`,
+              '--borderRadius': `${customization.borderRadius}px`,
+              '--fontSize': `${customization.fontSize}px`,
+              '--fontWeight': customization.fontWeight,
+              '--backgroundColor': customization.backgroundColor,
+              '--textColor': customization.textColor,
+            } as React.CSSProperties}
+          >
+            {customization.buttonText}
+          </button>
+        )}
+      </PreviewTile>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <PreviewTile {...pulsingButtonConfig} />
-        <PreviewTile {...hoverEffectButtonConfig} />
-      </div>
-    </>
+      <PreviewTile
+        title="Gradient Button"
+        description="A button with a beautiful gradient background and hover effect."
+        componentName="GradientButton"
+        code={`<button
+  className="px-{paddingX} py-{paddingY} rounded-{borderRadius} text-{fontSize} font-{fontWeight} text-{textColor} bg-gradient-to-r from-{gradientFrom} to-{gradientTo} hover:-translate-y-{hoverTranslateY} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-{gradientFrom}"
+>
+  {buttonText}
+</button>`}
+        initialCustomization={{
+          ...defaultCustomization,
+          gradientFrom: '#8b5cf6',
+          gradientTo: '#ec4899',
+          hoverTranslateY: 2,
+        }}
+        customFields={[
+          { id: 'buttonText', label: 'Button Text', type: 'text' },
+          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
+          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          { id: 'gradientFrom', label: 'Gradient Start', type: 'color' },
+          { id: 'gradientTo', label: 'Gradient End', type: 'color' },
+          { id: 'hoverTranslateY', label: 'Hover Lift', type: 'slider', min: 0, max: 4, step: 1, unit: 'px' },
+        ]}
+      >
+        {(customization: Partial<CustomizationSettings>) => (
+          <button
+            className={cn(
+              'transition-all duration-200',
+              'px-[var(--paddingX)] py-[var(--paddingY)]',
+              'rounded-[var(--borderRadius)]',
+              'text-[var(--fontSize)]',
+              'font-[var(--fontWeight)]',
+              'text-white',
+              'bg-gradient-to-r from-[var(--gradientFrom)] to-[var(--gradientTo)]',
+              'hover:-translate-y-[var(--hoverTranslateY)]',
+              'focus:outline-none focus:ring-2 focus:ring-offset-2'
+            )}
+            style={{
+              '--paddingX': `${customization.paddingX}px`,
+              '--paddingY': `${customization.paddingY}px`,
+              '--borderRadius': `${customization.borderRadius}px`,
+              '--fontSize': `${customization.fontSize}px`,
+              '--fontWeight': customization.fontWeight,
+              '--gradientFrom': customization.gradientFrom,
+              '--gradientTo': customization.gradientTo,
+              '--hoverTranslateY': `${customization.hoverTranslateY}px`,
+            } as React.CSSProperties}
+          >
+            {customization.buttonText}
+          </button>
+        )}
+      </PreviewTile>
+
+      <PreviewTile
+        title="Pulsing Button"
+        description="An attention-grabbing button with a pulsing animation effect."
+        componentName="PulsingButton"
+        code={`<button
+  className="relative px-{paddingX} py-{paddingY} rounded-{borderRadius} text-{fontSize} font-{fontWeight} bg-{backgroundColor} text-{textColor} hover:bg-{hoverBackgroundColor} group"
+>
+  <span className="absolute inset-0 rounded-{borderRadius} bg-{pulseColor} animate-pulse opacity-50 group-hover:opacity-0" />
+  <span className="relative">{buttonText}</span>
+</button>`}
+        initialCustomization={{
+          ...defaultCustomization,
+          pulseColor: '#3b82f6',
+          pulseSpeed: 2,
+          hoverBackgroundColor: '#2563eb',
+        }}
+        customFields={[
+          { id: 'buttonText', label: 'Button Text', type: 'text' },
+          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
+          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          { id: 'backgroundColor', label: 'Background', type: 'color' },
+          { id: 'pulseColor', label: 'Pulse Color', type: 'color' },
+          { id: 'hoverBackgroundColor', label: 'Hover Color', type: 'color' },
+        ]}
+      >
+        {(customization: Partial<CustomizationSettings>) => (
+          <button
+            className={cn(
+              'relative transition-all duration-200',
+              'px-[var(--paddingX)] py-[var(--paddingY)]',
+              'rounded-[var(--borderRadius)]',
+              'text-[var(--fontSize)]',
+              'font-[var(--fontWeight)]',
+              'bg-[var(--backgroundColor)]',
+              'text-[var(--textColor)]',
+              'hover:bg-[var(--hoverBackgroundColor)]',
+              'group'
+            )}
+            style={{
+              '--paddingX': `${customization.paddingX}px`,
+              '--paddingY': `${customization.paddingY}px`,
+              '--borderRadius': `${customization.borderRadius}px`,
+              '--fontSize': `${customization.fontSize}px`,
+              '--fontWeight': customization.fontWeight,
+              '--backgroundColor': customization.backgroundColor,
+              '--textColor': customization.textColor,
+              '--pulseColor': customization.pulseColor,
+              '--hoverBackgroundColor': customization.hoverBackgroundColor,
+            } as React.CSSProperties}
+          >
+            <span
+              className={cn(
+                'absolute inset-0',
+                'rounded-[var(--borderRadius)]',
+                'bg-[var(--pulseColor)]',
+                'animate-pulse opacity-50',
+                'group-hover:opacity-0',
+                'transition-opacity duration-200'
+              )}
+            />
+            <span className="relative">{customization.buttonText}</span>
+          </button>
+        )}
+      </PreviewTile>
+    </div>
   );
 }

@@ -7,11 +7,9 @@ import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
 import { cookies } from "next/headers"
-import { AppSidebar } from "@/components/app-sidebar";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
+import PageTransition from '@/components/page-transition';
+import { LoadingIndicator } from '@/components/loading-indicator';
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -35,15 +33,9 @@ export default async function RootLayout({
   const cookieStore = await cookies()
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
   
-  // Get the current path to conditionally render sidebar
-  // Since this is a server component, we'll need to handle this differently
-  // We'll use a client-side wrapper or conditionally render in the app-sidebar
-
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
-      suppressHydrationWarning
     >
       <body>
         <ThemeProvider
@@ -52,19 +44,10 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* SidebarProvider now sets defaultOpen to false on home, true elsewhere */}
-          {/* SidebarProvider now sets defaultOpen to false on home, true elsewhere */}
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <SidebarInset>
-              <main className="flex-1 p-4">
-                {children}
-              </main>
-            </SidebarInset>
-          </SidebarProvider>
-          <Footer />
+            {children}
+            <Footer />
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -15,14 +15,18 @@ interface DesignTabsProps {
 export function DesignTabs({ items, basePath }: DesignTabsProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const currentTech = pathname.split("/").pop() || items[0].value
+  const segments = pathname.split("/").filter(Boolean)
+  const last = segments[segments.length - 1]
+  const currentTech = items.some(i => i.value === last) ? last : items[0].value
 
   return (
     <Tabs
-      defaultValue={currentTech}
+      value={currentTech}
       className="w-full"
       onValueChange={(value) => {
-        router.push(`${basePath}/${value}`)
+        if (value !== currentTech) {
+          router.push(`${basePath}/${value}`)
+        }
       }}
     >
       <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">

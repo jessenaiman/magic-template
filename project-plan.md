@@ -11,8 +11,7 @@ This document provides a precise, step-by-step guide to refactor the entire comp
 
 ### **Core Principles (Non-Negotiable)**
 
-* **No Architectural Changes:** You must strictly adhere to the architecture defined in the goals above. Do not introduce new design patterns, contexts, or layouts.  
-* **Adhere to the Gold Standard:** The refactored app/design/buttons/html-css/page.tsx and the layouts within /app/design/ and /app/design/buttons/ are the "gold standard" examples. Your output must match their structure precisely.  
+** KISS and DRY**: Look for ways to avoid code duplication and complexity and refactor where repeated code is found.
 * **Data-Driven Pattern:** All component previews must be rendered using data-driven configuration objects passed as props to the \<PreviewTile /\> component.  
 * **Precision and Accuracy:** Each file modification must be exact. Do not add or remove functionality beyond what is specified.
 

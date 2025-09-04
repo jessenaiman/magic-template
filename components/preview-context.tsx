@@ -71,16 +71,17 @@ export function PreviewProvider({
   initialCustomization = {},
   children
 }: PreviewProviderProps) {
-  const mergedCustomization = useMemo(
-    () => ({ ...defaultCustomization, ...initialCustomization }),
-    [initialCustomization]
-  );
+  // Store the initial values in a ref so they don't change on re-renders
+  const initialValues = React.useRef({
+    text: initialText,
+    customization: { ...defaultCustomization, ...initialCustomization }
+  });
 
-  const [state, setState] = useState<PreviewState>({
+  const [state, setState] = useState<PreviewState>(() => ({
     playing: true,
     displayText: initialText,
-    customization: mergedCustomization
-  });
+    customization: { ...defaultCustomization, ...initialCustomization }
+  }));
 
   const setPlaying = useCallback(
     (p: boolean) => setState(s => ({ ...s, playing: p })),
@@ -105,10 +106,10 @@ export function PreviewProvider({
     () =>
       setState({
         playing: true,
-        displayText: initialText,
-        customization: mergedCustomization
+        displayText: initialValues.current.text,
+        customization: { ...initialValues.current.customization }
       }),
-    [initialText, mergedCustomization]
+    [] // No dependencies since we use refs
   );
 
   const value = useMemo(

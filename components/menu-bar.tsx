@@ -50,12 +50,12 @@ const menuItems: MenuItem[] = [
     icon: "transition",
     label: "Page Transitions",
     href: "/design/page-transitions",
-    description: "Smooth page transitions"
+    description: "Navigation transitions and animations"
   },
   {
     icon: "text",
-    label: "Text",
-    href: "/design/text",
+    label: "Typography",
+    href: "/design/typography",
     description: "Typography and text effects"
   },
 ]
@@ -77,34 +77,30 @@ function MenuLink({ item, isActive }: { item: MenuItem; isActive: boolean }) {
   const Icon = Icons[item.icon]
 
   return (
-    <TooltipProvider delayDuration={0}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Link 
-            href={item.href} 
-            className={cn(
-              "relative flex h-9 w-9 items-center justify-center rounded-md border",
-              "transition-colors hover:bg-accent",
-              isActive ? "border-border bg-accent" : "border-transparent"
-            )}
-            onMouseMove={onMouseMove}
-          >
-            <motion.div
-              className="pointer-events-none absolute inset-0 rounded-md opacity-0 transition-opacity hover:opacity-100"
-              style={{ background }}
-            />
-            <Icon className="h-4 w-4" />
-            <span className="sr-only">{item.label}</span>
-          </Link>
-        </TooltipTrigger>
-        <TooltipContent side="bottom" sideOffset={10}>
-          <p className="text-sm">{item.label}</p>
-          {item.description && (
-            <p className="text-xs text-muted-foreground">{item.description}</p>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Link
+          href={item.href}
+          className={cn(
+            "group relative size-12 rounded-full p-2 transition-all",
+            isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
           )}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+          onMouseMove={onMouseMove}
+        >
+          <motion.span
+            className="absolute inset-0 rounded-full opacity-0 transition-opacity group-hover:opacity-100"
+            style={{ background }}
+            aria-hidden="true"
+          />
+          <Icon className="size-8" />
+          <span className="sr-only">{item.label}</span>
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        <p>{item.label}</p>
+        {item.description && <p className="text-muted-foreground text-xs">{item.description}</p>}
+      </TooltipContent>
+    </Tooltip>
   )
 }
 
@@ -112,8 +108,8 @@ export function MenuBar() {
   const pathname = usePathname()
 
   return (
-    <nav 
-      className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full border bg-background/80 p-1 shadow-lg backdrop-blur-md"
+    <nav
+      className="fixed bottom-4 left-1/2 z-[100] -translate-x-1/2 rounded-full border bg-background/80 p-1 shadow-lg backdrop-blur-md"
       style={{ 
         WebkitBackdropFilter: "blur(16px)",
         touchAction: "none",
@@ -128,11 +124,5 @@ export function MenuBar() {
         ))}
       </div>
     </nav>
-  )
-}
-          )
-        })}
-      </ul>
-    </motion.nav>
   )
 }

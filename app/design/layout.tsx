@@ -1,21 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "@/metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
-import { cookies } from "next/headers"
-import { AppSidebar } from "@/components/app-sidebar";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
-
+import { SimpleDesignNav } from "@/components/simple-design-nav";
+import { DesignPageProvider } from "@/components/design-page-context";
+import { PreviewProvider } from "@/components/preview-context";
+import { DesignPageHero } from '@/components/design-page-hero';
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -31,42 +25,33 @@ export const metadata: Metadata = {
   keywords: metadataKeywords,
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
+interface DesignLayoutProps {
   children: React.ReactNode;
-}>) {
-  const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
-  
+}
+
+export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
-      suppressHydrationWarning
-    >
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <SidebarInset>
-              <main className="flex-1 p-4">
-                <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-4rem)]" />}>
-                  <PageTransition>
-                    {children}
-                  </PageTransition>
-                </Suspense>
-              </main>
-            </SidebarInset>
-          </SidebarProvider>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <DesignPageProvider>
+      <PreviewProvider>
+        <div className="container mx-auto max-w-7xl p-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <aside className="md:col-span-1">
+              <SimpleDesignNav />
+            </aside>
+            <main className="md:col-span-3 space-y-8">
+              <DesignPageHero />
+              <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-6rem)]" />}>
+                <PageTransition>
+                  {children}
+                </PageTransition>
+              </Suspense>
+            </main>
+          </div>
+        </div>
+        <Footer />
+      </PreviewProvider>
+    </DesignPageProvider>
   );
 }
+
+// simple nav is now provided by a dedicated client component in components/simple-design-nav.tsx

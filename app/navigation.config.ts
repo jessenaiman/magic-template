@@ -41,7 +41,6 @@ export const mainNavigation: NavigationSection[] = [
         children: [
           { label: "Overview", href: "/design/buttons" },
           { label: "Animate CSS", href: "/design/buttons/animate-css" },
-          { label: "Customize", href: "/design/buttons/customize" },
           { label: "HTML CSS", href: "/design/buttons/html-css" },
           { label: "Magic", href: "/design/buttons/magic" },
           { label: "Shadcn", href: "/design/buttons/shadcn" },
@@ -55,7 +54,6 @@ export const mainNavigation: NavigationSection[] = [
         description: "Mobile-first design patterns",
         children: [
           { label: "Overview", href: "/design/responsive-design" },
-          { label: "Customize", href: "/design/responsive-design/customize" },
           { label: "HTML CSS", href: "/design/responsive-design/html-css" },
           { label: "MagicUI", href: "/design/responsive-design/magicui" },
           { label: "Next.js", href: "/design/responsive-design/nextjs" }
@@ -68,7 +66,6 @@ export const mainNavigation: NavigationSection[] = [
         description: "Visual effects and animations",
         children: [
           { label: "Overview", href: "/design/effects" },
-          { label: "Customize", href: "/design/effects/customize" },
           { label: "HTML CSS", href: "/design/effects/html-css" },
           { label: "MagicUI", href: "/design/effects/magicui" },
           { label: "Tailwind", href: "/design/effects/tailwind" }
@@ -81,7 +78,6 @@ export const mainNavigation: NavigationSection[] = [
         description: "Smooth page transition effects",
         children: [
           { label: "Overview", href: "/design/page-transitions" },
-          { label: "Customize", href: "/design/page-transitions/customize" },
           { label: "HTML CSS", href: "/design/page-transitions/html-css" },
           { label: "MagicUI", href: "/design/page-transitions/magicui" },
           { label: "Next.js", href: "/design/page-transitions/nextjs" },
@@ -95,7 +91,6 @@ export const mainNavigation: NavigationSection[] = [
         description: "Typography and text effects",
         children: [
           { label: "Overview", href: "/design/text" },
-          { label: "Customize", href: "/design/text/customize" },
           { label: "HTML CSS", href: "/design/text/html-css" },
           { label: "MagicUI", href: "/design/text/magicui" },
           { label: "ReactBits", href: "/design/text/reactbits" },

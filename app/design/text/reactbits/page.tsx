@@ -75,8 +75,8 @@ function BlurTextPreview() {
       title="Blur Text Animation"
       description="Text that animates in with a blur effect, revealing words or letters sequentially."
       componentName="BlurText"
-      category="text"
-      installCommand="npm install framer-motion"
+      code={`<BlurText text="Isn't this so cool?!" animateBy="words" direction="top" delay={200} />`}
+      customFields={customFields}
       initialCustomization={{
         backgroundColor: '#170D27',
         textColor: '#ffffff',
@@ -85,15 +85,16 @@ function BlurTextPreview() {
         direction: 'top',
         delay: 200
       }}
-      customFields={customFields}
     >
-      <BlurText
-        text={customization.displayText || "Isn't this so cool?!"}
-        animateBy={customization.animateBy || 'words'}
-        direction={customization.direction || 'top'}
-        delay={customization.delay || 200}
-        className="text-2xl font-semibold"
-      />
+      {(customization) => (
+        <BlurText
+          text={customization.displayText || "Isn't this so cool?!"}
+          animateBy={customization.animateBy || 'words'}
+          direction={customization.direction || 'top'}
+          delay={customization.delay || 200}
+          className="text-2xl font-semibold"
+        />
+      )}
     </PreviewTile>
   );
 }
@@ -105,19 +106,19 @@ function GlitchTextPreview() {
             title="Glitch Effect Text"
             description="A text component that applies a 'glitch' effect, perfect for futuristic or tech-themed UIs."
             componentName="GlitchText"
-            category="text"
-            installCommand="npm install framer-motion"
+            code={`<GlitchText>Cyberpunk 2077</GlitchText>`}
+            customFields={[]}
             initialCustomization={{
                 backgroundColor: '#000000',
                 textColor: '#00ff00',
                 displayText: "Cyberpunk 2077",
             }}
         >
-            <GlitchText
-                // GlitchText expects its content as children
-            >
-                {state.customization.displayText || "Cyberpunk 2077"}
-            </GlitchText>
+            {(customization) => (
+                <GlitchText>
+                    {customization.displayText || "Cyberpunk 2077"}
+                </GlitchText>
+            )}
         </PreviewTile>
     );
 }
@@ -129,20 +130,21 @@ function GradientTextPreview() {
             title="Gradient Text"
             description="Easily create text with a gradient fill for a visually striking effect."
             componentName="GradientText"
-            category="text"
+            code={`<GradientText colors={["#ec4899", "#8b5cf6"]}>Stunning Gradients</GradientText>`}
+            customFields={[]}
             initialCustomization={{
                 backgroundColor: '#111827',
                 displayText: "Stunning Gradients",
             }}
         >
-            <GradientText
-                // GradientText uses children as the content
-                className="text-4xl font-extrabold"
-                // Keep gradient via colors prop if desired; passing via style-like prop isn't part of its API
-                colors={["#ec4899", "#8b5cf6"]}
-            >
-                {state.customization.displayText || "Stunning Gradients"}
-            </GradientText>
+            {(customization) => (
+                <GradientText
+                    className="text-4xl font-extrabold"
+                    colors={["#ec4899", "#8b5cf6"]}
+                >
+                    {customization.displayText || "Stunning Gradients"}
+                </GradientText>
+            )}
         </PreviewTile>
     );
 }
@@ -154,19 +156,20 @@ function RotatingTextPreview() {
             title="Rotating Text"
             description="Animate through a series of words with a fun rotating effect."
             componentName="RotatingText"
-            category="text"
-            installCommand="npm install framer-motion"
+            code={`<RotatingText texts={["Magic UI is", "Awesome", "Beautiful", "Powerful"]} />`}
+            customFields={[]}
             initialCustomization={{
                 backgroundColor: '#ffffff',
                 textColor: '#1f2937',
                 displayText: "Magic UI is;Awesome;Beautiful;Powerful",
             }}
         >
-            <RotatingText
-                // RotatingText expects `texts` as an array
-                texts={(state.customization.displayText || "Magic UI is;Awesome;Beautiful;Powerful").split(';')}
-                mainClassName="text-2xl font-semibold"
-            />
+            {(customization) => (
+                <RotatingText
+                    texts={(customization.displayText || "Magic UI is;Awesome;Beautiful;Powerful").split(';')}
+                    mainClassName="text-2xl font-semibold"
+                />
+            )}
         </PreviewTile>
     );
 }
@@ -178,17 +181,19 @@ function ShinyTextPreview() {
             title="Shiny Text"
             description="A component that adds a shiny, reflective effect to text as if light is passing over it."
             componentName="ShinyText"
-            category="text"
+            code={`<ShinyText text="Get Started" />`}
+            customFields={[]}
             initialCustomization={{
                 backgroundColor: '#0a0a0a',
                 displayText: "Get Started",
             }}
         >
-            <ShinyText
-                // ShinyText expects `text` prop
-                text={state.customization.displayText || "Get Started"}
-                className="text-3xl font-bold"
-            />
+            {(customization) => (
+                <ShinyText
+                    text={customization.displayText || "Get Started"}
+                    className="text-3xl font-bold"
+                />
+            )}
         </PreviewTile>
     );
 }
@@ -200,18 +205,21 @@ function TextCursorPreview() {
             title="Text with Cursor"
             description="Simulates a typing effect with a blinking cursor for dynamic text presentation."
             componentName="TextCursor"
-            category="text"
+            code={`<TextCursor text="This is a typing effect." />`}
+            customFields={[]}
             initialCustomization={{
                 backgroundColor: '#1e293b',
                 textColor: '#f8fafc',
                 displayText: "This is a typing effect.",
             }}
         >
-                        <div className="text-2xl">
-                            <TextCursor
-                                text={state.customization.displayText || "This is a typing effect."}
-                            />
-                        </div>
+            {(customization) => (
+                <div className="text-2xl">
+                    <TextCursor
+                        text={customization.displayText || "This is a typing effect."}
+                    />
+                </div>
+            )}
         </PreviewTile>
     );
 }
@@ -231,21 +239,22 @@ function CountUpPreview() {
             title="Count Up Animation"
             description="Animates a number from zero to a target value with a smooth counting effect."
             componentName="CountUp"
-            category="text"
-            installCommand="npm install framer-motion"
+            code={`<CountUp to={12345} duration={2} />`}
+            customFields={customFields}
             initialCustomization={{
                 backgroundColor: '#f1f5f9',
                 textColor: '#1e293b',
                 endValue: 12345,
             }}
-            customFields={customFields}
         >
-            <div className="text-4xl font-bold">
-                <CountUp
-                    to={Number(state.customization.endValue) || 12345}
-                    duration={2}
-                />
-            </div>
+            {(customization) => (
+                <div className="text-4xl font-bold">
+                    <CountUp
+                        to={Number(customization.endValue) || 12345}
+                        duration={2}
+                    />
+                </div>
+            )}
         </PreviewTile>
     );
 }

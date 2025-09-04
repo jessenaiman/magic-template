@@ -3,24 +3,30 @@
 import React from "react";
 import { DesignNavigation } from "@/components/ui/design-navigation";
 import { DesignTabs } from "@/components/design-tabs";
+import { useDesignPage } from "@/components/design-page-context";
+import { getBaseFields } from "@/components/base-category-options";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function ButtonsLayout({ children }: LayoutProps) {
+  function ButtonsConfigurator() {
+    const { setTitle, setDescription, setFields } = useDesignPage();
+    React.useEffect(() => {
+      setTitle('Button Components');
+      setDescription('Discover interactive button components with modern animations and effects. Each implementation showcases different styling approaches and interaction patterns.');
+      setFields(getBaseFields('button'));
+    }, [setTitle, setDescription, setFields]);
+    return null;
+  }
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-1 p-4 sm:p-6 pb-24">
-        <div className="container mx-auto max-w-7xl space-y-8">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight">Button Components</h1>
-            <p className="text-muted-foreground">
-              Discover interactive button components with modern animations and effects.
-              Each implementation showcases different styling approaches and interaction patterns.
-            </p>
-          </div>
-          
+    <div className="space-y-8">
+      <ButtonsConfigurator />
+      
+      <div className="sticky top-0 z-10 -mx-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="px-6 py-4">
           <DesignTabs 
             items={[
               { label: "HTML/CSS", value: "html-css" },
@@ -31,10 +37,12 @@ export default function ButtonsLayout({ children }: LayoutProps) {
             ]}
             basePath="/design/buttons"
           />
-          
-          {children}
         </div>
-      </main>
+      </div>
+      
+      <div className="space-y-8">
+        {children}
+      </div>
     </div>
   );
 }
