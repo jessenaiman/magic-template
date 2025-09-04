@@ -1,9 +1,8 @@
 // components/preview-controls/preview-surface.tsx
-'use client';
 
 import * as React from 'react';
-import { PreviewProvider, CustomizationSettings } from '@/components/preview-controls/preview-context';
-import { PageControls } from '@/components/preview-controls/page-controls';
+import { PreviewProvider, CustomizationSettings } from '@/components/preview-context';
+import PageControls from '@/components/preview-customization-panel';
 
 // Create a dedicated context for managing tile expansion
 interface PreviewTileExpansionContextType {

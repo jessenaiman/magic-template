@@ -1,167 +1,137 @@
-## Project Plan: Hybrid Customization System
+# **AI Agent Task: Finalize Component Showcase Architecture**
 
-### Current State Analysis
-**GOOD**: We already have a functional `PreviewTile` component with integrated `preview-controls` system that provides:
-- Individual component customization via context
-- Play/pause/text controls
-- Code examples with syntax highlighting
-- Customization panels with sliders, switches, inputs
+This document provides a precise, step-by-step guide to refactor the entire component showcase within the /app/design/ directory. You will align all legacy files with the established modern architecture, which uses nested layouts and a data-driven approach.
 
-**NEEDS IMPROVEMENT**:
-1. **Page-level controls**: Use animate-ui's `ManagementBar` for sticky global controls (play all, pause all, reset all)
-2. **Component text editing**: Button text like "Press me" should be editable and affect the actual button content, not just labels
-3. **Tile expansion**: Replace downward expansion with responsive row-filling expansion
-4. **Base category options**: Add predefined option sets for text, button, card, gallery, and animation components
-5. **Remove duplications**: Clean up unused legacy Preview components and Chakra dependencies
+### **Architectural Goals**
 
-**KEEP**: Use existing preview-controls structure, shadcn/ui tabs and navigation, PreviewTile architecture
+1. **Category-Wide Controls:** Implement a DesignPageHero UI element that provides base customization controls for all components within a specific category (e.g., all buttons share font size, border-radius controls).  
+2. **Unified Design Layout:** The root /design/layout.tsx is responsible for the overall page structure. It provides the responsive grid for preview tiles and exposes a "slot" for the DesignPageHero.  
+3. **Nested Category Layouts:** Each category directory (e.g., /design/buttons/) will have its own layout.tsx. This file's sole purpose is to configure and provide the category-specific controls that will be displayed in the DesignPageHero.  
+4. **Inline Tile Customization:** Individual page.tsx files will contain the PreviewTile components. These tiles can add further, specific customizations on top of the category-level controls.
 
----
+### **Core Principles (Non-Negotiable)**
 
-- The sample components are at /components/common/Preview .
-- The demo code is at /components/reactbits-demo
-- Our target code is at components/preview-controls (rename it to preview and follow lower-case-dash syntax)
+* **No Architectural Changes:** You must strictly adhere to the architecture defined in the goals above. Do not introduce new design patterns, contexts, or layouts.  
+* **Adhere to the Gold Standard:** The refactored app/design/buttons/html-css/page.tsx and the layouts within /app/design/ and /app/design/buttons/ are the "gold standard" examples. Your output must match their structure precisely.  
+* **Data-Driven Pattern:** All component previews must be rendered using data-driven configuration objects passed as props to the \<PreviewTile /\> component.  
+* **Precision and Accuracy:** Each file modification must be exact. Do not add or remove functionality beyond what is specified.
 
-### 1. Guiding Principles
-- **KISS**: Keep the customization logic as simple as possible.
-- **DRY**: Avoid duplication by extracting common options per component category.
-- **Extensible**: Allow each component to extend or override base options as needed.
-- **Accurate UX**: Ensure the UI only exposes relevant controls for each component.
+### **Detailed Action Plan**
 
----
+#### **Step 1: Delete Obsolete Files and Directories**
+Complete
 
-### 2. Hybrid Customization Model
+#### **Step 2: Create Category-Specific Layouts**
 
-#### a. Base Options by Category
+For each category directory within app/design/ that does *not* already have one, create a new layout.tsx file. Its purpose is to provide the shared context for that category.
 
-**Component Categories and Base Options**
+* **File Path:** e.g., app/design/effects/layout.tsx, app/design/text/layout.tsx, etc.  
+* **Content:**  
+  import { PreviewSurface } from '@/components/preview-surface';  
+  import { DesignPageProvider } from '@/components/design-page-context';
 
-- **Text Components**
-	- text input
-	- font family
-	- font size
-	- font weight
-	- text color
-	- background color
-	- alignment
-	- letter spacing
-	- line height
+  export default function CategoryLayout({  
+    children,  
+  }: {  
+    children: React.ReactNode;  
+  }) {  
+    return (  
+      \<DesignPageProvider\>  
+        {children}  
+      \</DesignPageProvider\>  
+    );  
+  }
 
-- **Button Components**
-	- button text
-	- onClick handler
-	- onHover style/handler
-	- text color
-	- background color
-	- border radius
-	- font size
-	- font weight
-	- icon (optional)
-	- shadow
+#### **Step 3: Refactor All Showcase Pages**
 
-- **Card/Grid Components**
-	- background color
-	- border radius
-	- shadow
-	- padding
-	- gap/spacing
-	- item alignment
-	- responsive columns/rows
+For every page.tsx file within the app/design/ subdirectories (e.g., app/design/backgrounds/magicui/page.tsx), you must replace its entire content by precisely following the "gold standard" pattern.
 
-- **Gallery/Media Components**
-	- image source(s)
-	- aspect ratio
-	- border radius
-	- overlay color
-	- transition/animation
-	- navigation controls
+**The "Gold Standard" Pattern (app/design/buttons/html-css/page.tsx):**
 
-- **Animation/Effect Components**
-	- animation type
-	- duration
-	- delay
-	- easing
-	- trigger (hover, scroll, etc.)
+'use client';
 
----
+import \* as React from 'react';  
+import { useDesignPage } from '@/components/design-page-context';  
+import { PreviewTile, PreviewTileProps } from '@/components/preview-tile';  
+import { FieldConfig } from '@/components/preview-controls/preview-customization-panel';  
+// Import the actual components being demonstrated...
 
-#### b. Inheritance & Composition Diagrams
+// 1\. Create a PageConfigurator component  
+function PageConfigurator() {  
+  const { setTitle, setDescription, setFields } \= useDesignPage();
 
-```mermaid
-flowchart TD
-		BaseTextOptions[BaseTextOptions] --> TextComponent1[TextComponentA]
-		BaseTextOptions --> TextComponent2[TextComponentB]
-		BaseButtonOptions[BaseButtonOptions] --> ButtonComponent1[ButtonA]
-		BaseButtonOptions --> ButtonComponent2[ButtonB]
-		BaseCardOptions[BaseCardOptions] --> CardComponent1[CardA]
-		BaseCardOptions --> CardComponent2[CardB]
-		BaseGalleryOptions[BaseGalleryOptions] --> GalleryComponent1[GalleryA]
-		BaseGalleryOptions --> GalleryComponent2[GalleryB]
-		BaseAnimationOptions[BaseAnimationOptions] --> AnimationComponent1[AnimA]
-		BaseAnimationOptions --> AnimationComponent2[AnimB]
+  React.useEffect(() \=\> {  
+    // 2\. Set the title and description for the hero  
+    setTitle('...'); // e.g., 'Magic UI Backgrounds'  
+    setDescription('...'); // e.g., 'A collection of animated backgrounds from Magic UI.'  
+      
+    // 3\. Define the shared controls for all tiles on this page  
+    const fields: FieldConfig\[\] \= \[  
+        // ... field configurations common to this category  
+    \];  
+    setFields(fields);  
+  }, \[setTitle, setDescription, setFields\]);
 
-		subgraph CustomizeWrapper
-			TextComponent1
-			ButtonComponent1
-			CardComponent1
-			GalleryComponent1
-			AnimationComponent1
-		end
-```
+  return null; // This component renders no UI itself.  
+}
 
-```mermaid
-flowchart TD
-		BaseOptions -.->|merge/extend| ComponentDemo
-		ComponentDemo -->|uses| CustomizeWrapper
-		CustomizeWrapper -->|renders| CustomControls
-		CustomizeWrapper -->|renders| BaseControls
-```
+// 4\. Define a configuration object for EACH example  
+const exampleOneConfig: PreviewTileProps \= {  
+  title: "...",  
+  description: "...",  
+  componentName: "...",  
+  code: \`...\`,  
+  initialCustomization: { /\* ... \*/ },  
+  customFields: \[ /\* ... optional fields specific to THIS tile \*/ \],  
+  children: (customization) \=\> \<div /\>, // The live component preview  
+};
 
-#### b. Per-Component Extensions
-- Each component can add or override options using a local config or by composing with a `Customize`-like wrapper.
-- Demo pages use the base options and add custom controls as needed.
+// 5\. The default export renders the configurator and the data-driven tiles  
+export default function Page() {  
+  return (  
+    \<\>  
+      \<PageConfigurator /\>  
+        
+      \<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"\>  
+        \<PreviewTile {...exampleOneConfig} /\>  
+        {/\* ... more tiles ... \*/}  
+      \</div\>  
+    \</\>  
+  );  
+}
 
-#### c. Implementation Sketch
-- Define a base field config per category (e.g., `baseTextOptions`, `baseButtonOptions`).
-- Allow each demo/component to merge these with its own custom options.
-- Use generic controls (`PreviewSlider`, `PreviewSwitch`, etc.) as building blocks.
-- Use a `Customize` wrapper for additional, ad-hoc controls in demos.
+### **Task Checklist**
 
----
+#### **Phase 1: Layout Standardization**
 
-### 3. Example Workflow
-1. **Define base options** for each category in a config file.
-2. **Component demo** imports base options and extends with custom fields.
-3. **Customization panel** renders merged options, only showing relevant controls.
-4. **Prop table** and documentation are generated from the merged config.
+* \[ \] 1\. Create app/design/backgrounds/layout.tsx  
+* \[ \] 2\. Create app/design/effects/layout.tsx  
+* \[ \] 3\. Create app/design/page-transitions/layout.tsx  
+* \[ \] 4\. Create app/design/responsive-design/layout.tsx  
+* \[ \] 5\. Create app/design/text/layout.tsx
 
----
+#### **Phase 2: Page Refactoring (Follow Gold Standard)**
 
-### Implementation Steps (Phase 1: Text Components Page)
-
-1. **Create page-level management bar** using animate-ui ManagementBar pattern:
-   - Sticky controls: Play All, Pause All, Reset All animations
-   - Global text input that affects all text components on the page
-   - Global theme toggle (dark/light)
-
-2. **Enhance text component customization**:
-   - Add base text options (fontSize, fontWeight, textColor, backgroundColor)
-   - Make text input actually change the displayed text content
-   - Add component-specific options on top of base options
-
-3. **Improve tile expansion**:
-   - Replace modal/downward expansion with inline row-filling
-   - Use CSS Grid to expand tile across available columns
-   - Maintain responsive behavior
-
-4. **Clean up legacy code**:
-   - Remove unused Chakra dependencies from reactbits-demo components
-   - Mark deprecated components in common/Preview as deprecated
-   - Standardize on shadcn/ui components
-
----
-
-#### Notes
-- The `Customize` component from demo apps is a good pattern for ad-hoc controls.
-- Avoid forcing all components into a single context; use local state where appropriate.
-- Prioritize UX: only show controls that make sense for the current component.
+* \[ \] 6\. Refactor app/design/backgrounds/animate-ui/page.tsx  
+* \[ \] 7\. Refactor app/design/backgrounds/html-css/page.tsx  
+* \[ \] 8\. Refactor app/design/backgrounds/magicui/page.tsx  
+* \[ \] 9\. Refactor app/design/backgrounds/reactbits/page.tsx  
+* \[ \] 10\. Refactor app/design/backgrounds/tailwind/page.tsx  
+* \[ \] 11\. Refactor app/design/buttons/animate-css/page.tsx  
+* \[ \] 12\. Refactor app/design/buttons/magic/page.tsx  
+* \[ \] 13\. Refactor app/design/buttons/shadcn/page.tsx  
+* \[ \] 14\. Refactor app/design/buttons/tailwind/page.tsx  
+* \[ \] 15\. Refactor app/design/effects/magicui/page.tsx  
+* \[ \] 16\. Refactor app/design/effects/tailwind/page.tsx  
+* \[ \] 17\. Refactor app/design/page-transitions/html-css/page.tsx  
+* \[ \] 18\. Refactor app/design/page-transitions/magicui/page.tsx  
+* \[ \] 19\. Refactor app/design/page-transitions/nextjs/page.tsx  
+* \[ \] 20\. Refactor app/design/page-transitions/tailwind/page.tsx  
+* \[ \] 21\. Refactor app/design/responsive-design/html-css/page.tsx  
+* \[ \] 22\. Refactor app/design/responsive-design/magicui/page.tsx  
+* \[ \] 23\. Refactor app/design/responsive-design/nextjs/page.tsx  
+* \[ \] 24\. Refactor app/design/text/html-css/page.tsx  
+* \[ \] 25\. Refactor app/design/text/magicui/page.tsx  
+* \[ \] 26\. Refactor app/design/text/reactbits/page.tsx  
+* \[ \] 27\. Refactor app/design/text/shadcn/page.tsx  
+* \[ \] 28\. Refactor app/design/text/tailwind/page.tsx
