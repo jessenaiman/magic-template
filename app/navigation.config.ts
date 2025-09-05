@@ -29,7 +29,6 @@ export const mainNavigation: NavigationSection[] = [
           { label: "Animate UI", href: "/design/backgrounds/animate-ui" },
           { label: "HTML CSS", href: "/design/backgrounds/html-css" },
           { label: "MagicUI", href: "/design/backgrounds/magicui" },
-          { label: "ReactBits", href: "/design/backgrounds/reactbits" },
           { label: "Tailwind", href: "/design/backgrounds/tailwind" },
         ]
       },
@@ -93,7 +92,6 @@ export const mainNavigation: NavigationSection[] = [
           { label: "Overview", href: "/design/text" },
           { label: "HTML CSS", href: "/design/text/html-css" },
           { label: "MagicUI", href: "/design/text/magicui" },
-          { label: "ReactBits", href: "/design/text/reactbits" },
           { label: "Shadcn", href: "/design/text/shadcn" },
           { label: "Tailwind", href: "/design/text/tailwind" }
         ]

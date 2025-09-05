@@ -14,7 +14,6 @@ export default function TextLayout({ children }: LayoutProps) {
       { label: "Tailwind", value: "tailwind" },
       { label: "Shadcn", value: "shadcn" },
       { label: "MagicUI", value: "magicui" },
-      { label: "ReactBits", value: "reactbits" }
     ],
     basePath: "/design/text"
   };

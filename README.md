@@ -105,6 +105,20 @@ Want to run this project on your own machine? Follow these simple steps.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## A Note on Third-Party Components
+
+This project proudly uses components from the following open-source libraries:
+
+-   [shadcn/ui](https://ui.shadcn.com/)
+-   [Magic UI](https://magicui.design/)
+-   [Animate UI](https://animate-ui.vercel.app/)
+
+These components are distributed under the **MIT License**, which grants you the freedom to use, modify, and distribute the code.
+
+Modify these at your own risk, they all depend on each other and will break in unmagical ways if they are altered in any way.
+
+You are encouraged to adapt the components to meet the needs of your own projects. The only legal requirement is that the original copyright notice and license from these libraries must be preserved if you copy, modify, or distribute their source code. Misrepresenting the origin of the code or removing the required license attribution is prohibited.
+
 ---
 
 ## 📜 License

@@ -34,7 +34,6 @@ export default function BackgroundsLayout({ children }: LayoutProps) {
       { label: "HTML/CSS", value: "html-css" },
       { label: "Tailwind", value: "tailwind" },
       { label: "MagicUI", value: "magicui" },
-      { label: "ReactBits", value: "reactbits" },
       { label: "Animate UI", value: "animate-ui" }
     ],
     basePath: "/design/backgrounds"
