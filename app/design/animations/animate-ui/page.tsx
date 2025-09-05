@@ -1,11 +1,17 @@
-
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
 import { Copy } from "lucide-react";
 import { useState } from "react";
 
 // Copy Button
-const CopyButton = ({ text = "Hello World", children, className = "", ...props }) => {
+// Types for props
+type CopyButtonProps = {
+  text?: string;
+  children?: React.ReactNode;
+  className?: string;
+  [key: string]: any;
+};
+const CopyButton = ({ text = "Hello World", children, className = "", ...props }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = async () => {
     await navigator.clipboard.writeText(text);
@@ -30,7 +36,13 @@ const CopyButton = ({ text = "Hello World", children, className = "", ...props }
 };
 
 // Flip Button
-const FlipButton = ({ children, className = "", ...props }) => (
+// Types for props
+type FlipButtonProps = {
+  children?: React.ReactNode;
+  className?: string;
+  [key: string]: any;
+};
+const FlipButton = ({ children, className = "", ...props }: FlipButtonProps) => (
   <button
     className={`group relative overflow-hidden rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-all duration-500 hover:bg-primary/90 ${className}`}
     {...props}
@@ -42,7 +54,14 @@ const FlipButton = ({ children, className = "", ...props }) => (
 );
 
 // GitHub Stars Button
-const GitHubStarsButton = ({ repo = "owner/repo", stars = 1234, className = "", ...props }) => (
+// Types for props
+type GitHubStarsButtonProps = {
+  repo?: string;
+  stars?: number;
+  className?: string;
+  [key: string]: any;
+};
+const GitHubStarsButton = ({ repo = "owner/repo", stars = 1234, className = "", ...props }: GitHubStarsButtonProps) => (
   <button
     className={`flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 ${className}`}
     {...props}
@@ -57,7 +76,13 @@ const GitHubStarsButton = ({ repo = "owner/repo", stars = 1234, className = "", 
 );
 
 // Icon Button
-const IconButton = ({ icon: Icon = Copy, className = "", ...props }) => {
+// Types for props
+type IconButtonProps = {
+  icon?: React.ElementType;
+  className?: string;
+  [key: string]: any;
+};
+const IconButton = ({ icon: Icon = Copy, className = "", ...props }: IconButtonProps) => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     setClicked(true);
@@ -78,3 +103,91 @@ const IconButton = ({ icon: Icon = Copy, className = "", ...props }) => {
 };
 
 // Ripple Button
+// Types for props and ripple state
+type Ripple = { x: number; y: number; id: number };
+type RippleButtonProps = {
+  children?: React.ReactNode;
+  className?: string;
+  [key: string]: any;
+};
+const RippleButton = ({ children, className = "", ...props }: RippleButtonProps) => {
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const newRipple = { x, y, id: Date.now() };
+    setRipples(prev => [...prev, newRipple]);
+    setTimeout(() => {
+      setRipples(prev => prev.filter(r => r.id !== newRipple.id));
+    }, 600);
+  };
+  return (
+    <button
+      onClick={createRipple}
+      className={`relative overflow-hidden rounded-lg border-2 border-primary bg-background px-6 py-3 text-primary transition-all duration-300 hover:bg-primary/5 ${className}`}
+      {...props}
+    >
+      <span className="relative z-10">{children}</span>
+      {ripples.map(ripple => (
+        <span
+          key={ripple.id}
+          className="absolute animate-ping rounded-full bg-primary/20"
+          style={{
+            left: ripple.x - 10,
+            top: ripple.y - 10,
+            width: 20,
+            height: 20,
+          }}
+        />
+      ))}
+    </button>
+  );
+};
+
+export default function Page() {
+  return (
+    <div className="space-y-8">
+      <PreviewTile
+        title="Copy Button"
+        description="Copy to clipboard with feedback"
+        componentName="copy-button"
+        code=""
+      >
+        {() => <CopyButton text="Hello from Animate UI!">Copy Text</CopyButton>}
+      </PreviewTile>
+      <PreviewTile
+        title="Flip Button"
+        description="3D flip animation on hover"
+        componentName="flip-button"
+        code=""
+      >
+        {() => <FlipButton>Flip Me</FlipButton>}
+      </PreviewTile>
+      <PreviewTile
+        title="GitHub Stars Button"
+        description="GitHub-style star button"
+        componentName="github-stars-button"
+        code=""
+      >
+        {() => <GitHubStarsButton repo="animate-ui/components" stars={2847} />}
+      </PreviewTile>
+      <PreviewTile
+        title="Icon Button"
+        description="Animated icon with ripple effect"
+        componentName="icon-button"
+        code=""
+      >
+        {() => <IconButton icon={Copy} />}
+      </PreviewTile>
+      <PreviewTile
+        title="Ripple Button"
+        description="Click ripple animation"
+        componentName="ripple-button"
+        code=""
+      >
+        {() => <RippleButton>Click for Ripple</RippleButton>}
+      </PreviewTile>
+    </div>
+  );
+}
