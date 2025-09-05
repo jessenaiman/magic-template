@@ -33,27 +33,16 @@ export function PreviewTile({
   children,
   className,
 }: PreviewTileProps) {
-  const { state: globalState, updateCustomization } = usePreviewContext();
   const { expandedTile, setExpandedTile } = usePreviewTileExpansion();
-
   const [showCode, setShowCode] = React.useState(false);
   const [showControls, setShowControls] = React.useState(false);
 
-  // Store initial customization in a ref to avoid stale closures
-  const initialCustomizationRef = React.useRef(initialCustomization);
-
-  // Merge global and component customization for rendering
-  const customization = React.useMemo(() => {
-    return {
-      ...globalState.customization,
-      ...initialCustomizationRef.current
-    };
-  }, [globalState.customization]);
-
-  // Reset customization to initial values
-  const handleReset = React.useCallback(() => {
-    updateCustomization(initialCustomizationRef.current);
-  }, [updateCustomization]);
+  // Bind to global PreviewContext so page-wide controls affect tiles
+  const { state } = usePreviewContext();
+  const customization = React.useMemo<Partial<CustomizationSettings>>(
+    () => ({ ...state.customization, ...initialCustomization }),
+    [state.customization, initialCustomization]
+  );
 
   const handleExpand = () => {
     setExpandedTile(current => (current === title ? null : title));
@@ -62,41 +51,54 @@ export function PreviewTile({
 
   const handleShowCode = () => {
     setShowCode(current => !current);
-    setShowControls(false);
     if (!expandedTile) {
       setExpandedTile(title);
     }
   };
-
-  const handleShowControls = () => {
-    setShowControls(current => !current);
-    setShowCode(false);
+  const handleToggleControls = () => {
+    if (expandedTile !== title) setExpandedTile(title);
+    setShowControls(c => !c);
+    // If opening controls, don't force code panel open/closed
   };
 
-  const handleLocalCustomization = (patch: Partial<CustomizationSettings>) => {
-  };
-
-  // The child component receives a merge of global and local state
-  const mergedCustomization = { ...globalState.customization, ...initialCustomization };
-
+  // The child component receives the effective customization state
   return (
-    <div className={cn("group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden", className)}>
+      <div
+        className={cn(
+          "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300",
+          expandedTile === title
+            ? "z-20 col-span-full md:col-span-3 lg:col-span-3 scale-[1.03] ring-2 ring-primary"
+            : "",
+          className
+        )}
+        style={
+          expandedTile === title
+            ? { gridColumn: "1 / -1", position: "relative" }
+            : undefined
+        }
+        onClick={() => {
+          if (expandedTile !== title) setExpandedTile(title);
+        }}
+      >
       {/* Icon Bar */}
       <div className="absolute top-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
         <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
-                onClick={handleShowControls}
-              >
-                <Settings className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Customize</TooltipContent>
-          </Tooltip>
+          {/* Per-tile customization toggle */}
+          {customFields.length > 0 && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
+                  onClick={handleToggleControls}
+                >
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Customize</TooltipContent>
+            </Tooltip>
+          )}
 
           <Tooltip>
             <TooltipTrigger asChild>
@@ -118,7 +120,11 @@ export function PreviewTile({
                 size="icon"
                 variant="ghost"
                 className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
-                onClick={() => {}}
+                onClick={() => {
+                  if (navigator?.clipboard) {
+                    navigator.clipboard.writeText(code);
+                  }
+                }}
               >
                 <Share className="h-4 w-4" />
               </Button>
@@ -132,7 +138,10 @@ export function PreviewTile({
       <div className="aspect-[16/9] relative">
         <div className="absolute inset-0 p-6">
           <div className="h-full rounded-md border bg-background flex items-center justify-center overflow-hidden">
-            {children(customization)}
+            {typeof children === 'function' 
+              ? children(customization)
+              : <div className="text-red-500">Error: children prop must be a function</div>
+            }
           </div>
         </div>
       </div>
@@ -149,9 +158,9 @@ export function PreviewTile({
         </div>
       </div>
 
-      {/* Customization Panel */}
+      {/* Tile-level Customization Panel (expanded AND toggled) */}
       <AnimatePresence>
-        {showControls && customFields.length > 0 && (
+        {expandedTile === title && showControls && customFields.length > 0 && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -165,11 +174,6 @@ export function PreviewTile({
                 title="Component Controls"
                 className="border-none shadow-none p-0"
               />
-              <div className="mt-4 flex justify-end">
-                <Button size="sm" variant="outline" onClick={handleReset}>
-                  Reset
-                </Button>
-              </div>
             </div>
           </motion.div>
         )}
@@ -177,7 +181,7 @@ export function PreviewTile({
 
       {/* Code Panel */}
       <AnimatePresence>
-        {showCode && (
+        {(showCode || expandedTile === title) && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -191,17 +195,14 @@ export function PreviewTile({
                   {componentName}.tsx
                 </span>
               </div>
-              <pre className="rounded-lg bg-muted overflow-x-auto p-4">
-                <code className="text-sm">
-                  {code.replace(/\{([^}]+)\}/g, (_, key) => {
-                    return customization[key] || key;
-                  })}
-                </code>
-              </pre>
+              <CodeHighlighter
+                language="tsx"
+                code={code.replace(/\{([^}]+)\}/g, (_, key) => customization[key] || key)}
+              />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+      </div>
   );
 }

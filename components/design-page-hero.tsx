@@ -9,11 +9,16 @@ import { Settings, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+// Import with dynamic to prevent hydration errors
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import { DesignManagementBar } from './design-management-bar';
 
 export function DesignPageHero() {
   const { title, description, fields = [] } = useDesignPage();
-  const { state } = usePreviewContext();
+  const { state, updateCustomization, setPlaying, reset } = usePreviewContext();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const pathname = usePathname();
 
   // Filter out fields that should be hidden
   const visibleFields = fields.filter(field => !field.hidden);
@@ -95,6 +100,16 @@ export function DesignPageHero() {
       >
         <div className="mx-auto max-w-7xl">
           <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
+          {/* Customizable Management Bar */}
+          <div className="mt-4">
+            <DesignManagementBar 
+              pathname={pathname} 
+              updateCustomization={updateCustomization}
+              setPlaying={setPlaying}
+              playing={state.playing}
+              reset={reset}
+            />
+          </div>
         </div>
       </div>
     </div>

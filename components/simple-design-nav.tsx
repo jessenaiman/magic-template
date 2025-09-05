@@ -8,7 +8,14 @@ import { cn } from "@/lib/utils";
 export function SimpleDesignNav() {
   const pathname = usePathname();
   const categories = getDesignNavigation();
-
+  
+  // Determine the current category based on pathname
+  const getCurrentCategory = () => {
+    const pathParts = pathname.split('/');
+    return pathParts.length >= 3 ? `/design/${pathParts[2]}` : '';
+  };
+  
+  const currentCategory = getCurrentCategory();
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
@@ -31,7 +38,8 @@ export function SimpleDesignNav() {
                 <div className="text-xs text-muted-foreground">{cat.description}</div>
               )}
             </Link>
-            {cat.children && cat.children.length > 0 && (
+            {/* Only expand children for the current category */}
+            {cat.children && cat.children.length > 0 && isActive(cat.href) && (
               <ul className="mt-2 ms-3 space-y-1">
                 {cat.children.map((child) => (
                   <li key={child.href}>

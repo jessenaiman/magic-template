@@ -9,7 +9,7 @@ import { LoadingIndicator } from "@/components/loading-indicator";
 import { SimpleDesignNav } from "@/components/simple-design-nav";
 import { DesignPageProvider } from "@/components/design-page-context";
 import { PreviewProvider } from "@/components/preview-context";
-import { DesignPageHero } from '@/components/design-page-hero';
+import { SimpleNavbar } from '@/components/simple-navbar';
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -34,12 +34,12 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
     <DesignPageProvider>
       <PreviewProvider>
         <div className="container mx-auto max-w-7xl p-4">
+          <SimpleNavbar className="mb-6" />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <aside className="md:col-span-1">
               <SimpleDesignNav />
             </aside>
             <main className="md:col-span-3 space-y-8">
-              <DesignPageHero />
               <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-6rem)]" />}>
                 <PageTransition>
                   {children}
