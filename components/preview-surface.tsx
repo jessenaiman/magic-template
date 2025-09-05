@@ -1,3 +1,4 @@
+"use client";
 // components/preview-controls/preview-surface.tsx
 
 import * as React from 'react';

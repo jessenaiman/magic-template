@@ -157,6 +157,13 @@ export function PreviewCustomizationPanel({
 }: PreviewCustomizationPanelProps) {
   const { state, updateCustomization, reset } = usePreviewContext();
   const [collapsed, setCollapsed] = React.useState(defaultCollapsed);
+  // Local draft state for pending changes
+  const [draft, setDraft] = React.useState<CustomizationSettings>(state.customization);
+
+  // Sync draft with context when panel opens or context changes
+  React.useEffect(() => {
+    setDraft(state.customization);
+  }, [state.customization, collapsed]);
 
   // Build effective field list
   const effectiveFields = React.useMemo(() => {
@@ -176,14 +183,18 @@ export function PreviewCustomizationPanel({
   const handleFieldChange = (id: string, rawValue: any) => {
     // Special handling for switch fontWeight
     if (id === 'fontWeight') {
-      updateCustomization({ fontWeight: rawValue ? 600 : 400 });
+      setDraft(d => ({ ...d, fontWeight: rawValue ? 600 : 400 }));
       return;
     }
-    updateCustomization({ [id]: rawValue } as Partial<CustomizationSettings>);
+    setDraft(d => ({ ...d, [id]: rawValue }));
+  };
+
+  const handleSave = () => {
+    updateCustomization(draft);
   };
 
   const visibleFields = effectiveFields.filter(f => {
-    if (typeof f.hidden === 'function') return !f.hidden(state.customization);
+    if (typeof f.hidden === 'function') return !f.hidden(draft);
     return !f.hidden;
   });
 
@@ -216,7 +227,7 @@ export function PreviewCustomizationPanel({
             <FieldRenderer
               key={field.id}
               field={field}
-              settings={state.customization}
+              settings={draft}
               onChange={handleFieldChange}
             />
           ))}
@@ -224,6 +235,16 @@ export function PreviewCustomizationPanel({
           {(allowReset || footer || actions) && (
             <div className="pt-4 mt-2 border-t flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleSave}
+                  className={cn(
+                    'text-xs rounded-md border px-2.5 py-1.5 font-medium',
+                    'bg-primary text-primary-foreground hover:bg-primary/80 transition-colors'
+                  )}
+                >
+                  Save
+                </button>
                 {allowReset && (
                   <button
                     type="button"
