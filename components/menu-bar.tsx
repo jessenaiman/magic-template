@@ -58,6 +58,12 @@ const menuItems: MenuItem[] = [
     href: "/design/typography",
     description: "Typography and text effects"
   },
+  {
+    icon: "activity",
+    label: "Test Report",
+    href: "/test-report",
+    description: "Comprehensive test results and metrics"
+  },
 ]
 
 function MenuLink({ item, isActive }: { item: MenuItem; isActive: boolean }) {

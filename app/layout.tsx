@@ -10,6 +10,8 @@ import { cookies } from "next/headers"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import PageTransition from '@/components/page-transition';
 import { LoadingIndicator } from '@/components/loading-indicator';
+import { MenuBar } from '@/components/menu-bar';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -45,8 +47,11 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <TooltipProvider>
             {children}
             <Footer />
+            <MenuBar />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

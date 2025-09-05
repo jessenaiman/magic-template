@@ -1,6 +1,6 @@
 "use client"
 
-import { LucideProps, Home, Palette, LayoutDashboard, Sparkles, Repeat2, Type, Square } from "lucide-react"
+import { LucideProps, Home, Palette, LayoutDashboard, Sparkles, Repeat2, Type, Square, Activity } from "lucide-react"
 
 export type Icon = LucideProps
 
@@ -12,4 +12,5 @@ export const Icons = {
   transition: Repeat2,
   text: Type,
   button: Square,
+  activity: Activity,
 }

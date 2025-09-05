@@ -1,4 +1,4 @@
-import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map } from "lucide-react";
+import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map, Activity } from "lucide-react";
 
 export type NavItem = {
   label: string;
@@ -120,6 +120,17 @@ export const mainNavigation: NavigationSection[] = [
         href: "#",
         icon: Map,
         description: "External AI and machine learning workshop"
+      }
+    ]
+  },
+  {
+    label: "Testing",
+    items: [
+      {
+        label: "Test Report",
+        href: "/test-report",
+        icon: Activity,
+        description: "Comprehensive test results and metrics dashboard"
       }
     ]
   }
