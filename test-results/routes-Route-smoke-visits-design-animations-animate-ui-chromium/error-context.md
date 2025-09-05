@@ -1,0 +1,216 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [active]:
+    - generic [ref=e6] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+        - img [ref=e8] [cursor=pointer]
+      - generic [ref=e11] [cursor=pointer]:
+        - button "Open issues overlay" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13] [cursor=pointer]:
+            - generic [ref=e14] [cursor=pointer]: "1"
+            - generic [ref=e15] [cursor=pointer]: "2"
+          - generic [ref=e16] [cursor=pointer]:
+            - text: Issue
+            - generic [ref=e17] [cursor=pointer]: s
+        - button "Collapse issues badge" [ref=e18] [cursor=pointer]:
+          - img [ref=e19] [cursor=pointer]
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - navigation [ref=e26]:
+            - button "previous" [disabled] [ref=e27]:
+              - img "previous" [ref=e28]
+            - generic [ref=e30]:
+              - generic [ref=e31]: 1/
+              - generic [ref=e32]: "2"
+            - button "next" [ref=e33] [cursor=pointer]:
+              - img "next" [ref=e34] [cursor=pointer]
+          - img
+        - generic [ref=e36]:
+          - link "Next.js 15.3.5 (stale) Turbopack" [ref=e37] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+            - img [ref=e38] [cursor=pointer]
+            - generic "There is a newer version (15.5.2) available, upgrade recommended!" [ref=e40] [cursor=pointer]: Next.js 15.3.5 (stale)
+            - generic [ref=e41] [cursor=pointer]: Turbopack
+          - img
+      - generic [ref=e42]:
+        - dialog "Runtime Error" [ref=e43]:
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - generic [ref=e48]:
+                  - generic [ref=e50]: Runtime Error
+                  - generic [ref=e51]:
+                    - button "Copy Stack Trace" [ref=e52] [cursor=pointer]:
+                      - img [ref=e53] [cursor=pointer]
+                    - link "Go to related documentation" [ref=e55] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/messages/react-hydration-error
+                      - img [ref=e56] [cursor=pointer]
+                    - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e58] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                      - img [ref=e59] [cursor=pointer]
+                - paragraph [ref=e68]: "Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:"
+              - generic [ref=e69]:
+                - generic [ref=e70]:
+                  - paragraph [ref=e71]: "- A server/client branch `if (typeof window !== 'undefined')`. - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called. - Date formatting in a user's locale which doesn't match the server. - External changing data without sending a snapshot of it along with the HTML. - Invalid HTML tag nesting. It can also happen if the client has a browser extension installed which messes with the HTML before React loaded."
+                  - paragraph [ref=e72]:
+                    - text: "See more info here:"
+                    - link "https://nextjs.org/docs/messages/react-hydration-error" [ref=e73] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/messages/react-hydration-error
+                - generic [ref=e74]:
+                  - button [ref=e75] [cursor=pointer]:
+                    - img [ref=e76] [cursor=pointer]
+                  - code [ref=e79]:
+                    - generic [ref=e80]: ...
+                    - generic [ref=e81]: <script>
+                    - generic [ref=e82]: <script>
+                    - generic [ref=e83]: <script>
+                    - generic [ref=e84]: <script>
+                    - generic [ref=e85]: <script>
+                    - generic [ref=e86]: <script>
+                    - generic [ref=e87]: <DesignLayout>
+                    - generic [ref=e88]: <DesignPageProvider>
+                    - generic [ref=e89]: <PreviewProvider>
+                    - generic [ref=e90]: <div className="container ...">
+                    - generic [ref=e91]: <SimpleNavbar>
+                    - generic [ref=e92]: <div className="grid grid-...">
+                    - generic [ref=e93]: <aside className="md:col-span-1">
+                    - generic [ref=e94]: <SimpleDesignNav>
+                    - generic [ref=e95]: <nav className="space-y-4">
+                    - generic [ref=e96]: <div>
+                    - generic [ref=e97]: <ul className="space-y-3">
+                    - generic [ref=e98]: <li>
+                    - generic [ref=e99]: <li>
+                    - generic [ref=e100]: <li>
+                    - generic [ref=e101]: <li>
+                    - generic [ref=e102]: <li>
+                    - generic [ref=e103]: <LinkComponent href="/design/tr..." className="block roun...">
+                    - generic [ref=e104]: <a
+                    - generic [ref=e105]: className="block rounded-md px-3 py-2 border hover:bg-accent hover:text-accent-foreground"
+                    - generic [ref=e106]: "ref={function}"
+                    - generic [ref=e107]: "onClick={function onClick}"
+                    - generic [ref=e108]: "onMouseEnter={function onMouseEnter}"
+                    - generic [ref=e109]: "onTouchStart={function onTouchStart}"
+                    - generic [ref=e111]:
+                      - generic [ref=e112]: +
+                      - text: href="/design/transitions"
+                    - generic [ref=e114]:
+                      - generic [ref=e115]: "-"
+                      - text: href="/design/page-transitions"
+                    - generic [ref=e116]: ">"
+                    - generic [ref=e117]: <div className="font-medium">
+                    - generic [ref=e119]:
+                      - generic [ref=e120]: +
+                      - text: Transitions
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: "-"
+                      - text: Page Transitions
+                    - generic [ref=e124]: ...
+                    - generic [ref=e125]: ...
+                    - generic [ref=e126]: ...
+                    - generic [ref=e127]: ...
+                - generic [ref=e128]:
+                  - paragraph [ref=e130]:
+                    - img [ref=e132]
+                    - generic [ref=e135]: components/simple-design-nav.tsx (36:15) @ <unknown>
+                    - button "Open in editor" [ref=e136] [cursor=pointer]:
+                      - img [ref=e138] [cursor=pointer]
+                  - generic [ref=e140]:
+                    - generic [ref=e141]:
+                      - generic [ref=e143]: 34 |
+                      - generic [ref=e144]: ")}"
+                    - generic [ref=e145]:
+                      - generic [ref=e147]: 35 |
+                      - generic [ref=e149]: ">"
+                    - generic [ref=e150]:
+                      - generic [ref=e151]: ">"
+                      - generic [ref=e152]: 36 |
+                      - generic [ref=e154]: <
+                      - generic [ref=e155]: div
+                      - generic [ref=e156]: className
+                      - generic [ref=e157]: =
+                      - generic [ref=e158]: "\"font-medium\""
+                      - generic [ref=e159]: ">"
+                      - generic [ref=e160]: "{cat"
+                      - generic [ref=e161]: .
+                      - generic [ref=e162]: "label}"
+                      - generic [ref=e163]: <
+                      - generic [ref=e164]: /
+                      - generic [ref=e165]: div
+                      - generic [ref=e166]: ">"
+                    - generic [ref=e167]:
+                      - generic [ref=e169]: "|"
+                      - generic [ref=e171]: ^
+                    - generic [ref=e172]:
+                      - generic [ref=e174]: 37 |
+                      - generic [ref=e175]: "{cat"
+                      - generic [ref=e176]: .
+                      - generic [ref=e177]: description
+                      - generic [ref=e178]: "&&"
+                      - generic [ref=e179]: (
+                    - generic [ref=e180]:
+                      - generic [ref=e182]: 38 |
+                      - generic [ref=e184]: <
+                      - generic [ref=e185]: div
+                      - generic [ref=e186]: className
+                      - generic [ref=e187]: =
+                      - generic [ref=e188]: "\"text-xs text-muted-foreground\""
+                      - generic [ref=e189]: ">"
+                      - generic [ref=e190]: "{cat"
+                      - generic [ref=e191]: .
+                      - generic [ref=e192]: "description}"
+                      - generic [ref=e193]: <
+                      - generic [ref=e194]: /
+                      - generic [ref=e195]: div
+                      - generic [ref=e196]: ">"
+                    - generic [ref=e197]:
+                      - generic [ref=e199]: 39 |
+                      - generic [ref=e200]: ")}"
+                - generic [ref=e201]:
+                  - generic [ref=e202]:
+                    - paragraph [ref=e203]:
+                      - text: Call Stack
+                      - generic [ref=e204]: "16"
+                    - button "Show 11 ignore-listed frame(s)" [ref=e205] [cursor=pointer]:
+                      - text: Show 11 ignore-listed frame(s)
+                      - img [ref=e206] [cursor=pointer]
+                  - generic [ref=e208]:
+                    - generic [ref=e209]: div
+                    - generic [ref=e210]: <anonymous> (0:0)
+                  - generic [ref=e211]:
+                    - generic [ref=e212]:
+                      - text: <unknown>
+                      - button [ref=e213] [cursor=pointer]:
+                        - img [ref=e214] [cursor=pointer]
+                    - generic [ref=e216]: components/simple-design-nav.tsx (36:15)
+                  - generic [ref=e217]:
+                    - generic [ref=e218]: Array.map
+                    - generic [ref=e219]: <anonymous> (0:0)
+                  - generic [ref=e220]:
+                    - generic [ref=e221]:
+                      - text: SimpleDesignNav
+                      - button [ref=e222] [cursor=pointer]:
+                        - img [ref=e223] [cursor=pointer]
+                    - generic [ref=e225]: components/simple-design-nav.tsx (25:21)
+                  - generic [ref=e226]:
+                    - generic [ref=e227]:
+                      - text: DesignLayout
+                      - button [ref=e228] [cursor=pointer]:
+                        - img [ref=e229] [cursor=pointer]
+                    - generic [ref=e231]: app/design/layout.tsx (40:15)
+            - generic [ref=e232]:
+              - generic [ref=e233]: "1"
+              - generic [ref=e234]: "2"
+        - contentinfo [ref=e235]:
+          - region "Error feedback" [ref=e236]:
+            - paragraph [ref=e237]:
+              - link "Was this helpful?" [ref=e238] [cursor=pointer]:
+                - /url: https://nextjs.org/telemetry#error-feedback
+            - button "Mark as helpful" [ref=e239] [cursor=pointer]:
+              - img [ref=e240] [cursor=pointer]
+            - button "Mark as not helpful" [ref=e243] [cursor=pointer]:
+              - img [ref=e244] [cursor=pointer]
+  - 'heading "Application error: a client-side exception has occurred while loading localhost (see the browser console for more information)." [level=2] [ref=e248]'
+```

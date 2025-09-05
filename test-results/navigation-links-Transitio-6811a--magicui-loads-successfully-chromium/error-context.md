@@ -1,0 +1,244 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Transitions / Magicui
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+              - list [ref=e51]:
+                - listitem [ref=e52]:
+                  - link "Overview" [ref=e53] [cursor=pointer]:
+                    - /url: /design/transitions
+                - listitem [ref=e54]:
+                  - link "HTML CSS" [ref=e55] [cursor=pointer]:
+                    - /url: /design/transitions/html-css
+                - listitem [ref=e56]:
+                  - link "MagicUI" [ref=e57] [cursor=pointer]:
+                    - /url: /design/transitions/magicui
+                - listitem [ref=e58]:
+                  - link "Next.js" [ref=e59] [cursor=pointer]:
+                    - /url: /design/transitions/nextjs
+                - listitem [ref=e60]:
+                  - link "Tailwind" [ref=e61] [cursor=pointer]:
+                    - /url: /design/transitions/tailwind
+            - listitem [ref=e62]:
+              - link "Text Typography and text effects" [ref=e63] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e64] [cursor=pointer]: Text
+                - generic [ref=e65] [cursor=pointer]: Typography and text effects
+      - main [ref=e66]:
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]: Transitions / Magicui
+            - tablist [ref=e73]:
+              - tab "HTML/CSS" [ref=e74]
+              - tab "Tailwind" [ref=e75]
+              - tab "MagicUI" [selected] [ref=e76]
+              - tab "Next.js" [ref=e77]
+            - generic [ref=e78]:
+              - generic [ref=e79]:
+                - button "Light theme" [ref=e80]:
+                  - img [ref=e81]
+                - button "Dark theme" [ref=e87]:
+                  - img [ref=e88]
+              - generic [ref=e90]:
+                - button "Pause" [ref=e91]:
+                  - img [ref=e92]
+                - button "Reset" [ref=e95]:
+                  - img [ref=e96]
+          - main [ref=e99]:
+            - generic [ref=e100]:
+              - button [ref=e103]:
+                - img
+              - generic [ref=e104]:
+                - button "Pause" [ref=e105]:
+                  - img
+                - button "Reset" [ref=e106]:
+                  - img
+                - button "Toggle theme" [ref=e107] [cursor=pointer]:
+                  - img
+                  - generic [ref=e108] [cursor=pointer]: Toggle theme
+              - generic [ref=e109]:
+                - generic [ref=e110]:
+                  - generic [ref=e111]:
+                    - heading "MagicUI BlurFade Page Transition" [level=3] [ref=e113]
+                    - generic [ref=e114]:
+                      - button "Customize component" [ref=e115]:
+                        - img
+                      - button "View code" [ref=e116]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e117]:
+                        - img
+                  - generic [ref=e121]:
+                    - generic [ref=e122]:
+                      - button "Go to Page A" [ref=e123]
+                      - button "Go to Page B" [ref=e124]
+                    - generic [ref=e127]: Page A Content
+                  - paragraph [ref=e129]: Simulate navigation between pages using MagicUI's BlurFade animation. Click the buttons to switch pages.
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - heading "Text Animation" [level=3] [ref=e133]
+                    - generic [ref=e134]:
+                      - button "Customize component" [ref=e135]:
+                        - img
+                      - button "View code" [ref=e136]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e137]:
+                        - img
+                  - paragraph [ref=e142]:
+                    - generic [ref=e143]: Click the replay button to see text animation
+                    - generic [ref=e144]: Click
+                    - generic [ref=e146]: the
+                    - generic [ref=e148]: replay
+                    - generic [ref=e150]: button
+                    - generic [ref=e152]: to
+                    - generic [ref=e154]: see
+                    - generic [ref=e156]: text
+                    - generic [ref=e158]: animation
+                  - paragraph [ref=e160]: Animate text with various effects using MagicUI's TextAnimate component.
+                - generic [ref=e161]:
+                  - generic [ref=e162]:
+                    - heading "Morphing Text" [level=3] [ref=e164]
+                    - generic [ref=e165]:
+                      - button "View code" [ref=e166]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e167]:
+                        - img
+                  - generic [ref=e172]:
+                    - generic [ref=e173]: Hello
+                    - generic [ref=e174]: World
+                    - img
+                  - paragraph [ref=e176]: Smoothly morph between different text values using MagicUI's MorphingText component.
+                - generic [ref=e177]:
+                  - generic [ref=e178]:
+                    - heading "Spinning Text" [level=3] [ref=e180]
+                    - generic [ref=e181]:
+                      - button "Customize component" [ref=e182]:
+                        - img
+                      - button "View code" [ref=e183]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e184]:
+                        - img
+                  - generic [ref=e188]:
+                    - generic:
+                      - generic [ref=e189]: S
+                      - generic [ref=e190]: p
+                      - generic [ref=e191]: i
+                      - generic [ref=e192]: "n"
+                      - generic [ref=e193]: "n"
+                      - generic [ref=e194]: i
+                      - generic [ref=e195]: "n"
+                      - generic [ref=e196]: g
+                      - generic [ref=e197]: T
+                      - generic [ref=e198]: e
+                      - generic [ref=e199]: x
+                      - generic [ref=e200]: t
+                      - generic [ref=e201]: Spinning Text
+                  - paragraph [ref=e203]: Text that spins in a circular animation using MagicUI's SpinningText component.
+                - generic [ref=e204]:
+                  - generic [ref=e205]:
+                    - heading "Hyper Text" [level=3] [ref=e207]
+                    - generic [ref=e208]:
+                      - button "Customize component" [ref=e209]:
+                        - img
+                      - button "View code" [ref=e210]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e211]:
+                        - img
+                  - generic [ref=e216] [cursor=pointer]:
+                    - generic [ref=e217] [cursor=pointer]: H
+                    - generic [ref=e218] [cursor=pointer]: O
+                    - generic [ref=e219] [cursor=pointer]: V
+                    - generic [ref=e220] [cursor=pointer]: E
+                    - generic [ref=e221] [cursor=pointer]: R
+                    - generic [ref=e222] [cursor=pointer]: O
+                    - generic [ref=e223] [cursor=pointer]: V
+                    - generic [ref=e224] [cursor=pointer]: E
+                    - generic [ref=e225] [cursor=pointer]: R
+                    - generic [ref=e227] [cursor=pointer]: M
+                    - generic [ref=e228] [cursor=pointer]: E
+                    - generic [ref=e229] [cursor=pointer]: T
+                    - generic [ref=e230] [cursor=pointer]: O
+                    - generic [ref=e232] [cursor=pointer]: S
+                    - generic [ref=e233] [cursor=pointer]: E
+                    - generic [ref=e234] [cursor=pointer]: E
+                    - generic [ref=e236] [cursor=pointer]: T
+                    - generic [ref=e237] [cursor=pointer]: H
+                    - generic [ref=e238] [cursor=pointer]: E
+                    - generic [ref=e239] [cursor=pointer]: E
+                    - generic [ref=e240] [cursor=pointer]: F
+                    - generic [ref=e241] [cursor=pointer]: F
+                    - generic [ref=e242] [cursor=pointer]: E
+                    - generic [ref=e243] [cursor=pointer]: C
+                    - generic [ref=e244] [cursor=pointer]: T
+                  - paragraph [ref=e246]: Text with hover effects using MagicUI's HyperText component.
+                - generic [ref=e247]:
+                  - generic [ref=e248]:
+                    - heading "Word Rotation" [level=3] [ref=e250]
+                    - generic [ref=e251]:
+                      - button "Customize component" [ref=e252]:
+                        - img
+                      - button "View code" [ref=e253]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e254]:
+                        - img
+                  - heading "First" [level=1] [ref=e260]
+                  - paragraph [ref=e262]: Rotate between different words using MagicUI's WordRotate component.
+  - contentinfo [ref=e263]:
+    - paragraph [ref=e265]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e266]:
+    - paragraph [ref=e268]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e269]
+  - generic [ref=e274] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e275] [cursor=pointer]:
+      - img [ref=e276] [cursor=pointer]
+    - generic [ref=e279] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e280] [cursor=pointer]:
+        - generic [ref=e281] [cursor=pointer]:
+          - generic [ref=e282] [cursor=pointer]: "0"
+          - generic [ref=e283] [cursor=pointer]: "1"
+        - generic [ref=e284] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e285] [cursor=pointer]:
+        - img [ref=e286] [cursor=pointer]
+```

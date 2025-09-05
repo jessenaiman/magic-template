@@ -1,0 +1,97 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Animations
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e51]:
+              - link "Text Typography and text effects" [ref=e52] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e53] [cursor=pointer]: Text
+                - generic [ref=e54] [cursor=pointer]: Typography and text effects
+      - main [ref=e55]:
+        - generic [ref=e57]:
+          - navigation [ref=e58]:
+            - link "Animate-UI" [ref=e59] [cursor=pointer]:
+              - /url: /design/animations/animate-ui
+            - link "Animate.css" [ref=e60] [cursor=pointer]:
+              - /url: /design/animations/animatecss
+            - link "MagicUI" [ref=e61] [cursor=pointer]:
+              - /url: /design/animations/magicui
+            - link "ReactBits" [ref=e62] [cursor=pointer]:
+              - /url: /design/animations/reactbits
+          - generic [ref=e64]:
+            - heading "Animation Demo Gallery" [level=1] [ref=e65]
+            - paragraph [ref=e66]: Explore animation demos from Animate-UI, Animate.css, MagicUI, and ReactBits. Select a category to view interactive examples.
+            - list [ref=e67]:
+              - listitem [ref=e68]:
+                - link "Animate-UI" [ref=e69] [cursor=pointer]:
+                  - /url: /design/animations/animate-ui
+              - listitem [ref=e70]:
+                - link "Animate.css" [ref=e71] [cursor=pointer]:
+                  - /url: /design/animations/animatecss
+              - listitem [ref=e72]:
+                - link "MagicUI" [ref=e73] [cursor=pointer]:
+                  - /url: /design/animations/magicui
+              - listitem [ref=e74]:
+                - link "ReactBits" [ref=e75] [cursor=pointer]:
+                  - /url: /design/animations/reactbits
+  - contentinfo [ref=e76]:
+    - paragraph [ref=e78]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e79]:
+    - paragraph [ref=e81]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e82]
+  - generic [ref=e87] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e88] [cursor=pointer]:
+      - img [ref=e89] [cursor=pointer]
+    - generic [ref=e92] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e93] [cursor=pointer]:
+        - generic [ref=e94] [cursor=pointer]:
+          - generic [ref=e95] [cursor=pointer]: "0"
+          - generic [ref=e96] [cursor=pointer]: "1"
+        - generic [ref=e97] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e98] [cursor=pointer]:
+        - img [ref=e99] [cursor=pointer]
+```

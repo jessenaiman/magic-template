@@ -1,0 +1,151 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Animations / Animatecss
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e51]:
+              - link "Text Typography and text effects" [ref=e52] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e53] [cursor=pointer]: Text
+                - generic [ref=e54] [cursor=pointer]: Typography and text effects
+      - main [ref=e55]:
+        - generic [ref=e57]:
+          - navigation [ref=e58]:
+            - link "Animate-UI" [ref=e59] [cursor=pointer]:
+              - /url: /design/animations/animate-ui
+            - link "Animate.css" [ref=e60] [cursor=pointer]:
+              - /url: /design/animations/animatecss
+            - link "MagicUI" [ref=e61] [cursor=pointer]:
+              - /url: /design/animations/magicui
+            - link "ReactBits" [ref=e62] [cursor=pointer]:
+              - /url: /design/animations/reactbits
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - button "Pause" [ref=e65]:
+                - img
+              - button "Reset" [ref=e66]:
+                - img
+              - button "Toggle theme" [ref=e67] [cursor=pointer]:
+                - img
+                - generic [ref=e68] [cursor=pointer]: Toggle theme
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e71]:
+                  - heading "Fade In" [level=3] [ref=e73]
+                  - generic [ref=e74]:
+                    - button "View code" [ref=e75]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e76]:
+                      - img
+                - generic [ref=e80]: Fade In
+                - paragraph [ref=e82]: Element fades in
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - heading "Bounce" [level=3] [ref=e86]
+                  - generic [ref=e87]:
+                    - button "View code" [ref=e88]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e89]:
+                      - img
+                - generic [ref=e93]: Bounce
+                - paragraph [ref=e95]: Element bounces
+              - generic [ref=e96]:
+                - generic [ref=e97]:
+                  - heading "Pulse" [level=3] [ref=e99]
+                  - generic [ref=e100]:
+                    - button "View code" [ref=e101]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e102]:
+                      - img
+                - generic [ref=e106]: Pulse
+                - paragraph [ref=e108]: Element pulses
+              - generic [ref=e109]:
+                - generic [ref=e110]:
+                  - heading "Slide In Up" [level=3] [ref=e112]
+                  - generic [ref=e113]:
+                    - button "View code" [ref=e114]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e115]:
+                      - img
+                - generic [ref=e119]: Slide In Up
+                - paragraph [ref=e121]: Element slides in from below
+              - generic [ref=e122]:
+                - generic [ref=e123]:
+                  - heading "Zoom In" [level=3] [ref=e125]
+                  - generic [ref=e126]:
+                    - button "View code" [ref=e127]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e128]:
+                      - img
+                - generic [ref=e132]: Zoom In
+                - paragraph [ref=e134]: Element zooms in
+              - generic [ref=e135]:
+                - generic [ref=e136]:
+                  - heading "Rubber Band" [level=3] [ref=e138]
+                  - generic [ref=e139]:
+                    - button "View code" [ref=e140]:
+                      - img
+                    - button "Copy code to clipboard" [ref=e141]:
+                      - img
+                - generic [ref=e145]: Rubber Band
+                - paragraph [ref=e147]: Element stretches and snaps
+  - contentinfo [ref=e148]:
+    - paragraph [ref=e150]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e151]:
+    - paragraph [ref=e153]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e154]
+  - generic [ref=e159] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e160] [cursor=pointer]:
+      - img [ref=e161] [cursor=pointer]
+    - generic [ref=e164] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e165] [cursor=pointer]:
+        - generic [ref=e166] [cursor=pointer]:
+          - generic [ref=e167] [cursor=pointer]: "0"
+          - generic [ref=e168] [cursor=pointer]: "1"
+        - generic [ref=e169] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e170] [cursor=pointer]:
+        - img [ref=e171] [cursor=pointer]
+```

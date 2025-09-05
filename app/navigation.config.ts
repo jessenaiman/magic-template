@@ -72,16 +72,16 @@ export const mainNavigation: NavigationSection[] = [
         ]
       },
       {
-        label: "Page Transitions",
-        href: "/design/page-transitions",
+        label: "Transitions",
+        href: "/design/transitions",
         icon: ArrowRightLeft,
         description: "Smooth page transition effects",
         children: [
-          { label: "Overview", href: "/design/page-transitions" },
-          { label: "HTML CSS", href: "/design/page-transitions/html-css" },
-          { label: "MagicUI", href: "/design/page-transitions/magicui" },
-          { label: "Next.js", href: "/design/page-transitions/nextjs" },
-          { label: "Tailwind", href: "/design/page-transitions/tailwind" }
+          { label: "Overview", href: "/design/transitions" },
+          { label: "HTML CSS", href: "/design/transitions/html-css" },
+          { label: "MagicUI", href: "/design/transitions/magicui" },
+          { label: "Next.js", href: "/design/transitions/nextjs" },
+          { label: "Tailwind", href: "/design/transitions/tailwind" }
         ]
       },
       {
