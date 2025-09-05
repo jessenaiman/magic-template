@@ -6,12 +6,20 @@ import { Moon, Sun, Play, Pause, RotateCcw } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import { usePreviewContext } from './preview-context';
+import { DesignTabs } from './design-tabs';
 
 interface SimpleNavbarProps {
   className?: string;
+  tabs?: {
+    items: Array<{
+      label: string;
+      value: string;
+    }>;
+    basePath: string;
+  };
 }
 
-export function SimpleNavbar({ className }: SimpleNavbarProps) {
+export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
   const pathname = usePathname();
   const { setTheme, theme } = useTheme();
   const { state, setPlaying, reset } = usePreviewContext();
@@ -44,6 +52,12 @@ export function SimpleNavbar({ className }: SimpleNavbarProps) {
       className
     )}>
       <div className="font-medium text-lg">{getPageTitle()}</div>
+      
+      {tabs && (
+        <div className="flex-1 mx-4">
+          <DesignTabs items={tabs.items} basePath={tabs.basePath} />
+        </div>
+      )}
       
       <div className="flex items-center space-x-4">
         {/* Theme Toggle */}

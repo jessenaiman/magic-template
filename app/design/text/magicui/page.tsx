@@ -1,3 +1,4 @@
+import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { AuroraText } from "@/components/magicui/aurora-text";
@@ -16,67 +17,143 @@ export default function MagicUITextPage() {
           Explore animated and interactive text components powered by Magic UI. These components add motion, engagement, and visual appeal to your typography.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <PreviewSurface>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <PreviewTile
           title="Animated Gradient Text"
           description="Text with an animated gradient background that shifts colors."
           componentName="AnimatedGradientText"
+          code={`<AnimatedGradientText>Hello World</AnimatedGradientText>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <AnimatedGradientText>Hello World</AnimatedGradientText>
+          {(customization) => (
+            <AnimatedGradientText>Hello World</AnimatedGradientText>
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Aurora Text"
           description="Text with a magical aurora/galaxy effect background."
           componentName="AuroraText"
+          code={`<AuroraText className="text-2xl">Aurora Magic</AuroraText>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <AuroraText className="text-2xl">Aurora Magic</AuroraText>
+          {(customization) => (
+            <AuroraText className="text-2xl">Aurora Magic</AuroraText>
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Flip Text"
           description="Text that flips in character by character with a spring animation."
           componentName="FlipText"
+          code={`<FlipText>Flipping Great</FlipText>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <FlipText>Flipping Great</FlipText>
+          {(customization) => (
+            <FlipText>Flipping Great</FlipText>
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Sparkles Text"
           description="Text with animated sparkles that appear and disappear."
           componentName="SparklesText"
+          code={`<SparklesText>Sparkly Text</SparklesText>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <SparklesText>Sparkly Text</SparklesText>
+          {(customization) => (
+            <SparklesText>Sparkly Text</SparklesText>
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Text Animate"
           description="Text animation with various effects and timing controls."
           componentName="TextAnimate"
+          code={`<TextAnimate>Animated Text</TextAnimate>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <TextAnimate>Animated Text</TextAnimate>
+          {(customization) => (
+            <TextAnimate>Animated Text</TextAnimate>
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Word Rotate"
           description="Rotates through a series of words with smooth transitions."
           componentName="WordRotate"
+          code={`<WordRotate words={["Innovate", "Create", "Design"]} />`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <WordRotate words={["Innovate", "Create", "Design"]} />
+          {(customization) => (
+            <WordRotate words={["Innovate", "Create", "Design"]} />
+          )}
         </PreviewTile>
 
         <PreviewTile
           title="Text Reveal"
           description="Text that reveals itself with animation on scroll."
           componentName="TextReveal"
+          code={`<div className="h-32 overflow-y-auto rounded-md border border-dashed p-4 bg-muted/20">
+  <TextReveal>
+    Experience the magic as this text reveals itself with smooth animation. Scroll to see the effect in action!
+  </TextReveal>
+</div>`}
+          initialCustomization={{
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            borderRadius: 12,
+            padding: 24,
+            fontSize: 16
+          }}
         >
-          <div className="h-32 overflow-y-auto rounded-md border border-dashed p-4 bg-muted/20">
-            <TextReveal>
-              Experience the magic as this text reveals itself with smooth animation. Scroll to see the effect in action!
-            </TextReveal>
-          </div>
+          {(customization) => (
+            <div className="h-32 overflow-y-auto rounded-md border border-dashed p-4 bg-muted/20">
+              <TextReveal>
+                Experience the magic as this text reveals itself with smooth animation. Scroll to see the effect in action!
+              </TextReveal>
+            </div>
+          )}
         </PreviewTile>
-      </div>
+        </div>
+      </PreviewSurface>
     </div>
   );
 }

@@ -95,10 +95,17 @@ export function PreviewProvider({
 
   const updateCustomization = useCallback(
     (patch: Partial<CustomizationSettings>) =>
-      setState(s => ({
-        ...s,
-        customization: { ...s.customization, ...patch }
-      })),
+      setState(s => {
+        const newCustomization = { ...s.customization, ...patch };
+        if (typeof window !== 'undefined') {
+          try {
+            localStorage.setItem('preview-customization', JSON.stringify(newCustomization));
+          } catch (e) {
+            console.warn('Failed to persist preview customization:', e);
+          }
+        }
+        return { ...s, customization: newCustomization };
+      }),
     []
   );
 

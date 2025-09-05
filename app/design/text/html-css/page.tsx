@@ -1,18 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
-import { mergeWithBaseOptions } from "@/components/preview-controls/base-category-options";
-import { usePreviewContext } from "@/components/design/preview-context";
 
 export default function HtmlCssTextPage() {
-  const [expanded, setExpanded] = useState<string | null>(null);
-
-  // Helper to handle expand/collapse
-  const handleCustomize = (id: string) => {
-    setExpanded(prev => (prev === id ? null : id));
-  };
-
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -23,14 +15,15 @@ export default function HtmlCssTextPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <PreviewSurface>
         {/* Blur Text Animation */}
         <PreviewTile
           title="Blur Text Animation"
           description="Pure CSS text blur effect that reveals text with a smooth transition using CSS filters and transitions."
           componentName="BlurTextCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-blur-text">
+  <span>Pure CSS Blur Effect</span>
+</div>`}
           initialCustomization={{
             backgroundColor: '#170D27',
             textColor: '#ffffff',
@@ -38,12 +31,12 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 18
           }}
-          expanded={expanded === 'blur'}
-          onCustomize={() => handleCustomize('blur')}
         >
-          <div className="css-blur-text">
-            <span>Pure CSS Blur Effect</span>
-          </div>
+          {(customization) => (
+            <div className="css-blur-text">
+              <span>Pure CSS Blur Effect</span>
+            </div>
+          )}
         </PreviewTile>
 
         {/* Gradient Text Animation */}
@@ -51,8 +44,9 @@ export default function HtmlCssTextPage() {
           title="Animated Gradient Text"
           description="CSS-only animated gradient text using background-clip and keyframe animations for smooth color transitions."
           componentName="GradientTextCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-gradient-text">
+  CSS Gradient Magic
+</div>`}
           initialCustomization={{
             backgroundColor: '#0a0a0a',
             textColor: '#ffffff',
@@ -60,12 +54,12 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 24
           }}
-          expanded={expanded === 'gradient'}
-          onCustomize={() => handleCustomize('gradient')}
         >
-          <div className="css-gradient-text">
-            CSS Gradient Magic
-          </div>
+          {(customization) => (
+            <div className="css-gradient-text">
+              CSS Gradient Magic
+            </div>
+          )}
         </PreviewTile>
 
         {/* Shiny Text Animation */}
@@ -73,8 +67,9 @@ export default function HtmlCssTextPage() {
           title="Shiny Text Animation"
           description="Pure CSS shine effect that moves across text using linear gradients and background animations."
           componentName="ShinyTextCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-shiny-text">
+  Shiny Effect
+</div>`}
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#b5b5b5',
@@ -82,12 +77,12 @@ export default function HtmlCssTextPage() {
             padding: 24,
             fontSize: 32
           }}
-          expanded={expanded === 'shiny'}
-          onCustomize={() => handleCustomize('shiny')}
         >
-          <div className="css-shiny-text">
-            Shiny Effect
-          </div>
+          {(customization) => (
+            <div className="css-shiny-text">
+              Shiny Effect
+            </div>
+          )}
   </PreviewTile>
 
         {/* Glitch Text Effect */}
@@ -95,8 +90,9 @@ export default function HtmlCssTextPage() {
           title="CSS Glitch Text"
           description="Pure CSS glitch effect using pseudo-elements, clip-path, and animation delays for a digital distortion look."
           componentName="GlitchTextCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-glitch-text" data-text="GLITCH EFFECT">
+  GLITCH EFFECT
+</div>`}
           initialCustomization={{
             backgroundColor: '#060010',
             textColor: '#ffffff',
@@ -105,9 +101,11 @@ export default function HtmlCssTextPage() {
             fontSize: 48
           }}
         >
-          <div className="css-glitch-text" data-text="GLITCH EFFECT">
-            GLITCH EFFECT
-          </div>
+          {(customization) => (
+            <div className="css-glitch-text" data-text="GLITCH EFFECT">
+              GLITCH EFFECT
+            </div>
+          )}
         </PreviewTile>
 
         {/* Typewriter Effect */}
@@ -115,8 +113,9 @@ export default function HtmlCssTextPage() {
           title="Typewriter Animation"
           description="Classic typewriter effect using CSS animations, steps() timing function, and border blinking cursor."
           componentName="TypewriterCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-typewriter">
+  <h1>Hello, World!</h1>
+</div>`}
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#00ff00',
@@ -125,9 +124,11 @@ export default function HtmlCssTextPage() {
             fontSize: 18
           }}
         >
-          <div className="css-typewriter">
-            <h1>Hello, World!</h1>
-          </div>
+          {(customization) => (
+            <div className="css-typewriter">
+              <h1>Hello, World!</h1>
+            </div>
+          )}
         </PreviewTile>
 
         {/* Text Shadow Animation */}
@@ -135,8 +136,9 @@ export default function HtmlCssTextPage() {
           title="Animated Text Shadow"
           description="Dynamic text shadow effects using CSS animations with multiple shadow layers and color transitions."
           componentName="TextShadowCSS"
-          category="text"
-          designSystem="html-css"
+          code={`<div class="css-text-shadow">
+  Shadow Magic
+</div>`}
           initialCustomization={{
             backgroundColor: '#000000',
             textColor: '#ffffff',
@@ -145,11 +147,13 @@ export default function HtmlCssTextPage() {
             fontSize: 36
           }}
         >
-          <div className="css-text-shadow">
-            Shadow Magic
-          </div>
+          {(customization) => (
+            <div className="css-text-shadow">
+              Shadow Magic
+            </div>
+          )}
         </PreviewTile>
-      </div>
+      </PreviewSurface>
 
       <style jsx>{`
         .css-blur-text {

@@ -101,6 +101,7 @@ function BlurTextPreview() {
 
 function GlitchTextPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     return (
         <PreviewTile
             title="Glitch Effect Text"
@@ -125,6 +126,7 @@ function GlitchTextPreview() {
 
 function GradientTextPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     return (
         <PreviewTile
             title="Gradient Text"
@@ -151,6 +153,7 @@ function GradientTextPreview() {
 
 function RotatingTextPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     return (
         <PreviewTile
             title="Rotating Text"
@@ -176,6 +179,7 @@ function RotatingTextPreview() {
 
 function ShinyTextPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     return (
         <PreviewTile
             title="Shiny Text"
@@ -200,6 +204,7 @@ function ShinyTextPreview() {
 
 function TextCursorPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     return (
         <PreviewTile
             title="Text with Cursor"
@@ -226,6 +231,7 @@ function TextCursorPreview() {
 
 function CountUpPreview() {
     const { state } = usePreviewContext();
+    const customization = state.customization;
     const customFields = mergeWithBaseOptions('text', [
         {
             id: 'endValue',

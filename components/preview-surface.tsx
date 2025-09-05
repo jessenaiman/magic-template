@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { PreviewProvider, CustomizationSettings } from '@/components/preview-context';
-import PageControls from '@/components/preview-customization-panel';
+import PreviewControlsBar from '@/components/preview-controls-bar';
 
 // Create a dedicated context for managing tile expansion
 interface PreviewTileExpansionContextType {
@@ -28,9 +28,9 @@ export function PreviewSurface({
 
   return (
     <PreviewProvider initialCustomization={initialCustomization}>
-      {showGlobalControls && <PageControls />}
+      {showGlobalControls && <PreviewControlsBar />}
       <PreviewTileExpansionContext.Provider value={contextValue}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
           {children}
         </div>
       </PreviewTileExpansionContext.Provider>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 export default function TailwindTextPage() {
@@ -23,14 +24,17 @@ export default function TailwindTextPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
+      <PreviewSurface>
         {/* Gradient Text Animation */}
         <PreviewTile
           title="Animated Gradient Text"
           description="Text with animated gradient background using Tailwind's gradient utilities and animation classes."
           componentName="GradientTextTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="text-2xl font-semibold">
+  <span class="bg-gradient-to-r from-yellow-400 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-300% animate-gradient">
+    Tailwind Gradient
+  </span>
+</div>`}
           initialCustomization={{
             backgroundColor: '#0a0a0a',
             textColor: '#ffffff',
@@ -38,23 +42,14 @@ export default function TailwindTextPage() {
             padding: 24,
             fontSize: 24
           }}
-          extraActions={
-            <select
-              value={gradientStyle}
-              onChange={(e) => setGradientStyle(e.target.value as 'rainbow' | 'sunset' | 'ocean')}
-              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors text-white"
-            >
-              <option value="rainbow">Rainbow</option>
-              <option value="sunset">Sunset</option>
-              <option value="ocean">Ocean</option>
-            </select>
-          }
         >
-          <div className="text-2xl font-semibold">
-            <span className={`${gradientClasses[gradientStyle]} bg-clip-text text-transparent bg-300% animate-gradient`}>
-              Tailwind Gradient
-            </span>
-          </div>
+          {(customization) => (
+            <div className="text-2xl font-semibold">
+              <span className={`${gradientClasses[gradientStyle]} bg-clip-text text-transparent bg-300% animate-gradient`}>
+                Tailwind Gradient
+              </span>
+            </div>
+          )}
         </PreviewTile>
 
         {/* Blur Reveal Text */}
@@ -62,8 +57,11 @@ export default function TailwindTextPage() {
           title="Blur Reveal Animation"
           description="Text that reveals from a blurred state using Tailwind's filter and transition utilities."
           componentName="BlurTextTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="text-center">
+  <span class="text-2xl font-semibold blur-sm opacity-0 animate-blur-reveal">
+    Blur Reveal Effect
+  </span>
+</div>`}
           initialCustomization={{
             backgroundColor: '#170D27',
             textColor: '#ffffff',
@@ -72,11 +70,13 @@ export default function TailwindTextPage() {
             fontSize: 18
           }}
         >
-          <div className="text-center">
-            <span className="text-2xl font-semibold blur-sm opacity-0 animate-blur-reveal">
-              Blur Reveal Effect
-            </span>
-          </div>
+          {(customization) => (
+            <div className="text-center">
+              <span className="text-2xl font-semibold blur-sm opacity-0 animate-blur-reveal">
+                Blur Reveal Effect
+              </span>
+            </div>
+          )}
         </PreviewTile>
 
         {/* Shiny Text */}
@@ -84,8 +84,9 @@ export default function TailwindTextPage() {
           title="Shiny Text Effect"
           description="Text with a moving shine effect using Tailwind's background gradient and animation utilities."
           componentName="ShinyTextTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="text-4xl font-bold text-gray-400 bg-clip-text bg-200% animate-shine">
+  Shiny Text
+</div>`}
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#b5b5b5',
@@ -93,18 +94,12 @@ export default function TailwindTextPage() {
             padding: 24,
             fontSize: 32
           }}
-          extraActions={
-            <button
-              onClick={() => setAnimationSpeed(animationSpeed === 'normal' ? 'fast' : 'normal')}
-              className="px-3 py-1 text-xs bg-gray-800 hover:bg-gray-700 rounded border border-gray-600 transition-colors"
-            >
-              Speed: {animationSpeed === 'normal' ? 'Normal' : 'Fast'}
-            </button>
-          }
         >
-          <div className={`text-4xl font-bold text-gray-400 bg-clip-text bg-200% animate-shine ${animationSpeed === 'fast' ? 'animate-shine-fast' : ''}`}>
-            Shiny Text
-          </div>
+          {(customization) => (
+            <div className={`text-4xl font-bold text-gray-400 bg-clip-text bg-200% animate-shine ${animationSpeed === 'fast' ? 'animate-shine-fast' : ''}`}>
+              Shiny Text
+            </div>
+          )}
         </PreviewTile>
 
         {/* Typewriter Effect */}
@@ -112,8 +107,9 @@ export default function TailwindTextPage() {
           title="Typewriter Animation"
           description="Classic typewriter effect using Tailwind's animation and border utilities with monospace font."
           componentName="TypewriterTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="font-mono overflow-hidden border-r-2 border-green-400 whitespace-nowrap animate-typewriter">
+  Hello, Tailwind!
+</div>`}
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#00ff00',
@@ -122,9 +118,11 @@ export default function TailwindTextPage() {
             fontSize: 18
           }}
         >
-          <div className="font-mono overflow-hidden border-r-2 border-green-400 whitespace-nowrap animate-typewriter">
-            Hello, Tailwind!
-          </div>
+          {(customization) => (
+            <div className="font-mono overflow-hidden border-r-2 border-green-400 whitespace-nowrap animate-typewriter">
+              Hello, Tailwind!
+            </div>
+          )}
         </PreviewTile>
 
         {/* Text Shadow Glow */}
@@ -132,8 +130,9 @@ export default function TailwindTextPage() {
           title="Glowing Text Shadow"
           description="Text with animated glowing shadow effects using Tailwind's text shadow and animation utilities."
           componentName="GlowTextTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="text-4xl font-bold text-white animate-pulse-glow">
+  Glowing Text
+</div>`}
           initialCustomization={{
             backgroundColor: '#000000',
             textColor: '#ffffff',
@@ -142,9 +141,11 @@ export default function TailwindTextPage() {
             fontSize: 36
           }}
         >
-          <div className="text-4xl font-bold text-white animate-pulse-glow">
-            Glowing Text
-          </div>
+          {(customization) => (
+            <div className="text-4xl font-bold text-white animate-pulse-glow">
+              Glowing Text
+            </div>
+          )}
         </PreviewTile>
 
         {/* Bouncing Text */}
@@ -152,8 +153,9 @@ export default function TailwindTextPage() {
           title="Bouncing Text Animation"
           description="Text with bounce animation using Tailwind's animation utilities with custom keyframes."
           componentName="BounceTextTailwind"
-          category="text"
-          designSystem="tailwind"
+          code={`<div class="text-3xl font-bold text-white animate-bounce">
+  Bounce!
+</div>`}
           initialCustomization={{
             backgroundColor: '#1a1a1a',
             textColor: '#ffffff',
@@ -162,11 +164,13 @@ export default function TailwindTextPage() {
             fontSize: 32
           }}
         >
-          <div className="text-3xl font-bold text-white animate-bounce">
-            Bounce!
-          </div>
+          {(customization) => (
+            <div className="text-3xl font-bold text-white animate-bounce">
+              Bounce!
+            </div>
+          )}
         </PreviewTile>
-      </div>
+      </PreviewSurface>
 
       <style jsx>{`
         @keyframes gradient {

@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "Magic UI Blog",
-  url: "https://blog-magicui.vercel.app",
+  name: "Web Design Workshop",
+  url: "https://design.omega-spiral.com",
   description:
     "Modern React and web development tutorials, insights, and best practices.",
 };
