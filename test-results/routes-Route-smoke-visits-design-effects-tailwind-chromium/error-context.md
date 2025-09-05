@@ -1,0 +1,189 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Effects / Tailwind
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+              - list [ref=e47]:
+                - listitem [ref=e48]:
+                  - link "Overview" [ref=e49] [cursor=pointer]:
+                    - /url: /design/effects
+                - listitem [ref=e50]:
+                  - link "HTML CSS" [ref=e51] [cursor=pointer]:
+                    - /url: /design/effects/html-css
+                - listitem [ref=e52]:
+                  - link "MagicUI" [ref=e53] [cursor=pointer]:
+                    - /url: /design/effects/magicui
+                - listitem [ref=e54]:
+                  - link "Tailwind" [ref=e55] [cursor=pointer]:
+                    - /url: /design/effects/tailwind
+            - listitem [ref=e56]:
+              - link "Transitions Smooth page transition effects" [ref=e57] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e58] [cursor=pointer]: Transitions
+                - generic [ref=e59] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e60]:
+              - link "Text Typography and text effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e62] [cursor=pointer]: Text
+                - generic [ref=e63] [cursor=pointer]: Typography and text effects
+      - main [ref=e64]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Effects / Tailwind
+            - tablist [ref=e71]:
+              - tab "HTML/CSS" [ref=e72]
+              - tab "Tailwind" [selected] [ref=e73]
+              - tab "MagicUI" [ref=e74]
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - button "Light theme" [ref=e77]:
+                  - img [ref=e78]
+                - button "Dark theme" [ref=e84]:
+                  - img [ref=e85]
+              - generic [ref=e87]:
+                - button "Pause" [ref=e88]:
+                  - img [ref=e89]
+                - button "Reset" [ref=e92]:
+                  - img [ref=e93]
+          - main [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - button "Pause" [ref=e99]:
+                  - img
+                - button "Reset" [ref=e100]:
+                  - img
+                - button "Toggle theme" [ref=e101] [cursor=pointer]:
+                  - img
+                  - generic [ref=e102] [cursor=pointer]: Toggle theme
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - heading "Tailwind CSS Effects" [level=2] [ref=e105]
+                  - paragraph [ref=e106]: A collection of modern web design effects created with Tailwind CSS utility classes.
+                - generic [ref=e107]:
+                  - generic [ref=e108]:
+                    - heading "Pulse Effect" [level=3] [ref=e110]
+                    - generic [ref=e111]:
+                      - button "Customize component" [ref=e112]:
+                        - img
+                      - button "View code" [ref=e113]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e114]:
+                        - img
+                  - paragraph [ref=e121]: A pulsing animation effect using Tailwind's animate-pulse
+                - generic [ref=e122]:
+                  - generic [ref=e123]:
+                    - heading "Hover Grow" [level=3] [ref=e125]
+                    - generic [ref=e126]:
+                      - button "Customize component" [ref=e127]:
+                        - img
+                      - button "View code" [ref=e128]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e129]:
+                        - img
+                  - generic [ref=e134] [cursor=pointer]: Hover me
+                  - paragraph [ref=e136]: An element that grows on hover using Tailwind's transform and transition
+                - generic [ref=e137]:
+                  - generic [ref=e138]:
+                    - heading "Gradient Text" [level=3] [ref=e140]
+                    - generic [ref=e141]:
+                      - button "Customize component" [ref=e142]:
+                        - img
+                      - button "View code" [ref=e143]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e144]:
+                        - img
+                  - heading "Gradient Text" [level=2] [ref=e149]
+                  - paragraph [ref=e151]: Text with a gradient effect using Tailwind's gradient and text utilities
+                - generic [ref=e152]:
+                  - generic [ref=e153]:
+                    - heading "Backdrop Blur" [level=3] [ref=e155]
+                    - generic [ref=e156]:
+                      - button "Customize component" [ref=e157]:
+                        - img
+                      - button "View code" [ref=e158]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e159]:
+                        - img
+                  - generic [ref=e166]:
+                    - heading "Frosted Glass" [level=3]
+                    - paragraph: This card has a backdrop blur effect
+                  - paragraph [ref=e168]: A card with backdrop blur effect using Tailwind's backdrop-filter
+                - generic [ref=e169]:
+                  - generic [ref=e170]:
+                    - heading "Animated Border" [level=3] [ref=e172]
+                    - generic [ref=e173]:
+                      - button "Customize component" [ref=e174]:
+                        - img
+                      - button "View code" [ref=e175]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e176]:
+                        - img
+                  - button "Hover Me" [ref=e181]:
+                    - generic [ref=e184]: Hover Me
+                  - paragraph [ref=e186]: A button with an animated border effect using Tailwind and CSS
+                - generic [ref=e187]:
+                  - generic [ref=e188]:
+                    - heading "Shimmer Effect" [level=3] [ref=e190]
+                    - generic [ref=e191]:
+                      - button "Customize component" [ref=e192]:
+                        - img
+                      - button "View code" [ref=e193]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e194]:
+                        - img
+                  - paragraph [ref=e202]: A shimmer loading effect using Tailwind and CSS animations
+  - contentinfo [ref=e203]:
+    - paragraph [ref=e205]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e206]:
+    - paragraph [ref=e208]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e209]
+  - generic [ref=e214] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e215] [cursor=pointer]:
+      - img [ref=e216] [cursor=pointer]
+    - generic [ref=e219] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e220] [cursor=pointer]:
+        - generic [ref=e221] [cursor=pointer]:
+          - generic [ref=e222] [cursor=pointer]: "0"
+          - generic [ref=e223] [cursor=pointer]: "1"
+        - generic [ref=e224] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e225] [cursor=pointer]:
+        - img [ref=e226] [cursor=pointer]
+```

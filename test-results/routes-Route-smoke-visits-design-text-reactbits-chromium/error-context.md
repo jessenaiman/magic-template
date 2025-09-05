@@ -1,0 +1,217 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Text / Reactbits
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e51]:
+              - link "Text Typography and text effects" [ref=e52] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e53] [cursor=pointer]: Text
+                - generic [ref=e54] [cursor=pointer]: Typography and text effects
+              - list [ref=e55]:
+                - listitem [ref=e56]:
+                  - link "Overview" [ref=e57] [cursor=pointer]:
+                    - /url: /design/text
+                - listitem [ref=e58]:
+                  - link "HTML CSS" [ref=e59] [cursor=pointer]:
+                    - /url: /design/text/html-css
+                - listitem [ref=e60]:
+                  - link "MagicUI" [ref=e61] [cursor=pointer]:
+                    - /url: /design/text/magicui
+                - listitem [ref=e62]:
+                  - link "ReactBits" [ref=e63] [cursor=pointer]:
+                    - /url: /design/text/reactbits
+                - listitem [ref=e64]:
+                  - link "Shadcn" [ref=e65] [cursor=pointer]:
+                    - /url: /design/text/shadcn
+                - listitem [ref=e66]:
+                  - link "Tailwind" [ref=e67] [cursor=pointer]:
+                    - /url: /design/text/tailwind
+      - main [ref=e68]:
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: Text / Reactbits
+            - tablist [ref=e75]:
+              - tab "HTML/CSS" [ref=e76]
+              - tab "Tailwind" [ref=e77]
+              - tab "Shadcn" [ref=e78]
+              - tab "MagicUI" [ref=e79]
+              - tab "ReactBits" [selected] [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - button "Light theme" [ref=e83]:
+                  - img [ref=e84]
+                - button "Dark theme" [ref=e90]:
+                  - img [ref=e91]
+              - generic [ref=e93]:
+                - button "Pause" [ref=e94]:
+                  - img [ref=e95]
+                - button "Reset" [ref=e98]:
+                  - img [ref=e99]
+          - main [ref=e102]:
+            - generic [ref=e103]:
+              - paragraph [ref=e105]: Explore text styling and animation components across different technology stacks. Each implementation showcases the same concepts using different approaches.
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - heading "ReactBits Text Animations" [level=2] [ref=e108]
+                  - paragraph [ref=e109]: Interactive text animations powered by ReactBits. These components use advanced animation libraries like Framer Motion and GSAP for smooth, performant effects.
+                - generic [ref=e110]:
+                  - button "Pause" [ref=e111]:
+                    - img
+                  - button "Reset" [ref=e112]:
+                    - img
+                  - button "Toggle theme" [ref=e113] [cursor=pointer]:
+                    - img
+                    - generic [ref=e114] [cursor=pointer]: Toggle theme
+                - generic [ref=e115]:
+                  - generic [ref=e116]:
+                    - generic [ref=e117]:
+                      - heading "Blur Text Animation" [level=3] [ref=e119]
+                      - generic [ref=e120]:
+                        - button "Customize component" [ref=e121]:
+                          - img
+                        - button "View code" [ref=e122]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e123]:
+                          - img
+                    - paragraph [ref=e127]:
+                      - generic [ref=e128]: Isn't
+                      - generic [ref=e129]: this
+                      - generic [ref=e130]: so
+                      - generic [ref=e131]: cool?!
+                    - paragraph [ref=e133]: Text that animates in with a blur effect, revealing words or letters sequentially.
+                  - generic [ref=e134]:
+                    - generic [ref=e135]:
+                      - heading "Glitch Effect Text" [level=3] [ref=e137]
+                      - generic [ref=e138]:
+                        - button "View code" [ref=e139]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e140]:
+                          - img
+                    - generic [ref=e144] [cursor=pointer]: Cyberpunk 2077 Cyberpunk 2077 Cyberpunk 2077
+                    - paragraph [ref=e146]: A text component that applies a 'glitch' effect, perfect for futuristic or tech-themed UIs.
+                  - generic [ref=e147]:
+                    - generic [ref=e148]:
+                      - heading "Gradient Text" [level=3] [ref=e150]
+                      - generic [ref=e151]:
+                        - button "View code" [ref=e152]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e153]:
+                          - img
+                    - generic [ref=e158] [cursor=pointer]: Stunning Gradients
+                    - paragraph [ref=e160]: Easily create text with a gradient fill for a visually striking effect.
+                  - generic [ref=e161]:
+                    - generic [ref=e162]:
+                      - heading "Rotating Text" [level=3] [ref=e164]
+                      - generic [ref=e165]:
+                        - button "View code" [ref=e166]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e167]:
+                          - img
+                    - generic [ref=e171]:
+                      - generic [ref=e172]: Magic UI is
+                      - generic [ref=e173]:
+                        - generic [ref=e174]:
+                          - generic [ref=e175]: M
+                          - generic [ref=e176]: a
+                          - generic [ref=e177]: g
+                          - generic [ref=e178]: i
+                          - generic [ref=e179]: c
+                        - generic [ref=e181]:
+                          - generic [ref=e182]: U
+                          - generic [ref=e183]: I
+                        - generic [ref=e185]:
+                          - generic [ref=e186]: i
+                          - generic [ref=e187]: s
+                    - paragraph [ref=e189]: Animate through a series of words with a fun rotating effect.
+                  - generic [ref=e190]:
+                    - generic [ref=e191]:
+                      - heading "Shiny Text" [level=3] [ref=e193]
+                      - generic [ref=e194]:
+                        - button "View code" [ref=e195]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e196]:
+                          - img
+                    - generic [ref=e200]: Get Started
+                    - paragraph [ref=e202]: A component that adds a shiny, reflective effect to text as if light is passing over it.
+                  - generic [ref=e203]:
+                    - generic [ref=e204]:
+                      - heading "Text with Cursor" [level=3] [ref=e206]
+                      - generic [ref=e207]:
+                        - button "View code" [ref=e208]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e209]:
+                          - img
+                    - paragraph [ref=e214]: Simulates a typing effect with a blinking cursor for dynamic text presentation.
+                  - generic [ref=e215]:
+                    - generic [ref=e216]:
+                      - heading "Count Up Animation" [level=3] [ref=e218]
+                      - generic [ref=e219]:
+                        - button "Customize component" [ref=e220]:
+                          - img
+                        - button "View code" [ref=e221]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e222]:
+                          - img
+                    - generic [ref=e227]: "0"
+                    - paragraph [ref=e229]: Animates a number from zero to a target value with a smooth counting effect.
+  - contentinfo [ref=e230]:
+    - paragraph [ref=e232]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e233]:
+    - paragraph [ref=e235]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e236]
+  - generic [ref=e241] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e242] [cursor=pointer]:
+      - img [ref=e243] [cursor=pointer]
+    - generic [ref=e246] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e247] [cursor=pointer]:
+        - generic [ref=e248] [cursor=pointer]:
+          - generic [ref=e249] [cursor=pointer]: "0"
+          - generic [ref=e250] [cursor=pointer]: "1"
+        - generic [ref=e251] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e252] [cursor=pointer]:
+        - img [ref=e253] [cursor=pointer]
+```

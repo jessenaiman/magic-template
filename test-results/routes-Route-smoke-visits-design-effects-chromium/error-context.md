@@ -1,0 +1,164 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Effects
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+              - list [ref=e47]:
+                - listitem [ref=e48]:
+                  - link "Overview" [ref=e49] [cursor=pointer]:
+                    - /url: /design/effects
+                - listitem [ref=e50]:
+                  - link "HTML CSS" [ref=e51] [cursor=pointer]:
+                    - /url: /design/effects/html-css
+                - listitem [ref=e52]:
+                  - link "MagicUI" [ref=e53] [cursor=pointer]:
+                    - /url: /design/effects/magicui
+                - listitem [ref=e54]:
+                  - link "Tailwind" [ref=e55] [cursor=pointer]:
+                    - /url: /design/effects/tailwind
+            - listitem [ref=e56]:
+              - link "Transitions Smooth page transition effects" [ref=e57] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e58] [cursor=pointer]: Transitions
+                - generic [ref=e59] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e60]:
+              - link "Text Typography and text effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e62] [cursor=pointer]: Text
+                - generic [ref=e63] [cursor=pointer]: Typography and text effects
+      - main [ref=e64]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Effects
+            - tablist [ref=e71]:
+              - tab "HTML/CSS" [selected] [ref=e72]
+              - tab "Tailwind" [ref=e73]
+              - tab "MagicUI" [ref=e74]
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - button "Light theme" [ref=e77]:
+                  - img [ref=e78]
+                - button "Dark theme" [ref=e84]:
+                  - img [ref=e85]
+              - generic [ref=e87]:
+                - button "Pause" [ref=e88]:
+                  - img [ref=e89]
+                - button "Reset" [ref=e92]:
+                  - img [ref=e93]
+          - main [ref=e96]:
+            - generic [ref=e98]:
+              - generic [ref=e100]:
+                - heading "Visual Effects Gallery" [level=1] [ref=e101]
+                - paragraph [ref=e102]: Explore a collection of interactive and animated visual effects. From subtle glows to dynamic particles, each implementation demonstrates modern animation techniques with a focus on performance and interactivity.
+                - generic [ref=e103]:
+                  - link "HTML & CSS Effects" [ref=e104] [cursor=pointer]:
+                    - /url: /design/effects/html-css
+                    - img
+                    - text: HTML & CSS Effects
+                  - link "Tailwind Effects" [ref=e105] [cursor=pointer]:
+                    - /url: /design/effects/tailwind
+                    - img
+                    - text: Tailwind Effects
+                  - link "MagicUI Effects" [ref=e106] [cursor=pointer]:
+                    - /url: /design/effects/magicui
+                    - img
+                    - text: MagicUI Effects
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e112]: HTML & CSS
+                  - generic [ref=e114]:
+                    - generic [ref=e115]: HTML & CSS Effects
+                    - generic [ref=e116]: Pure CSS animations and transitions without JavaScript
+                  - paragraph [ref=e118]: Discover the power of modern CSS with animations, transitions, and visual effects that don't require any JavaScript. Perfect for lightweight implementations.
+                  - link "Explore HTML & CSS Effects" [ref=e120] [cursor=pointer]:
+                    - /url: /design/effects/html-css
+                    - generic [ref=e121] [cursor=pointer]: Explore HTML & CSS Effects
+                    - img
+                - generic [ref=e122]:
+                  - generic [ref=e125]: Tailwind
+                  - generic [ref=e127]:
+                    - generic [ref=e128]: Tailwind Effects
+                    - generic [ref=e129]: Utility-first animations and effects
+                  - paragraph [ref=e131]: Leverage Tailwind's utility classes to create stunning animations and effects with minimal custom CSS. Ideal for rapid development and consistent design.
+                  - link "Explore Tailwind Effects" [ref=e133] [cursor=pointer]:
+                    - /url: /design/effects/tailwind
+                    - generic [ref=e134] [cursor=pointer]: Explore Tailwind Effects
+                    - img
+                - generic [ref=e135]:
+                  - generic [ref=e138]: MagicUI
+                  - generic [ref=e140]:
+                    - generic [ref=e141]: MagicUI Effects
+                    - generic [ref=e142]: Pre-built React components with stunning effects
+                  - paragraph [ref=e144]: Explore our collection of ready-to-use React components with built-in animations and effects. Drop them into your project for instant visual impact.
+                  - link "Explore MagicUI Effects" [ref=e146] [cursor=pointer]:
+                    - /url: /design/effects/magicui
+                    - generic [ref=e147] [cursor=pointer]: Explore MagicUI Effects
+                    - img
+              - generic [ref=e148]:
+                - generic [ref=e150]:
+                  - img [ref=e152]
+                  - heading "Interactive animations" [level=3] [ref=e154]
+                - generic [ref=e156]:
+                  - img [ref=e158]
+                  - heading "Dynamic particles" [level=3] [ref=e160]
+                - generic [ref=e162]:
+                  - img [ref=e164]
+                  - heading "Glowing effects" [level=3] [ref=e166]
+                - generic [ref=e168]:
+                  - img [ref=e170]
+                  - heading "Smooth transitions" [level=3] [ref=e172]
+  - contentinfo [ref=e173]:
+    - paragraph [ref=e175]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e176]:
+    - paragraph [ref=e178]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e179]
+  - generic [ref=e184] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e185] [cursor=pointer]:
+      - img [ref=e186] [cursor=pointer]
+    - generic [ref=e189] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e190] [cursor=pointer]:
+        - generic [ref=e191] [cursor=pointer]:
+          - generic [ref=e192] [cursor=pointer]: "0"
+          - generic [ref=e193] [cursor=pointer]: "1"
+        - generic [ref=e194] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e195] [cursor=pointer]:
+        - img [ref=e196] [cursor=pointer]
+```

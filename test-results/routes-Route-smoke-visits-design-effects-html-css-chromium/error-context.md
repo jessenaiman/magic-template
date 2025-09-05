@@ -1,0 +1,192 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Effects / Html Css
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+              - list [ref=e47]:
+                - listitem [ref=e48]:
+                  - link "Overview" [ref=e49] [cursor=pointer]:
+                    - /url: /design/effects
+                - listitem [ref=e50]:
+                  - link "HTML CSS" [ref=e51] [cursor=pointer]:
+                    - /url: /design/effects/html-css
+                - listitem [ref=e52]:
+                  - link "MagicUI" [ref=e53] [cursor=pointer]:
+                    - /url: /design/effects/magicui
+                - listitem [ref=e54]:
+                  - link "Tailwind" [ref=e55] [cursor=pointer]:
+                    - /url: /design/effects/tailwind
+            - listitem [ref=e56]:
+              - link "Transitions Smooth page transition effects" [ref=e57] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e58] [cursor=pointer]: Transitions
+                - generic [ref=e59] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e60]:
+              - link "Text Typography and text effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e62] [cursor=pointer]: Text
+                - generic [ref=e63] [cursor=pointer]: Typography and text effects
+      - main [ref=e64]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Effects / Html Css
+            - tablist [ref=e71]:
+              - tab "HTML/CSS" [selected] [ref=e72]
+              - tab "Tailwind" [ref=e73]
+              - tab "MagicUI" [ref=e74]
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - button "Light theme" [ref=e77]:
+                  - img [ref=e78]
+                - button "Dark theme" [ref=e84]:
+                  - img [ref=e85]
+              - generic [ref=e87]:
+                - button "Pause" [ref=e88]:
+                  - img [ref=e89]
+                - button "Reset" [ref=e92]:
+                  - img [ref=e93]
+          - main [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - button "Pause" [ref=e99]:
+                  - img
+                - button "Reset" [ref=e100]:
+                  - img
+                - button "Toggle theme" [ref=e101] [cursor=pointer]:
+                  - img
+                  - generic [ref=e102] [cursor=pointer]: Toggle theme
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - heading "HTML & CSS Effects" [level=2] [ref=e105]
+                  - paragraph [ref=e106]: A collection of modern web design effects created with only HTML and CSS.
+                - generic [ref=e107]:
+                  - generic [ref=e108]:
+                    - heading "Pulsing Button" [level=3] [ref=e110]
+                    - generic [ref=e111]:
+                      - button "Customize component" [ref=e112]:
+                        - img
+                      - button "View code" [ref=e113]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e114]:
+                        - img
+                  - button "Click Me" [ref=e119]
+                  - paragraph [ref=e121]: A button with a pulsing effect
+                - generic [ref=e122]:
+                  - generic [ref=e123]:
+                    - heading "Gradient Border Card" [level=3] [ref=e125]
+                    - generic [ref=e126]:
+                      - button "Customize component" [ref=e127]:
+                        - img
+                      - button "View code" [ref=e128]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e129]:
+                        - img
+                  - generic [ref=e134]:
+                    - heading "Card Title" [level=3] [ref=e135]
+                    - paragraph [ref=e136]: This card has a beautiful gradient border.
+                  - paragraph [ref=e138]: A card with a gradient border
+                - generic [ref=e139]:
+                  - generic [ref=e140]:
+                    - heading "Flipping Card" [level=3] [ref=e142]
+                    - generic [ref=e143]:
+                      - button "Customize component" [ref=e144]:
+                        - img
+                      - button "View code" [ref=e145]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e146]:
+                        - img
+                  - generic [ref=e152]:
+                    - paragraph [ref=e154]: Hover over me!
+                    - paragraph [ref=e156]: See? I flipped!
+                  - paragraph [ref=e158]: A card that flips on hover
+                - generic [ref=e159]:
+                  - generic [ref=e160]:
+                    - heading "Glowing Button" [level=3] [ref=e162]
+                    - generic [ref=e163]:
+                      - button "Customize component" [ref=e164]:
+                        - img
+                      - button "View code" [ref=e165]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e166]:
+                        - img
+                  - button "Hover Me" [ref=e171] [cursor=pointer]
+                  - paragraph [ref=e173]: A button with a glowing effect on hover
+                - generic [ref=e174]:
+                  - generic [ref=e175]:
+                    - heading "Neumorphic Card" [level=3] [ref=e177]
+                    - generic [ref=e178]:
+                      - button "Customize component" [ref=e179]:
+                        - img
+                      - button "View code" [ref=e180]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e181]:
+                        - img
+                  - generic [ref=e186]: Neumorphic Design
+                  - paragraph [ref=e188]: A card with a modern neumorphic design
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - heading "Text Reveal" [level=3] [ref=e192]
+                    - generic [ref=e193]:
+                      - button "Customize component" [ref=e194]:
+                        - img
+                      - button "View code" [ref=e195]:
+                        - img
+                      - button "Copy code to clipboard" [ref=e196]:
+                        - img
+                  - generic [ref=e201]: Reveal Text
+                  - paragraph [ref=e203]: Text that reveals itself with a gradient effect
+  - contentinfo [ref=e204]:
+    - paragraph [ref=e206]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e207]:
+    - paragraph [ref=e209]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e210]
+  - generic [ref=e215] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e216] [cursor=pointer]:
+      - img [ref=e217] [cursor=pointer]
+    - generic [ref=e220] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e221] [cursor=pointer]:
+        - generic [ref=e222] [cursor=pointer]:
+          - generic [ref=e223] [cursor=pointer]: "0"
+          - generic [ref=e224] [cursor=pointer]: "1"
+        - generic [ref=e225] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e226] [cursor=pointer]:
+        - img [ref=e227] [cursor=pointer]
+```

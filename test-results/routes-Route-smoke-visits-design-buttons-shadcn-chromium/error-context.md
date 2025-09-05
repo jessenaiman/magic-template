@@ -1,0 +1,191 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Buttons / Shadcn
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+              - list [ref=e39]:
+                - listitem [ref=e40]:
+                  - link "Overview" [ref=e41] [cursor=pointer]:
+                    - /url: /design/buttons
+                - listitem [ref=e42]:
+                  - link "Animate CSS" [ref=e43] [cursor=pointer]:
+                    - /url: /design/buttons/animate-css
+                - listitem [ref=e44]:
+                  - link "HTML CSS" [ref=e45] [cursor=pointer]:
+                    - /url: /design/buttons/html-css
+                - listitem [ref=e46]:
+                  - link "Magic" [ref=e47] [cursor=pointer]:
+                    - /url: /design/buttons/magic
+                - listitem [ref=e48]:
+                  - link "Shadcn" [ref=e49] [cursor=pointer]:
+                    - /url: /design/buttons/shadcn
+                - listitem [ref=e50]:
+                  - link "Tailwind" [ref=e51] [cursor=pointer]:
+                    - /url: /design/buttons/tailwind
+            - listitem [ref=e52]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e53] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e54] [cursor=pointer]: Responsive Design
+                - generic [ref=e55] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e56]:
+              - link "Effects Visual effects and animations" [ref=e57] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e58] [cursor=pointer]: Effects
+                - generic [ref=e59] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e60]:
+              - link "Transitions Smooth page transition effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e62] [cursor=pointer]: Transitions
+                - generic [ref=e63] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e64]:
+              - link "Text Typography and text effects" [ref=e65] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e66] [cursor=pointer]: Text
+                - generic [ref=e67] [cursor=pointer]: Typography and text effects
+      - main [ref=e68]:
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: Buttons / Shadcn
+            - tablist [ref=e75]:
+              - tab "HTML/CSS" [ref=e76]
+              - tab "Tailwind" [ref=e77]
+              - tab "Shadcn" [selected] [ref=e78]
+              - tab "Magic" [ref=e79]
+              - tab "Animate CSS" [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - button "Light theme" [ref=e83]:
+                  - img [ref=e84]
+                - button "Dark theme" [ref=e90]:
+                  - img [ref=e91]
+              - generic [ref=e93]:
+                - button "Pause" [ref=e94]:
+                  - img [ref=e95]
+                - button "Reset" [ref=e98]:
+                  - img [ref=e99]
+          - main [ref=e102]:
+            - generic [ref=e104]:
+              - generic [ref=e105]:
+                - heading "Shadcn/ui Buttons" [level=1] [ref=e106]
+                - paragraph [ref=e107]: Pre-built button components from Shadcn/ui with consistent design and accessibility.
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e111]: Default Button
+                  - generic [ref=e112]:
+                    - button "Default Button" [ref=e113]
+                    - code [ref=e116]: "import { Button } from \"@/components/ui/button\" export default function MyComponent() { return <Button>Default Button</Button> }"
+                - generic [ref=e117]:
+                  - generic [ref=e119]: Secondary Button
+                  - generic [ref=e120]:
+                    - button "Secondary Button" [ref=e121]
+                    - code [ref=e124]: <Button variant="secondary">Secondary Button</Button>
+                - generic [ref=e125]:
+                  - generic [ref=e127]: Destructive Button
+                  - generic [ref=e128]:
+                    - button "Delete Item" [ref=e129]
+                    - code [ref=e132]: <Button variant="destructive">Delete Item</Button>
+                - generic [ref=e133]:
+                  - generic [ref=e135]: Outline Button
+                  - generic [ref=e136]:
+                    - button "Outline Button" [ref=e137]
+                    - code [ref=e140]: <Button variant="outline">Outline Button</Button>
+                - generic [ref=e141]:
+                  - generic [ref=e143]: Ghost Button
+                  - generic [ref=e144]:
+                    - button "Ghost Button" [ref=e145]
+                    - code [ref=e148]: <Button variant="ghost">Ghost Button</Button>
+                - generic [ref=e149]:
+                  - generic [ref=e151]: Link Button
+                  - generic [ref=e152]:
+                    - button "Link Button" [ref=e153]
+                    - code [ref=e156]: <Button variant="link">Link Button</Button>
+                - generic [ref=e157]:
+                  - generic [ref=e159]: Button Sizes
+                  - generic [ref=e160]:
+                    - generic [ref=e161]:
+                      - button "Small Button" [ref=e162]
+                      - button "Default Button" [ref=e163]
+                      - button "Large Button" [ref=e164]
+                    - code [ref=e167]: <Button size="sm">Small Button</Button> <Button size="default">Default Button</Button> <Button size="lg">Large Button</Button>
+                - generic [ref=e168]:
+                  - generic [ref=e170]: Button with Icon
+                  - generic [ref=e171]:
+                    - button "Download" [ref=e172]:
+                      - img
+                      - text: Download
+                    - code [ref=e175]: "import { Download } from \"lucide-react\" <Button> <Download className=\"h-4 w-4\" /> Download </Button>"
+                - generic [ref=e176]:
+                  - generic [ref=e178]: Icon Only Button
+                  - generic [ref=e179]:
+                    - button [ref=e180]:
+                      - img
+                    - code [ref=e183]: <Button size="icon"> <Heart className="h-4 w-4" /> </Button>
+                - generic [ref=e184]:
+                  - generic [ref=e186]: Button States
+                  - generic [ref=e187]:
+                    - generic [ref=e188]:
+                      - button "Disabled Button" [disabled]
+                      - button "Delete" [ref=e189]:
+                        - img
+                        - text: Delete
+                      - button "Share" [ref=e190]:
+                        - img
+                        - text: Share
+                    - code [ref=e193]: <Button disabled>Disabled Button</Button> <Button variant="destructive"> <Trash2 className="h-4 w-4" /> Delete </Button> <Button variant="outline"> <Share className="h-4 w-4" /> Share </Button>
+                - generic [ref=e194]:
+                  - generic [ref=e196]: Loading Button
+                  - generic [ref=e197]:
+                    - button "Loading..." [disabled]:
+                      - img
+                      - text: Loading...
+                    - code [ref=e200]: <Button disabled> <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle> <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg> Loading... </Button>
+                - generic [ref=e201]:
+                  - generic [ref=e203]: Custom Styled
+                  - generic [ref=e204]:
+                    - button "Custom Gradient" [ref=e205]
+                    - code [ref=e208]: <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0"> Custom Gradient </Button>
+  - contentinfo [ref=e209]:
+    - paragraph [ref=e211]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e212]:
+    - paragraph [ref=e214]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e215]
+  - generic [ref=e220] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e221] [cursor=pointer]:
+      - img [ref=e222] [cursor=pointer]
+    - generic [ref=e225] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e226] [cursor=pointer]:
+        - generic [ref=e227] [cursor=pointer]:
+          - generic [ref=e228] [cursor=pointer]: "0"
+          - generic [ref=e229] [cursor=pointer]: "1"
+        - generic [ref=e230] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e231] [cursor=pointer]:
+        - img [ref=e232] [cursor=pointer]
+```

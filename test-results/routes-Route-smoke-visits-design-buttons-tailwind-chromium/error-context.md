@@ -1,0 +1,163 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Buttons / Tailwind
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+              - list [ref=e39]:
+                - listitem [ref=e40]:
+                  - link "Overview" [ref=e41] [cursor=pointer]:
+                    - /url: /design/buttons
+                - listitem [ref=e42]:
+                  - link "Animate CSS" [ref=e43] [cursor=pointer]:
+                    - /url: /design/buttons/animate-css
+                - listitem [ref=e44]:
+                  - link "HTML CSS" [ref=e45] [cursor=pointer]:
+                    - /url: /design/buttons/html-css
+                - listitem [ref=e46]:
+                  - link "Magic" [ref=e47] [cursor=pointer]:
+                    - /url: /design/buttons/magic
+                - listitem [ref=e48]:
+                  - link "Shadcn" [ref=e49] [cursor=pointer]:
+                    - /url: /design/buttons/shadcn
+                - listitem [ref=e50]:
+                  - link "Tailwind" [ref=e51] [cursor=pointer]:
+                    - /url: /design/buttons/tailwind
+            - listitem [ref=e52]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e53] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e54] [cursor=pointer]: Responsive Design
+                - generic [ref=e55] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e56]:
+              - link "Effects Visual effects and animations" [ref=e57] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e58] [cursor=pointer]: Effects
+                - generic [ref=e59] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e60]:
+              - link "Transitions Smooth page transition effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e62] [cursor=pointer]: Transitions
+                - generic [ref=e63] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e64]:
+              - link "Text Typography and text effects" [ref=e65] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e66] [cursor=pointer]: Text
+                - generic [ref=e67] [cursor=pointer]: Typography and text effects
+      - main [ref=e68]:
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: Buttons / Tailwind
+            - tablist [ref=e75]:
+              - tab "HTML/CSS" [ref=e76]
+              - tab "Tailwind" [selected] [ref=e77]
+              - tab "Shadcn" [ref=e78]
+              - tab "Magic" [ref=e79]
+              - tab "Animate CSS" [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - button "Light theme" [ref=e83]:
+                  - img [ref=e84]
+                - button "Dark theme" [ref=e90]:
+                  - img [ref=e91]
+              - generic [ref=e93]:
+                - button "Pause" [ref=e94]:
+                  - img [ref=e95]
+                - button "Reset" [ref=e98]:
+                  - img [ref=e99]
+          - main [ref=e102]:
+            - generic [ref=e104]:
+              - generic [ref=e105]:
+                - heading "Tailwind CSS Buttons" [level=1] [ref=e106]
+                - paragraph [ref=e107]: Modern button designs using Tailwind CSS utility classes for rapid development.
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e111]: Primary Button
+                  - generic [ref=e112]:
+                    - button "Primary Action" [ref=e113]
+                    - code [ref=e116]: <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 shadow-md hover:shadow-lg"> Primary Action </button>
+                - generic [ref=e117]:
+                  - generic [ref=e119]: Secondary Button
+                  - generic [ref=e120]:
+                    - button "Secondary Action" [ref=e121]
+                    - code [ref=e124]: <button className="px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200 border border-gray-300"> Secondary Action </button>
+                - generic [ref=e125]:
+                  - generic [ref=e127]: Success Button
+                  - generic [ref=e128]:
+                    - button "Success Action" [ref=e129]
+                    - code [ref=e132]: <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors duration-200 shadow-md hover:shadow-lg"> Success Action </button>
+                - generic [ref=e133]:
+                  - generic [ref=e135]: Danger Button
+                  - generic [ref=e136]:
+                    - button "Danger Action" [ref=e137]
+                    - code [ref=e140]: <button className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200 shadow-md hover:shadow-lg"> Danger Action </button>
+                - generic [ref=e141]:
+                  - generic [ref=e143]: Outline Button
+                  - generic [ref=e144]:
+                    - button "Outline Action" [ref=e145]
+                    - code [ref=e148]: <button className="px-6 py-3 bg-transparent text-blue-600 font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"> Outline Action </button>
+                - generic [ref=e149]:
+                  - generic [ref=e151]: Ghost Button
+                  - generic [ref=e152]:
+                    - button "Ghost Action" [ref=e153]
+                    - code [ref=e156]: <button className="px-6 py-3 bg-transparent text-gray-600 font-semibold rounded-lg hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200"> Ghost Action </button>
+                - generic [ref=e157]:
+                  - generic [ref=e159]: Large Button
+                  - generic [ref=e160]:
+                    - button "Large Action" [ref=e161]
+                    - code [ref=e164]: <button className="px-8 py-4 bg-purple-600 text-white font-bold text-lg rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors duration-200 shadow-md hover:shadow-lg"> Large Action </button>
+                - generic [ref=e165]:
+                  - generic [ref=e167]: Small Button
+                  - generic [ref=e168]:
+                    - button "Small Action" [ref=e169]
+                    - code [ref=e172]: <button className="px-3 py-1.5 bg-indigo-600 text-white font-medium text-sm rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200"> Small Action </button>
+                - generic [ref=e173]:
+                  - generic [ref=e175]: Loading Button
+                  - generic [ref=e176]:
+                    - button "Loading..." [disabled] [ref=e177]:
+                      - img [ref=e178]
+                      - text: Loading...
+                    - code [ref=e183]: <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md flex items-center gap-2" disabled> <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"> <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle> <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg> Loading... </button>
+  - contentinfo [ref=e184]:
+    - paragraph [ref=e186]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e187]:
+    - paragraph [ref=e189]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e190]
+  - generic [ref=e195] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e196] [cursor=pointer]:
+      - img [ref=e197] [cursor=pointer]
+    - generic [ref=e200] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e201] [cursor=pointer]:
+        - generic [ref=e202] [cursor=pointer]:
+          - generic [ref=e203] [cursor=pointer]: "0"
+          - generic [ref=e204] [cursor=pointer]: "1"
+        - generic [ref=e205] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e206] [cursor=pointer]:
+        - img [ref=e207] [cursor=pointer]
+```

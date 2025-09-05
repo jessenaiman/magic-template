@@ -1,0 +1,220 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Text / Shadcn
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e51]:
+              - link "Text Typography and text effects" [ref=e52] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e53] [cursor=pointer]: Text
+                - generic [ref=e54] [cursor=pointer]: Typography and text effects
+              - list [ref=e55]:
+                - listitem [ref=e56]:
+                  - link "Overview" [ref=e57] [cursor=pointer]:
+                    - /url: /design/text
+                - listitem [ref=e58]:
+                  - link "HTML CSS" [ref=e59] [cursor=pointer]:
+                    - /url: /design/text/html-css
+                - listitem [ref=e60]:
+                  - link "MagicUI" [ref=e61] [cursor=pointer]:
+                    - /url: /design/text/magicui
+                - listitem [ref=e62]:
+                  - link "ReactBits" [ref=e63] [cursor=pointer]:
+                    - /url: /design/text/reactbits
+                - listitem [ref=e64]:
+                  - link "Shadcn" [ref=e65] [cursor=pointer]:
+                    - /url: /design/text/shadcn
+                - listitem [ref=e66]:
+                  - link "Tailwind" [ref=e67] [cursor=pointer]:
+                    - /url: /design/text/tailwind
+      - main [ref=e68]:
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: Text / Shadcn
+            - tablist [ref=e75]:
+              - tab "HTML/CSS" [ref=e76]
+              - tab "Tailwind" [ref=e77]
+              - tab "Shadcn" [selected] [ref=e78]
+              - tab "MagicUI" [ref=e79]
+              - tab "ReactBits" [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - button "Light theme" [ref=e83]:
+                  - img [ref=e84]
+                - button "Dark theme" [ref=e90]:
+                  - img [ref=e91]
+              - generic [ref=e93]:
+                - button "Pause" [ref=e94]:
+                  - img [ref=e95]
+                - button "Reset" [ref=e98]:
+                  - img [ref=e99]
+          - main [ref=e102]:
+            - generic [ref=e103]:
+              - paragraph [ref=e105]: Explore text styling and animation components across different technology stacks. Each implementation showcases the same concepts using different approaches.
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - heading "ShadCN UI Text Components" [level=2] [ref=e108]
+                  - paragraph [ref=e109]: Text components built with ShadCN UI. These examples demonstrate how to use and customize ShadCN's text-related components with proper accessibility and styling.
+                - generic [ref=e110]:
+                  - button "Pause" [ref=e111]:
+                    - img
+                  - button "Reset" [ref=e112]:
+                    - img
+                  - button "Toggle theme" [ref=e113] [cursor=pointer]:
+                    - img
+                    - generic [ref=e114] [cursor=pointer]: Toggle theme
+                - generic [ref=e115]:
+                  - generic [ref=e116]:
+                    - generic [ref=e117]:
+                      - heading "Typography System" [level=3] [ref=e119]
+                      - generic [ref=e120]:
+                        - button "View code" [ref=e121]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e122]:
+                          - img
+                    - generic [ref=e126]:
+                      - heading "Heading 1" [level=1] [ref=e127]
+                      - heading "Heading 2" [level=2] [ref=e128]
+                      - heading "Heading 3" [level=3] [ref=e129]
+                      - paragraph [ref=e130]: This is a paragraph demonstrating the text styling capabilities. ShadCN UI provides excellent typography foundations with proper contrast and accessibility.
+                    - paragraph [ref=e132]: Comprehensive typography system using ShadCN UI components with proper semantic HTML and responsive sizing.
+                  - generic [ref=e133]:
+                    - generic [ref=e134]:
+                      - heading "Badge Variants" [level=3] [ref=e136]
+                      - generic [ref=e137]:
+                        - button "View code" [ref=e138]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e139]:
+                          - img
+                    - generic [ref=e143]:
+                      - generic [ref=e144]: Default
+                      - generic [ref=e145]: Secondary
+                      - generic [ref=e146]: Destructive
+                      - generic [ref=e147]: Outline
+                    - paragraph [ref=e149]: Collection of badge components demonstrating different styles and usage patterns for text labels.
+                  - generic [ref=e150]:
+                    - generic [ref=e151]:
+                      - heading "Form Text Elements" [level=3] [ref=e153]
+                      - generic [ref=e154]:
+                        - button "View code" [ref=e155]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e156]:
+                          - img
+                    - generic [ref=e160]:
+                      - generic [ref=e161]:
+                        - generic [ref=e162]: Full Name
+                        - textbox "Full Name" [ref=e163]
+                      - generic [ref=e164]:
+                        - generic [ref=e165]: Email Address
+                        - textbox "Email Address" [ref=e166]
+                      - generic [ref=e167]:
+                        - generic [ref=e168]: Message
+                        - textbox "Message" [ref=e169]
+                    - paragraph [ref=e171]: Text-related form components including labels, inputs, and textareas with proper accessibility.
+                  - generic [ref=e172]:
+                    - generic [ref=e173]:
+                      - heading "Text Cards" [level=3] [ref=e175]
+                      - generic [ref=e176]:
+                        - button "View code" [ref=e177]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e178]:
+                          - img
+                    - generic [ref=e183]:
+                      - generic [ref=e184]:
+                        - generic [ref=e185]: Informational Card
+                        - generic [ref=e186]: This card contains descriptive text with proper hierarchy
+                      - paragraph [ref=e188]: Cards are excellent for organizing text content with clear visual hierarchy and proper spacing between different text elements.
+                    - paragraph [ref=e190]: Card components with text content demonstrating different text styles and layouts.
+                  - generic [ref=e191]:
+                    - generic [ref=e192]:
+                      - heading "Text with Actions" [level=3] [ref=e194]
+                      - generic [ref=e195]:
+                        - button "View code" [ref=e196]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e197]:
+                          - img
+                    - generic [ref=e201]:
+                      - generic [ref=e202]:
+                        - generic [ref=e203]: Enable Notifications
+                        - switch "Enable Notifications" [ref=e204]
+                      - generic [ref=e205]:
+                        - generic [ref=e206]: Dark Mode
+                        - switch [ref=e207]
+                      - generic [ref=e208]:
+                        - button "Learn More" [ref=e209]
+                        - button "Get Started" [ref=e210]
+                    - paragraph [ref=e212]: Text elements combined with interactive components like buttons and switches.
+                  - generic [ref=e213]:
+                    - generic [ref=e214]:
+                      - heading "Status Messages" [level=3] [ref=e216]
+                      - generic [ref=e217]:
+                        - button "View code" [ref=e218]:
+                          - img
+                        - button "Copy code to clipboard" [ref=e219]:
+                          - img
+                    - generic [ref=e223]:
+                      - generic [ref=e226]: Online - System is operational
+                      - generic [ref=e229]: Warning - Maintenance scheduled
+                      - generic [ref=e232]: Error - Service disruption
+                      - generic [ref=e235]: Info - New features available
+                    - paragraph [ref=e237]: Text-based status indicators and messages with appropriate styling and icons.
+  - contentinfo [ref=e238]:
+    - paragraph [ref=e240]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e241]:
+    - paragraph [ref=e243]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e244]
+  - generic [ref=e249] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e250] [cursor=pointer]:
+      - img [ref=e251] [cursor=pointer]
+    - generic [ref=e254] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e255] [cursor=pointer]:
+        - generic [ref=e256] [cursor=pointer]:
+          - generic [ref=e257] [cursor=pointer]: "0"
+          - generic [ref=e258] [cursor=pointer]: "1"
+        - generic [ref=e259] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e260] [cursor=pointer]:
+        - img [ref=e261] [cursor=pointer]
+```

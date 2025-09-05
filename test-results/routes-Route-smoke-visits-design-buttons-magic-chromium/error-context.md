@@ -1,0 +1,141 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - 'heading "Application error: a client-side exception has occurred while loading localhost (see the browser console for more information)." [level=2] [ref=e4]'
+  - generic [active]:
+    - generic [ref=e9] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e10] [cursor=pointer]:
+        - img [ref=e11] [cursor=pointer]
+      - generic [ref=e14] [cursor=pointer]:
+        - button "Open issues overlay" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16] [cursor=pointer]:
+            - generic [ref=e17] [cursor=pointer]: "0"
+            - generic [ref=e18] [cursor=pointer]: "1"
+          - generic [ref=e19] [cursor=pointer]: Issue
+        - button "Collapse issues badge" [ref=e20] [cursor=pointer]:
+          - img [ref=e21] [cursor=pointer]
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - navigation [ref=e28]:
+            - button "previous" [disabled] [ref=e29]:
+              - img "previous" [ref=e30]
+            - generic [ref=e32]:
+              - generic [ref=e33]: 1/
+              - generic [ref=e34]: "1"
+            - button "next" [disabled] [ref=e35]:
+              - img "next" [ref=e36]
+          - img
+        - generic [ref=e38]:
+          - link "Next.js 15.3.5 (stale) Turbopack" [ref=e39] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+            - img [ref=e40] [cursor=pointer]
+            - generic "There is a newer version (15.5.2) available, upgrade recommended!" [ref=e42] [cursor=pointer]: Next.js 15.3.5 (stale)
+            - generic [ref=e43] [cursor=pointer]: Turbopack
+          - img
+      - generic [ref=e44]:
+        - dialog "Runtime Error" [ref=e45]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]:
+                  - generic [ref=e52]: Runtime Error
+                  - generic [ref=e53]:
+                    - button "Copy Stack Trace" [ref=e54] [cursor=pointer]:
+                      - img [ref=e55] [cursor=pointer]
+                    - button "No related documentation found" [disabled] [ref=e57]:
+                      - img [ref=e58]
+                    - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e60] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                      - img [ref=e61] [cursor=pointer]
+                - paragraph [ref=e70]: "Error: usePreviewTileExpansion must be used within a PreviewSurface"
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - paragraph [ref=e74]:
+                    - img [ref=e76]
+                    - generic [ref=e79]: components/preview-surface.tsx (46:11) @ usePreviewTileExpansion
+                    - button "Open in editor" [ref=e80] [cursor=pointer]:
+                      - img [ref=e82] [cursor=pointer]
+                  - generic [ref=e84]:
+                    - generic [ref=e85]:
+                      - generic [ref=e87]: 44 |
+                      - generic [ref=e89]: const
+                      - generic [ref=e90]: context
+                      - generic [ref=e91]: =
+                      - generic [ref=e93]: React
+                      - generic [ref=e94]: .
+                      - generic [ref=e95]: useContext(
+                      - generic [ref=e96]: PreviewTileExpansionContext
+                      - generic [ref=e97]: )
+                      - generic [ref=e98]: ;
+                    - generic [ref=e99]:
+                      - generic [ref=e101]: 45 |
+                      - generic [ref=e103]: if
+                      - generic [ref=e104]: (
+                      - generic [ref=e105]: "!"
+                      - generic [ref=e106]: "context) {"
+                    - generic [ref=e107]:
+                      - generic [ref=e108]: ">"
+                      - generic [ref=e109]: 46 |
+                      - generic [ref=e111]: throw
+                      - generic [ref=e113]: new
+                      - generic [ref=e115]: Error
+                      - generic [ref=e116]: (
+                      - generic [ref=e117]: "'usePreviewTileExpansion must be used within a PreviewSurface'"
+                      - generic [ref=e118]: )
+                      - generic [ref=e119]: ;
+                    - generic [ref=e120]:
+                      - generic [ref=e122]: "|"
+                      - generic [ref=e124]: ^
+                    - generic [ref=e125]:
+                      - generic [ref=e127]: 47 |
+                      - generic [ref=e128]: "}"
+                    - generic [ref=e129]:
+                      - generic [ref=e131]: 48 |
+                      - generic [ref=e133]: return
+                      - generic [ref=e134]: context
+                      - generic [ref=e135]: ;
+                    - generic [ref=e136]:
+                      - generic [ref=e138]: 49 |
+                      - generic [ref=e139]: "}"
+                      - generic [ref=e140]: ;
+                - generic [ref=e141]:
+                  - generic [ref=e142]:
+                    - paragraph [ref=e143]:
+                      - text: Call Stack
+                      - generic [ref=e144]: "4"
+                    - button "Show 1 ignore-listed frame(s)" [ref=e145] [cursor=pointer]:
+                      - text: Show 1 ignore-listed frame(s)
+                      - img [ref=e146] [cursor=pointer]
+                  - generic [ref=e148]:
+                    - generic [ref=e149]:
+                      - text: usePreviewTileExpansion
+                      - button [ref=e150] [cursor=pointer]:
+                        - img [ref=e151] [cursor=pointer]
+                    - generic [ref=e153]: components/preview-surface.tsx (46:11)
+                  - generic [ref=e154]:
+                    - generic [ref=e155]:
+                      - text: PreviewTile
+                      - button [ref=e156] [cursor=pointer]:
+                        - img [ref=e157] [cursor=pointer]
+                    - generic [ref=e159]: components/preview-tile.tsx (156:67)
+                  - generic [ref=e160]:
+                    - generic [ref=e161]:
+                      - text: MagicButtonsPage
+                      - button [ref=e162] [cursor=pointer]:
+                        - img [ref=e163] [cursor=pointer]
+                    - generic [ref=e165]: app/design/buttons/magic/page.tsx (47:7)
+            - generic [ref=e166]:
+              - generic [ref=e167]: "1"
+              - generic [ref=e168]: "2"
+        - contentinfo [ref=e169]:
+          - region "Error feedback" [ref=e170]:
+            - paragraph [ref=e171]:
+              - link "Was this helpful?" [ref=e172] [cursor=pointer]:
+                - /url: https://nextjs.org/telemetry#error-feedback
+            - button "Mark as helpful" [ref=e173] [cursor=pointer]:
+              - img [ref=e174] [cursor=pointer]
+            - button "Mark as not helpful" [ref=e177] [cursor=pointer]:
+              - img [ref=e178] [cursor=pointer]
+```

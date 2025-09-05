@@ -1,0 +1,113 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Responsive Design / Tailwindcss
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+              - list [ref=e43]:
+                - listitem [ref=e44]:
+                  - link "Overview" [ref=e45] [cursor=pointer]:
+                    - /url: /design/responsive-design
+                - listitem [ref=e46]:
+                  - link "HTML CSS" [ref=e47] [cursor=pointer]:
+                    - /url: /design/responsive-design/html-css
+                - listitem [ref=e48]:
+                  - link "MagicUI" [ref=e49] [cursor=pointer]:
+                    - /url: /design/responsive-design/magicui
+                - listitem [ref=e50]:
+                  - link "Next.js" [ref=e51] [cursor=pointer]:
+                    - /url: /design/responsive-design/nextjs
+            - listitem [ref=e52]:
+              - link "Effects Visual effects and animations" [ref=e53] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e54] [cursor=pointer]: Effects
+                - generic [ref=e55] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e56]:
+              - link "Transitions Smooth page transition effects" [ref=e57] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e58] [cursor=pointer]: Transitions
+                - generic [ref=e59] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e60]:
+              - link "Text Typography and text effects" [ref=e61] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e62] [cursor=pointer]: Text
+                - generic [ref=e63] [cursor=pointer]: Typography and text effects
+      - main [ref=e64]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Responsive Design / Tailwindcss
+            - tablist [ref=e71]:
+              - tab "HTML/CSS" [selected] [ref=e72]
+              - tab "Tailwind" [ref=e73]
+              - tab "MagicUI" [ref=e74]
+              - tab "Next.js" [ref=e75]
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - button "Light theme" [ref=e78]:
+                  - img [ref=e79]
+                - button "Dark theme" [ref=e85]:
+                  - img [ref=e86]
+              - generic [ref=e88]:
+                - button "Pause" [ref=e89]:
+                  - img [ref=e90]
+                - button "Reset" [ref=e93]:
+                  - img [ref=e94]
+          - main [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - heading "Responsive Design" [level=1] [ref=e100]
+                - paragraph [ref=e101]: Adaptive layouts and components that work seamlessly across devices.
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - img [ref=e106]
+                  - generic [ref=e110]: Magic UI Content Layouts
+                - paragraph [ref=e112]: This section is under construction. Check back soon for content layout examples using Magic UI.
+  - contentinfo [ref=e113]:
+    - paragraph [ref=e115]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e116]:
+    - paragraph [ref=e118]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e119]
+  - generic [ref=e124] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e125] [cursor=pointer]:
+      - img [ref=e126] [cursor=pointer]
+    - generic [ref=e129] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e130] [cursor=pointer]:
+        - generic [ref=e131] [cursor=pointer]:
+          - generic [ref=e132] [cursor=pointer]: "0"
+          - generic [ref=e133] [cursor=pointer]: "1"
+        - generic [ref=e134] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e135] [cursor=pointer]:
+        - img [ref=e136] [cursor=pointer]
+```

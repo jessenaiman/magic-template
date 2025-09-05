@@ -1,0 +1,122 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Text
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "Light theme" [ref=e7]:
+            - img [ref=e8]
+          - button "Dark theme" [ref=e14]:
+            - img [ref=e15]
+        - generic [ref=e17]:
+          - button "Pause" [ref=e18]:
+            - img [ref=e19]
+          - button "Reset" [ref=e22]:
+            - img [ref=e23]
+    - generic [ref=e26]:
+      - complementary [ref=e27]:
+        - navigation [ref=e28]:
+          - generic [ref=e29]: Design
+          - list [ref=e30]:
+            - listitem [ref=e31]:
+              - link "Backgrounds Animated and static background patterns" [ref=e32] [cursor=pointer]:
+                - /url: /design/backgrounds
+                - generic [ref=e33] [cursor=pointer]: Backgrounds
+                - generic [ref=e34] [cursor=pointer]: Animated and static background patterns
+            - listitem [ref=e35]:
+              - link "Buttons Interactive button components and animations" [ref=e36] [cursor=pointer]:
+                - /url: /design/buttons
+                - generic [ref=e37] [cursor=pointer]: Buttons
+                - generic [ref=e38] [cursor=pointer]: Interactive button components and animations
+            - listitem [ref=e39]:
+              - link "Responsive Design Mobile-first design patterns" [ref=e40] [cursor=pointer]:
+                - /url: /design/responsive-design
+                - generic [ref=e41] [cursor=pointer]: Responsive Design
+                - generic [ref=e42] [cursor=pointer]: Mobile-first design patterns
+            - listitem [ref=e43]:
+              - link "Effects Visual effects and animations" [ref=e44] [cursor=pointer]:
+                - /url: /design/effects
+                - generic [ref=e45] [cursor=pointer]: Effects
+                - generic [ref=e46] [cursor=pointer]: Visual effects and animations
+            - listitem [ref=e47]:
+              - link "Transitions Smooth page transition effects" [ref=e48] [cursor=pointer]:
+                - /url: /design/transitions
+                - generic [ref=e49] [cursor=pointer]: Transitions
+                - generic [ref=e50] [cursor=pointer]: Smooth page transition effects
+            - listitem [ref=e51]:
+              - link "Text Typography and text effects" [ref=e52] [cursor=pointer]:
+                - /url: /design/text
+                - generic [ref=e53] [cursor=pointer]: Text
+                - generic [ref=e54] [cursor=pointer]: Typography and text effects
+              - list [ref=e55]:
+                - listitem [ref=e56]:
+                  - link "Overview" [ref=e57] [cursor=pointer]:
+                    - /url: /design/text
+                - listitem [ref=e58]:
+                  - link "HTML CSS" [ref=e59] [cursor=pointer]:
+                    - /url: /design/text/html-css
+                - listitem [ref=e60]:
+                  - link "MagicUI" [ref=e61] [cursor=pointer]:
+                    - /url: /design/text/magicui
+                - listitem [ref=e62]:
+                  - link "ReactBits" [ref=e63] [cursor=pointer]:
+                    - /url: /design/text/reactbits
+                - listitem [ref=e64]:
+                  - link "Shadcn" [ref=e65] [cursor=pointer]:
+                    - /url: /design/text/shadcn
+                - listitem [ref=e66]:
+                  - link "Tailwind" [ref=e67] [cursor=pointer]:
+                    - /url: /design/text/tailwind
+      - main [ref=e68]:
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: Text
+            - tablist [ref=e75]:
+              - tab "HTML/CSS" [selected] [ref=e76]
+              - tab "Tailwind" [ref=e77]
+              - tab "Shadcn" [ref=e78]
+              - tab "MagicUI" [ref=e79]
+              - tab "ReactBits" [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - button "Light theme" [ref=e83]:
+                  - img [ref=e84]
+                - button "Dark theme" [ref=e90]:
+                  - img [ref=e91]
+              - generic [ref=e93]:
+                - button "Pause" [ref=e94]:
+                  - img [ref=e95]
+                - button "Reset" [ref=e98]:
+                  - img [ref=e99]
+          - main [ref=e102]:
+            - generic [ref=e103]:
+              - paragraph [ref=e105]: Explore text styling and animation components across different technology stacks. Each implementation showcases the same concepts using different approaches.
+              - generic [ref=e107]:
+                - paragraph [ref=e108]: Discover a comprehensive collection of text styling and animation patterns. From basic typography to advanced text effects, each implementation demonstrates modern design principles and accessibility best practices. Select a technology stack above to explore specific implementations.
+                - generic [ref=e110]:
+                  - generic [ref=e111]: Key Features
+                  - list [ref=e112]:
+                    - listitem [ref=e113]: Responsive typography
+                    - listitem [ref=e114]: Text animations and effects
+                    - listitem [ref=e115]: Accessibility-first design
+                    - listitem [ref=e116]: Cross-browser compatibility
+  - contentinfo [ref=e117]:
+    - paragraph [ref=e119]: © 2025 Your Company. All rights reserved.
+  - contentinfo [ref=e120]:
+    - paragraph [ref=e122]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e123]
+  - generic [ref=e128] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e129] [cursor=pointer]:
+      - img [ref=e130] [cursor=pointer]
+    - generic [ref=e133] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e134] [cursor=pointer]:
+        - generic [ref=e135] [cursor=pointer]:
+          - generic [ref=e136] [cursor=pointer]: "0"
+          - generic [ref=e137] [cursor=pointer]: "1"
+        - generic [ref=e138] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e139] [cursor=pointer]:
+        - img [ref=e140] [cursor=pointer]
+```
