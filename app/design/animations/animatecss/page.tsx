@@ -1,6 +1,7 @@
 // Animate.css Animation Demo Page
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
+import { PreviewSurface } from "@/components/preview-surface";
 
 const animations = [
   {
@@ -49,7 +50,7 @@ const animations = [
 
 export default function Page() {
   return (
-    <div className="space-y-8">
+    <PreviewSurface>
       {animations.map((anim) => (
         <PreviewTile
           key={anim.title}
@@ -68,6 +69,6 @@ export default function Page() {
           )}
         </PreviewTile>
       ))}
-    </div>
+    </PreviewSurface>
   );
 }

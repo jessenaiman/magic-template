@@ -1,6 +1,7 @@
 // MagicUI Animation Demo Page
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
+import { PreviewSurface } from "@/components/preview-surface";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { NumberTicker } from "@/components/magicui/number-ticker";
@@ -9,7 +10,7 @@ import { MorphingText } from "@/components/magicui/morphing-text";
 
 export default function Page() {
   return (
-    <div className="space-y-8">
+    <PreviewSurface>
       <PreviewTile
         title="BlurFade"
         description="Content fades in with a blur effect"
@@ -68,6 +69,6 @@ export default function Page() {
           <MorphingText texts={['Hello', 'World', 'MagicUI']} />
         )}
       </PreviewTile>
-    </div>
+    </PreviewSurface>
   );
 }
