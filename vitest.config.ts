@@ -11,6 +11,25 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
+    // Global reporters and coverage for all projects
+    reporters: [
+      'default',
+      ['junit', { outputFile: 'test-results/unit-junit.xml' }],
+      ['json', { outputFile: 'test-results/unit.json' }],
+    ],
+    coverage: {
+      enabled: true,
+      provider: 'v8',
+      reportsDirectory: 'coverage',
+      reporter: ['text', 'html', 'lcov'],
+      all: true,
+      exclude: [
+        '**/*.stories.*',
+        '**/node_modules/**',
+        'e2e/**',
+        '.storybook/**',
+      ],
+    },
     projects: [
       {
         extends: true,
@@ -28,6 +47,17 @@ export default defineConfig({
         instances: [{ browser: 'chromium' }]
       },
           setupFiles: ['.storybook/vitest.setup.ts'],
+        },
+      },
+      // Additional Unit project with reporters and coverage
+      {
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          setupFiles: ['tests/setup.ts'],
+          globals: true,
+          testTimeout: 10_000,
+          hookTimeout: 10_000,
         },
       },
     ],

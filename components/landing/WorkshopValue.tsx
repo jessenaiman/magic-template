@@ -3,8 +3,8 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import ShinyText from "@/components/reactbits/TextAnimations/ShinyText/ShinyText";
-import DecryptedText from "@/components/reactbits/TextAnimations/DecryptedText/DecryptedText";
+import ShinyText from "@/components/ShinyText";
+import DecryptedText from "@/components/DecryptedText";
 
 interface WorkshopValueProps {
   className?: string;

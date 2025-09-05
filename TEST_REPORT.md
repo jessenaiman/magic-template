@@ -203,6 +203,108 @@ pnpm test:e2e
 ## Next Steps for Development Team
 1. Review FAILURE_REPORT.md for detailed error information
 2. Fix navigation component hydration issues
+3. Standardize Playwright/Vitest reporters and artifacts (see Tooling & Docs)
+4. Ensure `/app/test-report/page.tsx` consumes machine-readable artifacts (JSON) from `test-results/`
+5. Keep this checklist synchronized with the Test Report page (Details + Tooling & Docs tabs)
+
+---
+
+## Tooling & Docs (New Tab Spec)
+
+This tab exists on `/test-report` and contains:
+
+### Directory Structure (authoritative)
+
+```
+e2e/                         # Playwright E2E specs
+tests/                       # Vitest unit/integration specs
+test-results/                # All test artifacts (reports, JSON, traces, videos)
+  ├─ playwright-artifacts/   # PW screenshots/videos/traces (if enabled)
+  ├─ e2e.json                # PW JSON reporter output
+  ├─ e2e-junit.xml           # PW JUnit output (CI)
+  ├─ html-report/            # PW HTML report (pnpm playwright show-report)
+  └─ unit.json               # Vitest JSON output
+coverage/                    # Vitest coverage reports (HTML/LCOV)
+scripts/run-comprehensive-tests.js  # Orchestrated runner
+app/test-report/page.tsx     # Standalone reporting UI
+vitest.config.ts             # Vitest config (storybook + unit projects)
+playwright.config.ts         # Playwright config (projects/reporters) [planned]
+```
+
+No new directories will be introduced without migrating/cleaning existing artifacts. All outputs should stay under `test-results/` and `coverage/`.
+
+### Standard Commands
+
+```
+# All suites orchestrated
+pnpm test:comprehensive
+
+# Playwright
+pnpm test:navigation
+pnpm test:preview-tiles
+pnpm test:build
+pnpm e2e:routes
+pnpm playwright show-report            # open PW HTML report
+
+# Vitest
+pnpm test:unit                         # unit tests
+pnpm vitest run --config vitest.unit.config.ts
+```
+
+### Reporter & Artifact Targets (to implement)
+
+- Playwright reporters:
+  - `list` (terminal)
+  - `html` → `test-results/html-report/`
+  - `junit` → `test-results/e2e-junit.xml`
+  - `json` → `test-results/e2e.json` (consumed by `/test-report`)
+- Playwright artifacts:
+  - `outputDir` → `test-results/playwright-artifacts/`
+  - `use.screenshot` → `only-on-failure`
+  - `use.video` → `retain-on-failure`
+  - `use.trace` → `on-first-retry`
+- Vitest reporters:
+  - `default`, `junit` → `test-results/unit-junit.xml`
+  - `json` → `test-results/unit.json` (consumed by `/test-report`)
+- Vitest coverage:
+  - `coverage` → `coverage/` (HTML at `coverage/index.html`)
+
+### Documentation Links
+
+- Playwright
+  - Docs: https://playwright.dev/docs/intro
+  - Configuration: https://playwright.dev/docs/test-configuration
+  - Reporters: https://playwright.dev/docs/test-reporters
+  - Trace viewer: https://playwright.dev/docs/trace-viewer
+- Vitest
+  - Docs: https://vitest.dev/guide/
+  - Coverage: https://vitest.dev/guide/coverage
+  - Reporters: https://vitest.dev/guide/reporters
+- shadcn/ui Accordion (used in Details UI): https://ui.shadcn.com/docs/components/accordion
+
+### Best Practices (QA)
+
+- Fail on any runtime error (React context/hook, hydration, request failures)
+- Use real browser navigation for all configured routes
+- Prefer explicit selectors and avoid brittle text-only queries
+- Record traces/screenshots/videos for failures
+- Keep artifacts machine-readable and stable paths under `test-results/`
+- Do not modify third‑party licensed code to make tests pass
+- Do not stub or fake missing functionality; fix real implementation
+
+---
+
+## Checklist (Keep in Sync)
+
+- [ ] Playwright reporters configured: list, html, junit, json → `test-results/`
+- [ ] Playwright artifacts configured: screenshots/videos/traces → `test-results/playwright-artifacts/`
+- [ ] Vitest reporters configured: default, junit, json → `test-results/`
+- [ ] Vitest coverage enabled → `coverage/` with HTML report
+- [ ] `/app/test-report/page.tsx` reads `test-results/e2e.json` and `test-results/unit.json`
+- [ ] Details tab groups failures by category with priority, tags, and Generate Spec link
+- [ ] Tooling & Docs tab shows directory structure, commands, and doc links
+- [ ] No new directories created without migrating existing artifacts
+- [ ] `scripts/run-comprehensive-tests.js` writes unified reports into `test-results/`
 3. Implement missing page for `/design/transitions/nextjs`
 4. Ensure navigation config consistency across all components
 5. Re-run all tests to verify fixes

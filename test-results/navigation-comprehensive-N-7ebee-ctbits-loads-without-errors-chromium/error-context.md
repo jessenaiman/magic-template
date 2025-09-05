@@ -1,49 +1,195 @@
 # Page snapshot
 
 ```yaml
-- generic [active] [ref=e1]:
-  - generic [ref=e5]:
-    - heading "404" [level=1] [ref=e6]
-    - paragraph [ref=e7]: Sorry, we couldn't find the page you're looking for. The page might have been moved, deleted, or you entered the wrong URL.
-    - link "Back to Home" [ref=e8] [cursor=pointer]:
-      - /url: /
-  - contentinfo [ref=e9]:
-    - paragraph [ref=e11]: © 2025 Your Company. All rights reserved.
-  - navigation [ref=e12]:
-    - generic [ref=e13]:
-      - link "Home" [ref=e15] [cursor=pointer]:
-        - /url: /
-        - img [ref=e17] [cursor=pointer]
-        - generic [ref=e20] [cursor=pointer]: Home
-      - link "Backgrounds" [ref=e22] [cursor=pointer]:
-        - /url: /design/backgrounds
-        - img [ref=e24] [cursor=pointer]
-        - generic [ref=e30] [cursor=pointer]: Backgrounds
-      - link "Buttons" [ref=e32] [cursor=pointer]:
-        - /url: /design/buttons
-        - img [ref=e34] [cursor=pointer]
-        - generic [ref=e36] [cursor=pointer]: Buttons
-      - link "Responsive Design" [ref=e38] [cursor=pointer]:
-        - /url: /design/responsive-design
-        - img [ref=e40] [cursor=pointer]
-        - generic [ref=e45] [cursor=pointer]: Responsive Design
-      - link "Effects" [ref=e47] [cursor=pointer]:
-        - /url: /design/effects
-        - img [ref=e49] [cursor=pointer]
-        - generic [ref=e51] [cursor=pointer]: Effects
-      - link "Page Transitions" [ref=e53] [cursor=pointer]:
-        - /url: /design/page-transitions
-        - img [ref=e55] [cursor=pointer]
-        - generic [ref=e60] [cursor=pointer]: Page Transitions
-      - link "Typography" [ref=e62] [cursor=pointer]:
-        - /url: /design/typography
-        - img [ref=e64] [cursor=pointer]
-        - generic [ref=e66] [cursor=pointer]: Typography
-      - link "Test Report" [ref=e68] [cursor=pointer]:
-        - /url: /test-report
-        - img [ref=e70] [cursor=pointer]
-        - generic [ref=e72] [cursor=pointer]: Test Report
-  - alert [ref=e73]
-  - button "Open Next.js Dev Tools" [ref=e79] [cursor=pointer]:
-    - img [ref=e80] [cursor=pointer]
+- generic:
+  - alert [ref=e1]
+  - generic [active]:
+    - generic [ref=e6] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+        - img [ref=e8] [cursor=pointer]
+      - button "Open issues overlay" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13] [cursor=pointer]:
+          - generic [ref=e14] [cursor=pointer]: "0"
+          - generic [ref=e15] [cursor=pointer]: "1"
+        - generic [ref=e16] [cursor=pointer]: Issue
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - navigation [ref=e22]:
+            - button "previous" [disabled] [ref=e23]:
+              - img "previous" [ref=e24]
+            - generic [ref=e26]:
+              - generic [ref=e27]: 1/
+              - generic [ref=e28]: "1"
+            - button "next" [disabled] [ref=e29]:
+              - img "next" [ref=e30]
+          - img
+        - generic [ref=e32]:
+          - link "Next.js 15.3.5 (stale) Turbopack" [ref=e33] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+            - img [ref=e34] [cursor=pointer]
+            - generic "There is a newer version (15.5.2) available, upgrade recommended!" [ref=e36] [cursor=pointer]: Next.js 15.3.5 (stale)
+            - generic [ref=e37] [cursor=pointer]: Turbopack
+          - img
+      - generic [ref=e38]:
+        - dialog "Build Error" [ref=e39]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e46]: Build Error
+                  - generic [ref=e47]:
+                    - button "Copy Stack Trace" [ref=e48] [cursor=pointer]:
+                      - img [ref=e49] [cursor=pointer]
+                    - link "Go to related documentation" [ref=e51] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/messages/module-not-found
+                      - img [ref=e52] [cursor=pointer]
+                    - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e54] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                      - img [ref=e55] [cursor=pointer]
+                - paragraph [ref=e64]: "Module not found: Can't resolve '@/components/reactbits/TextAnimations/DecryptedText/DecryptedText'"
+              - generic [ref=e66]:
+                - generic [ref=e68]:
+                  - img [ref=e70]
+                  - generic [ref=e73]: ./components/landing/WorkshopValue.tsx (7:1)
+                  - button "Open in editor" [ref=e74] [cursor=pointer]:
+                    - img [ref=e76] [cursor=pointer]
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Module not found
+                  - generic [ref=e80]: ": Can't resolve"
+                  - generic [ref=e81]: "'@/components/reactbits/TextAnimations/DecryptedText/DecryptedText'"
+                  - generic [ref=e83]: 5 |
+                  - generic [ref=e85]: import
+                  - generic [ref=e86]: "{ cn }"
+                  - generic [ref=e87]: from
+                  - generic [ref=e89]: "\"@/lib/utils\""
+                  - generic [ref=e90]: ;
+                  - generic [ref=e92]: 6 |
+                  - generic [ref=e94]: import
+                  - generic [ref=e96]: ShinyText
+                  - generic [ref=e98]: from
+                  - generic [ref=e100]: "\"@/components/reactbits/TextAnimations/ShinyText/ShinyText\""
+                  - generic [ref=e101]: ;
+                  - generic [ref=e102]: ">"
+                  - generic [ref=e103]: 7 |
+                  - generic [ref=e105]: import
+                  - generic [ref=e107]: DecryptedText
+                  - generic [ref=e109]: from
+                  - generic [ref=e111]: "\"@/components/reactbits/TextAnimations/DecryptedText/DecryptedText\""
+                  - generic [ref=e112]: ;
+                  - generic [ref=e114]: "|"
+                  - generic [ref=e116]: ^
+                  - generic [ref=e117]: ^
+                  - generic [ref=e118]: ^
+                  - generic [ref=e119]: ^
+                  - generic [ref=e120]: ^
+                  - generic [ref=e121]: ^
+                  - generic [ref=e122]: ^
+                  - generic [ref=e123]: ^
+                  - generic [ref=e124]: ^
+                  - generic [ref=e125]: ^
+                  - generic [ref=e126]: ^
+                  - generic [ref=e127]: ^
+                  - generic [ref=e128]: ^
+                  - generic [ref=e129]: ^
+                  - generic [ref=e130]: ^
+                  - generic [ref=e131]: ^
+                  - generic [ref=e132]: ^
+                  - generic [ref=e133]: ^
+                  - generic [ref=e134]: ^
+                  - generic [ref=e135]: ^
+                  - generic [ref=e136]: ^
+                  - generic [ref=e137]: ^
+                  - generic [ref=e138]: ^
+                  - generic [ref=e139]: ^
+                  - generic [ref=e140]: ^
+                  - generic [ref=e141]: ^
+                  - generic [ref=e142]: ^
+                  - generic [ref=e143]: ^
+                  - generic [ref=e144]: ^
+                  - generic [ref=e145]: ^
+                  - generic [ref=e146]: ^
+                  - generic [ref=e147]: ^
+                  - generic [ref=e148]: ^
+                  - generic [ref=e149]: ^
+                  - generic [ref=e150]: ^
+                  - generic [ref=e151]: ^
+                  - generic [ref=e152]: ^
+                  - generic [ref=e153]: ^
+                  - generic [ref=e154]: ^
+                  - generic [ref=e155]: ^
+                  - generic [ref=e156]: ^
+                  - generic [ref=e157]: ^
+                  - generic [ref=e158]: ^
+                  - generic [ref=e159]: ^
+                  - generic [ref=e160]: ^
+                  - generic [ref=e161]: ^
+                  - generic [ref=e162]: ^
+                  - generic [ref=e163]: ^
+                  - generic [ref=e164]: ^
+                  - generic [ref=e165]: ^
+                  - generic [ref=e166]: ^
+                  - generic [ref=e167]: ^
+                  - generic [ref=e168]: ^
+                  - generic [ref=e169]: ^
+                  - generic [ref=e170]: ^
+                  - generic [ref=e171]: ^
+                  - generic [ref=e172]: ^
+                  - generic [ref=e173]: ^
+                  - generic [ref=e174]: ^
+                  - generic [ref=e175]: ^
+                  - generic [ref=e176]: ^
+                  - generic [ref=e177]: ^
+                  - generic [ref=e178]: ^
+                  - generic [ref=e179]: ^
+                  - generic [ref=e180]: ^
+                  - generic [ref=e181]: ^
+                  - generic [ref=e182]: ^
+                  - generic [ref=e183]: ^
+                  - generic [ref=e184]: ^
+                  - generic [ref=e185]: ^
+                  - generic [ref=e186]: ^
+                  - generic [ref=e187]: ^
+                  - generic [ref=e188]: ^
+                  - generic [ref=e189]: ^
+                  - generic [ref=e190]: ^
+                  - generic [ref=e191]: ^
+                  - generic [ref=e192]: ^
+                  - generic [ref=e193]: ^
+                  - generic [ref=e194]: ^
+                  - generic [ref=e195]: ^
+                  - generic [ref=e196]: ^
+                  - generic [ref=e197]: ^
+                  - generic [ref=e198]: ^
+                  - generic [ref=e199]: ^
+                  - generic [ref=e200]: ^
+                  - generic [ref=e201]: ^
+                  - generic [ref=e202]: ^
+                  - generic [ref=e203]: ^
+                  - generic [ref=e204]: ^
+                  - generic [ref=e205]: ^
+                  - generic [ref=e206]: ^
+                  - generic [ref=e207]: ^
+                  - generic [ref=e208]: ^
+                  - generic [ref=e209]: ^
+                  - generic [ref=e211]: 8 |
+                  - generic [ref=e213]: 9 |
+                  - generic [ref=e215]: interface
+                  - generic [ref=e217]: WorkshopValueProps
+                  - generic [ref=e218]: "{"
+                  - generic [ref=e220]: 10 |
+                  - generic [ref=e221]: className
+                  - generic [ref=e222]: "?"
+                  - generic [ref=e223]: ":"
+                  - generic [ref=e224]: string
+                  - generic [ref=e225]: ;
+                  - generic [ref=e226]:
+                    - text: "Import map: aliased to relative './components/reactbits/TextAnimations/DecryptedText/DecryptedText' inside of [project]/"
+                    - link "https://nextjs.org/docs/messages/module-not-found" [ref=e227] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/messages/module-not-found
+            - generic [ref=e228]:
+              - generic [ref=e229]: "1"
+              - generic [ref=e230]: "2"
+        - contentinfo [ref=e231]:
+          - paragraph [ref=e232]: This error occurred during the build process and can only be dismissed by fixing the error.
 ```

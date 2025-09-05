@@ -9,7 +9,7 @@ type CopyButtonProps = {
   text?: string;
   children?: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 const CopyButton = ({ text = "Hello World", children, className = "", ...props }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
@@ -40,7 +40,7 @@ const CopyButton = ({ text = "Hello World", children, className = "", ...props }
 type FlipButtonProps = {
   children?: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 const FlipButton = ({ children, className = "", ...props }: FlipButtonProps) => (
   <button
@@ -59,9 +59,9 @@ type GitHubStarsButtonProps = {
   repo?: string;
   stars?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
-const GitHubStarsButton = ({ repo = "owner/repo", stars = 1234, className = "", ...props }: GitHubStarsButtonProps) => (
+const GitHubStarsButton = ({ stars = 1234, className = "", ...props }: GitHubStarsButtonProps) => (
   <button
     className={`flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 ${className}`}
     {...props}
@@ -80,7 +80,7 @@ const GitHubStarsButton = ({ repo = "owner/repo", stars = 1234, className = "", 
 type IconButtonProps = {
   icon?: React.ElementType;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 const IconButton = ({ icon: Icon = Copy, className = "", ...props }: IconButtonProps) => {
   const [clicked, setClicked] = useState(false);
@@ -108,7 +108,7 @@ type Ripple = { x: number; y: number; id: number };
 type RippleButtonProps = {
   children?: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 const RippleButton = ({ children, className = "", ...props }: RippleButtonProps) => {
   const [ripples, setRipples] = useState<Ripple[]>([]);

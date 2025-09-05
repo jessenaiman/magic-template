@@ -1,11 +1,10 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Play, Heart, Download, Share, Zap, Sparkles } from "lucide-react";
 import { PreviewTile } from "@/components/preview-tile";
 
-function CodeBlock({ code, language }: { code: string; language: string }) {
+function CodeBlock({ code, language: _language }: { code: string; language: string }) {
   return (
     <div className="relative">
       <pre className="max-h-48 overflow-auto rounded-md border bg-gray-900 p-3 text-sm text-gray-100">

@@ -3,14 +3,12 @@
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
 import { PreviewTile } from '@/components/preview-tile';
-import { FieldConfig } from '@/components/preview-customization-panel';
-import { CustomizationSettings } from '@/components/preview-context';
 import { BubbleBackground } from '@/components/animate-ui/backgrounds/bubble';
 import { GradientBackground } from '@/components/animate-ui/backgrounds/gradient';
 import { StarsBackground } from '@/components/animate-ui/backgrounds/stars';
 
 function PageConfigurator() {
-  const { setTitle, setDescription, setFields } = useDesignPage();
+  const { setTitle, setDescription } = useDesignPage();
 
   React.useEffect(() => {
     setTitle('Animate UI Backgrounds');

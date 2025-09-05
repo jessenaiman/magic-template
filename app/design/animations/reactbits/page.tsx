@@ -2,11 +2,11 @@
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
 import { PreviewSurface } from "@/components/preview-surface";
-import LogoLoop from "@/components/reactbits/Animations/LogoLoop/LogoLoop";
-import ClickSpark from "@/components/reactbits/Animations/ClickSpark/ClickSpark";
-import MetaBalls from "@/components/reactbits/Animations/MetaBalls/MetaBalls";
-import FadeContent from "@/components/reactbits/Animations/FadeContent/FadeContent";
-import Ribbons from "@/components/reactbits/Animations/Ribbons/Ribbons";
+import LogoLoop from "@/components/LogoLoop";
+import ClickSpark from "@/components/ClickSpark";
+import MetaBalls from "@/components/MetaBalls";
+import FadeContent from "@/components/FadeContent";
+import Ribbons from "@/components/Ribbons";
 
 export default function Page() {
   return (
@@ -15,7 +15,7 @@ export default function Page() {
         title="LogoLoop"
         description="Animated looping row of logos"
         componentName="logoloop"
-        code={`import LogoLoop from "@/components/reactbits/Animations/LogoLoop/LogoLoop";\n<LogoLoop logos={[{ src: "/assets/logos/vercel.svg", alt: "Vercel" }]} />`}
+        code={`import LogoLoop from "@/components/LogoLoop";\n<LogoLoop logos={[{ src: "/assets/logos/vercel.svg", alt: "Vercel" }]} />`}
       >
         {() => (
           <div className="bg-white rounded shadow p-4">
@@ -37,7 +37,7 @@ export default function Page() {
         title="ClickSpark"
         description="Spark animation on click"
         componentName="clickspark"
-        code={`import ClickSpark from "@/components/reactbits/Animations/ClickSpark/ClickSpark";\n<ClickSpark><button>Click Me</button></ClickSpark>`}
+        code={`import ClickSpark from "@/components/ClickSpark";\n<ClickSpark><button>Click Me</button></ClickSpark>`}
       >
         {() => (
           <div className="flex justify-center">
@@ -51,7 +51,7 @@ export default function Page() {
         title="MetaBalls"
         description="Animated metaballs canvas"
         componentName="metaballs"
-        code={`import MetaBalls from "@/components/reactbits/Animations/MetaBalls/MetaBalls";\n<MetaBalls ballCount={10} />`}
+        code={`import MetaBalls from "@/components/MetaBalls";\n<MetaBalls ballCount={10} />`}
       >
         {() => (
           <div className="h-40 w-full">
@@ -63,7 +63,7 @@ export default function Page() {
         title="FadeContent"
         description="Content fades in on scroll"
         componentName="fadecontent"
-        code={`import FadeContent from "@/components/reactbits/Animations/FadeContent/FadeContent";\n<FadeContent><div>Fades In</div></FadeContent>`}
+        code={`import FadeContent from "@/components/FadeContent";\n<FadeContent><div>Fades In</div></FadeContent>`}
       >
         {() => (
           <FadeContent>
@@ -75,7 +75,7 @@ export default function Page() {
         title="Ribbons"
         description="Animated colorful ribbons"
         componentName="ribbons"
-        code={`import Ribbons from "@/components/reactbits/Animations/Ribbons/Ribbons";\n<Ribbons />`}
+        code={`import Ribbons from "@/components/Ribbons";\n<Ribbons />`}
       >
         {() => (
           <div className="h-40 w-full">
