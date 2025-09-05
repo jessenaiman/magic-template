@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
-import { PreviewTile, PreviewTileProps } from '@/components/preview-tile';
+import { BackgroundPreviewTile, BackgroundPreviewTileProps } from '@/components/background-preview-tile';
 import { FieldConfig } from '@/components/preview-customization-panel';
+import { CustomizationSettings } from '@/components/preview-context';
 
 function PageConfigurator() {
   const { setTitle, setDescription, setFields } = useDesignPage();
@@ -20,7 +21,7 @@ function PageConfigurator() {
   return null;
 }
 
-const stripesConfig: PreviewTileProps = {
+const stripesConfig: BackgroundPreviewTileProps = {
   title: 'Diagonal Stripes',
   description: 'CSS repeating-linear-gradient background.',
   componentName: 'DiagonalStripes',
@@ -30,7 +31,7 @@ const stripesConfig: PreviewTileProps = {
     accentColor: '#22c55e',
     opacity: 100,
   },
-  children: (customization) => (
+  children: (customization: Partial<CustomizationSettings>) => (
     <div
       className="h-40 w-full rounded-md border"
       style={{
@@ -49,13 +50,19 @@ const stripesConfig: PreviewTileProps = {
   ),
 };
 
+import { PreviewSurface } from '@/components/preview-surface';
+
 export default function HtmlCssBackgroundsPage() {
   return (
     <>
       <PageConfigurator />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <PreviewTile {...stripesConfig} />
-      </div>
+      {/*
+        PreviewSurface provides context for tile expansion and customization controls.
+        All PreviewTile/BackgroundPreviewTile components MUST be wrapped in PreviewSurface.
+      */}
+      <PreviewSurface>
+        <BackgroundPreviewTile {...stripesConfig} />
+      </PreviewSurface>
     </>
   );
 }

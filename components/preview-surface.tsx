@@ -31,7 +31,7 @@ export function PreviewSurface({
     <PreviewProvider initialCustomization={initialCustomization}>
       {showGlobalControls && <PreviewControlsBar />}
       <PreviewTileExpansionContext.Provider value={contextValue}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr">
           {children}
         </div>
       </PreviewTileExpansionContext.Provider>

@@ -18,7 +18,6 @@ export default function MagicUITextPage() {
         </p>
       </div>
       <PreviewSurface>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <PreviewTile
           title="Animated Gradient Text"
           description="Text with an animated gradient background that shifts colors."
@@ -31,10 +30,15 @@ export default function MagicUITextPage() {
             padding: 24,
             fontSize: 16
           }}
+          customFields={[
+            { id: 'backgroundColor', label: 'Background Color', type: 'color' },
+            { id: 'textColor', label: 'Text Color', type: 'color' },
+            { id: 'borderRadius', label: 'Border Radius', type: 'slider', min: 0, max: 50, unit: 'px' },
+            { id: 'padding', label: 'Padding', type: 'slider', min: 0, max: 100, unit: 'px' },
+            { id: 'fontSize', label: 'Font Size', type: 'slider', min: 8, max: 48, unit: 'px' }
+          ]}
         >
-          {(customization) => (
-            <AnimatedGradientText>Hello World</AnimatedGradientText>
-          )}
+          <AnimatedGradientText>Hello World</AnimatedGradientText>
         </PreviewTile>
 
         <PreviewTile
@@ -50,9 +54,7 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <AuroraText className="text-2xl">Aurora Magic</AuroraText>
-          )}
+          <AuroraText className="text-2xl">Aurora Magic</AuroraText>
         </PreviewTile>
 
         <PreviewTile
@@ -68,9 +70,7 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <FlipText>Flipping Great</FlipText>
-          )}
+          <FlipText>Flipping Great</FlipText>
         </PreviewTile>
 
         <PreviewTile
@@ -86,9 +86,7 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <SparklesText>Sparkly Text</SparklesText>
-          )}
+          <SparklesText>Sparkly Text</SparklesText>
         </PreviewTile>
 
         <PreviewTile
@@ -104,9 +102,7 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <TextAnimate>Animated Text</TextAnimate>
-          )}
+          <TextAnimate>Animated Text</TextAnimate>
         </PreviewTile>
 
         <PreviewTile
@@ -122,9 +118,7 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <WordRotate words={["Innovate", "Create", "Design"]} />
-          )}
+          <WordRotate words={["Innovate", "Create", "Design"]} />
         </PreviewTile>
 
         <PreviewTile
@@ -144,15 +138,12 @@ export default function MagicUITextPage() {
             fontSize: 16
           }}
         >
-          {(customization) => (
-            <div className="h-32 overflow-y-auto rounded-md border border-dashed p-4 bg-muted/20">
-              <TextReveal>
-                Experience the magic as this text reveals itself with smooth animation. Scroll to see the effect in action!
-              </TextReveal>
-            </div>
-          )}
+          <div className="h-32 overflow-y-auto rounded-md border border-dashed p-4 bg-muted/20">
+            <TextReveal>
+              Experience the magic as this text reveals itself with smooth animation. Scroll to see the effect in action!
+            </TextReveal>
+          </div>
         </PreviewTile>
-        </div>
       </PreviewSurface>
     </div>
   );

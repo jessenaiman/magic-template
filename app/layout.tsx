@@ -36,8 +36,9 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
     >
-      <body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -49,5 +50,5 @@ export default async function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

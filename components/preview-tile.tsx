@@ -1,187 +1,336 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import {
-  AnimatePresence,
-  motion,
-  useAnimation,
-  useInView,
-} from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import Image, { StaticImageData } from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-
-import { Icons } from '@/components/icons';
-import {
-  PreviewCustomizationPanel,
-  useDesignControls,
-} from '@/components/preview-customization-panel';
+import * as React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import CodeHighlighter from './code-highlighter';
+import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { usePreviewContext, CustomizationSettings } from '@/components/preview-context';
+import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview-customization-panel';
+import { usePreviewTileExpansion } from '@/components/preview-surface';
+import { CodeHighlighter } from '@/components/code-highlighter';
+import { PreviewTileHeader } from '@/components/preview-tile-header';
 
-export interface PreviewTileProps {
-  name: string;
-  description: string;
-  path: string;
-  img: string | StaticImageData;
-  isComponent?: boolean;
-  code?: string;
-  children: React.ReactNode;
-  className?: string;
-  options?: any;
+// Utility function to get language for syntax highlighting based on code type
+function getLanguageForCodeType(codeType: string): string {
+  switch (codeType) {
+    case 'jsx':
+    case 'tsx':
+      return 'tsx';
+    case 'css':
+      return 'css';
+    case 'tailwind':
+      return 'css';
+    case 'html':
+      return 'html';
+    default:
+      return 'tsx';
+  }
 }
 
-const PreviewTile = ({
-  name,
-  description,
-  path,
-  img,
-  isComponent = false,
-  code,
-  children,
-  className,
-  options,
-}: PreviewTileProps) => {
-  const router = useRouter();
-  const [isCustomizing, setIsCustomizing] = useState(false);
-  const [showCode, setShowCode] = useState(false);
-  const { design, setDesign, reset } = useDesignControls(options);
+// Robust code generation function with template support
+function generateCode(
+  template: string,
+  customization: Partial<CustomizationSettings>,
+  codeType: string = 'jsx'
+): string {
+  // Handle different code types with appropriate templates
+  switch (codeType) {
+    case 'jsx':
+    case 'tsx':
+      return generateJsxCode(template, customization);
+    case 'css':
+      return generateCssCode(template, customization);
+    case 'tailwind':
+      return generateTailwindCode(template, customization);
+    case 'html':
+      return generateHtmlCode(template, customization);
+    default:
+      return generateJsxCode(template, customization);
+  }
+}
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
+// JSX/TSX code generation with proper template handling
+function generateJsxCode(template: string, customization: Partial<CustomizationSettings>): string {
+  // Enhanced template replacement that handles complex structures
+  return template.replace(/\{([^}]+)\}/g, (_, key) => {
+    const value = customization[key];
+    
+    // Handle different value types appropriately
+    if (value === undefined || value === null) {
+      return key; // Keep the placeholder if not found
     }
-  }, [isInView, controls]);
+    
+    if (typeof value === 'string') {
+      // For strings, wrap in quotes if it looks like a value (not a variable name)
+      if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(value)) {
+        return `"${value.replace(/"/g, '\\"')}"`;
+      }
+      return value;
+    }
+    
+    if (typeof value === 'number') {
+      return value.toString();
+    }
+    
+    if (typeof value === 'boolean') {
+      return value.toString();
+    }
+    
+    // For objects, arrays, etc., use JSON stringify
+    return JSON.stringify(value);
+  });
+}
 
-  const { theme } = useTheme();
+// CSS code generation
+function generateCssCode(template: string, customization: Partial<CustomizationSettings>): string {
+  return template.replace(/\{([^}]+)\}/g, (_, key) => {
+    const value = customization[key];
+    return value !== undefined && value !== null ? value.toString() : key;
+  });
+}
 
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.5 }}
-      className={cn(
-        'group/card relative flex h-[20rem] w-full flex-col justify-between overflow-hidden rounded-xl border text-card-foreground shadow',
-        theme === 'dark'
-          ? '[box-shadow:0_0_0_1px_rgba(255,255,255,0.1),_0_2px_4px_0_rgba(0,0,0,0.05)]'
-          : '[box-shadow:0_0_0_1px_rgba(0,0,0,0.05),_0_2px_4px_0_rgba(0,0,0,0.05)]',
-        className,
-      )}
-    >
-      <Dialog open={isCustomizing} onOpenChange={setIsCustomizing}>
-        <DialogContent className="max-w-5xl">
-          <DialogHeader>
-            <DialogTitle>Customize Component</DialogTitle>
-          </DialogHeader>
-          <div className="flex h-[30rem] flex-col justify-between">
-            <div className="flex h-full items-center justify-center rounded-lg border bg-zinc-100 dark:bg-zinc-900">
-              {children}
-            </div>
-            {isComponent && options && (
-              <PreviewCustomizationPanel
-                options={options}
-                design={design}
-                setDesign={setDesign}
-                onReset={reset}
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-      <Dialog open={showCode} onOpenChange={setShowCode}>
-        <DialogContent className="max-w-3xl">
-          <DialogHeader>
-            <DialogTitle>{name}</DialogTitle>
-          </DialogHeader>
-          <div className="max-h-[70vh] overflow-y-auto">
-            {code && <CodeHighlighter code={code} />}
-          </div>
-        </DialogContent>
-      </Dialog>
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={img}
-          alt={name}
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20 transition-opacity group-hover/card:opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-      </div>
+// Tailwind code generation (similar to CSS but might need special handling)
+function generateTailwindCode(template: string, customization: Partial<CustomizationSettings>): string {
+  return template.replace(/\{([^}]+)\}/g, (_, key) => {
+    const value = customization[key];
+    return value !== undefined && value !== null ? value.toString() : key;
+  });
+}
 
-      <div className="flex h-full flex-col justify-between">
-        <div>
-          <div className="absolute inset-0 z-10 h-full w-full bg-zinc-900/30 opacity-0 transition-opacity group-hover/card:opacity-100" />
-          <div className="relative h-full w-full overflow-hidden rounded-xl">
-            {children}
-          </div>
-        </div>
+// HTML code generation
+function generateHtmlCode(template: string, customization: Partial<CustomizationSettings>): string {
+  return template.replace(/\{([^}]+)\}/g, (_, key) => {
+    const value = customization[key];
+    return value !== undefined && value !== null ? value.toString() : key;
+  });
+}
 
-        <div className="absolute inset-x-0 bottom-0 z-20 p-4">
-          <p className="text-sm text-zinc-400">{description}</p>
-        </div>
+// Get file extension based on code type
+function getFileExtension(codeType: string): string {
+  switch (codeType) {
+    case 'jsx':
+      return 'jsx';
+    case 'tsx':
+      return 'tsx';
+    case 'css':
+      return 'css';
+    case 'tailwind':
+      return 'css';
+    case 'html':
+      return 'html';
+    default:
+      return 'tsx';
+  }
+}
 
-        {isComponent && (
-          <div className="absolute right-2 top-2 z-20 flex items-center gap-1">
-            <button
-              onClick={() => setIsCustomizing(true)}
-              className="z-20 flex h-7 w-7 items-center justify-center rounded-md bg-zinc-800/80 p-1.5 backdrop-blur-sm transition-all hover:bg-zinc-700/80"
-              aria-label="Customize"
-            >
-              <Icons.settings className="h-4 w-4 text-zinc-400" />
-            </button>
-            <button
-              onClick={() => setShowCode(!showCode)}
-              className="z-20 flex h-7 w-7 items-center justify-center rounded-md bg-zinc-800/80 p-1.5 backdrop-blur-sm transition-all hover:bg-zinc-700/80"
-              aria-label="Show code"
-            >
-              <Icons.code className="h-4 w-4 text-zinc-400" />
-            </button>
-          </div>
-        )}
+export interface PreviewTileProps {
+  title: string;
+  description?: string;
+  componentName: string;
+  code: string;
+  customFields?: FieldConfig[];
+  initialCustomization?: Partial<CustomizationSettings>;
+  children: React.ReactNode | ((customization: Partial<CustomizationSettings>) => React.ReactNode);
+  className?: string;
+  codeType?: 'jsx' | 'css' | 'tailwind' | 'html' | 'tsx';
+  baseViewCode?: string;
+}
 
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-4 right-4 z-20"
-          >
-            <Button
-              size="sm"
-              variant="secondary"
-              className="translate-y-2 opacity-0 transition-all group-hover/card:translate-y-0 group-hover/card:opacity-100"
-              onClick={() => router.push(path)}
-            >
-              <span className="mr-2">{isComponent ? 'Details' : 'View'}</span>
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </motion.div>
-        </AnimatePresence>
+export function PreviewTile(props: PreviewTileProps) {
+  const {
+    title,
+    description,
+    componentName,
+    code,
+    customFields = [],
+    initialCustomization = {},
+    children,
+    className,
+    codeType = 'jsx',
+    baseViewCode,
+  } = props;
 
-        <div className="absolute left-4 top-4 z-20">
-          <h3 className="text-lg font-semibold">{name}</h3>
-        </div>
-      </div>
-    </motion.div>
+  const { expandedTile, setExpandedTile } = usePreviewTileExpansion();
+  const [showCode, setShowCode] = React.useState(false);
+  const [showControls, setShowControls] = React.useState(false);
+  const panelRef = React.useRef<HTMLDivElement>(null);
+
+  // Bind to global PreviewContext so page-wide controls affect tiles
+  const { state } = usePreviewContext();
+  const customization = React.useMemo<Partial<CustomizationSettings>>(
+    () => ({ ...state.customization, ...initialCustomization }),
+    [state.customization, initialCustomization]
   );
-};
 
-export default PreviewTile;
+  // Generate code only when needed (when showCode is true or expanded)
+  const generatedCode = React.useMemo(() => {
+    if (!showCode && expandedTile !== title) {
+      return baseViewCode || '// Click the code icon to view generated code';
+    }
+
+    return generateCode(code, customization, codeType);
+  }, [showCode, expandedTile, title, code, customization, codeType, baseViewCode]);
+
+  // Handle outside click to close any expanded panels
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const isInsideTile = target?.closest('[data-preview-tile]');
+      
+      if (!isInsideTile && expandedTile) {
+        setExpandedTile(null);
+        setShowControls(false);
+        setShowCode(false);
+      }
+    };
+
+    if (expandedTile || showControls || showCode) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [expandedTile, showControls, showCode, setExpandedTile]);
+
+  const handleShowCode = () => {
+    setShowCode(current => !current);
+    if (!expandedTile) {
+      setExpandedTile(title);
+    }
+    // Close customization when opening code
+    if (showControls) {
+      setShowControls(false);
+    }
+  };
+
+  const handleToggleControls = () => {
+    if (expandedTile !== title) setExpandedTile(title);
+    setShowControls(c => !c);
+    // Close code when opening customization
+    if (showCode) {
+      setShowCode(false);
+    }
+  };
+
+  const handleClose = () => {
+    setExpandedTile(null);
+    setShowControls(false);
+    setShowCode(false);
+  };
+
+  const handleCopy = () => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(generatedCode);
+    }
+  };
+
+  // The child component receives the effective customization state
+  return (
+     <div
+       className={cn(
+         "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 flex flex-col min-h-[300px]",
+         expandedTile === title
+           ? "z-20 col-span-full md:col-span-3 lg:col-span-4 scale-[1.03] ring-2 ring-primary"
+           : "",
+         className
+       )}
+       data-preview-tile
+     >
+       <PreviewTileHeader
+         title={title}
+         description={description}
+         hasCustomFields={customFields.length > 0}
+         onCustomizeClick={handleToggleControls}
+         onCodeClick={handleShowCode}
+         onCopyClick={handleCopy}
+         onCloseClick={handleClose}
+         showCustomize={showControls}
+         showCode={showCode}
+         isExpanded={expandedTile === title}
+       />
+
+       {/* Preview Area with proper alignment and background */}
+       <div className="flex-1 relative min-h-[200px] p-4">
+         <div className="relative w-full h-full min-h-[180px] flex items-center justify-center bg-gradient-to-br from-background to-muted/20 rounded-lg border border-border/50 overflow-hidden">
+           <div className="relative z-10 flex items-center justify-center w-full h-full p-4">
+              {/* Handle both regular React children and function children that receive customization */}
+              {typeof children === 'function' ? children(customization) : children}
+           </div>
+         </div>
+       </div>
+
+       {/* Description Footnote */}
+       {description && (
+         <div className="p-3 text-xs text-muted-foreground border-t bg-muted/20">
+           <p className="line-clamp-2 leading-relaxed">
+             {description}
+           </p>
+         </div>
+       )}
+
+       {/* Tile-level Customization Panel (expanded AND toggled) */}
+       <AnimatePresence>
+         {expandedTile === title && showControls && customFields.length > 0 && (
+           <motion.div
+             initial={{ height: 0, opacity: 0 }}
+             animate={{ height: "auto", opacity: 1 }}
+             exit={{ height: 0, opacity: 0 }}
+             transition={{ duration: 0.2 }}
+             className="border-t overflow-hidden"
+             ref={panelRef}
+           >
+             <div className="p-6">
+               <div className="flex items-center justify-between mb-4">
+                 <h4 className="text-sm font-semibold tracking-tight">Component Controls</h4>
+                 <Button
+                   size="sm"
+                   variant="ghost"
+                   className="h-6 w-6 p-0 hover:bg-muted"
+                   onClick={(e) => {
+                     e.stopPropagation();
+                     setShowControls(false);
+                   }}
+                 >
+                   <X className="h-4 w-4" />
+                 </Button>
+               </div>
+               <PreviewCustomizationPanel
+                 fields={customFields}
+                 className="border border-primary/20 bg-primary/5 p-4 rounded-lg"
+                 allowReset={false}
+               />
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
+
+       {/* Code Panel */}
+       <AnimatePresence>
+         {expandedTile === title && showCode && (
+           <motion.div
+             initial={{ height: 0, opacity: 0 }}
+             animate={{ height: "auto", opacity: 1 }}
+             exit={{ height: 0, opacity: 0 }}
+             transition={{ duration: 0.2 }}
+             className="border-t overflow-hidden"
+           >
+             <div className="p-6">
+               <div className="flex items-center justify-between mb-4">
+                 <span className="text-sm text-muted-foreground">
+                   {componentName}.{getFileExtension(codeType)}
+                 </span>
+               </div>
+               <CodeHighlighter
+                 language={getLanguageForCodeType(codeType)}
+                 code={generatedCode}
+               />
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
+     </div>
+  );
+}

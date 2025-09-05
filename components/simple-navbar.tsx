@@ -23,6 +23,12 @@ export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
   const pathname = usePathname();
   const { setTheme, theme } = useTheme();
   const { state, setPlaying, reset } = usePreviewContext();
+  const [mounted, setMounted] = React.useState(false);
+
+  // Prevent hydration mismatch by only rendering theme-dependent content after mount
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // Extract page title from pathname
   const getPageTitle = () => {
@@ -65,8 +71,8 @@ export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
           <button
             onClick={() => setTheme('light')}
             className={cn(
-              "p-1 rounded-sm",
-              theme === 'light' ? "bg-muted" : "hover:bg-muted/50"
+              "p-1 rounded-sm hover:bg-muted/50",
+              mounted && theme === 'light' && "bg-muted"
             )}
             aria-label="Light theme"
           >
@@ -75,8 +81,8 @@ export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
           <button
             onClick={() => setTheme('dark')}
             className={cn(
-              "p-1 rounded-sm",
-              theme === 'dark' ? "bg-muted" : "hover:bg-muted/50"
+              "p-1 rounded-sm hover:bg-muted/50",
+              mounted && theme === 'dark' && "bg-muted"
             )}
             aria-label="Dark theme"
           >
