@@ -6,12 +6,9 @@ import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
-import { cookies } from "next/headers"
-import { SidebarProvider } from "@/components/ui/sidebar"
-import PageTransition from '@/components/page-transition';
-import { LoadingIndicator } from '@/components/loading-indicator';
-import { MenuBar } from '@/components/menu-bar';
+import { TopNavbar } from '@/components/top-navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -27,14 +24,11 @@ export const metadata: Metadata = {
   keywords: metadataKeywords,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
-  
   return (
     <html
       lang="en"
@@ -48,9 +42,22 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            {children}
-            <Footer />
-            <MenuBar />
+            {/* FlickeringGrid background for all pages */}
+            <div className="absolute top-0 left-0 z-0 w-full h-[500px] [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none">
+              <FlickeringGrid
+                className="absolute top-0 left-0 size-full"
+                squareSize={4}
+                gridGap={6}
+                color="#6B7280"
+                maxOpacity={0.5}
+                flickerChance={0.1}
+              />
+            </div>
+            <TopNavbar />
+            <div className="relative z-10">
+              {children}
+              <Footer />
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </body>

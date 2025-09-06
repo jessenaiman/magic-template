@@ -182,6 +182,24 @@
   100% {
     transform: scale(2);
     opacity: 0;}}
+
+  --animate-word-rotate: word-rotate 3.2s ease-in-out infinite;
+  @keyframes word-rotate {
+  0%, 20% {
+    transform: translateY(0);
+    opacity: 1;}
+  25%, 45% {
+    transform: translateY(-100%);
+    opacity: 0;}
+  50%, 70% {
+    transform: translateY(-200%);
+    opacity: 0;}
+  75%, 95% {
+    transform: translateY(-300%);
+    opacity: 0;}
+  100% {
+    transform: translateY(0);
+    opacity: 1;}}
   @keyframes rainbow {
   0% {
     background-position: 0%;}

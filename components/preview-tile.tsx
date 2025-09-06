@@ -9,9 +9,9 @@ import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePreviewContext, CustomizationSettings } from '@/components/preview-context';
 import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview-customization-panel';
-import { usePreviewTileExpansion } from '@/components/preview-surface';
+import { usePreviewTileExpansion } from "@/components/preview-surface";
+import { PreviewTileHeader } from "@/components/preview-tile-header";
 import { CodeHighlighter } from '@/components/code-highlighter';
-import { PreviewTileHeader } from '@/components/preview-tile-header';
 
 // Utility function to get language for syntax highlighting based on code type
 function getLanguageForCodeType(codeType: string): string {
@@ -153,6 +153,7 @@ export function PreviewTile(props: PreviewTileProps) {
     baseViewCode,
   } = props;
 
+  // Require PreviewSurface context
   const { expandedTile, setExpandedTile } = usePreviewTileExpansion();
   const [showCode, setShowCode] = React.useState(false);
   const [showControls, setShowControls] = React.useState(false);

@@ -65,53 +65,55 @@ export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
         </div>
       )}
       
-      <div className="flex items-center space-x-4">
-        {/* Theme Toggle */}
-        <div className="flex items-center space-x-2 border rounded-md p-1">
-          <button
-            onClick={() => setTheme('light')}
-            className={cn(
-              "p-1 rounded-sm hover:bg-muted/50",
-              mounted && theme === 'light' && "bg-muted"
-            )}
-            aria-label="Light theme"
-          >
-            <Sun className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => setTheme('dark')}
-            className={cn(
-              "p-1 rounded-sm hover:bg-muted/50",
-              mounted && theme === 'dark' && "bg-muted"
-            )}
-            aria-label="Dark theme"
-          >
-            <Moon className="h-4 w-4" />
-          </button>
+      {mounted && (
+        <div className="flex items-center space-x-4">
+          {/* Theme Toggle */}
+          <div className="flex items-center space-x-2 border rounded-md p-1">
+            <button
+              onClick={() => setTheme('light')}
+              className={cn(
+                "p-1 rounded-sm hover:bg-muted/50",
+                theme === 'light' && "bg-muted"
+              )}
+              aria-label="Light theme"
+            >
+              <Sun className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => setTheme('dark')}
+              className={cn(
+                "p-1 rounded-sm hover:bg-muted/50",
+                theme === 'dark' && "bg-muted"
+              )}
+              aria-label="Dark theme"
+            >
+              <Moon className="h-4 w-4" />
+            </button>
+          </div>
+          
+          {/* Playback Controls */}
+          <div className="flex items-center space-x-2 border rounded-md p-1">
+            <button
+              onClick={() => setPlaying(!state.playing)}
+              className="p-1 rounded-sm hover:bg-muted/50"
+              aria-label={state.playing ? "Pause" : "Play"}
+            >
+              {state.playing ? (
+                <Pause className="h-4 w-4" />
+              ) : (
+                <Play className="h-4 w-4" />
+              )}
+            </button>
+            <button
+              onClick={() => reset()}
+              className="p-1 rounded-sm hover:bg-muted/50"
+              aria-label="Reset"
+            >
+              <RotateCcw className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-        
-        {/* Playback Controls */}
-        <div className="flex items-center space-x-2 border rounded-md p-1">
-          <button
-            onClick={() => setPlaying(!state.playing)}
-            className="p-1 rounded-sm hover:bg-muted/50"
-            aria-label={state.playing ? "Pause" : "Play"}
-          >
-            {state.playing ? (
-              <Pause className="h-4 w-4" />
-            ) : (
-              <Play className="h-4 w-4" />
-            )}
-          </button>
-          <button
-            onClick={() => reset()}
-            className="p-1 rounded-sm hover:bg-muted/50"
-            aria-label="Reset"
-          >
-            <RotateCcw className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

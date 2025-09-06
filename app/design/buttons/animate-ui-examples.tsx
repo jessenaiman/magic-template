@@ -2,8 +2,40 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PreviewTile } from "@/components/preview-tile";
+import { PreviewSurface } from "@/components/preview-surface";
 import { Copy, Github, Star, Send, FileDown, Droplets } from "lucide-react";
 import { useState } from "react";
+import React from "react";
+
+// Error boundary for PreviewTile context errors
+class PreviewTileErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: any}> {
+  constructor(props: {children: React.ReactNode}) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error: any) {
+    if (
+      typeof error?.message === "string" &&
+      error.message.includes("usePreviewTileExpansion must be used within a PreviewSurface")
+    ) {
+      return { hasError: true, error };
+    }
+    return null;
+  }
+  componentDidCatch(error: any, info: any) {
+    // Optionally log error
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="rounded-md border border-destructive bg-destructive/10 p-4 text-destructive text-sm">
+          This preview cannot be displayed because it is not wrapped in a <b>PreviewSurface</b>.
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
   return (
@@ -198,15 +230,18 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">Copy Button</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="Copy Button"
-              description="Copy to clipboard with feedback"
-              componentName="copy-button"
-            >
-              <CopyButton text="Hello from Animate UI!">
-                Copy Text
-              </CopyButton>
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="Copy Button"
+                description="Copy to clipboard with feedback"
+                componentName="copy-button"
+                code=""
+              >
+                <CopyButton text="Hello from Animate UI!">
+                  Copy Text
+                </CopyButton>
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const CopyButton = ({ text, children, ...props }) => {
   const [copied, setCopied] = useState(false);
@@ -238,15 +273,18 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">Flip Button</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="Flip Button"
-              description="3D flip animation on hover"
-              componentName="flip-button"
-            >
-              <FlipButton>
-                Flip Me
-              </FlipButton>
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="Flip Button"
+                description="3D flip animation on hover"
+                componentName="flip-button"
+                code=""
+              >
+                <FlipButton>
+                  Flip Me
+                </FlipButton>
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const FlipButton = ({ children, ...props }) => (
   <button
@@ -269,13 +307,16 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">GitHub Stars</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="GitHub Stars Button"
-              description="GitHub-style star button"
-              componentName="github-stars-button"
-            >
-              <GitHubStarsButton repo="animate-ui/components" stars={2847} />
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="GitHub Stars Button"
+                description="GitHub-style star button"
+                componentName="github-stars-button"
+                code=""
+              >
+                <GitHubStarsButton repo="animate-ui/components" stars={2847} />
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const GitHubStarsButton = ({ repo, stars, ...props }) => (
   <button
@@ -301,13 +342,16 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">Icon Button</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="Icon Button"
-              description="Animated icon with ripple effect"
-              componentName="icon-button"
-            >
-              <IconButton icon={FileDown} />
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="Icon Button"
+                description="Animated icon with ripple effect"
+                componentName="icon-button"
+                code=""
+              >
+                <IconButton icon={FileDown} />
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const IconButton = ({ icon: Icon, ...props }) => {
   const [clicked, setClicked] = useState(false);
@@ -339,13 +383,16 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">Input Button</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="Input Button"
-              description="Expandable input field"
-              componentName="input-button"
-            >
-              <InputButton placeholder="Type message..." />
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="Input Button"
+                description="Expandable input field"
+                componentName="input-button"
+                code=""
+              >
+                <InputButton placeholder="Type message..." />
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const InputButton = ({ placeholder, ...props }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -386,16 +433,19 @@ export default function AnimateUIButtonsPage() {
             <CardTitle className="text-lg">Liquid Button</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <PreviewTile
-              title="Liquid Button"
-              description="Liquid-style flow animation"
-              componentName="liquid-button"
-            >
-              <LiquidButton>
-                <Droplets className="inline-block w-4 h-4 mr-2" />
-                Liquid Flow
-              </LiquidButton>
-            </PreviewTile>
+            <PreviewTileErrorBoundary>
+              <PreviewTile
+                title="Liquid Button"
+                description="Liquid-style flow animation"
+                componentName="liquid-button"
+                code=""
+              >
+                <LiquidButton>
+                  <Droplets className="inline-block w-4 h-4 mr-2" />
+                  Liquid Flow
+                </LiquidButton>
+              </PreviewTile>
+            </PreviewTileErrorBoundary>
             <CodeBlock
               code={`const LiquidButton = ({ children, ...props }) => (
   <button
@@ -423,6 +473,7 @@ export default function AnimateUIButtonsPage() {
               title="Ripple Button"
               description="Click ripple animation"
               componentName="ripple-button"
+              code=""
             >
               <RippleButton>
                 Click for Ripple

@@ -1,5 +1,6 @@
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
+import { PreviewSurface } from "@/components/preview-surface";
 import { Copy } from "lucide-react";
 import { useState } from "react";
 
@@ -147,47 +148,49 @@ const RippleButton = ({ children, className = "", ...props }: RippleButtonProps)
 
 export default function Page() {
   return (
-    <div className="space-y-8">
-      <PreviewTile
-        title="Copy Button"
-        description="Copy to clipboard with feedback"
-        componentName="copy-button"
-        code=""
-      >
-        {() => <CopyButton text="Hello from Animate UI!">Copy Text</CopyButton>}
-      </PreviewTile>
-      <PreviewTile
-        title="Flip Button"
-        description="3D flip animation on hover"
-        componentName="flip-button"
-        code=""
-      >
-        {() => <FlipButton>Flip Me</FlipButton>}
-      </PreviewTile>
-      <PreviewTile
-        title="GitHub Stars Button"
-        description="GitHub-style star button"
-        componentName="github-stars-button"
-        code=""
-      >
-        {() => <GitHubStarsButton repo="animate-ui/components" stars={2847} />}
-      </PreviewTile>
-      <PreviewTile
-        title="Icon Button"
-        description="Animated icon with ripple effect"
-        componentName="icon-button"
-        code=""
-      >
-        {() => <IconButton icon={Copy} />}
-      </PreviewTile>
-      <PreviewTile
-        title="Ripple Button"
-        description="Click ripple animation"
-        componentName="ripple-button"
-        code=""
-      >
-        {() => <RippleButton>Click for Ripple</RippleButton>}
-      </PreviewTile>
-    </div>
+    <PreviewSurface>
+      <div className="space-y-8">
+        <PreviewTile
+          title="Copy Button"
+          description="Copy to clipboard with feedback"
+          componentName="copy-button"
+          code=""
+        >
+          {() => <CopyButton text="Hello from Animate UI!">Copy Text</CopyButton>}
+        </PreviewTile>
+        <PreviewTile
+          title="Flip Button"
+          description="3D flip animation on hover"
+          componentName="flip-button"
+          code=""
+        >
+          {() => <FlipButton>Flip Me</FlipButton>}
+        </PreviewTile>
+        <PreviewTile
+          title="GitHub Stars Button"
+          description="GitHub-style star button"
+          componentName="github-stars-button"
+          code=""
+        >
+          {() => <GitHubStarsButton repo="animate-ui/components" stars={2847} />}
+        </PreviewTile>
+        <PreviewTile
+          title="Icon Button"
+          description="Animated icon with ripple effect"
+          componentName="icon-button"
+          code=""
+        >
+          {() => <IconButton icon={Copy} />}
+        </PreviewTile>
+        <PreviewTile
+          title="Ripple Button"
+          description="Click ripple animation"
+          componentName="ripple-button"
+          code=""
+        >
+          {() => <RippleButton>Click for Ripple</RippleButton>}
+        </PreviewTile>
+      </div>
+    </PreviewSurface>
   );
 }
