@@ -20,13 +20,13 @@ export default defineConfig({
     // Custom categorized JSON for /test-report page
     [require.resolve('./scripts/playwright-detailed-reporter.js'), { outputFile: 'test-results/e2e-detailed.json' }],
   ],
-  /* Run locally; Playwright will launch the dev server for us */
-  webServer: {
-    command: 'pnpm dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: true,
-    timeout: 120_000,
-  },
+  // webServer block disabled for start-server-and-test sequencing
+  // webServer: {
+  //   command: 'pnpm dev',
+  //   url: 'http://localhost:3000',
+  //   reuseExistingServer: true,
+  //   timeout: 120_000,
+  // },
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',

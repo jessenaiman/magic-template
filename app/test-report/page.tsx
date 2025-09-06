@@ -20,8 +20,10 @@ import {
   ExternalLink,
   Copy,
   Code,
-  Terminal
+  Terminal,
+  Navigation
 } from 'lucide-react';
+import { NavigationResults } from './navigation-results';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface TestCase {
@@ -409,8 +411,9 @@ export default function TestReportPage() {
 
       {/* Main Content */}
       <Tabs defaultValue="suites" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="suites">Test Suites</TabsTrigger>
+          <TabsTrigger value="navigation">Navigation</TabsTrigger>
           <TabsTrigger value="details">Details</TabsTrigger>
           <TabsTrigger value="reports">Reports</TabsTrigger>
         </TabsList>
@@ -464,6 +467,26 @@ export default function TestReportPage() {
               </Card>
             ))}
           </div>
+        </TabsContent>
+
+        {/* Navigation Tab */}
+        <TabsContent value="navigation" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <Navigation className="h-5 w-5" />
+                  <CardTitle className="text-lg">Navigation Route Testing</CardTitle>
+                </div>
+                <Button variant="outline" size="sm" onClick={() => window.location.reload()}>
+                  Refresh
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <NavigationResults />
+            </CardContent>
+          </Card>
         </TabsContent>
 
         {/* Details Tab */}
