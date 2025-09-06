@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "@/metadata";
-import Footer from "@/components/footer";
 import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
@@ -32,24 +31,28 @@ interface DesignLayoutProps {
 export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
     <DesignPageProvider>
-      <PreviewSurface>
-        <div className="container mx-auto max-w-7xl p-4">
+      <PreviewSurface layout="none">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <SimpleNavbar className="mb-6" />
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <aside className="md:col-span-1">
+          <div className="flex gap-6">
+            {/* Sidebar: hidden on mobile, fixed width on md+ */}
+            <aside className="hidden md:block w-64 flex-shrink-0">
               <SimpleDesignNav />
             </aside>
-            <main className="md:col-span-3 space-y-8">
+            {/* Main content grows and prevents overflow */}
+            <main className="flex-1 min-w-0">
+              {/* Standard preview grid for design pages */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
               <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-6rem)]" />}>
                 <PageTransition>
                   {children}
                 </PageTransition>
               </Suspense>
+              </div>
             </main>
           </div>
         </div>
       </PreviewSurface>
-      <Footer />
     </DesignPageProvider>
   );
 }

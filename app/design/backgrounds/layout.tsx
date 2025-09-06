@@ -41,10 +41,10 @@ export default function BackgroundsLayout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full">
       <SimpleNavbar tabs={tabs} />
-      <main className="flex-1 p-4 sm:p-6 pb-24">
-        <div className="container mx-auto max-w-7xl space-y-8">
+      <main className="flex-1 w-full">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 space-y-8">
           <BackgroundsConfigurator />
           {/* Background customization panel that applies to all background components */}
           <BackgroundCustomizationPanel />

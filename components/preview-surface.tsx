@@ -14,11 +14,15 @@ export const PreviewTileExpansionContext = React.createContext<PreviewTileExpans
 interface PreviewSurfaceProps {
   children: React.ReactNode;
   showGlobalControls?: boolean;
+  layout?: 'none' | 'grid';
+  className?: string;
 }
 
 export function PreviewSurface({
   children,
   showGlobalControls = false, // Turn off by default since we control this at root level
+  layout = 'grid',
+  className = '',
 }: PreviewSurfaceProps) {
   const [expandedTile, setExpandedTile] = React.useState<string | null>(null);
 
@@ -27,9 +31,13 @@ export function PreviewSurface({
   return (
     <PreviewProvider>
       <PreviewTileExpansionContext.Provider value={contextValue}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
-          {children}
-        </div>
+        {layout === 'grid' ? (
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr ${className}`}>
+            {children}
+          </div>
+        ) : (
+          <div className={className}>{children}</div>
+        )}
       </PreviewTileExpansionContext.Provider>
     </PreviewProvider>
   );

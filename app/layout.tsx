@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: process.env.NODE_ENV === 'production' ? new URL(siteConfig.url) : undefined,
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -42,20 +42,25 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            {/* FlickeringGrid background for all pages */}
-            <div className="absolute top-0 left-0 z-0 w-full h-[500px] [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none">
+            {/* Background - fixed full viewport behind all content */}
+            <div className="fixed inset-0 -z-10">
               <FlickeringGrid
-                className="absolute top-0 left-0 size-full"
+                className="absolute inset-0"
                 squareSize={4}
                 gridGap={6}
                 color="#6B7280"
                 maxOpacity={0.5}
                 flickerChance={0.1}
               />
+              <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
             </div>
-            <TopNavbar />
-            <div className="relative z-0 w-full">
-              {children}
+
+            {/* Shell: full height, vertical stack */}
+            <div className="flex min-h-screen flex-col">
+              <TopNavbar />
+              <main className="flex-1 w-full">
+                {children}
+              </main>
               <Footer />
             </div>
           </TooltipProvider>
