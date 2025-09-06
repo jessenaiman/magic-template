@@ -1,4 +1,3 @@
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 export default function TailwindBackgroundsPage() {
@@ -22,54 +21,52 @@ export default function TailwindBackgroundsPage() {
         </div>
       </div>
 
-      <PreviewSurface>
-        <PreviewTile
-          title="Gradient Background"
-          description="Simple gradient background using Tailwind's gradient utilities"
-          componentName="GradientBackground"
-          code={`<div className="h-64 w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>`}
-        >
-          <div className="h-64 w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>
-        </PreviewTile>
+      <PreviewTile
+        title="Gradient Background"
+        description="Simple gradient background using Tailwind's gradient utilities"
+        componentName="GradientBackground"
+        code={`<div className="h-64 w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>`}
+      >
+        <div className="h-64 w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>
+      </PreviewTile>
 
-        <PreviewTile
-          title="Dotted Pattern"
-          description="Create a dotted background pattern with Tailwind"
-          componentName="DottedPattern"
-          code={`<div className="h-64 w-full bg-slate-100 rounded-lg relative overflow-hidden">
+      <PreviewTile
+        title="Dotted Pattern"
+        description="Create a dotted background pattern with Tailwind"
+        componentName="DottedPattern"
+        code={`<div className="h-64 w-full bg-slate-100 rounded-lg relative overflow-hidden">
   <div className="absolute inset-0" style={{
     backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
     backgroundSize: '20px 20px'
   }}></div>
 </div>`}
-        >
-          <div className="h-64 w-full bg-slate-100 rounded-lg relative overflow-hidden">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-        </PreviewTile>
+      >
+        <div className="h-64 w-full bg-slate-100 rounded-lg relative overflow-hidden">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+            backgroundSize: '20px 20px'
+          }}></div>
+        </div>
+      </PreviewTile>
 
-        <PreviewTile
-          title="Striped Background"
-          description="Striped background pattern using Tailwind and CSS"
-          componentName="StripedBackground"
-          code={`<div className="h-64 w-full rounded-lg relative overflow-hidden">
+      <PreviewTile
+        title="Striped Background"
+        description="Striped background pattern using Tailwind and CSS"
+        componentName="StripedBackground"
+        code={`<div className="h-64 w-full rounded-lg relative overflow-hidden">
   <div className="absolute inset-0" style={{
     backgroundImage: 'linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 50%, #f1f5f9 50%, #f1f5f9 75%, transparent 75%, transparent)',
     backgroundSize: '20px 20px'
   }}></div>
 </div>`}
-        >
-          <div className="h-64 w-full rounded-lg relative overflow-hidden">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 50%, #f1f5f9 50%, #f1f5f9 75%, transparent 75%, transparent)',
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-        </PreviewTile>
-      </PreviewSurface>
+      >
+        <div className="h-64 w-full rounded-lg relative overflow-hidden">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 50%, #f1f5f9 50%, #f1f5f9 75%, transparent 75%, transparent)',
+            backgroundSize: '20px 20px'
+          }}></div>
+        </div>
+      </PreviewTile>
     </div>
   );
 }

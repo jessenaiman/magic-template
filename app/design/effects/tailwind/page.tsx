@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { PreviewTile } from '@/components/preview-tile';
-import { PreviewSurface } from '@/components/preview-surface';
 import { CustomizationSettings } from '@/components/preview-context';
 
 function Container({ children, customization }: { children: React.ReactNode; customization: Partial<CustomizationSettings>; }) {
@@ -23,11 +22,7 @@ function Container({ children, customization }: { children: React.ReactNode; cus
 
 export default function TailwindEffectsPage() {
   return (
-    <PreviewSurface initialCustomization={{
-      backgroundColor: '#ffffff',
-      borderRadius: 12,
-      padding: 16
-    }}>
+    <>
       <div className="col-span-full mb-4">
         <h2 className="text-2xl font-bold tracking-tight">Tailwind CSS Effects</h2>
         <p className="text-muted-foreground">
@@ -41,7 +36,7 @@ export default function TailwindEffectsPage() {
       <BackdropBlurPreview />
       <AnimatedBorderPreview />
       <ShimmerEffectPreview />
-    </PreviewSurface>
+    </>
   );
 }
 

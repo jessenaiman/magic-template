@@ -2,7 +2,6 @@
 // Tailwind Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 const tailwindTransitionCode = `
@@ -75,7 +74,7 @@ function TailwindTransitionDemo({ customization }: { customization: Partial<Reco
 
 export default function TailwindPageTransitionsPage() {
   return (
-    <PreviewSurface initialCustomization={{ duration: 500, easing: "ease-in-out" }}>
+    <>
       <PreviewTile
         title="Tailwind Fade Page Transition"
         description="Simulate navigation between pages using Tailwind CSS transitions. Click the buttons to switch pages."
@@ -104,6 +103,6 @@ export default function TailwindPageTransitionsPage() {
       >
         {(customization) => <TailwindTransitionDemo customization={customization} />}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

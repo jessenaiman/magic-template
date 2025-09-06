@@ -20,6 +20,19 @@ export const mainNavigation: NavigationSection[] = [
     label: "Design",
     items: [
       {
+        label: "Animations",
+        href: "/design/animations",
+        icon: Palette,
+        description: "Animated and static background patterns",
+        children: [
+          { label: "Overview", href: "/design/animations" },
+          { label: "Animate-UI", href: "/design/animations/animate-ui" },
+          { label: "Animate.css", href: "/design/animations/animatecss" },
+          { label: "MagicUI", href: "/design/animations/magicui" },
+          { label: "ReactBits", href: "/design/animations/reactbits" }
+        ]
+      },
+      {
         label: "Backgrounds",
         href: "/design/backgrounds",
         icon: Palette,

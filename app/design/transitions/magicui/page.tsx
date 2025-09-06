@@ -2,7 +2,6 @@
 // MagicUI Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/magicui/text-animate";
@@ -212,7 +211,7 @@ function WordRotateDemo({ customization }: { customization: Partial<Record<strin
 
 export default function MagicUIPageTransitionsPage() {
   return (
-    <PreviewSurface initialCustomization={{ duration: 0.6, direction: "top", ease: "easeOut" }}>
+    <>
       {/* BlurFade Page Transition */}
       <PreviewTile
         title="MagicUI BlurFade Page Transition"
@@ -375,6 +374,6 @@ export default function MagicUIPageTransitionsPage() {
       >
         {(customization) => <WordRotateDemo customization={customization} />}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

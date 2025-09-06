@@ -1,4 +1,3 @@
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { AuroraText } from "@/components/magicui/aurora-text";
@@ -17,7 +16,6 @@ export default function MagicUITextPage() {
           Explore animated and interactive text components powered by Magic UI. These components add motion, engagement, and visual appeal to your typography.
         </p>
       </div>
-      <PreviewSurface>
         <PreviewTile
           title="Animated Gradient Text"
           description="Text with an animated gradient background that shifts colors."
@@ -144,7 +142,6 @@ export default function MagicUITextPage() {
             </TextReveal>
           </div>
         </PreviewTile>
-      </PreviewSurface>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 'use client';
 
-import { PreviewSurface } from '@/components/preview-surface';
 
 export default function ReactBitsTextPage() {
   return (
@@ -13,11 +12,9 @@ export default function ReactBitsTextPage() {
         </p>
       </div>
 
-      <PreviewSurface>
         <div className="p-4 bg-yellow-100 border border-yellow-300 rounded">
           <p className="text-yellow-800">Text animation components temporarily disabled - awaiting installation</p>
         </div>
-      </PreviewSurface>
     </div>
   );
 }

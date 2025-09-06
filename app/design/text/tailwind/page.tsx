@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 export default function TailwindTextPage() {
@@ -24,7 +23,6 @@ export default function TailwindTextPage() {
         </p>
       </div>
 
-      <PreviewSurface>
         {/* Gradient Text Animation */}
         <PreviewTile
           title="Animated Gradient Text"
@@ -170,7 +168,6 @@ export default function TailwindTextPage() {
             </div>
           )}
         </PreviewTile>
-      </PreviewSurface>
 
       <style jsx>{`
         @keyframes gradient {

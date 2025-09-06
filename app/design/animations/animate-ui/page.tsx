@@ -1,6 +1,5 @@
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
-import { PreviewSurface } from "@/components/preview-surface";
 import { Copy } from "lucide-react";
 import { useState } from "react";
 
@@ -148,7 +147,7 @@ const RippleButton = ({ children, className = "", ...props }: RippleButtonProps)
 
 export default function Page() {
   return (
-    <PreviewSurface>
+    <>
       <div className="space-y-8">
         <PreviewTile
           title="Copy Button"
@@ -191,6 +190,6 @@ export default function Page() {
           {() => <RippleButton>Click for Ripple</RippleButton>}
         </PreviewTile>
       </div>
-    </PreviewSurface>
+    </>
   );
 }

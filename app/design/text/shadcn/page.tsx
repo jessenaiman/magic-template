@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -35,7 +34,6 @@ export default function ShadCNTextPage() {
         </p>
       </div>
 
-      <PreviewSurface>
         {/* Typography Showcase */}
         <PreviewTile
           title="Typography System"
@@ -294,7 +292,6 @@ export default function ShadCNTextPage() {
             </div>
           )}
         </PreviewTile>
-      </PreviewSurface>
     </div>
   );
 }

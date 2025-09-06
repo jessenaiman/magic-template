@@ -1,6 +1,7 @@
 // Animation Demos Layout
 "use client";
 import Link from "next/link";
+import { PreviewSurface } from "@/components/preview-surface";
 
 const nav = [
   { href: "/design/animations/animate-ui", label: "Animate-UI" },
@@ -10,7 +11,11 @@ const nav = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <PreviewSurface initialCustomization={{
+      backgroundColor: '#ffffff',
+      borderRadius: 12,
+      padding: 16
+    }}>
       <nav className="mb-8 flex gap-4 border-b pb-4">
         {nav.map((item) => (
           <Link
@@ -23,6 +28,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         ))}
       </nav>
       <div>{children}</div>
-    </div>
+    </PreviewSurface>
   );
 }

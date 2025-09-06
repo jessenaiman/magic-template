@@ -2,7 +2,6 @@
 // Next.js Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -93,7 +92,7 @@ function NextjsTransitionDemo({ customization }: { customization: Partial<Record
 
 export default function NextjsPageTransitionsPage() {
   return (
-    <PreviewSurface initialCustomization={{ duration: 0.5, ease: "easeInOut" }}>
+    <>
       <PreviewTile
         title="Next.js Animated Page Transition"
         description="Simulate Next.js route transitions using Framer Motion. Click the buttons to switch pages."
@@ -122,6 +121,6 @@ export default function NextjsPageTransitionsPage() {
       >
         {(customization) => <NextjsTransitionDemo customization={customization} />}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

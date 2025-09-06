@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 export default function HtmlCssTextPage() {
@@ -15,7 +14,6 @@ export default function HtmlCssTextPage() {
         </p>
       </div>
 
-      <PreviewSurface>
         {/* Blur Text Animation */}
         <PreviewTile
           title="Blur Text Animation"
@@ -83,7 +81,7 @@ export default function HtmlCssTextPage() {
               Shiny Effect
             </div>
           )}
-  </PreviewTile>
+        </PreviewTile>
 
         {/* Glitch Text Effect */}
         <PreviewTile
@@ -153,7 +151,6 @@ export default function HtmlCssTextPage() {
             </div>
           )}
         </PreviewTile>
-      </PreviewSurface>
 
       <style jsx>{`
         .css-blur-text {

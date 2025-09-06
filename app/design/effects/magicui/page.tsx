@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 import { PreviewTile } from '@/components/preview-tile';
-import { PreviewSurface } from '@/components/preview-surface';
 import { CustomizationSettings } from '@/components/preview-context';
 
 // MagicUI effects (installed components; do not modify)
@@ -32,11 +31,7 @@ function Container({ children, customization }: { children: React.ReactNode; cus
 
 export default function MagicUIEffectsPage() {
   return (
-    <PreviewSurface initialCustomization={{
-      backgroundColor: '#f5f5f5',
-      borderRadius: 12,
-      padding: 16
-    }}>
+    <>
       <div className="col-span-full mb-4">
         <h2 className="text-2xl font-bold tracking-tight">MagicUI Effects</h2>
         <p className="text-muted-foreground">
@@ -144,7 +139,7 @@ export default function MagicUIEffectsPage() {
         {(customization) => (
           <Container customization={customization}>
             <FlickeringGrid />
-          </Container>
+            </Container>
         )}
       </PreviewTile>
 
@@ -172,6 +167,6 @@ export default function MagicUIEffectsPage() {
           </Container>
         )}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

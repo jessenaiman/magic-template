@@ -50,19 +50,11 @@ const stripesConfig: BackgroundPreviewTileProps = {
   ),
 };
 
-import { PreviewSurface } from '@/components/preview-surface';
-
 export default function HtmlCssBackgroundsPage() {
   return (
     <>
       <PageConfigurator />
-      {/*
-        PreviewSurface provides context for tile expansion and customization controls.
-        All PreviewTile/BackgroundPreviewTile components MUST be wrapped in PreviewSurface.
-      */}
-      <PreviewSurface>
-        <BackgroundPreviewTile {...stripesConfig} />
-      </PreviewSurface>
+      <BackgroundPreviewTile {...stripesConfig} />
     </>
   );
 }

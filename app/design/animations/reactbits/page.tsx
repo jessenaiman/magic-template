@@ -1,7 +1,6 @@
 // ReactBits Animation Demo Page
 "use client";
 import { PreviewTile } from "@/components/preview-tile";
-import { PreviewSurface } from "@/components/preview-surface";
 import LogoLoop from "@/components/LogoLoop";
 import ClickSpark from "@/components/ClickSpark";
 import MetaBalls from "@/components/MetaBalls";
@@ -10,7 +9,7 @@ import Ribbons from "@/components/Ribbons";
 
 export default function Page() {
   return (
-    <PreviewSurface>
+    <>
       <PreviewTile
         title="LogoLoop"
         description="Animated looping row of logos"
@@ -83,6 +82,6 @@ export default function Page() {
           </div>
         )}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

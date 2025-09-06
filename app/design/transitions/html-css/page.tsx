@@ -2,7 +2,6 @@
 // HTML/CSS Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewSurface } from "@/components/preview-surface";
 import { PreviewTile } from "@/components/preview-tile";
 
 const transitionCode = `
@@ -89,7 +88,7 @@ function CssTransitionDemo({ customization }: { customization: Partial<Record<st
 
 export default function HtmlCssPageTransitionsPage() {
   return (
-    <PreviewSurface initialCustomization={{ duration: 400, easing: "cubic-bezier(0.4,0,0.2,1)" }}>
+    <>
       <PreviewTile
         title="CSS Fade Page Transition"
         description="Simulate navigation between pages using pure CSS transitions. Click the buttons to switch pages."
@@ -118,6 +117,6 @@ export default function HtmlCssPageTransitionsPage() {
       >
         {(customization) => <CssTransitionDemo customization={customization} />}
       </PreviewTile>
-    </PreviewSurface>
+    </>
   );
 }

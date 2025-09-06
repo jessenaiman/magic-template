@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import { PreviewSurface } from "@/components/preview-surface";
 import { SimpleNavbar } from "@/components/simple-navbar";
 import { useDesignPage } from "@/components/design-page-context";
 import { getBaseFields } from "@/components/base-category-options";
@@ -47,7 +48,9 @@ export default function BackgroundsLayout({ children }: LayoutProps) {
           <BackgroundsConfigurator />
           {/* Background customization panel that applies to all background components */}
           <BackgroundCustomizationPanel />
-          {children}
+          <PreviewSurface>
+            {children}
+          </PreviewSurface>
         </div>
       </main>
     </div>
