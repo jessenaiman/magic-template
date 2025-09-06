@@ -1,4 +1,3 @@
-import { PreviewSurface } from "@/components/preview/preview-surface";
 import { PreviewTile } from "@/components/preview/preview-tile";
 
 export default function NextJSResponsiveDesignPage() {
@@ -22,8 +21,7 @@ export default function NextJSResponsiveDesignPage() {
         </div>
       </div>
 
-      <PreviewSurface>
-        <PreviewTile
+      <PreviewTile
           title="Responsive Image"
           description="Next.js Image component with responsive sizing"
           componentName="ResponsiveImage"
@@ -97,7 +95,6 @@ export default function ResponsiveLayout() {
             </div>
           </div>
         </PreviewTile>
-      </PreviewSurface>
     </div>
   );
 }

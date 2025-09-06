@@ -7,10 +7,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePreviewTileExpansion } from '@/components/preview/preview-context';
 import { usePreviewContext, CustomizationSettings } from '@/components/preview/preview-context';
-import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview/preview-customization-panel';
-import { usePreviewTileExpansion } from "@/components/preview/preview-surface";
-import { PreviewTileHeader } from "@/components/preview/preview-tile-header";
+import PreviewCustomizationPanel, {
+  FieldConfig,
+} from '@/components/preview/preview-customization-panel';
+import { PreviewTileHeader } from '@/components/preview/preview-tile-header';
 import { CodeHighlighter } from '@/components/code-highlighter';
 
 // Utility function to get language for syntax highlighting based on code type
@@ -153,11 +155,12 @@ export function PreviewTile(props: PreviewTileProps) {
     baseViewCode,
   } = props;
 
-  // Require PreviewSurface context
+  // Require expansion context from layout
   const { expandedTile, setExpandedTile } = usePreviewTileExpansion();
   const [showCode, setShowCode] = React.useState(false);
   const [showControls, setShowControls] = React.useState(false);
   const panelRef = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
   // Bind to global PreviewContext so page-wide controls affect tiles
   const { state } = usePreviewContext();
@@ -165,6 +168,25 @@ export function PreviewTile(props: PreviewTileProps) {
     () => ({ ...state.customization, ...initialCustomization }),
     [state.customization, initialCustomization]
   );
+
+  // Smoothly scroll the tile into view when it becomes expanded
+  React.useEffect(() => {
+    const isExpanded = expandedTile === title;
+    if (!isExpanded) return;
+
+    // Respect reduced motion
+    const prefersReduced = typeof window !== 'undefined' &&
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Defer slightly to ensure layout has settled before scrolling
+    const id = window.setTimeout(() => {
+      rootRef.current?.scrollIntoView({
+        behavior: prefersReduced ? 'auto' : 'smooth',
+        block: 'center',
+      });
+    }, 50);
+    return () => window.clearTimeout(id);
+  }, [expandedTile, title]);
 
   // Generate code only when needed (when showCode is true or expanded)
   const generatedCode = React.useMemo(() => {
@@ -231,10 +253,11 @@ export function PreviewTile(props: PreviewTileProps) {
   // The child component receives the effective customization state
   return (
      <div
+       ref={rootRef}
        className={cn(
          "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 flex flex-col",
          expandedTile === title
-           ? "z-20 col-span-full md:col-span-2 lg:col-span-4 scale-[1.03] ring-2 ring-primary"
+           ? "z-20 col-span-full scale-[1.03] ring-2 ring-primary"
            : "",
          className
        )}

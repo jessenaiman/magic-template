@@ -1,6 +1,6 @@
 ---
 description: 'Startup instructions and project rules for Next.js, shadcn, magicui, and animate-ui development.'
-applyTo: '**'
+mode: agent
 ---
 
 # Startup Instructions

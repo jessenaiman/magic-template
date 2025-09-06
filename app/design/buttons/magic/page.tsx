@@ -4,7 +4,6 @@
 
 import { useDesignPage } from "@/components/design-page-context";
 import { PreviewTile } from "@/components/preview/preview-tile";
-import { PreviewSurface } from "@/components/preview/preview-surface";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { RippleButton } from "@/components/ui/ripple-button";
@@ -43,10 +42,9 @@ export default function MagicButtonsPage() {
   }, [setTitle, setDescription, setFields]);
 
   return (
-    <PreviewSurface>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Rainbow Button */}
-        <PreviewTile
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Rainbow Button */}
+      <PreviewTile
           title="Rainbow Button"
           componentName="RainbowButton"
           code={`<RainbowButton>Get Unlimited Access</RainbowButton>`}
@@ -98,6 +96,5 @@ export default function MagicButtonsPage() {
           )}
         </PreviewTile>
       </div>
-    </PreviewSurface>
   );
 }

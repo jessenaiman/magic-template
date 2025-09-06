@@ -2,11 +2,11 @@ import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { PreviewTile } from '@/components/preview/preview-tile';
-import { PreviewSurface } from '@/components/preview/preview-surface';
+import { PreviewTileExpansionContext } from '@/app/design/layout-client';
 
-// Test component that properly wraps PreviewTile with PreviewSurface
+// Test component that properly wraps PreviewTile with expansion context
 const TestComponent = () => (
-  <PreviewSurface>
+  <PreviewTileExpansionContext.Provider value={{ expandedTile: null, setExpandedTile: vi.fn() }}>
     <PreviewTile
       title="Test Tile"
       componentName="TestComponent"
@@ -14,7 +14,7 @@ const TestComponent = () => (
     >
       <div>Test Content</div>
     </PreviewTile>
-  </PreviewSurface>
+  </PreviewTileExpansionContext.Provider>
 );
 
 describe('PreviewTile Component', () => {

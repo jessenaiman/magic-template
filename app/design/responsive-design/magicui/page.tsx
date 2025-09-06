@@ -1,4 +1,3 @@
-import { PreviewSurface } from "@/components/preview/preview-surface";
 import { PreviewTile } from "@/components/preview/preview-tile";
 
 export default function MagicUIResponsiveDesignPage() {
@@ -22,8 +21,7 @@ export default function MagicUIResponsiveDesignPage() {
         </div>
       </div>
 
-      <PreviewSurface>
-        <PreviewTile
+      <PreviewTile
           title="Responsive Card Grid"
           description="A grid of cards that adapts to different screen sizes"
           componentName="ResponsiveCardGrid"
@@ -84,7 +82,6 @@ export default function MagicUIResponsiveDesignPage() {
             </div>
           </nav>
         </PreviewTile>
-      </PreviewSurface>
     </div>
   );
 }
