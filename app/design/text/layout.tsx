@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { PreviewSurface } from "@/components/preview-surface";
+
 import { SimpleNavbar } from "@/components/simple-navbar";
 
 interface LayoutProps {
@@ -30,9 +30,7 @@ export default function TextLayout({ children }: LayoutProps) {
               Each implementation showcases the same concepts using different approaches.
             </p>
           </div>
-          <PreviewSurface>
-            {children}
-          </PreviewSurface>
+          {children}
         </div>
       </main>
     </div>

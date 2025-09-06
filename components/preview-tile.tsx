@@ -232,9 +232,9 @@ export function PreviewTile(props: PreviewTileProps) {
   return (
      <div
        className={cn(
-         "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 flex flex-col min-h-[300px]",
+         "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 flex flex-col",
          expandedTile === title
-           ? "z-20 col-span-full md:col-span-3 lg:col-span-4 scale-[1.03] ring-2 ring-primary"
+           ? "z-20 col-span-full md:col-span-2 lg:col-span-4 scale-[1.03] ring-2 ring-primary"
            : "",
          className
        )}
@@ -254,8 +254,8 @@ export function PreviewTile(props: PreviewTileProps) {
        />
 
        {/* Preview Area with proper alignment and background */}
-       <div className="flex-1 relative min-h-[200px] p-4">
-         <div className="relative w-full h-full min-h-[180px] flex items-center justify-center bg-gradient-to-br from-background to-muted/20 rounded-lg border border-border/50 overflow-hidden">
+       <div className="flex-1 relative p-4">
+         <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-background to-muted/20 rounded-lg border border-border/50 overflow-hidden">
            <div className="relative z-10 flex items-center justify-center w-full h-full p-4">
               {/* Handle both regular React children and function children that receive customization */}
               {typeof children === 'function' ? children(customization) : children}

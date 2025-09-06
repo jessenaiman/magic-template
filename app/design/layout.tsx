@@ -8,7 +8,7 @@ import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
 import { SimpleDesignNav } from "@/components/simple-design-nav";
 import { DesignPageProvider } from "@/components/design-page-context";
-import { PreviewProvider } from "@/components/preview-context";
+import { PreviewSurface } from "@/components/preview-surface";
 import { SimpleNavbar } from '@/components/simple-navbar';
 
 export const viewport: Viewport = {
@@ -32,7 +32,7 @@ interface DesignLayoutProps {
 export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
     <DesignPageProvider>
-      <PreviewProvider>
+      <PreviewSurface>
         <div className="container mx-auto max-w-7xl p-4">
           <SimpleNavbar className="mb-6" />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -48,8 +48,8 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
             </main>
           </div>
         </div>
-        <Footer />
-      </PreviewProvider>
+      </PreviewSurface>
+      <Footer />
     </DesignPageProvider>
   );
 }

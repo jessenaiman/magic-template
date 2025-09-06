@@ -2,8 +2,7 @@
 // components/preview-controls/preview-surface.tsx
 
 import * as React from 'react';
-import { PreviewProvider, CustomizationSettings } from '@/components/preview-context';
-import PreviewControlsBar from '@/components/preview-controls-bar';
+import { PreviewProvider } from './preview-context';
 
 // Create a dedicated context for managing tile expansion
 interface PreviewTileExpansionContextType {
@@ -14,24 +13,21 @@ export const PreviewTileExpansionContext = React.createContext<PreviewTileExpans
 
 interface PreviewSurfaceProps {
   children: React.ReactNode;
-  initialCustomization?: Partial<CustomizationSettings>;
   showGlobalControls?: boolean;
 }
 
 export function PreviewSurface({
   children,
-  initialCustomization = {},
-  showGlobalControls = true,
+  showGlobalControls = false, // Turn off by default since we control this at root level
 }: PreviewSurfaceProps) {
   const [expandedTile, setExpandedTile] = React.useState<string | null>(null);
 
   const contextValue = { expandedTile, setExpandedTile };
 
   return (
-    <PreviewProvider initialCustomization={initialCustomization}>
-      {showGlobalControls && <PreviewControlsBar />}
+    <PreviewProvider>
       <PreviewTileExpansionContext.Provider value={contextValue}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
           {children}
         </div>
       </PreviewTileExpansionContext.Provider>
