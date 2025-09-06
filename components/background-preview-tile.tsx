@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile, PreviewTileProps } from './preview-tile';
+import { PreviewTile, PreviewTileProps } from './preview/preview-tile';
 import { useDesignPage } from './design-page-context';
-import { CustomizationSettings } from './preview-context';
+import { CustomizationSettings } from './preview/preview-context';
 
 export interface BackgroundPreviewTileProps extends PreviewTileProps {
   // Additional props specific to background components can be added here

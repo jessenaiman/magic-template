@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, Heart, Download, Share, Zap, Sparkles } from "lucide-react";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 function CodeBlock({ code, language: _language }: { code: string; language: string }) {
   return (

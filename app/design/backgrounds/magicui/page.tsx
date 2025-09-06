@@ -2,8 +2,8 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from '@/components/preview-tile';
-import { CustomizationSettings } from '@/components/preview-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { CustomizationSettings } from '@/components/preview/preview-context';
 
 // MagicUI backgrounds (installed components; do not modify)
 import { WarpBackground } from '@/components/magicui/warp-background';

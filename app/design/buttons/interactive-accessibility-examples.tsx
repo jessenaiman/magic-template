@@ -1,7 +1,7 @@
 "use client";
 
 // Removed Card imports; not needed with PreviewSurface standard
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { 
   Heart, 
   BookOpen, 

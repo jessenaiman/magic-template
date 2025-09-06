@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 export default function HtmlCssTextPage() {
   return (

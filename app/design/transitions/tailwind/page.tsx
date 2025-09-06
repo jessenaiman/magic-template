@@ -2,7 +2,7 @@
 // Tailwind Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 const tailwindTransitionCode = `
 <div class="relative w-full h-40">

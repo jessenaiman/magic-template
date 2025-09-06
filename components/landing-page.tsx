@@ -9,7 +9,7 @@ import { ToolExplorer } from "@/components/landing/ToolExplorer";
 import WorkshopValue from "@/components/landing/WorkshopValue";
 import SandboxTeaser from "@/components/landing/SandboxTeaser";
 import ProfessionalPathways from "@/components/landing/ProfessionalPathways";
-import PricingTiers from "@/components/landing/PricingTiers";
+import PricingTiers from "@/components/landing/pricing-tiers";
 import { ResourceCards } from "@/components/resource-cards";
 import ClosingCta from "@/components/landing/ClosingCta";
 

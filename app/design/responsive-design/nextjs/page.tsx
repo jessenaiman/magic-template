@@ -1,5 +1,5 @@
-import { PreviewSurface } from "@/components/preview-surface";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewSurface } from "@/components/preview/preview-surface";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 export default function NextJSResponsiveDesignPage() {
   return (

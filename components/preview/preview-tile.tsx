@@ -7,10 +7,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { usePreviewContext, CustomizationSettings } from '@/components/preview-context';
-import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview-customization-panel';
-import { usePreviewTileExpansion } from "@/components/preview-surface";
-import { PreviewTileHeader } from "@/components/preview-tile-header";
+import { usePreviewContext, CustomizationSettings } from '@/components/preview/preview-context';
+import PreviewCustomizationPanel, { FieldConfig } from '@/components/preview/preview-customization-panel';
+import { usePreviewTileExpansion } from "@/components/preview/preview-surface";
+import { PreviewTileHeader } from "@/components/preview/preview-tile-header";
 import { CodeHighlighter } from '@/components/code-highlighter';
 
 // Utility function to get language for syntax highlighting based on code type

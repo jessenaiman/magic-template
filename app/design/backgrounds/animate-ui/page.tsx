@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
-import { PreviewTile } from '@/components/preview-tile';
+import { PreviewTile } from '@/components/preview/preview-tile';
 import { BubbleBackground } from '@/components/animate-ui/backgrounds/bubble';
 import { GradientBackground } from '@/components/animate-ui/backgrounds/gradient';
 import { StarsBackground } from '@/components/animate-ui/backgrounds/stars';

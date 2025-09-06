@@ -1,6 +1,6 @@
 // Animate.css Animation Demo Page
 "use client";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 const animations = [
   {

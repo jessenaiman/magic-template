@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
 import { BackgroundPreviewTile, BackgroundPreviewTileProps } from '@/components/background-preview-tile';
-import { FieldConfig } from '@/components/preview-customization-panel';
-import { CustomizationSettings } from '@/components/preview-context';
+import { FieldConfig } from '@/components/preview/preview-customization-panel';
+import { CustomizationSettings } from '@/components/preview/preview-context';
 
 function PageConfigurator() {
   const { setTitle, setDescription, setFields } = useDesignPage();

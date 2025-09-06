@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { PreviewTile } from '@/components/preview-tile';
-import { PreviewSurface } from '@/components/preview-surface';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { PreviewSurface } from '@/components/preview/preview-surface';
 
 // Test component that properly wraps PreviewTile with PreviewSurface
 const TestComponent = () => (

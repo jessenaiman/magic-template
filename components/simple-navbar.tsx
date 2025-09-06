@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Moon, Sun, Play, Pause, RotateCcw } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import { usePreviewContext } from './preview-context';
+import { usePreviewContext } from './preview/preview-context';
 import { DesignTabs } from './design-tabs';
 
 interface SimpleNavbarProps {

@@ -1,6 +1,6 @@
 // ReactBits Animation Demo Page
 "use client";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import LogoLoop from "@/components/LogoLoop";
 import ClickSpark from "@/components/ClickSpark";
 import MetaBalls from "@/components/MetaBalls";

@@ -1,4 +1,4 @@
-import { FieldConfig } from './preview-customization-panel';
+import { FieldConfig } from './preview/preview-customization-panel';
 
 /**
  * Base customization options shared across component categories.

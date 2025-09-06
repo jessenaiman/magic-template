@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { SlidingNumber } from '@/components/animate-ui/text/sliding-number';
 import { motion, type Variants, type Transition } from 'motion/react';
-import { usePreviewContext } from './preview-context';
+import { usePreviewContext } from './preview/preview-context';
 import { useRouter } from 'next/navigation';
 
 // Define effect categories

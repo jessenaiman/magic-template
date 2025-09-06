@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { Smartphone, Tablet, Monitor, ChevronDown } from "lucide-react";
 
 function CodeBlock({ code, language }: { code: string; language: string }) {

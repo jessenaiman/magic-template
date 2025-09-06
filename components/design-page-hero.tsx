@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useDesignPage } from './design-page-context';
-import { usePreviewContext } from './preview-context';
-import { PreviewCustomizationPanel, FieldConfig } from './preview-customization-panel';
+import { usePreviewContext } from './preview/preview-context';
+import { PreviewCustomizationPanel, FieldConfig } from './preview/preview-customization-panel';
 import { cn } from '@/lib/utils';
 import { Settings, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -3,8 +3,8 @@
 "use client";
 
 import { useDesignPage } from "@/components/design-page-context";
-import { PreviewTile } from "@/components/preview-tile";
-import { PreviewSurface } from "@/components/preview-surface";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { PreviewSurface } from "@/components/preview/preview-surface";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { RippleButton } from "@/components/ui/ripple-button";

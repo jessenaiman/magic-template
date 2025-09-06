@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useDesignPage } from './design-page-context';
-import { PreviewSlider } from './preview-slider';
-import { PreviewInput } from './preview-input';
+import { PreviewSlider } from './preview/preview-slider';
+import { PreviewInput } from './preview/preview-input';
 import { cn } from '@/lib/utils';
 import { Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';

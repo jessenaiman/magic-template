@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { PreviewSurface } from '@/components/preview-surface';
-import { PreviewTile } from '@/components/preview-tile';
+import { PreviewSurface } from '@/components/preview/preview-surface';
+import { PreviewTile } from '@/components/preview/preview-tile';
 
 describe('PreviewSurface Component', () => {
   it('renders children within a grid layout', () => {

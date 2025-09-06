@@ -7,8 +7,9 @@ import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
 import { SimpleDesignNav } from "@/components/simple-design-nav";
 import { DesignPageProvider } from "@/components/design-page-context";
-import { PreviewSurface } from "@/components/preview-surface";
+import { PreviewSurface } from "@/components/preview/preview-surface";
 import { SimpleNavbar } from '@/components/simple-navbar';
+import PreviewGrid from "@/components/preview/preview-grid";
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -41,14 +42,13 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
             </aside>
             {/* Main content grows and prevents overflow */}
             <main className="flex-1 min-w-0">
-              {/* Standard preview grid for design pages */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
               <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-6rem)]" />}>
                 <PageTransition>
-                  {children}
+                  <PreviewGrid minColPx={320} gapClass="gap-6">
+                    {children}
+                  </PreviewGrid>
                 </PageTransition>
               </Suspense>
-              </div>
             </main>
           </div>
         </div>

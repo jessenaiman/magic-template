@@ -10,7 +10,7 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { CustomizableManagementBar } from './customizable-management-bar';
-import { CustomizationSettings } from './preview-context';
+import { CustomizationSettings } from './preview/preview-context';
 
 interface DesignManagementBarProps {
   pathname: string;

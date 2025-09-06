@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Play, Pause, Square } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { usePreviewContext } from '@/components/preview-context';
+import { usePreviewContext } from '@/components/preview/preview-context';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 

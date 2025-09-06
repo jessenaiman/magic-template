@@ -1,8 +1,8 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PreviewTile } from "@/components/preview-tile";
-import { PreviewSurface } from "@/components/preview-surface";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { PreviewSurface } from "@/components/preview/preview-surface";
 import { Copy } from "lucide-react";
 import React from "react";
 import { RippleButton } from "@/components/animate-ui/buttons/ripple";

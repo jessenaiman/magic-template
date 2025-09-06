@@ -1,4 +1,4 @@
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { FlipText } from "@/components/magicui/flip-text";

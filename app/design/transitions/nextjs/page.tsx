@@ -2,7 +2,7 @@
 // Next.js Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewTile } from "@/components/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { motion, AnimatePresence } from "framer-motion";
 
 const nextjsTransitionCode = `

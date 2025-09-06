@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { SlidingNumber } from '@/components/animate-ui/text/sliding-number';
 import { motion, type Variants, type Transition } from 'motion/react';
-import { usePreviewContext } from './preview-context';
+import { usePreviewContext } from './preview/preview-context';
 
 // Define button types for the management bar
 export interface ManagementBarButton {
