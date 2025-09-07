@@ -1,5 +1,7 @@
 import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map, Activity } from "lucide-react";
 
+import { discoverCategories, discoverTechnologyImplementations } from "@/lib/category-discovery";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -14,103 +16,146 @@ export type NavigationSection = {
   items: NavItem[];
 };
 
+// Helper function to get icon for category based on slug
+const getIconForCategory = (categorySlug: string) => {
+  const iconMap: Record<string, React.ElementType> = {
+    'animations': Palette,
+    'backgrounds': Palette,
+    'buttons': Zap,
+    'effects': Sparkles,
+    'text': Type,
+    'transitions': ArrowRightLeft,
+    'responsive-design': Layout,
+  };
+  return iconMap[categorySlug] || Palette; // default to Palette
+};
+
+// Helper function to get description for category
+const getDescriptionForCategory = (categoryName: string) => {
+  const lowercaseName = categoryName.toLowerCase();
+
+  if (lowercaseName.includes('animation')) return 'Animated design components and patterns';
+  if (lowercaseName.includes('background')) return 'Animated and static background patterns';
+  if (lowercaseName.includes('button')) return 'Interactive button components and animations';
+  if (lowercaseName.includes('effect')) return 'Visual effects and animations';
+  if (lowercaseName.includes('text')) return 'Typography and text effects';
+  if (lowercaseName.includes('transition')) return 'Smooth page transition effects';
+  if (lowercaseName.includes('responsive')) return 'Mobile-first design patterns';
+
+  return 'Design components and implementations';
+};
+
+// Generate dynamic Design section using the new [category]/[example] structure
+const generateDynamicDesignSection = (): NavigationSection => {
+  const categoryData = [
+    {
+      slug: 'animations',
+      name: 'Animations',
+      examples: [
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'animatecss', name: 'Animate.css' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'reactbits', name: 'React Bits' }
+      ]
+    },
+    {
+      slug: 'backgrounds',
+      name: 'Backgrounds',
+      examples: [
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'buttons',
+      name: 'Buttons',
+      examples: [
+        { slug: 'animate-css', name: 'Animate.css' },
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'customize', name: 'Customize' },
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magic', name: 'Magic UI' },
+        { slug: 'shadcn', name: 'Shadcn' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'effects',
+      name: 'Effects',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'responsive-design',
+      name: 'Responsive Design',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'nextjs', name: 'Next.js' },
+        { slug: 'tailwindcss', name: 'Tailwind CSS' }
+      ]
+    },
+    {
+      slug: 'text',
+      name: 'Text',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'reactbits', name: 'React Bits' },
+        { slug: 'shadcn', name: 'Shadcn' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'transitions',
+      name: 'Transitions',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'nextjs', name: 'Next.js' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'templates',
+      name: 'Templates',
+      examples: [] // No examples for templates yet
+    }
+  ];
+
+  return {
+    label: "Design",
+    items: categoryData.map(category => {
+      const children: NavItem[] = [
+        {
+          label: "Overview",
+          href: `/design/${category.slug}`
+        },
+        ...category.examples.map(example => ({
+          label: example.name,
+          href: `/design/${category.slug}/${example.slug}`
+        }))
+      ];
+
+      return {
+        label: category.name,
+        href: `/design/${category.slug}`,
+        icon: getIconForCategory(category.slug),
+        description: getDescriptionForCategory(category.name),
+        children
+      };
+    })
+  };
+};
+
 // Main navigation sections
 export const mainNavigation: NavigationSection[] = [
-  {
-    label: "Design",
-    items: [
-      {
-        label: "Animations",
-        href: "/design/animations",
-        icon: Palette,
-        description: "Animated and static background patterns",
-        children: [
-          { label: "Overview", href: "/design/animations" },
-          { label: "Animate-UI", href: "/design/animations/animate-ui" },
-          { label: "Animate.css", href: "/design/animations/animatecss" },
-          { label: "MagicUI", href: "/design/animations/magicui" },
-          { label: "ReactBits", href: "/design/animations/reactbits" }
-        ]
-      },
-      {
-        label: "Backgrounds",
-        href: "/design/backgrounds",
-        icon: Palette,
-        description: "Animated and static background patterns",
-        children: [
-          { label: "Overview", href: "/design/backgrounds" },
-          { label: "Animate UI", href: "/design/backgrounds/animate-ui" },
-          { label: "HTML CSS", href: "/design/backgrounds/html-css" },
-          { label: "MagicUI", href: "/design/backgrounds/magicui" },
-          { label: "Tailwind", href: "/design/backgrounds/tailwind" },
-        ]
-      },
-      {
-        label: "Buttons",
-        href: "/design/buttons",
-        icon: Zap,
-        description: "Interactive button components and animations",
-        children: [
-          { label: "Overview", href: "/design/buttons" },
-          { label: "Animate CSS", href: "/design/buttons/animate-css" },
-          { label: "HTML CSS", href: "/design/buttons/html-css" },
-          { label: "Magic", href: "/design/buttons/magic" },
-          { label: "Shadcn", href: "/design/buttons/shadcn" },
-          { label: "Tailwind", href: "/design/buttons/tailwind" }
-        ]
-      },
-      {
-        label: "Responsive Design",
-        href: "/design/responsive-design",
-        icon: Layout,
-        description: "Mobile-first design patterns",
-        children: [
-          { label: "Overview", href: "/design/responsive-design" },
-          { label: "HTML CSS", href: "/design/responsive-design/html-css" },
-          { label: "MagicUI", href: "/design/responsive-design/magicui" },
-          { label: "Next.js", href: "/design/responsive-design/nextjs" }
-        ]
-      },
-      {
-        label: "Effects",
-        href: "/design/effects",
-        icon: Sparkles,
-        description: "Visual effects and animations",
-        children: [
-          { label: "Overview", href: "/design/effects" },
-          { label: "HTML CSS", href: "/design/effects/html-css" },
-          { label: "MagicUI", href: "/design/effects/magicui" },
-          { label: "Tailwind", href: "/design/effects/tailwind" }
-        ]
-      },
-      {
-        label: "Transitions",
-        href: "/design/transitions",
-        icon: ArrowRightLeft,
-        description: "Smooth page transition effects",
-        children: [
-          { label: "Overview", href: "/design/transitions" },
-          { label: "HTML CSS", href: "/design/transitions/html-css" },
-          { label: "MagicUI", href: "/design/transitions/magicui" },
-          { label: "Next.js", href: "/design/transitions/nextjs" },
-          { label: "Tailwind", href: "/design/transitions/tailwind" }
-        ]
-      },
-      {
-        label: "Text",
-        href: "/design/text",
-        icon: Type,
-        description: "Typography and text effects",
-        children: [
-          { label: "Overview", href: "/design/text" },
-          { label: "HTML CSS", href: "/design/text/html-css" },
-          { label: "MagicUI", href: "/design/text/magicui" },
-          { label: "Shadcn", href: "/design/text/shadcn" },
-          { label: "Tailwind", href: "/design/text/tailwind" }
-        ]
-      }
-    ]
-  },
+  generateDynamicDesignSection(),
   {
     label: "Projects",
     items: [

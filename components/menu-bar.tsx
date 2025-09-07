@@ -17,13 +17,13 @@ interface MenuItem {
 
 // Update this array to match your [category] folders under app/design/[category]
 const designCategories: Array<{ icon: keyof typeof Icons; label: string; category: string; description: string }> = [
+  { icon: "palette", label: "Animations", category: "animations", description: "Animated design components and patterns" },
   { icon: "palette", label: "Backgrounds", category: "backgrounds", description: "Dynamic backgrounds and patterns" },
   { icon: "button", label: "Buttons", category: "buttons", description: "Interactive button components" },
   { icon: "layout", label: "Responsive Design", category: "responsive-design", description: "Adaptive layouts and components" },
   { icon: "sparkles", label: "Effects", category: "effects", description: "Visual effects and animations" },
   { icon: "transition", label: "Transitions", category: "transitions", description: "Navigation transitions and animations" },
   { icon: "text", label: "Text", category: "text", description: "Typography and text effects" },
-  { icon: "template", label: "Templates", category: "templates", description: "Starter templates and layouts" },
 ]
 
 const menuItems: MenuItem[] = [
@@ -39,6 +39,12 @@ const menuItems: MenuItem[] = [
     href: `/design/${cat.category}`,
     description: cat.description
   })),
+  {
+    icon: "template",
+    label: "Templates",
+    href: "/templates",
+    description: "Starter templates and layouts"
+  },
   {
     icon: "activity",
     label: "Test Report",

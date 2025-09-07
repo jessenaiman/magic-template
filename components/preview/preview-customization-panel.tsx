@@ -13,7 +13,7 @@ import { usePreviewContext, CustomizationSettings } from './preview-context';
 export interface BaseFieldConfig {
   id: string;
   label: string;
-  type: 'color' | 'slider' | 'text' | 'switch' | 'custom';
+  type: 'color' | 'slider' | 'text' | 'switch' | 'select' | 'viewport' | 'custom';
   description?: string;
   hidden?: boolean | ((settings: CustomizationSettings) => boolean);
 }
@@ -40,6 +40,16 @@ export interface SwitchFieldConfig extends BaseFieldConfig {
   type: 'switch';
 }
 
+export interface SelectFieldConfig extends BaseFieldConfig {
+  type: 'select';
+  options: Array<{ value: string; label: string; description?: string }>;
+}
+
+export interface ViewportFieldConfig extends BaseFieldConfig {
+  type: 'viewport';
+  breakpoints: Array<{ name: string; width: number; height?: number; label: string }>;
+}
+
 export interface CustomFieldConfig extends BaseFieldConfig {
   type: 'custom';
   render: (ctx: {
@@ -53,6 +63,8 @@ export type FieldConfig =
   | ColorFieldConfig
   | TextFieldConfig
   | SwitchFieldConfig
+  | SelectFieldConfig
+  | ViewportFieldConfig
   | CustomFieldConfig;
 
 export interface PreviewCustomizationPanelProps {
@@ -360,6 +372,65 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
           description={sw.description}
           onChange={(c) => onChange(sw.id, c)}
         />
+      );
+    }
+
+    case 'select': {
+      const sf = field as SelectFieldConfig;
+      return (
+        <div className="space-y-1.5">
+          <label className="text-xs font-medium tracking-tight">
+            {sf.label}
+          </label>
+          <select
+            value={(settings as any)[sf.id] ?? sf.options[0]?.value}
+            onChange={(e) => onChange(sf.id, e.target.value)}
+            className="w-full px-2 py-1 text-xs border rounded bg-background"
+          >
+            {sf.options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {sf.description && (
+            <p className="text-[11px] text-muted-foreground leading-tight">
+              {sf.description}
+            </p>
+          )}
+        </div>
+      );
+    }
+
+    case 'viewport': {
+      const vf = field as ViewportFieldConfig;
+      return (
+        <div className="space-y-1.5">
+          <label className="text-xs font-medium tracking-tight">
+            {vf.label}
+          </label>
+          <div className="grid grid-cols-2 gap-1">
+            {vf.breakpoints.map((breakpoint) => (
+              <button
+                key={breakpoint.name}
+                onClick={() => onChange(vf.id, breakpoint.name)}
+                className={cn(
+                  "px-2 py-1 text-xs border rounded transition-colors",
+                  (settings as any)[vf.id] === breakpoint.name
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-background hover:bg-muted"
+                )}
+              >
+                {breakpoint.label}
+              </button>
+            ))}
+          </div>
+          {vf.description && (
+            <p className="text-[11px] text-muted-foreground leading-tight">
+              {vf.description}
+            </p>
+          )}
+        </div>
       );
     }
 
