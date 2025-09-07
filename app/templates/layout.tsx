@@ -5,10 +5,10 @@ import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 import { UnifiedSidebar } from "@/components/navigation/unified-sidebar";
 import { UnifiedBreadcrumbs } from "@/components/navigation/unified-breadcrumbs";
 import { PreviewProvider } from "@/components/preview/preview-context";
-import { getTemplatesNavigation } from "@/app/templates-navigation.config";
 import * as React from "react";
 
 export const viewport: Viewport = {
@@ -20,16 +20,16 @@ interface TemplatesLayoutProps {
 }
 
 export default function TemplatesLayout({ children }: TemplatesLayoutProps) {
-  const templateItems = getTemplatesNavigation();
 
   return (
     <PreviewProvider>
+      <UnifiedNavbar currentSection="templates" />
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex gap-6">
           {/* Sidebar: hidden on mobile, fixed width on md+ */}
           <aside className="hidden md:block w-64 flex-shrink-0">
             <UnifiedSidebar
-              items={templateItems}
+              navType="templates"
               collapsible={true}
               defaultCollapsed={false}
               showIcons={true}

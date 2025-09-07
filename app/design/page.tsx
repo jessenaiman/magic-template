@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { getDesignNavigation, type NavItem } from "@/app/navigation.config";
+import { getDesignNavigation, type NavItem } from "@/config/navigation";
 import { useDesignPage } from "@/components/design-page-context";
 import { cn } from "@/lib/utils";
 

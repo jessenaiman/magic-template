@@ -6,8 +6,8 @@ import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
-import { TopNavbar } from '@/components/top-navbar';
-import { ConsolidatedNavbar } from '@/components/consolidated-navbar';
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
+import { UnifiedSidebar } from "@/components/navigation/unified-sidebar";
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { PreviewProvider } from "@/components/preview/preview-context";
@@ -60,11 +60,15 @@ export default function RootLayout({
 
               {/* Shell: full height, vertical stack */}
               <div className="flex min-h-screen flex-col">
-                <TopNavbar />
-                <ConsolidatedNavbar variant="full" />
-                <main className="flex-1 w-full">
-                  {children}
-                </main>
+                <UnifiedNavbar currentSection="main" />
+                <div className="flex flex-1 w-full">
+                  <div className="hidden md:block shrink-0">
+                    <UnifiedSidebar navType="main" />
+                  </div>
+                  <main className="flex-1 w-full">
+                    {children}
+                  </main>
+                </div>
                 <Footer />
               </div>
             </TooltipProvider>

@@ -30,6 +30,7 @@ export function PreviewGrid({ children, className, gapClass = "gap-6" }: Preview
         "sm:grid-cols-2", // Tablet: 2 columns
         "lg:grid-cols-3", // Desktop: 3 columns
         "xl:grid-cols-4", // Large screens: 4 columns
+        "min-[1440px]:grid-cols-4", // ≥1440px: exactly 4 columns
         gapClass,
         className
       )}

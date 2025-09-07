@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { ChevronRight, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTransition } from 'react';
+import { generateBreadcrumbs } from '@/config/navigation';
 
 interface BreadcrumbItem {
   label: string;
@@ -15,48 +16,25 @@ interface BreadcrumbItem {
 interface UnifiedBreadcrumbsProps {
   items?: BreadcrumbItem[];
   className?: string;
-  showHome?: boolean;
   separator?: React.ReactNode;
+  'aria-label'?: string;
 }
 
 export function UnifiedBreadcrumbs({
   items,
   className,
-  showHome = true,
-  separator = <ChevronRight className="h-4 w-4" />
+  separator = <ChevronRight className="h-4 w-4" />,
+  'aria-label': ariaLabel = 'Breadcrumb',
 }: UnifiedBreadcrumbsProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  // Generate breadcrumbs from pathname if not provided
+  // Always use config-driven breadcrumbs unless explicit items are passed
   const breadcrumbItems = React.useMemo(() => {
     if (items) return items;
-
-    const breadcrumbs: BreadcrumbItem[] = [];
-    const pathParts = pathname.split('/').filter(Boolean);
-
-    if (showHome) {
-      breadcrumbs.push({ label: 'Home', href: '/' });
-    }
-
-    let currentPath = '';
-    pathParts.forEach((part, index) => {
-      currentPath += `/${part}`;
-      const label = part.split('-').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join(' ');
-
-      // Don't add the current page as a link
-      if (index === pathParts.length - 1) {
-        breadcrumbs.push({ label, href: currentPath });
-      } else {
-        breadcrumbs.push({ label, href: currentPath });
-      }
-    });
-
-    return breadcrumbs;
-  }, [items, pathname, showHome]);
+    return generateBreadcrumbs(pathname);
+  }, [items, pathname]);
 
   const handleNavigation = (href: string) => {
     startTransition(() => {
@@ -64,52 +42,58 @@ export function UnifiedBreadcrumbs({
     });
   };
 
-  if (breadcrumbItems.length <= 1) {
+  if (!breadcrumbItems || breadcrumbItems.length <= 1) {
     return null;
   }
 
   return (
     <nav
       className={cn("flex items-center space-x-1 text-sm text-muted-foreground", className)}
-      aria-label="Breadcrumb"
+      aria-label={ariaLabel}
+      role="navigation"
     >
-      {breadcrumbItems.map((item, index) => {
-        const isLast = index === breadcrumbItems.length - 1;
-        const isHome = item.href === '/';
+      <ol className="flex items-center space-x-1" tabIndex={0}>
+        {breadcrumbItems.map((item, index) => {
+          const isLast = index === breadcrumbItems.length - 1;
+          const isHome = item.href === '/';
 
-        return (
-          <React.Fragment key={item.href}>
-            {index > 0 && (
-              <span className="flex items-center text-muted-foreground/50">
-                {separator}
-              </span>
-            )}
+          return (
+            <li key={item.href} className="flex items-center">
+              {index > 0 && (
+                <span className="flex items-center text-muted-foreground/50" aria-hidden="true">
+                  {separator}
+                </span>
+              )}
 
-            {isLast ? (
-              <span
-                className="font-medium text-foreground"
-                aria-current="page"
-              >
-                {isHome ? <Home className="h-4 w-4" /> : item.label}
-              </span>
-            ) : (
-              <Link
-                href={item.href}
-                className={cn(
-                  "flex items-center hover:text-foreground transition-colors",
-                  isPending && "pointer-events-none opacity-50"
-                )}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation(item.href);
-                }}
-              >
-                {isHome ? <Home className="h-4 w-4" /> : item.label}
-              </Link>
-            )}
-          </React.Fragment>
-        );
-      })}
+              {isLast ? (
+                <span
+                  className="font-medium text-foreground outline-none"
+                  aria-current="page"
+                  tabIndex={0}
+                >
+                  {isHome ? <Home className="h-4 w-4" /> : item.label}
+                </span>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "flex items-center hover:text-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    isPending && "pointer-events-none opacity-50"
+                  )}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(item.href);
+                  }}
+                  tabIndex={0}
+                  aria-label={isHome ? 'Home' : item.label}
+                >
+                  {isHome ? <Home className="h-4 w-4" /> : item.label}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }

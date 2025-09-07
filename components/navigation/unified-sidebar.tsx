@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   ChevronRight,
   ChevronDown,
+  ChevronLeft,
   LayoutDashboard,
   LogIn,
   Mail,
@@ -66,28 +67,49 @@ const getIconComponent = (iconName?: string): LucideIcon | null => {
   return iconName ? iconMap[iconName] || null : null;
 };
 
+type NavType = "main" | "design" | "templates";
+
 interface UnifiedSidebarProps {
-  items: NavigationItem[];
+  navType: NavType;
   className?: string;
   collapsible?: boolean;
   defaultCollapsed?: boolean;
   showIcons?: boolean;
   showDescriptions?: boolean;
+  mobileBreakpoint?: number; // px, default 1024
 }
 
+import {
+  getDesignNavigation,
+  getTemplatesNavigation,
+  navigationConfig,
+} from "@/config/navigation";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 export function UnifiedSidebar({
-  items,
+  navType,
   className,
   collapsible = true,
   defaultCollapsed = false,
   showIcons = true,
-  showDescriptions = true
+  showDescriptions = true,
+  mobileBreakpoint = 1024,
 }: UnifiedSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [mounted, setMounted] = React.useState(false);
   const [isPending, startTransition] = useTransition();
   const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  // Responsive: detect mobile
+  const isMobile = useIsMobile();
+
+  // Dynamically select navigation items
+  let items: NavigationItem[] = [];
+  if (navType === "design") items = getDesignNavigation();
+  else if (navType === "templates") items = getTemplatesNavigation();
+  else if (navType === "main") items = navigationConfig.mainNav.flatMap(s => s.items);
 
   // Prevent hydration mismatch
   React.useEffect(() => {
@@ -108,6 +130,11 @@ export function UnifiedSidebar({
     findActiveParents(items);
     setExpandedItems(activeParents);
   }, [pathname, items]);
+
+  // Close mobile overlay on route change
+  React.useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   // Page transition wrapper
   const handleNavigation = (href: string) => {
@@ -132,23 +159,60 @@ export function UnifiedSidebar({
     return pathname === href || pathname.startsWith(href + '/');
   };
 
+  // Keyboard navigation: handle arrow keys and enter/space for expand/collapse
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    item: NavigationItem,
+    hasChildren: boolean,
+    isExpanded: boolean
+  ) => {
+    if (!hasChildren) return;
+    if (e.key === "ArrowRight" && !isExpanded) {
+      e.preventDefault();
+      toggleExpanded(item.href);
+    }
+    if (e.key === "ArrowLeft" && isExpanded) {
+      e.preventDefault();
+      toggleExpanded(item.href);
+    }
+    if ((e.key === "Enter" || e.key === " ") && hasChildren) {
+      e.preventDefault();
+      toggleExpanded(item.href);
+    }
+  };
+
   const renderNavItem = (item: NavigationItem, depth = 0) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.has(item.href);
     const active = isActive(item.href);
 
     return (
-      <div key={item.href} className="space-y-1">
-        <div className="flex items-center">
+      <div
+        key={item.href}
+        className="space-y-1"
+        role="none"
+      >
+        <div
+          className="flex items-center"
+          tabIndex={-1}
+          role="treeitem"
+          aria-expanded={hasChildren ? isExpanded : undefined}
+          aria-current={active ? "page" : undefined}
+          aria-label={item.label}
+          onKeyDown={e => handleKeyDown(e, item, hasChildren, !!isExpanded)}
+        >
           <Link
             href={item.href}
             className={cn(
-              "flex items-center justify-between w-full px-3 py-2 text-sm font-medium rounded-md transition-colors",
+              "flex items-center justify-between w-full px-3 py-2 text-sm font-medium rounded-md transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary",
               active
                 ? "bg-primary text-primary-foreground"
                 : "hover:bg-accent hover:text-accent-foreground",
               depth > 0 && "ml-4"
             )}
+            tabIndex={0}
+            aria-label={item.label}
+            aria-current={active ? "page" : undefined}
             onClick={(e) => {
               e.preventDefault();
               handleNavigation(item.href);
@@ -175,6 +239,7 @@ export function UnifiedSidebar({
               className="h-6 w-6 p-0 ml-1 flex-shrink-0"
               onClick={() => toggleExpanded(item.href)}
               aria-label={isExpanded ? "Collapse" : "Expand"}
+              tabIndex={0}
             >
               {isExpanded ? (
                 <ChevronDown className="h-3 w-3" />
@@ -192,7 +257,7 @@ export function UnifiedSidebar({
         )}
 
         {hasChildren && (!collapsible || isExpanded) && (
-          <div className="ml-2 space-y-1">
+          <div className="ml-2 space-y-1" role="group">
             {item.children!.map(child => renderNavItem(child, depth + 1))}
           </div>
         )}
@@ -213,10 +278,60 @@ export function UnifiedSidebar({
     );
   }
 
+  // Mobile overlay
+  if (isMobile) {
+    return (
+      <>
+        <Button
+          className="fixed top-4 left-4 z-40 md:hidden"
+          variant="outline"
+          aria-label="Open sidebar navigation"
+          onClick={() => setMobileOpen(true)}
+        >
+          <span className="sr-only">Open navigation</span>
+          <List className="h-5 w-5" />
+        </Button>
+        <div
+          className={cn(
+            "fixed inset-0 z-50 bg-black/40 transition-opacity",
+            mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          )}
+          aria-hidden={!mobileOpen}
+          onClick={() => setMobileOpen(false)}
+        />
+        <aside
+          className={cn(
+            "fixed top-0 left-0 z-50 h-full w-72 bg-background shadow-lg transition-transform duration-300 ease-in-out md:hidden",
+            mobileOpen ? "translate-x-0" : "-translate-x-full"
+          )}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Sidebar navigation"
+        >
+          <ScrollArea className="flex-1 h-full">
+            <nav className="space-y-2 p-4" role="tree" aria-label="Sidebar navigation">
+              {items.map(item => renderNavItem(item))}
+            </nav>
+          </ScrollArea>
+          <Button
+            className="absolute top-4 right-4"
+            variant="ghost"
+            aria-label="Close sidebar navigation"
+            onClick={() => setMobileOpen(false)}
+          >
+            <span className="sr-only">Close navigation</span>
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+        </aside>
+      </>
+    );
+  }
+
+  // Desktop sidebar
   return (
-    <div className={cn("flex flex-col h-full", className)}>
+    <div className={cn("flex flex-col h-full", className)} role="complementary" aria-label="Sidebar navigation">
       <ScrollArea className="flex-1">
-        <nav className="space-y-2 p-4">
+        <nav className="space-y-2 p-4" role="tree" aria-label="Sidebar navigation">
           {items.map(item => renderNavItem(item))}
         </nav>
       </ScrollArea>

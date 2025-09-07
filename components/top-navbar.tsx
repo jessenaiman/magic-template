@@ -2,9 +2,7 @@
 
 import * as React from "react"
 import { UnifiedNavbar } from "./navigation/unified-navbar"
-import { getDesignNavigation } from "@/app/navigation.config"
-import { getTemplatesNavigation } from "@/app/templates-navigation.config"
-import { Palette, LayoutDashboard } from "lucide-react"
+import { getDesignNavigation, getTemplatesNavigation } from "@/config/navigation"
 
 const navigationItems = [
   {
@@ -14,13 +12,13 @@ const navigationItems = [
   {
     label: "Design",
     href: "/design",
-    icon: Palette,
+    icon: "Palette",
     children: getDesignNavigation()
   },
   {
     label: "Templates",
     href: "/templates",
-    icon: LayoutDashboard,
+    icon: "LayoutDashboard",
     children: getTemplatesNavigation()
   },
   {
@@ -32,12 +30,12 @@ const navigationItems = [
 export function TopNavbar() {
   return (
     <UnifiedNavbar
-      navigationItems={navigationItems}
       showPlaybackControls={true}
       showThemeToggle={true}
       showMobileMenu={true}
       persistentState={true}
       className="border-b"
+      currentSection="main"
     />
   )
 }

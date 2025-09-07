@@ -5,11 +5,12 @@ import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 import { UnifiedSidebar } from "@/components/navigation/unified-sidebar";
 import { UnifiedBreadcrumbs } from "@/components/navigation/unified-breadcrumbs";
 import { DesignPageProvider } from "@/components/design-page-context";
 import { PreviewProvider } from "@/components/preview/preview-context";
-import { getDesignNavigation } from "@/app/navigation.config";
+import { getDesignNavigation } from "@/config/navigation";
 import * as React from "react";
 
 export const viewport: Viewport = {
@@ -26,12 +27,13 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
     <DesignPageProvider>
       <PreviewProvider>
+        <UnifiedNavbar currentSection="design" />
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex gap-6">
             {/* Sidebar: hidden on mobile, fixed width on md+ */}
             <aside className="hidden md:block w-64 flex-shrink-0">
               <UnifiedSidebar
-                items={designItems}
+                navType="design"
                 collapsible={true}
                 defaultCollapsed={false}
                 showIcons={true}
