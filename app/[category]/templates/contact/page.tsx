@@ -1,8 +1,9 @@
 import { TemplatePreview } from '@/components/preview/template-preview';
+import { TemplateCustomizationPanel, TemplateCustomizationProvider } from '@/components/preview/template-customization-panel';
 
 export default function ContactTemplatePage() {
   return (
-    <div className="space-y-8">
+    <TemplateCustomizationProvider>
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Contact Form Template</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -23,8 +24,8 @@ export default function ContactTemplatePage() {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <TemplatePreview
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2 space-y-6">
           title="Basic Contact Form"
           description="Simple contact form with essential fields"
           componentName="BasicContactForm"
@@ -863,7 +864,12 @@ export function NewsletterSignup() {
             </form>
           </div>
         </TemplatePreview>
+        </div>
+
+        <div className="space-y-6">
+          <TemplateCustomizationPanel />
+        </div>
       </div>
-    </div>
+    </TemplateCustomizationProvider>
   );
 }

@@ -1,8 +1,9 @@
 import { TemplatePreview } from '@/components/preview/template-preview';
+import { TemplateCustomizationPanel, TemplateCustomizationProvider } from '@/components/preview/template-customization-panel';
 
 export default function DashboardTemplatePage() {
   return (
-    <div className="space-y-8">
+    <TemplateCustomizationProvider>
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Dashboard Template</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -23,8 +24,8 @@ export default function DashboardTemplatePage() {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <TemplatePreview
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2 space-y-6">
           title="Metrics Overview"
           description="Key performance indicators with trend indicators"
           componentName="MetricsOverview"
@@ -559,7 +560,12 @@ export function DataTable() {
             </div>
           </div>
         </TemplatePreview>
+        </div>
+
+        <div className="space-y-6">
+          <TemplateCustomizationPanel />
+        </div>
       </div>
-    </div>
+    </TemplateCustomizationProvider>
   );
 }

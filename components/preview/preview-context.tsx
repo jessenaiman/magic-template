@@ -62,6 +62,7 @@ interface PreviewContextType {
   setDisplayText: (t: string) => void;
   updateCustomization: (patch: Partial<CustomizationSettings>) => void;
   reset: () => void;
+  replay: () => void;
   expandedTile: string | null;
   setExpandedTile: React.Dispatch<React.SetStateAction<string | null>>;
 }
@@ -132,6 +133,11 @@ export function PreviewProvider({
     [], // No dependencies since we use refs
   );
 
+  const replay = useCallback(
+    () => setState((s) => ({ ...s, playing: true })),
+    [],
+  );
+
   const value = useMemo(
     () => ({
       state,
@@ -139,6 +145,7 @@ export function PreviewProvider({
       setDisplayText,
       updateCustomization,
       reset,
+      replay,
       expandedTile,
       setExpandedTile,
     }),

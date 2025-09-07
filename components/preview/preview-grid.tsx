@@ -6,31 +6,33 @@ import { cn } from "@/lib/utils";
 interface PreviewGridProps {
   children: React.ReactNode;
   className?: string;
-  /** Minimum column width in pixels before wrapping to next row. Default 280 */
-  minColPx?: number;
-  /** Gap utility classes, e.g. "gap-6". Default gap-6 */
+  /** Gap utility classes for spacing between tiles. Default gap-6 */
   gapClass?: string;
 }
 
 /**
- * Responsive auto-fit grid for preview tiles.
- * - 1 tile: stretches full width
- * - 2+ tiles: evenly fills each row without squishing
- * - Uses CSS Grid repeat(auto-fit, minmax(var(--tile-min, 280px), 1fr))
+ * Responsive grid container for preview tiles with explicit breakpoints:
+ * - Mobile (default): 1 column
+ * - Tablet (sm): 2 columns
+ * - Desktop (lg): 3 columns
+ * - Large screens (xl): 4 columns
+ *
+ * Maintains 4:3 aspect ratio through individual tile styling.
+ * Each tile handles its own expansion behavior when selected.
  */
-export function PreviewGrid({ children, className, minColPx = 280, gapClass = "gap-6" }: PreviewGridProps) {
+export function PreviewGrid({ children, className, gapClass = "gap-6" }: PreviewGridProps) {
   return (
     <div
       className={cn(
         "grid",
+        // Responsive column layout
+        "grid-cols-1", // Mobile: 1 column
+        "sm:grid-cols-2", // Tablet: 2 columns
+        "lg:grid-cols-3", // Desktop: 3 columns
+        "xl:grid-cols-4", // Large screens: 4 columns
         gapClass,
-        "[grid-template-columns:repeat(auto-fit,minmax(var(--tile-min,280px),1fr))]",
         className
       )}
-      style={{
-        // @ts-expect-error: CSS var is fine here
-        "--tile-min": `${minColPx}px`,
-      }}
     >
       {children}
     </div>

@@ -1,33 +1,32 @@
 import { TemplatePreview } from '@/components/preview/template-preview';
-import { BackgroundCustomizationPanel } from '@/components/background-customization-panel';
-import { TransitionControlPanel } from '@/components/transition-control-panel';
+import { TemplateCustomizationPanel, TemplateCustomizationProvider } from '@/components/preview/template-customization-panel';
 
 export default function LoginTemplatePage() {
-
   return (
-    <div className="space-y-8">
-      <div className="max-w-2xl">
-        <h1 className="text-2xl font-bold mb-4">Login Template</h1>
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          A complete authentication form template with animated inputs, validation states,
-          and customizable styling. Perfect for user onboarding and secure access patterns.
-        </p>
-        <div className="mt-4 flex gap-2">
-          <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
-            <div className="font-medium">Features</div>
-            <ul className="mt-1.5 list-inside list-disc text-muted-foreground">
-              <li>Form validation</li>
-              <li>Animated inputs</li>
-              <li>Error handling</li>
-              <li>Responsive design</li>
-              <li>Accessibility</li>
-            </ul>
+    <TemplateCustomizationProvider>
+      <div className="space-y-8">
+        <div className="max-w-2xl">
+          <h1 className="text-2xl font-bold mb-4">Login Template</h1>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            A complete authentication form template with animated inputs, validation states,
+            and customizable styling. Perfect for user onboarding and secure access patterns.
+          </p>
+          <div className="mt-4 flex gap-2">
+            <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
+              <div className="font-medium">Features</div>
+              <ul className="mt-1.5 list-inside list-disc text-muted-foreground">
+                <li>Form validation</li>
+                <li>Animated inputs</li>
+                <li>Error handling</li>
+                <li>Responsive design</li>
+                <li>Accessibility</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-6">
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2 space-y-6">
           <TemplatePreview
             title="Basic Login Form"
             description="Clean and simple authentication form"
@@ -337,9 +336,7 @@ export function AdvancedLoginForm() {
         </div>
 
         <div className="space-y-6">
-          <BackgroundCustomizationPanel />
-
-          <TransitionControlPanel />
+          <TemplateCustomizationPanel />
 
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-medium mb-3">Usage Tips</h3>
@@ -353,6 +350,6 @@ export function AdvancedLoginForm() {
           </div>
         </div>
       </div>
-    </div>
+    </TemplateCustomizationProvider>
   );
 }

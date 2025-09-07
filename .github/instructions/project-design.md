@@ -12,9 +12,9 @@ The preview customization system is built around several interconnected componen
 ```text
 app/
     design/
-        layout.tsx
+        layout.tsx - controls the design and responsive max 4 preview-tile width
         [category]/
-            page.tsx
+            page.tsx - implements page level controls
             ...
 components/
     preview/

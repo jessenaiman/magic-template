@@ -32,39 +32,26 @@ function getLanguageForCodeType(codeType: string): string {
   }
 }
 
-// Robust code generation function with template support
-function generateCode(
+// Unified template replacement with optional type-aware processing
+function replaceTemplatePlaceholders(
   template: string,
   customization: Partial<CustomizationSettings>,
-  codeType: string = 'jsx'
+  typeAware: boolean = false
 ): string {
-  // Handle different code types with appropriate templates
-  switch (codeType) {
-    case 'jsx':
-    case 'tsx':
-      return generateJsxCode(template, customization);
-    case 'css':
-      return generateCssCode(template, customization);
-    case 'tailwind':
-      return generateTailwindCode(template, customization);
-    case 'html':
-      return generateHtmlCode(template, customization);
-    default:
-      return generateJsxCode(template, customization);
-  }
-}
-
-// JSX/TSX code generation with proper template handling
-function generateJsxCode(template: string, customization: Partial<CustomizationSettings>): string {
-  // Enhanced template replacement that handles complex structures
   return template.replace(/\{([^}]+)\}/g, (_, key) => {
     const value = customization[key];
-    
-    // Handle different value types appropriately
+
+    // Handle undefined/null values
     if (value === undefined || value === null) {
-      return key; // Keep the placeholder if not found
+      return key; // Keep placeholder if not found
     }
-    
+
+    if (!typeAware) {
+      // Simple replacement for CSS, HTML, Tailwind
+      return value.toString();
+    }
+
+    // Type-aware replacement for JSX/TSX
     if (typeof value === 'string') {
       // For strings, wrap in quotes if it looks like a value (not a variable name)
       if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(value)) {
@@ -72,42 +59,36 @@ function generateJsxCode(template: string, customization: Partial<CustomizationS
       }
       return value;
     }
-    
-    if (typeof value === 'number') {
+
+    if (typeof value === 'number' || typeof value === 'boolean') {
       return value.toString();
     }
-    
-    if (typeof value === 'boolean') {
-      return value.toString();
-    }
-    
-    // For objects, arrays, etc., use JSON stringify
+
+    // For objects, arrays, etc., use JSON.stringify
     return JSON.stringify(value);
   });
 }
 
-// CSS code generation
-function generateCssCode(template: string, customization: Partial<CustomizationSettings>): string {
-  return template.replace(/\{([^}]+)\}/g, (_, key) => {
-    const value = customization[key];
-    return value !== undefined && value !== null ? value.toString() : key;
-  });
-}
-
-// Tailwind code generation (similar to CSS but might need special handling)
-function generateTailwindCode(template: string, customization: Partial<CustomizationSettings>): string {
-  return template.replace(/\{([^}]+)\}/g, (_, key) => {
-    const value = customization[key];
-    return value !== undefined && value !== null ? value.toString() : key;
-  });
-}
-
-// HTML code generation
-function generateHtmlCode(template: string, customization: Partial<CustomizationSettings>): string {
-  return template.replace(/\{([^}]+)\}/g, (_, key) => {
-    const value = customization[key];
-    return value !== undefined && value !== null ? value.toString() : key;
-  });
+// Robust code generation function with template support
+function generateCode(
+  template: string,
+  customization: Partial<CustomizationSettings>,
+  codeType: string = 'jsx'
+): string {
+  // Handle different code types with appropriate template handling
+  switch (codeType) {
+    case 'jsx':
+    case 'tsx':
+      // Use type-aware replacement for better JavaScript code generation
+      return replaceTemplatePlaceholders(template, customization, true);
+    case 'css':
+    case 'tailwind':
+    case 'html':
+      // Use simple replacement for non-JavaScript code
+      return replaceTemplatePlaceholders(template, customization, false);
+    default:
+      return replaceTemplatePlaceholders(template, customization, true);
+  }
 }
 
 // Get file extension based on code type
@@ -252,21 +233,21 @@ export function PreviewTile(props: PreviewTileProps) {
 
   // The child component receives the effective customization state
   return (
-     <div
-       ref={rootRef}
-       className={cn(
-         "group relative rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 flex flex-col",
-         expandedTile === title
-           ? "z-20 col-span-full scale-[1.03] ring-2 ring-primary"
-           : "",
-         className
-       )}
-       data-preview-tile
-     >
+    <Card
+      ref={rootRef as any}
+      className={cn(
+        "group relative overflow-hidden transition-all duration-300 flex flex-col",
+        expandedTile === title
+          ? "z-20 col-span-full scale-[1.03] ring-2 ring-primary"
+          : "",
+        className
+      )}
+      data-preview-tile
+    >
        <PreviewTileHeader
          title={title}
          description={description}
-         hasCustomFields={customFields.length > 0}
+         hasCustomFields={true}
          onCustomizeClick={handleToggleControls}
          onCodeClick={handleShowCode}
          onCopyClick={handleCopy}
@@ -297,7 +278,7 @@ export function PreviewTile(props: PreviewTileProps) {
 
        {/* Tile-level Customization Panel (expanded AND toggled) */}
        <AnimatePresence>
-         {expandedTile === title && showControls && customFields.length > 0 && (
+         {expandedTile === title && showControls && (
            <motion.div
              initial={{ height: 0, opacity: 0 }}
              animate={{ height: "auto", opacity: 1 }}
@@ -355,6 +336,6 @@ export function PreviewTile(props: PreviewTileProps) {
            </motion.div>
          )}
        </AnimatePresence>
-     </div>
+     </Card>
   );
 }

@@ -1,19 +1,9 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { PreviewTile } from "@/components/preview/preview-tile";
+import { PreviewGrid } from "@/components/preview/preview-grid";
 import { Smartphone, Tablet, Monitor, ChevronDown } from "lucide-react";
-
-function CodeBlock({ code, language }: { code: string; language: string }) {
-  return (
-    <div className="relative">
-      <pre className="max-h-48 overflow-auto rounded-md border bg-gray-900 p-3 text-sm text-gray-100">
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
+import { useState } from "react";
 
 // Mobile-First Button
 const MobileFirstButton = ({ children, className = "", ...props }: any) => (
@@ -41,8 +31,8 @@ const ResponsiveButtonGroup = ({ buttons = ["Primary", "Secondary", "Tertiary"],
         key={index}
         className={`
           px-6 py-3 rounded-lg font-medium transition-all duration-300
-          ${index === 0 
-            ? 'bg-blue-600 text-white hover:bg-blue-700' 
+          ${index === 0
+            ? 'bg-blue-600 text-white hover:bg-blue-700'
             : index === 1
             ? 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-gray-300'
             : 'text-gray-700 hover:bg-gray-50 border border-gray-300'
@@ -76,7 +66,7 @@ const AdaptiveIconButton = ({ children, icon: Icon, className = "", ...props }: 
 
 // Collapsible Button Menu
 const CollapsibleButtonMenu = ({ items = ["Option 1", "Option 2", "Option 3"], className = "" }: any) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={`relative ${className}`}>
@@ -118,28 +108,6 @@ const CollapsibleButtonMenu = ({ items = ["Option 1", "Option 2", "Option 3"], c
   );
 };
 
-// Container Query Button
-const ContainerQueryButton = ({ children, className = "", ...props }: any) => (
-  <div className="@container w-full">
-    <button
-      className={`
-        @xs:px-4 @xs:py-2 @xs:text-sm
-        @sm:px-6 @sm:py-3 @sm:text-base
-        @md:px-8 @md:py-4 @md:text-lg
-        @lg:px-10 @lg:py-5 @lg:text-xl
-        px-3 py-2 text-xs
-        bg-indigo-600 text-white rounded-lg
-        hover:bg-indigo-700 transition-all duration-300
-        w-full
-        ${className}
-      `}
-      {...props}
-    >
-      {children}
-    </button>
-  </div>
-);
-
 export default function ResponsiveButtonExamplesPage() {
   return (
     <div className="space-y-6">
@@ -150,149 +118,92 @@ export default function ResponsiveButtonExamplesPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
-        {/* Mobile-First Button */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Smartphone className="h-5 w-5" />
-              Mobile-First Button
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Mobile-First Design"
-              description="Starts mobile, scales up"
-              componentName="mobile-first-button"
-            >
-              <div className="w-full max-w-md">
-                <MobileFirstButton>
-                  Responsive Button
-                </MobileFirstButton>
-              </div>
-            </PreviewTile>
-            <CodeBlock
-              code={`const MobileFirstButton = ({ children, ...props }) => (
+      <PreviewGrid>
+        <PreviewTile
+          title="Mobile-First Design"
+          description="Starts mobile, scales up"
+          componentName="mobile-first-button"
+          code={`const MobileFirstButton = ({ children, ...props }) => (
   <button
-    className="
+    className={
       w-full px-4 py-3 text-sm font-medium rounded-lg
       bg-blue-600 text-white hover:bg-blue-700
       sm:w-auto sm:px-6 sm:text-base
       md:px-8 md:py-4 md:text-lg
       transition-all duration-300
-    "
+      \${props.className || ''}
+    }
     {...props}
   >
     {children}
   </button>
 );`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
+          children={<MobileFirstButton>Responsive Button</MobileFirstButton>}
+        />
 
-        {/* Responsive Button Group */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Tablet className="h-5 w-5" />
-              Stack to Horizontal Group
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Responsive Button Group"
-              description="Stacked on mobile, horizontal on desktop"
-              componentName="responsive-button-group"
-            >
-              <div className="w-full max-w-md">
-                <ResponsiveButtonGroup />
-              </div>
-            </PreviewTile>
-            <CodeBlock
-              code={`const ResponsiveButtonGroup = ({ buttons }) => (
-  <div className="flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-2">
+        <PreviewTile
+          title="Responsive Button Group"
+          description="Stacked on mobile, horizontal on desktop"
+          componentName="responsive-button-group"
+          code={`const ResponsiveButtonGroup = ({ buttons, className = "" }) => (
+  <div className={\`flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-2 \${className}\`}>
     {buttons.map((label, index) => (
       <button
         key={index}
-        className="
+        className={\`
           px-6 py-3 rounded-lg font-medium transition-all duration-300
           w-full sm:w-auto sm:flex-1 md:flex-initial
-          /* Variant styles based on index */
-        "
+          \${
+            index === 0
+              ? 'bg-blue-600 text-white hover:bg-blue-700'
+              : index === 1
+              ? 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-gray-300'
+              : 'text-gray-700 hover:bg-gray-50 border border-gray-300'
+          }
+        \`}
       >
         {label}
       </button>
     ))}
   </div>
 );`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
+          children={<ResponsiveButtonGroup />}
+        />
 
-        {/* Adaptive Icon Button */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Monitor className="h-5 w-5" />
-              Adaptive Icon Sizing
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Adaptive Icon Button"
-              description="Icon and text scale together"
-              componentName="adaptive-icon-button"
-            >
-              <div className="w-full max-w-md">
-                <AdaptiveIconButton icon={Smartphone}>
-                  Download App
-                </AdaptiveIconButton>
-              </div>
-            </PreviewTile>
-            <CodeBlock
-              code={`const AdaptiveIconButton = ({ children, icon: Icon, ...props }) => (
+        <PreviewTile
+          title="Adaptive Icon Button"
+          description="Icon and text scale together"
+          componentName="adaptive-icon-button"
+          code={`const AdaptiveIconButton = ({ children, icon: Icon, ...props }) => (
   <button
-    className="
+    className={\`
       flex items-center justify-center gap-2
       px-4 py-3 rounded-lg font-medium
       bg-green-600 text-white hover:bg-green-700
       transition-all duration-300
       w-full sm:w-auto
-    "
+      \${props.className || ''}
+    \`}
     {...props}
   >
     {Icon && <Icon className="h-4 w-4 sm:h-5 sm:w-5" />}
     <span className="text-sm sm:text-base">{children}</span>
   </button>
 );`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
+          children={<AdaptiveIconButton icon={ Smartphone }>
+            Download App
+          </AdaptiveIconButton>}
+        />
 
-        {/* Collapsible Button Menu */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Collapsible Menu Pattern</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Collapsible Button Menu"
-              description="Dropdown on mobile, horizontal on desktop"
-              componentName="collapsible-button-menu"
-            >
-              <div className="w-full max-w-md">
-                <CollapsibleButtonMenu />
-              </div>
-            </PreviewTile>
-            <CodeBlock
-              code={`const CollapsibleButtonMenu = ({ items }) => {
+        <PreviewTile
+          title="Collapsible Button Menu"
+          description="Dropdown on mobile, horizontal on desktop"
+          componentName="collapsible-button-menu"
+          code={`const CollapsibleButtonMenu = ({ items, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <div className={\`relative \${className}\`}>
       {/* Mobile: Dropdown */}
       <div className="sm:hidden">
         <button
@@ -324,11 +235,9 @@ export default function ResponsiveButtonExamplesPage() {
     </div>
   );
 };`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
-      </div>
+          children={<CollapsibleButtonMenu />}
+        />
+      </PreviewGrid>
 
       <div className="mt-8 p-6 bg-muted rounded-lg">
         <h3 className="text-lg font-semibold mb-4">Responsive Design Best Practices</h3>
@@ -336,8 +245,8 @@ export default function ResponsiveButtonExamplesPage() {
           <div>
             <h4 className="font-medium mb-2">Mobile-First Approach</h4>
             <p className="text-muted-foreground text-sm">
-              Start with mobile styles and use <code className="bg-background px-2 py-1 rounded">sm:</code>, 
-              <code className="bg-background px-2 py-1 rounded">md:</code>, 
+              Start with mobile styles and use <code className="bg-background px-2 py-1 rounded">sm:</code>,
+              <code className="bg-background px-2 py-1 rounded">md:</code>,
               <code className="bg-background px-2 py-1 rounded">lg:</code> breakpoints to enhance for larger screens.
             </p>
           </div>
@@ -350,14 +259,17 @@ export default function ResponsiveButtonExamplesPage() {
           <div>
             <h4 className="font-medium mb-2">Container Queries</h4>
             <p className="text-muted-foreground text-sm">
-              Use <code className="bg-background px-2 py-1 rounded">@container</code> queries for component-based responsive design 
+              Use <code className="bg-background px-2 py-1 rounded">@container</code> queries for component-based responsive design
               when available (requires Tailwind CSS container queries plugin).
             </p>
           </div>
         </div>
-        
-        <CodeBlock
-          code={`// tailwind.config.js
+
+        <div className="mt-6">
+          <h4 className="font-medium mb-2">Example Configuration (tailwind.config.js)</h4>
+          <div className="relative">
+            <pre className="max-h-48 overflow-auto rounded-md border bg-gray-900 p-4 text-sm text-gray-100">
+{`// tailwind.config.js
 module.exports = {
   theme: {
     extend: {
@@ -371,12 +283,10 @@ module.exports = {
     require('@tailwindcss/container-queries'),
   ],
 }`}
-          language="javascript"
-        />
+            </pre>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-// Don't forget to import useState at the top
-import React from "react";

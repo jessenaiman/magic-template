@@ -1,41 +1,26 @@
-"use client";
+'use client';
 
-// Removed Card imports; not needed with PreviewSurface standard
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { 
-  Heart, 
-  BookOpen, 
-  Volume2, 
-  VolumeX, 
-  Sun, 
-  Moon, 
-  ChevronDown,
-  Check,
-  X,
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { PreviewGrid } from '@/components/preview/preview-grid';
+import {
+  Heart,
+  BookOpen,
+  Sun,
+  Moon,
   AlertCircle,
   Loader2
-} from "lucide-react";
-import { useState } from "react";
-
-function CodeBlock({ code, language }: { code: string; language: string }) {
-  return (
-    <div className="relative">
-      <pre className="max-h-48 overflow-auto rounded-md border bg-gray-900 p-3 text-sm text-gray-100">
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
+} from 'lucide-react';
+import { useState } from 'react';
 
 // Toggle Button Implementation
-const ToggleButton = ({ 
-  initialState = false, 
-  onIcon: OnIcon = Sun, 
-  offIcon: OffIcon = Moon, 
-  onLabel = "On", 
+const ToggleButton = ({
+  initialState = false,
+  onIcon: OnIcon = Sun,
+  offIcon: OffIcon = Moon,
+  onLabel = "On",
   offLabel = "Off",
   className = "",
-  ...props 
+  ...props
 }: any) => {
   const [isToggled, setIsToggled] = useState(initialState);
 
@@ -46,8 +31,8 @@ const ToggleButton = ({
         flex items-center gap-3 px-4 py-3 rounded-lg font-medium
         transition-all duration-300 ease-in-out
         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-        ${isToggled 
-          ? 'bg-blue-600 text-white shadow-lg' 
+        ${isToggled
+          ? 'bg-blue-600 text-white shadow-lg'
           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
         }
         ${className}
@@ -63,12 +48,12 @@ const ToggleButton = ({
 };
 
 // Loading Button Implementation
-const LoadingButton = ({ 
-  children, 
-  isLoading = false, 
+const LoadingButton = ({
+  children,
+  isLoading = false,
   disabled = false,
   className = "",
-  ...props 
+  ...props
 }: any) => {
   const [internalLoading, setInternalLoading] = useState(false);
   const loading = isLoading || internalLoading;
@@ -85,10 +70,10 @@ const LoadingButton = ({
       onClick={handleClick}
       disabled={loading || disabled}
       className={`
-        relative flex items-center justify-center gap-2 px-6 py-3 
+        relative flex items-center justify-center gap-2 px-6 py-3
         bg-blue-600 text-white font-medium rounded-lg
         transition-all duration-300
-        hover:bg-blue-700 
+        hover:bg-blue-700
         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
         disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600
         ${className}
@@ -96,152 +81,217 @@ const LoadingButton = ({
       aria-busy={loading}
       {...props}
     >
-  {loading && (
-                    className = "",
-                    ...props 
-                  }) {
-                    const [isToggled, setIsToggled] = useState(initialState);
-                    return (
-                      <button
-                        onClick={() => setIsToggled(!isToggled)}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isToggled ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} ${className}`}
-                        aria-pressed={isToggled}
-                        role="switch"
-                        {...props}
-                      >
-                        {isToggled ? <OnIcon className="h-5 w-5" /> : <OffIcon className="h-5 w-5" />}
-                        <span>{isToggled ? onLabel : offLabel}</span>
-                      </button>
-                    );
-                  }
+      {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+      <span className={loading ? 'opacity-70' : ''}>{children}</span>
+    </button>
+  );
+};
 
-                  function LoadingButton({ 
-                    children, 
-                    isLoading = false, 
-                    disabled = false,
-                    className = "",
-                    ...props 
-                  }) {
-                    const [internalLoading, setInternalLoading] = useState(false);
-                    const loading = isLoading || internalLoading;
-                    const handleClick = async () => {
-                      setInternalLoading(true);
-                      await new Promise(resolve => setTimeout(resolve, 2000));
-                      setInternalLoading(false);
-                    };
-                    return (
-                      <button
-                        onClick={handleClick}
-                        disabled={loading || disabled}
-                        className={`relative flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
-                        aria-busy={loading}
-                        {...props}
-                      >
-                        {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                        <span className={loading ? 'opacity-70' : ''}>{children}</span>
-                      </button>
-                    );
-                  }
+function ConfirmationButton({ children, onConfirm, confirmText = "Are you sure?", variant = "danger" }) {
+  const [showConfirm, setShowConfirm] = useState(false);
+  const handleConfirm = () => {
+    onConfirm?.();
+    setShowConfirm(false);
+  };
+  if (showConfirm) {
+    return (
+      <div className="flex flex-col gap-3 p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <div className="flex items-center gap-2 text-gray-700">
+          <AlertCircle className="h-4 w-4 text-yellow-600" />
+          <span className="text-sm">{confirmText}</span>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={handleConfirm} className="flex-1 px-4 py-2 text-sm font-medium rounded bg-red-600 hover:bg-red-700 text-white">
+            Delete Item
+          </button>
+          <button onClick={() => setShowConfirm(false)} className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200">
+            Cancel
+          </button>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <button onClick={() => setShowConfirm(true)} className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-red-600 hover-bg-red-700 text-white">
+      {children}
+    </button>
+  );
+}
 
-                  function ConfirmationButton({ children, onConfirm, confirmText = "Are you sure?", variant = "danger" }) {
-                    const [showConfirm, setShowConfirm] = useState(false);
-                    const handleConfirm = () => {
-                      onConfirm?.();
-                      setShowConfirm(false);
-                    };
-                    if (showConfirm) {
-                      return (
-                        <div className="flex flex-col gap-3 p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <AlertCircle className="h-4 w-4 text-yellow-600" />
-                            <span className="text-sm">{confirmText}</span>
-                          </div>
-                          <div className="flex gap-2">
-                            <button onClick={handleConfirm} className="flex-1 px-4 py-2 text-sm font-medium rounded bg-red-600 hover:bg-red-700 text-white">
-                              <Check className="h-4 w-4 inline-block mr-1" />
-                              Yes, confirm
-                            </button>
-                            <button onClick={() => setShowConfirm(false)} className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200">
-                              <X className="h-4 w-4 inline-block mr-1" />
-                              Cancel
-                            </button>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return (
-                      <button onClick={() => setShowConfirm(true)} className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-red-600 hover:bg-red-700 text-white">
-                        {children}
-                      </button>
-                    );
-                  }
+function FavoriteButton({ initialFavorited = false, onToggle }) {
+  const [isFavorited, setIsFavorited] = useState(initialFavorited);
+  const handleToggle = () => {
+    setIsFavorited(!isFavorited);
+    onToggle?.(!isFavorited);
+  };
+  return (
+    <button
+      onClick={handleToggle}
+      className={`relative group p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 ${isFavorited ? 'bg-pink-100 text-pink-600' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+      aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+      aria-pressed={isFavorited}
+    >
+      <Heart className={`h-5 w-5 transition-all duration-300 transform ${isFavorited ? 'fill-current scale-110' : 'group-hover:scale-110'}`} />
+      {isFavorited && (
+        <div className="absolute inset-0 rounded-full bg-pink-500 opacity-20 animate-ping" />
+      )}
+    </button>
+  );
+}
 
-                  function FavoriteButton({ initialFavorited = false, onToggle }) {
-                    const [isFavorited, setIsFavorited] = useState(initialFavorited);
-                    const handleToggle = () => {
-                      setIsFavorited(!isFavorited);
-                      onToggle?.(!isFavorited);
-                    };
-                    return (
-                      <button
-                        onClick={handleToggle}
-                        className={`relative group p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 ${isFavorited ? 'bg-pink-100 text-pink-600' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-                        aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
-                        aria-pressed={isFavorited}
-                      >
-                        <Heart className={`h-5 w-5 transition-all duration-300 transform ${isFavorited ? 'fill-current scale-110' : 'group-hover:scale-110'}`} />
-                        {isFavorited && (
-                          <div className="absolute inset-0 rounded-full bg-pink-500 opacity-20 animate-ping" />
-                        )}
-                      </button>
-                    );
-                  }
+function AccessibleButton({ children, description, shortcut }) {
+  return (
+    <button
+      className="relative px-6 py-3 bg-green-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+      aria-describedby={description ? "button-description" : undefined}
+      title={shortcut ? `${children} (${shortcut})` : undefined}
+    >
+      <BookOpen className="inline-block w-4 h-4 mr-2" />
+      {children}
+      {shortcut && (
+        <span className="ml-2 text-xs opacity-70 bg-green-700 px-2 py-1 rounded">
+          {shortcut}
+        </span>
+      )}
+      {description && (
+        <div id="button-description" className="sr-only">
+          {description}
+        </div>
+      )}
+    </button>
+  );
+}
 
-                  function AccessibleButton({ children, description, shortcut }) {
-                    return (
-                      <button
-                        className="relative px-6 py-3 bg-green-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                        aria-describedby={description ? "button-description" : undefined}
-                        title={shortcut ? `${children} (${shortcut})` : undefined}
-                      >
-                        {children}
-                        {shortcut && (
-                          <span className="ml-2 text-xs opacity-70 bg-green-700 px-2 py-1 rounded">
-                            {shortcut}
-                          </span>
-                        )}
-                        {description && (
-                          <div id="button-description" className="sr-only">
-                            {description}
-                          </div>
-                        )}
-                      </button>
-                    );
-                  }
-                      <li>• Use <code className="bg-background px-2 py-1 rounded">aria-label</code> for buttons without text</li>
-                      <li>• Use <code className="bg-background px-2 py-1 rounded">aria-describedby</code> for additional context</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">Focus Management</h4>
-                    <ul className="text-muted-foreground text-sm space-y-1">
-                      <li>• Always provide visible focus indicators</li>
-                      <li>• Use <code className="bg-background px-2 py-1 rounded">focus:ring-2</code> for keyboard navigation</li>
-                      <li>• Ensure focus order follows visual layout</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">Screen Reader Support</h4>
-                    <ul className="text-muted-foreground text-sm space-y-1">
-                      <li>• Use <code className="bg-background px-2 py-1 rounded">sr-only</code> class for screen reader only content</li>
-                      <li>• Provide meaningful button labels and descriptions</li>
-                      <li>• Announce state changes clearly</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
+export default function InteractiveAccessibilityExamplesPage() {
+  return (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">Interactive & Accessible Buttons</h1>
+        <p className="text-muted-foreground">
+          Modern button implementations with full accessibility support, interactive states, and enhanced user experience patterns.
+        </p>
+      </div>
+
+      <PreviewGrid>
+        <PreviewTile
+          title="Toggle Button"
+          description="Theme switcher with proper ARIA states"
+          componentName="toggle-button"
+          code={`const ToggleButton = ({
+  initialState = false,
+  onIcon: OnIcon = Sun,
+  offIcon: OffIcon = Moon,
+  onLabel = "On",
+  offLabel = "Off",
+  className = "",
+  ...props
+}) => {
+  const [isToggled, setIsToggled] = useState(initialState);
+
+  return (
+    <button
+      onClick={() => setIsToggled(!isToggled)}
+      className={flex items-center gap-3 px-4 py-3 rounded-lg font-medium
+        transition-all duration-300 ease-in-out
+        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        \${isToggled
+          ? 'bg-blue-600 text-white shadow-lg'
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+        }
+        \${className}
+      }
+      aria-pressed={isToggled}
+      role="switch"
+      {...props}
+    >
+      {isToggled ? <OnIcon className="h-5 w-5" /> : <OffIcon className="h-5 w-5" />}
+      <span>{isToggled ? onLabel : offLabel}</span>
+    </button>
+  );
+};`}
+          children={<ToggleButton />}
+        />
+
+        <PreviewTile
+          title="Loading Button"
+          description="Async operations with loading states"
+          componentName="loading-button"
+          code={`const LoadingButton = ({
+  children,
+  isLoading = false,
+  disabled = false,
+  className = "",
+  ...props
+}) => {
+  const [internalLoading, setInternalLoading] = useState(false);
+  const loading = isLoading || internalLoading;
+
+  const handleClick = async () => {
+    setInternalLoading(true);
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setInternalLoading(false);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      disabled={loading || disabled}
+      className={relative flex items-center justify-center gap-2 px-6 py-3
+        bg-blue-600 text-white font-medium rounded-lg
+        transition-all duration-300
+        hover:bg-blue-700
+        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600
+        \${className}
+      }
+      aria-busy={loading}
+      {...props}
+    >
+      {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+      <span className={loading ? 'opacity-70' : ''}>{children}</span>
+    </button>
+  );
+};`}
+          children={
+            <LoadingButton isLoading={false}>
+              Click to Load
+            </LoadingButton>
+          }
+        />
+
+<PreviewTile
+          title="Confirmation Button"
+          description="Dangerous actions with confirmation dialog"
+          componentName="confirmation-button"
+          code={`function ConfirmationButton({
+  children,
+  onConfirm,
+  confirmText = "Are you sure?",
+  variant = "danger"
+}) {
+  const [showConfirm, setShowConfirm] = useState(false);
+  const handleConfirm = () => {
+    onConfirm?.();
+    setShowConfirm(false);
+  };
+
+  if (showConfirm) {
+    return (
+      <div className="flex flex-col gap-3 p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <div className="flex items-center gap-2 text-gray-700">
+          <AlertCircle className="h-4 w-4 text-yellow-600" />
+          <span className="text-sm">{confirmText}</span>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={handleConfirm} className="flex-1 px-4 py-2 text-sm font-medium rounded bg-red-600 hover:bg-red-700 text-white">
+            Delete Item
+          </button>
+          <button onClick={() => setShowConfirm(false)} className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200">
+            Cancel
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -251,32 +301,20 @@ const LoadingButton = ({
     </button>
   );
 };`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
+          children={
+            <ConfirmationButton>
+              Delete Item
+            </ConfirmationButton>
+          }
+        />
 
-        {/* Favorite Button */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Favorite Button</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Favorite Toggle"
-              description="Heart animation with feedback"
-              componentName="favorite-button"
-            >
-              <FavoriteButton
-                onToggle={(favorited: boolean) => 
-                  console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
-                }
-              />
-            </PreviewTile>
-            <CodeBlock
-              code={`const FavoriteButton = ({ 
-  initialFavorited = false, 
-  onToggle 
+        <PreviewTile
+          title="Favorite Toggle"
+          description="Heart animation with feedback"
+          componentName="favorite-button"
+          code={`const FavoriteButton = ({
+  initialFavorited = false,
+  onToggle
 }) => {
   const [isFavorited, setIsFavorited] = useState(initialFavorited);
 
@@ -288,22 +326,20 @@ const LoadingButton = ({
   return (
     <button
       onClick={handleToggle}
-      className={\`
-        relative group p-3 rounded-full transition-all duration-300
+      className={relative group p-3 rounded-full transition-all duration-300
         focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2
-        \${isFavorited 
-          ? 'bg-pink-100 text-pink-600' 
+        \${isFavorited
+          ? 'bg-pink-100 text-pink-600'
           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
         }
-      \`}
+      }
       aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
       aria-pressed={isFavorited}
     >
-      <Heart 
-        className={\`
-          h-5 w-5 transition-all duration-300 transform
+      <Heart
+        className={h-5 w-5 transition-all duration-300 transform
           \${isFavorited ? 'fill-current scale-110' : 'group-hover:scale-110'}
-        \`} 
+        }
       />
       {isFavorited && (
         <div className="absolute inset-0 rounded-full bg-pink-500 opacity-20 animate-ping" />
@@ -311,35 +347,23 @@ const LoadingButton = ({
     </button>
   );
 };`}
-              language="tsx"
+          children={
+            <FavoriteButton
+              onToggle={(favorited) =>
+                console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
+              }
             />
-          </CardContent>
-        </Card>
+          }
+        />
 
-        {/* Accessible Button */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Accessible Button</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <PreviewTile
-              title="Screen Reader Optimized"
-              description="Full accessibility support"
-              componentName="accessible-button"
-            >
-              <AccessibleButton
-                description="Opens the document reader with enhanced accessibility features"
-                shortcut="Ctrl+R"
-              >
-                <BookOpen className="inline-block w-4 h-4 mr-2" />
-                Read Document
-              </AccessibleButton>
-            </PreviewTile>
-            <CodeBlock
-              code={`const AccessibleButton = ({ 
-  children, 
-  description, 
-  shortcut 
+        <PreviewTile
+          title="Screen Reader Optimized"
+          description="Full accessibility support"
+          componentName="accessible-button"
+          code={`const AccessibleButton = ({
+  children,
+  description,
+  shortcut
 }) => {
   return (
     <button
@@ -361,11 +385,16 @@ const LoadingButton = ({
     </button>
   );
 };`}
-              language="tsx"
-            />
-          </CardContent>
-        </Card>
-      </div>
+          children={
+            <AccessibleButton
+              description="Opens the document reader with enhanced accessibility features"
+              shortcut="Ctrl+R"
+            >
+              Read Document
+            </AccessibleButton>
+          }
+        />
+      </PreviewGrid>
 
       <div className="mt-8 p-6 bg-muted rounded-lg">
         <h3 className="text-lg font-semibold mb-4">Accessibility Best Practices</h3>
