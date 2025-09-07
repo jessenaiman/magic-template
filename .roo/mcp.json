@@ -7,7 +7,9 @@
         "@modelcontextprotocol/server-filesystem",
         "/home/dice-wizard/Projects/magic-template/"
       ],
-      "alwaysAllow": []
+      "alwaysAllow": [
+        "read_multiple_files"
+      ]
     },
     "desktop-commander": {
       "command": "npx",

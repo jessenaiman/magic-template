@@ -2,7 +2,6 @@
 
 import React from 'react';
 
-import { SimpleNavbar } from "@/components/simple-navbar";
 import { useDesignPage } from "@/components/design-page-context";
 import { getBaseFields } from "@/components/base-category-options";
 
@@ -31,13 +30,12 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SimpleNavbar tabs={tabs} />
+        <div className="flex flex-col min-h-screen"> 
       <main className="flex-1 p-4 sm:p-6 pb-24">
         <div className="container mx-auto max-w-7xl space-y-8">
           <EffectsConfigurator />
           {children}
-        </div>
+        </div>  
       </main>
     </div>
   );

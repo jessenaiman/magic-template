@@ -15,6 +15,17 @@ interface MenuItem {
   description?: string
 }
 
+// Update this array to match your [category] folders under app/design/[category]
+const designCategories: Array<{ icon: keyof typeof Icons; label: string; category: string; description: string }> = [
+  { icon: "palette", label: "Backgrounds", category: "backgrounds", description: "Dynamic backgrounds and patterns" },
+  { icon: "button", label: "Buttons", category: "buttons", description: "Interactive button components" },
+  { icon: "layout", label: "Responsive Design", category: "responsive-design", description: "Adaptive layouts and components" },
+  { icon: "sparkles", label: "Effects", category: "effects", description: "Visual effects and animations" },
+  { icon: "transition", label: "Transitions", category: "transitions", description: "Navigation transitions and animations" },
+  { icon: "text", label: "Text", category: "text", description: "Typography and text effects" },
+  { icon: "template", label: "Templates", category: "templates", description: "Starter templates and layouts" },
+]
+
 const menuItems: MenuItem[] = [
   {
     icon: "home",
@@ -22,42 +33,12 @@ const menuItems: MenuItem[] = [
     href: "/",
     description: "Return to the homepage"
   },
-  {
-    icon: "palette",
-    label: "Backgrounds",
-    href: "/design/backgrounds",
-    description: "Dynamic backgrounds and patterns"
-  },
-  {
-    icon: "button",
-    label: "Buttons",
-    href: "/design/buttons",
-    description: "Interactive button components"
-  },
-  {
-    icon: "layout",
-    label: "Responsive Design",
-    href: "/design/responsive-design",
-    description: "Adaptive layouts and components"
-  },
-  {
-    icon: "sparkles",
-    label: "Effects",
-    href: "/design/effects",
-    description: "Visual effects and animations"
-  },
-  {
-    icon: "transition",
-    label: "Page Transitions",
-    href: "/design/page-transitions",
-    description: "Navigation transitions and animations"
-  },
-  {
-    icon: "text",
-    label: "Typography",
-    href: "/design/typography",
-    description: "Typography and text effects"
-  },
+  ...designCategories.map((cat) => ({
+    icon: cat.icon,
+    label: cat.label,
+    href: `/design/${cat.category}`,
+    description: cat.description
+  })),
   {
     icon: "activity",
     label: "Test Report",
