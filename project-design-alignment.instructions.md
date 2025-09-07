@@ -23,35 +23,112 @@ Magic Template is a Next.js (App Router) project for showcasing, customizing, an
 
 ```text
 app/
-  layout.tsx
+  layout.tsx - this handles design
   page.tsx
   globals.css
   design/
-    layout.tsx
-    [category]/
+    layout.tsx - this handles design
+    page.tsx - this handles design
+    animations/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      animate-ui/
+      animatecss/
+      magicui/
+      reactbits/
+    backgrounds/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      animate-ui/
+      html-css/
+      magicui/
+      tailwind/
+    buttons/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      animate-css/
+      animate-ui/
+      customize/
+      html-css/
+      interactive-accessibility-examples.tsx - this handles design
+      magic/
+      responsive-examples.tsx - this handles design
+      shadcn/
+      tailwind/
+    effects/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      html-css/
+      magicui/
+      tailwind/
+    responsive-design/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      html-css/
+      magicui/
+      nextjs/
+      tailwind/
+      tailwindcss/
+    text/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      html-css/
+      magicui/
+      reactbits/
+      shadcn/
+      tailwind/
+    transitions/
+      layout.tsx - this handles design
+      page.tsx - this handles design
+      html-css/
+      magicui/
+      nextjs/
+      tailwind/
+  templates/
+    layout.tsx - this handles design
+    page.tsx
+    contact/
       page.tsx
-      ...
+    dashboard/
+      page.tsx
+    login/
+      page.tsx
+    template-plan.md
+  navigation.config.ts
+  templates-navigation.config.ts
+  favicon.ico
+  not-found.tsx
+  opengraph-image.tsx
+  api/
+  dashboard/
+  test-report/
 components/
+  navigation/
+    unified-navbar.tsx - this handles design
+    unified-breadcrumbs.tsx - this handles design
+    unified-sidebar.tsx - this handles design
   preview/
-    preview-context.tsx
-    preview-controls-bar.tsx
-    preview-customization-panel.tsx
-    preview-grid.tsx
-    preview-input.tsx
-    preview-prop-table.tsx
-    preview-select.tsx
-    preview-slider.tsx
-    preview-surface.tsx
-    preview-switch.tsx
-    preview-tile-header.tsx
-    preview-tile.tsx
-  design-page-context.tsx
-  simple-design-nav.tsx
-  page-transition.tsx
+    preview-context.tsx - this handles design
+    preview-controls-bar.tsx - this handles design
+    preview-customization-panel.tsx - this handles design
+    preview-grid.tsx - this handles design
+    preview-input.tsx - this handles design
+    preview-prop-table.tsx - this handles design
+    preview-select.tsx - this handles design
+    preview-slider.tsx - this handles design
+    preview-surface.tsx - this handles design
+    preview-switch.tsx - this handles design
+    preview-tile-header.tsx - this handles design
+    preview-tile.tsx - this handles design
+  design-page-context.tsx - this handles design
+  simple-design-nav.tsx - this handles design
+  page-transition.tsx - this handles design
   loading-indicator.tsx
-  ui/
-    button.tsx
-    ...
+  ui/ - shadcn/ui components
+  magicui/ - custom Magic UI components
+  animate-ui/ - custom Animate UI components
+  templates/ - custom template components
+  # Other component files: BlurText.tsx, ClickSpark.tsx, etc. (many design-related components)
 ```
 
 ---
@@ -119,15 +196,9 @@ graph TD
 
 ---
 
-## Challenging Alignment Question & Task
 
-**Question:**  
-Which file is responsible for determining how many preview tiles are shown per row at different screen sizes, and how does it achieve responsive behavior?
-
-**Task:**  
-Update the project so that the preview grid shows 3 tiles per row on large screens (≥1024px) instead of 4, but keeps the current behavior for mobile and tablet. List the file(s) you would change and explain your reasoning.
-
----
-
-*This document is self-contained and provides all the context needed to answer and implement the above task without scanning the project.*
-```
+RULES:
+1. It is not my responsibility to remind you to check the files or use Context7 before providing code
+2. If you are about to provide code without having used context7 you must, pause to use context7 and review the code you are about to write or submit
+3. Do not waste context with apologies or placate my feelings with congratulatary statements
+4. Never assigning a task as complete without the user confirming the success of the task

@@ -7,8 +7,10 @@ import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
 import { TopNavbar } from '@/components/top-navbar';
+import { ConsolidatedNavbar } from '@/components/consolidated-navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { PreviewProvider } from "@/components/preview/preview-context";
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -41,29 +43,32 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>
-            {/* Background - fixed full viewport behind all content */}
-            <div className="fixed inset-0 -z-10">
-              <FlickeringGrid
-                className="absolute inset-0"
-                squareSize={4}
-                gridGap={6}
-                color="#6B7280"
-                maxOpacity={0.5}
-                flickerChance={0.1}
-              />
-              <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
-            </div>
+          <PreviewProvider>
+            <TooltipProvider>
+              {/* Background - fixed full viewport behind all content */}
+              <div className="fixed inset-0 -z-10">
+                <FlickeringGrid
+                  className="absolute inset-0"
+                  squareSize={4}
+                  gridGap={6}
+                  color="#6B7280"
+                  maxOpacity={0.5}
+                  flickerChance={0.1}
+                />
+                <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
+              </div>
 
-            {/* Shell: full height, vertical stack */}
-            <div className="flex min-h-screen flex-col">
-              <TopNavbar />
-              <main className="flex-1 w-full">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </TooltipProvider>
+              {/* Shell: full height, vertical stack */}
+              <div className="flex min-h-screen flex-col">
+                <TopNavbar />
+                <ConsolidatedNavbar variant="full" />
+                <main className="flex-1 w-full">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </TooltipProvider>
+          </PreviewProvider>
         </ThemeProvider>
       </body>
     </html>

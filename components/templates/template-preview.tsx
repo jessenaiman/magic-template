@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from './preview-tile';
-import { FieldConfig } from './preview-customization-panel';
+import { PreviewTile } from '../preview/preview-tile';
+import { FieldConfig } from '../preview/preview-customization-panel';
 
 export interface TemplatePreviewProps {
   title: string;

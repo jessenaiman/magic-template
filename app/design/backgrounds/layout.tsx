@@ -3,6 +3,7 @@
 import React from "react";
 
 import { SimpleNavbar } from "@/components/simple-navbar";
+import { ConsolidatedNavbar } from "@/components/consolidated-navbar";
 import { useDesignPage } from "@/components/design-page-context";
 import { getBaseFields } from "@/components/base-category-options";
 import { BackgroundCustomizationPanel } from "@/components/background-customization-panel";
@@ -40,9 +41,17 @@ export default function BackgroundsLayout({ children }: LayoutProps) {
     basePath: "/design/backgrounds"
   };
 
+  // Convert tabs to navigationItems format for ConsolidatedNavbar
+  const navigationItems = tabs.items.map(item => ({
+    label: item.label,
+    href: `${tabs.basePath}/${item.value}`
+  }));
+
   return (
     <div className="flex flex-col min-h-screen w-full">
       <SimpleNavbar tabs={tabs} />
+      <ConsolidatedNavbar variant="minimal" tabs={tabs} />
+      <ConsolidatedNavbar variant="full" navigationItems={navigationItems} />
       <main className="flex-1 w-full">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 space-y-8">
           <BackgroundsConfigurator />

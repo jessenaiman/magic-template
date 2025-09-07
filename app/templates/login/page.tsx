@@ -1,10 +1,11 @@
-import { TemplatePreview } from '@/components/preview/template-preview';
-import { TemplateCustomizationPanel, TemplateCustomizationProvider } from '@/components/preview/template-customization-panel';
+'use client';
+
+import { TemplatePreview } from '@/components/templates/template-preview';
+import { TemplateCustomizationPanel } from '@/components/templates/template-customization-panel';
 
 export default function LoginTemplatePage() {
   return (
-    <TemplateCustomizationProvider>
-      <div className="space-y-8">
+    <div className="space-y-8">
         <div className="max-w-2xl">
           <h1 className="text-2xl font-bold mb-4">Login Template</h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -27,11 +28,11 @@ export default function LoginTemplatePage() {
 
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6">
-          <TemplatePreview
-            title="Basic Login Form"
-            description="Clean and simple authentication form"
-            componentName="LoginForm"
-            code={`import { useState } from 'react';
+            <TemplatePreview
+              title="Basic Login Form"
+              description="Clean and simple authentication form"
+              componentName="LoginForm"
+              code={`import { useState } from 'react';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');
@@ -88,7 +89,7 @@ export function LoginForm() {
     </div>
   );
 }`}
-          >
+            >
             <div className="p-8 bg-white rounded-lg border shadow-sm">
               <div className="max-w-md mx-auto">
                 <div className="text-center mb-6">
@@ -221,9 +222,9 @@ export function AdvancedLoginForm() {
             type="email"
             value={formData.email}
             onChange={handleChange('email')}
-            className={\`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent \${
+            className={"w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent " + (
               errors.email ? 'border-red-500' : ''
-            }\`}
+            )}
             placeholder="Enter your email"
           />
           {errors.email && (
@@ -240,9 +241,9 @@ export function AdvancedLoginForm() {
               type={showPassword ? 'text' : 'password'}
               value={formData.password}
               onChange={handleChange('password')}
-              className={\`w-full px-3 py-2 pr-10 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent \${
+              className={"w-full px-3 py-2 pr-10 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent " + (
                 errors.password ? 'border-red-500' : ''
-              }\`}
+              )}
               placeholder="Enter your password"
             />
             <button
@@ -350,6 +351,6 @@ export function AdvancedLoginForm() {
           </div>
         </div>
       </div>
-    </TemplateCustomizationProvider>
+    </div>
   );
 }

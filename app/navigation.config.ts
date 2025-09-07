@@ -5,7 +5,7 @@ import { discoverCategories, discoverTechnologyImplementations } from "@/lib/cat
 export type NavItem = {
   label: string;
   href: string;
-  icon?: React.ElementType;
+  icon?: string; // Changed from React.ElementType to string
   description?: string;
   children?: NavItem[];
   badge?: string;
@@ -18,16 +18,16 @@ export type NavigationSection = {
 
 // Helper function to get icon for category based on slug
 const getIconForCategory = (categorySlug: string) => {
-  const iconMap: Record<string, React.ElementType> = {
-    'animations': Palette,
-    'backgrounds': Palette,
-    'buttons': Zap,
-    'effects': Sparkles,
-    'text': Type,
-    'transitions': ArrowRightLeft,
-    'responsive-design': Layout,
+  const iconMap: Record<string, string> = {
+    'animations': 'Palette',
+    'backgrounds': 'Palette',
+    'buttons': 'Zap',
+    'effects': 'Sparkles',
+    'text': 'Type',
+    'transitions': 'ArrowRightLeft',
+    'responsive-design': 'Layout',
   };
-  return iconMap[categorySlug] || Palette; // default to Palette
+  return iconMap[categorySlug] || 'Palette'; // default to Palette
 };
 
 // Helper function to get description for category
@@ -162,19 +162,19 @@ export const mainNavigation: NavigationSection[] = [
       {
         label: "Event Planning & Game Hosting",
         href: "#",
-        icon: Frame,
+        icon: "Frame",
         description: "External event planning and game hosting workshop"
       },
       {
         label: "D&D and Tabletop Games",
         href: "#",
-        icon: PieChart,
+        icon: "PieChart",
         description: "External D&D and tabletop games workshop"
       },
       {
         label: "AI & Machine Learning",
         href: "#",
-        icon: Map,
+        icon: "Map",
         description: "External AI and machine learning workshop"
       }
     ]
@@ -185,7 +185,7 @@ export const mainNavigation: NavigationSection[] = [
       {
         label: "Test Report",
         href: "/test-report",
-        icon: Activity,
+        icon: "Activity",
         description: "Comprehensive test results and metrics dashboard"
       }
     ]

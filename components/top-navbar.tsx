@@ -1,46 +1,27 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
+import { UnifiedNavbar } from "./navigation/unified-navbar"
+import { getDesignNavigation } from "@/app/navigation.config"
+import { getTemplatesNavigation } from "@/app/templates-navigation.config"
+import { Palette, LayoutDashboard } from "lucide-react"
 
-const menuItems = [
+const navigationItems = [
   {
     label: "Home",
     href: "/",
   },
   {
-    label: "Backgrounds",
-    href: "/design/backgrounds",
+    label: "Design",
+    href: "/design",
+    icon: Palette,
+    children: getDesignNavigation()
   },
   {
-    label: "Buttons",
-    href: "/design/buttons",
-  },
-  {
-    label: "Responsive Design",
-    href: "/design/responsive-design",
-  },
-  {
-    label: "Effects",
-    href: "/design/effects",
-  },
-  {
-    label: "Page Transitions",
-    href: "/design/page-transitions",
-  },
-  {
-    label: "Typography",
-    href: "/design/typography",
+    label: "Templates",
+    href: "/templates",
+    icon: LayoutDashboard,
+    children: getTemplatesNavigation()
   },
   {
     label: "Test Report",
@@ -50,20 +31,13 @@ const menuItems = [
 
 export function TopNavbar() {
   return (
-    <NavigationMenu className="w-full flex justify-center">
-      <NavigationMenuList>
-        {menuItems.map((item) => (
-          <NavigationMenuItem key={item.label}>
-            <NavigationMenuLink asChild>
-              <Link href={item.href} className="px-4 py-2">
-                {item.label}
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-      <NavigationMenuIndicator />
-      <NavigationMenuViewport />
-    </NavigationMenu>
+    <UnifiedNavbar
+      navigationItems={navigationItems}
+      showPlaybackControls={true}
+      showThemeToggle={true}
+      showMobileMenu={true}
+      persistentState={true}
+      className="border-b"
+    />
   )
 }
