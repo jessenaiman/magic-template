@@ -1,6 +1,7 @@
 'use client'
-
 import React, { useState } from 'react';
+
+type View = 'mobile' | 'tablet' | 'desktop';
 
 // --- SVG Icons for UI Controls ---
 const MobileIcon = () => (
@@ -61,7 +62,7 @@ const DesktopNav = () => (
 );
 
 // --- Code Snippets for Designers ---
-const codeSnippets = {
+const codeSnippets: Record<View, string> = {
   mobile: `// Bottom Tab Navigation (Mobile)
 // A common pattern for primary navigation on mobile devices.
 // It's touch-friendly and always accessible.
@@ -107,7 +108,7 @@ const DesktopNav = () => (
 
 // --- Main Helper Component ---
 const ResponsiveLayoutHelper = () => {
-  const [view, setView] = useState('desktop');
+  const [view, setView] = useState<View>('desktop');
   const [copySuccess, setCopySuccess] = useState('');
 
   const handleCopy = () => {
@@ -116,7 +117,7 @@ const ResponsiveLayoutHelper = () => {
     setTimeout(() => setCopySuccess(''), 2000);
   };
 
-  const viewConfig = {
+  const viewConfig: Record<View, { width: string; height: string; nav: React.ReactElement }> = {
     mobile: { width: 'w-[375px]', height: 'h-[667px]', nav: <MobileNav /> },
     tablet: { width: 'w-[768px]', height: 'h-[1024px]', nav: <TabletNav /> },
     desktop: { width: 'w-full', height: 'h-[720px]', nav: <DesktopNav /> },

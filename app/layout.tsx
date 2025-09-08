@@ -20,6 +20,11 @@
  * - Preview functionality (PreviewProvider)
  */
 
+/*
+ * IMPORTANT: Do NOT use suppressHydrationWarning globally (e.g., on <html> or root wrappers).
+ * This attribute silences all hydration mismatch warnings and can hide serious bugs.
+ * Use it only on a specific element when the mismatch is intentional and unavoidable.
+ */
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -53,9 +58,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+      <html lang="en">
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
-        <div suppressHydrationWarning>
+        {/*
+  WARNING: DO NOT use suppressHydrationWarning globally (e.g., on <html> or root wrappers).
+  Global suppression hides real hydration errors; handle client‑only content with useEffect or per‑element suppression.
+*/}
+<div>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -93,5 +102,5 @@ export default function RootLayout({
       </div>
       </body>
     </html>
-  );
+  )
 }

@@ -58,11 +58,9 @@ function IconButton({
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stroke-muted-foreground group-hover/icon-button:stroke-[var(--icon-button-color)]"
         aria-hidden="true"
       >
-        <Icon
-          className={
-            active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent'
-          }
-        />
+        {React.createElement(Icon, {
+          className: active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent'
+        })}
       </motion.div>
 
       <AnimatePresence mode="wait">
@@ -75,7 +73,7 @@ function IconButton({
             exit={{ opacity: 0, scale: 0 }}
             transition={transition}
           >
-            <Icon />
+            {React.createElement(Icon)}
           </motion.div>
         )}
       </AnimatePresence>

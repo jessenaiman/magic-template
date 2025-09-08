@@ -594,7 +594,9 @@ export default function LiquidEther({
           },
           output: simProps.dst
         });
-        this.uniforms = this.props.material.uniforms;
+        if (this.props.material && this.props.material.uniforms) {
+          this.uniforms = this.props.material.uniforms;
+        }
         this.init();
       }
       init() {

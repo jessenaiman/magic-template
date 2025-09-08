@@ -53,7 +53,7 @@ const ToggleButton = ({
       role="switch"
       {...props}
     >
-      {isToggled ? <OnIcon className="h-5 w-5" /> : <OffIcon className="h-5 w-5" />}
+  {isToggled ? React.createElement(OnIcon, { className: "h-5 w-5" }) : React.createElement(OffIcon, { className: "h-5 w-5" })}
       <span>{isToggled ? onLabel : offLabel}</span>
     </button>
   );
@@ -164,7 +164,12 @@ function ConfirmationButton({
   );
 }
 
-function FavoriteButton({ initialFavorited = false, onToggle }) {
+interface FavoriteButtonProps {
+  initialFavorited?: boolean;
+  onToggle?: (favorited: boolean) => void;
+}
+
+function FavoriteButton({ initialFavorited = false, onToggle }: FavoriteButtonProps) {
   const [isFavorited, setIsFavorited] = useState(initialFavorited);
   const handleToggle = () => {
     setIsFavorited(!isFavorited);
@@ -185,7 +190,13 @@ function FavoriteButton({ initialFavorited = false, onToggle }) {
   );
 }
 
-function AccessibleButton({ children, description, shortcut }) {
+interface AccessibleButtonProps {
+  children: React.ReactNode;
+  description?: string;
+  shortcut?: string;
+}
+
+function AccessibleButton({ children, description, shortcut }: AccessibleButtonProps) {
   return (
     <button
       className="relative px-6 py-3 bg-green-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
@@ -395,7 +406,7 @@ export default function InteractiveAccessibilityExamplesPage() {
 };`}
           children={
             <FavoriteButton
-              onToggle={(favorited) =>
+              onToggle={(favorited: boolean) =>
                 console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
               }
             />

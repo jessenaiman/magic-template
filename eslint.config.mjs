@@ -12,9 +12,19 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  ...storybook.configs["flat/recommended"]
+  ...storybook.configs["flat/recommended"],
+  {
+    ignores: [
+      "playwright-report/**",
+      "**/trace/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/*.min.js"
+    ]
+  }
 ];
 
 export default eslintConfig;

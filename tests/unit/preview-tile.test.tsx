@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { PreviewTile } from '@/components/preview/preview-tile';
-import { PreviewTileExpansionContext } from '@/app/design/layout-client';
+import { PreviewTileExpansionContext } from '@/app/design/layout';
 
 // Test component that properly wraps PreviewTile with expansion context
 const TestComponent = () => (

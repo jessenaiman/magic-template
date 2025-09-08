@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { getDesignNavigation, type NavItem } from "@/config/navigation";
+import { navigationConfig, type NavItem } from "@/config/navigation";
 import { useDesignPage } from "@/components/design-page-context";
 import { cn } from "@/lib/utils";
 
@@ -63,8 +63,10 @@ function CategoryCard({ item }: { item: NavItem }) {
   );
 }
 
-export default function DesignLandingPage() {
-  const categories = getDesignNavigation();
+function DesignPage() {
+  // Find the 'Design' section in mainNav
+  const designSection = navigationConfig.mainNav.find((item) => item.label === 'Design');
+  const categories = designSection?.children ?? [];
   return (
     <div className="space-y-6">
       <PageConfigurator />
@@ -77,3 +79,4 @@ export default function DesignLandingPage() {
   );
 }
 
+export default DesignPage;

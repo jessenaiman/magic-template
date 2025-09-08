@@ -1,7 +1,7 @@
 "use client";
 import { PreviewTile } from "@/components/preview/preview-tile";
 import { Copy } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // Copy Button
 // Types for props
@@ -94,7 +94,7 @@ const IconButton = ({ icon: Icon = Copy, className = "", ...props }: IconButtonP
       className={`relative rounded-full bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-110 ${className}`}
       {...props}
     >
-      <Icon className={`h-5 w-5 transition-transform duration-300 ${clicked ? 'scale-110' : 'scale-100'}`} />
+  {React.createElement(Icon, { className: `h-5 w-5 transition-transform duration-300 ${clicked ? 'scale-110' : 'scale-100'}` })}
       {clicked && (
         <div className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
       )}

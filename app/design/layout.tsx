@@ -7,7 +7,7 @@
  * - Composes client components for interactive features
  *
  * SERVER-SIDE FEATURES:
- * - Static navigation data fetching (getDesignNavigation)
+ * - Static navigation data access (designNav.children)
  * - Layout composition and metadata
  * - Route-based conditional rendering
  *
@@ -31,7 +31,6 @@ import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 import { UnifiedBreadcrumbs } from "@/components/navigation/unified-breadcrumbs";
 import { DesignPageProvider } from "@/components/design-page-context";
 import { PreviewProvider } from "@/components/preview/preview-context";
@@ -52,7 +51,6 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
     <DesignPageProvider>
       <PreviewProvider>
-        <UnifiedNavbar currentSection="design" />
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex gap-6">
             {/* Sidebar: hidden on mobile, fixed width on md+ */}
