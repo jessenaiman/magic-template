@@ -1,119 +1,85 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Moon, Sun, Play, Pause, RotateCcw } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { cn } from '@/lib/utils';
-import { usePreviewContext } from './preview/preview-context';
-import { DesignTabs } from './design-tabs';
+import { Menu, X } from 'lucide-react';
 
 interface SimpleNavbarProps {
   className?: string;
-  tabs?: {
-    items: Array<{
-      label: string;
-      value: string;
-    }>;
-    basePath: string;
-  };
 }
 
-export function SimpleNavbar({ className, tabs }: SimpleNavbarProps) {
+export function SimpleNavbar({ className = '' }: SimpleNavbarProps) {
+  const [isOpen, setIsOpen] = React.useState(false);
   const pathname = usePathname();
-  const { setTheme, theme } = useTheme();
-  const { state, setPlaying, reset } = usePreviewContext();
-  const [mounted, setMounted] = React.useState(false);
 
-  // Prevent hydration mismatch by only rendering theme-dependent content after mount
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  // Extract page title from pathname
-  const getPageTitle = () => {
-    const pathParts = pathname.split('/');
-    if (pathParts.length >= 3) {
-      // Convert kebab-case to Title Case
-      const category = pathParts[2].split('-').map(word => 
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join(' ');
-      
-      // If there's a subcategory
-      if (pathParts.length >= 4 && pathParts[3]) {
-        const subcategory = pathParts[3].split('-').map(word => 
-          word.charAt(0).toUpperCase() + word.slice(1)
-        ).join(' ');
-        return `${category} / ${subcategory}`;
-      }
-      
-      return category;
-    }
-    return 'Design';
-  };
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Design', href: '/design' },
+    { name: 'Templates', href: '/templates' },
+    { name: 'Dashboard', href: '/dashboard' },
+  ];
 
   return (
-    <div className={cn(
-      "flex items-center justify-between py-2 px-4 bg-background border-b mb-4",
-      className
-    )}>
-      <div className="font-medium text-lg">{getPageTitle()}</div>
-      
-      {tabs && (
-        <div className="flex-1 mx-4">
-          <DesignTabs items={tabs.items} basePath={tabs.basePath} />
-        </div>
-      )}
-      
-      {mounted && (
-        <div className="flex items-center space-x-4">
-          {/* Theme Toggle */}
-          <div className="flex items-center space-x-2 border rounded-md p-1">
-            <button
-              onClick={() => setTheme('light')}
-              className={cn(
-                "p-1 rounded-sm hover:bg-muted/50",
-                theme === 'light' && "bg-muted"
-              )}
-              aria-label="Light theme"
-            >
-              <Sun className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => setTheme('dark')}
-              className={cn(
-                "p-1 rounded-sm hover:bg-muted/50",
-                theme === 'dark' && "bg-muted"
-              )}
-              aria-label="Dark theme"
-            >
-              <Moon className="h-4 w-4" />
-            </button>
+    <nav className={`bg-background border-b ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-xl font-bold">
+              Magic Template
+            </Link>
           </div>
-          
-          {/* Playback Controls */}
-          <div className="flex items-center space-x-2 border rounded-md p-1">
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  pathname === item.href
+                    ? 'text-primary bg-primary/10'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
             <button
-              onClick={() => setPlaying(!state.playing)}
-              className="p-1 rounded-sm hover:bg-muted/50"
-              aria-label={state.playing ? "Pause" : "Play"}
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent"
             >
-              {state.playing ? (
-                <Pause className="h-4 w-4" />
-              ) : (
-                <Play className="h-4 w-4" />
-              )}
-            </button>
-            <button
-              onClick={() => reset()}
-              className="p-1 rounded-sm hover:bg-muted/50"
-              aria-label="Reset"
-            >
-              <RotateCcw className="h-4 w-4" />
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-      )}
-    </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    pathname === item.href
+                      ? 'text-primary bg-primary/10'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 }

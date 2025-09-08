@@ -30,6 +30,8 @@ import {
   User,
   Settings,
   List,
+  LogIn,
+  Mail,
 } from 'lucide-react';
 
 /**
@@ -295,15 +297,15 @@ const generateDesignNavigation = (): NavigationSection => {
 const generateTemplatesNavigation = (): NavigationSection => {
   const items: NavItem[] = [
     createNavItem("Dashboard", "/templates/dashboard", {
-      icon: "LayoutDashboard",
-      description: "Comprehensive dashboard layouts with data visualization"
+      icon: LayoutDashboard,
+      description: "Analytics and data visualization dashboards"
     }),
     createNavItem("Login", "/templates/login", {
-      icon: "LogIn",
-      description: "Authentication forms and login interfaces"
+      icon: LogIn,
+      description: "Authentication and login forms"
     }),
     createNavItem("Contact", "/templates/contact", {
-      icon: "Mail",
+      icon: Mail,
       description: "Contact forms and feedback interfaces"
     }),
     createNavItem("Profile", "/templates/profile", {
@@ -347,17 +349,17 @@ const generateTemplatesNavigation = (): NavigationSection => {
 const mainNavigationSections: NavigationSection[] = [
   generateDesignNavigation(),
   createNavSection('projects', 'Projects', [
-    createNavItem("Event Planning & Game Hosting", "#", {
+    createNavItem("Event Planning & Game Hosting", "/projects/event-planning", {
       icon: Frame,
       description: "External event planning and game hosting workshop",
       external: true
     }),
-    createNavItem("D&D and Tabletop Games", "#", {
+    createNavItem("D&D and Tabletop Games", "/projects/tabletop-games", {
       icon: PieChart,
       description: "External D&D and tabletop games workshop",
       external: true
     }),
-    createNavItem("AI & Machine Learning", "#", {
+    createNavItem("AI & Machine Learning", "/projects/ai-ml", {
       icon: Map,
       description: "External AI and machine learning workshop",
       external: true
@@ -468,15 +470,37 @@ const generateBreadcrumbs = (pathname: string): Array<{ label: string; href: str
 
   if (pathname === '/') return breadcrumbs;
 
-  // Find the active navigation item
-  const { item, parent } = getActiveNavContext(pathname);
+  // Find the active navigation item and parent
+  let activeItem: NavItem | null = null;
+  let activeParent: NavItem | null = null;
 
-  if (parent) {
-    breadcrumbs.push({ label: parent.label, href: parent.href });
+  for (const section of navigationConfig.mainNav) {
+    for (const item of section.items) {
+      if (isNavItemActive(item, pathname)) {
+        activeItem = item;
+        activeParent = null;
+        break;
+      }
+      if (item.children) {
+        for (const child of item.children) {
+          if (child.href === pathname) {
+            activeItem = child;
+            activeParent = item;
+            break;
+          }
+        }
+        if (activeItem) break;
+      }
+    }
+    if (activeItem) break;
   }
 
-  if (item && item.href !== '/') {
-    breadcrumbs.push({ label: item.label, href: item.href });
+  if (activeParent) {
+    breadcrumbs.push({ label: activeParent.label, href: activeParent.href });
+  }
+
+  if (activeItem && activeItem.href !== '/') {
+    breadcrumbs.push({ label: activeItem.label, href: activeItem.href });
   }
 
   return breadcrumbs;

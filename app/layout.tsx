@@ -1,3 +1,25 @@
+/**
+ * Root Layout Component
+ *
+ * ARCHITECTURE: Server Component
+ * - No 'use client' directive - runs on server
+ * - Handles metadata, viewport, and root HTML structure
+ * - Wraps client components with necessary providers
+ * - Manages global layout and navigation structure
+ *
+ * SERVER-SIDE FEATURES:
+ * - Metadata generation for SEO
+ * - Viewport configuration
+ * - Font loading and optimization
+ * - Global CSS imports
+ *
+ * CLIENT-SIDE FEATURES (via child components):
+ * - Theme switching (ThemeProvider)
+ * - Navigation interactions (UnifiedNavbar)
+ * - Tooltips (TooltipProvider)
+ * - Preview functionality (PreviewProvider)
+ */
+
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -32,18 +54,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <PreviewProvider>
+        <div suppressHydrationWarning>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <PreviewProvider>
             <TooltipProvider>
               {/* Background - fixed full viewport behind all content */}
               <div className="fixed inset-0 -z-10">
@@ -74,6 +94,7 @@ export default function RootLayout({
             </TooltipProvider>
           </PreviewProvider>
         </ThemeProvider>
+      </div>
       </body>
     </html>
   );

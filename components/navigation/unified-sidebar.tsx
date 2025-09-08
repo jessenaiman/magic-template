@@ -32,39 +32,15 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTransition } from 'react';
+import { NavItem } from '@/config/navigation';
 
-interface NavigationItem {
-  label: string;
-  href: string;
-  icon?: string; // Changed from React.ElementType to string
-  description?: string;
-  children?: NavigationItem[];
-  badge?: string;
+interface NavigationItem extends NavItem {
+  // Extend the base NavItem type for any sidebar-specific properties
 }
 
-// Icon mapping function
-const getIconComponent = (iconName?: string): LucideIcon | null => {
-  const iconMap: Record<string, LucideIcon> = {
-    LayoutDashboard,
-    LogIn,
-    Mail,
-    User,
-    Settings,
-    List,
-    Square,
-    Home,
-    FileText,
-    Palette,
-    Zap,
-    Sparkles,
-    Type,
-    ArrowRightLeft,
-    Frame,
-    PieChart,
-    Map: MapIcon,
-    Activity,
-  };
-  return iconName ? iconMap[iconName] || null : null;
+// Helper function for consistent icon rendering
+const renderIcon = (icon: LucideIcon | undefined, className: string = 'h-4 w-4 flex-shrink-0') => {
+  return icon ? React.createElement(icon, { className }) : null;
 };
 
 type NavType = "main" | "design" | "templates";
@@ -106,10 +82,12 @@ export function UnifiedSidebar({
   const isMobile = useIsMobile();
 
   // Dynamically select navigation items
-  let items: NavigationItem[] = [];
-  if (navType === "design") items = getDesignNavigation();
-  else if (navType === "templates") items = getTemplatesNavigation();
-  else if (navType === "main") items = navigationConfig.mainNav.flatMap(s => s.items);
+  const items = React.useMemo(() => {
+    if (navType === "design") return getDesignNavigation();
+    else if (navType === "templates") return getTemplatesNavigation();
+    else if (navType === "main") return navigationConfig.mainNav.flatMap(s => s.items);
+    return [];
+  }, [navType]);
 
   // Prevent hydration mismatch
   React.useEffect(() => {
@@ -181,8 +159,8 @@ export function UnifiedSidebar({
     }
   };
 
-  const renderNavItem = (item: NavigationItem, depth = 0) => {
-    const hasChildren = item.children && item.children.length > 0;
+  const renderNavItem = (item: NavItem, depth = 0) => {
+    const hasChildren = !!(item.children && item.children.length > 0);
     const isExpanded = expandedItems.has(item.href);
     const active = isActive(item.href);
 
@@ -219,10 +197,7 @@ export function UnifiedSidebar({
             }}
           >
             <div className="flex items-center space-x-2 min-w-0 flex-1">
-              {showIcons && item.icon && (() => {
-                const IconComponent = getIconComponent(item.icon);
-                return IconComponent ? <IconComponent className="h-4 w-4 flex-shrink-0" /> : null;
-              })()}
+              {showIcons && item.icon && renderIcon(item.icon)}
               <span className="truncate">{item.label}</span>
               {item.badge && (
                 <span className="ml-2 px-1.5 py-0.5 text-xs bg-primary text-primary-foreground rounded-full flex-shrink-0">

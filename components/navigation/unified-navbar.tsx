@@ -1,3 +1,32 @@
+/**
+ * Unified Navbar Component
+ *
+ * ARCHITECTURE: Client Component
+ * - Uses 'use client' directive for navigation state and routing
+ * - Handles responsive navigation, theme switching, and user interactions
+ * - Manages mobile menu state and navigation transitions
+ *
+ * CLIENT-SIDE FEATURES:
+ * - usePathname() for current route detection
+ * - useRouter() for programmatic navigation
+ * - useState for mobile menu and theme state
+ * - useEffect for scroll-based navigation updates
+ * - Event handlers for user interactions
+ *
+ * WHY CLIENT COMPONENT:
+ * - Requires access to current pathname (usePathname hook)
+ * - Needs router instance for navigation (useRouter hook)
+ * - Manages interactive state (mobile menu, theme toggle)
+ * - Handles browser events (scroll, resize, clicks)
+ * - Cannot determine active navigation server-side
+ *
+ * STATE MANAGEMENT:
+ * - Mobile menu open/closed state
+ * - Current theme (light/dark/system)
+ * - Scroll position for navbar styling
+ * - Active navigation item based on current route
+ */
+
 'use client';
 
 import * as React from 'react';
@@ -64,36 +93,17 @@ interface UnifiedNavbarProps {
   currentSection?: SectionType;
 }
 
-const getIconComponent = (iconName?: string): LucideIcon | null => {
-  const iconMap: Record<string, LucideIcon> = {
-    LayoutDashboard,
-    LogIn,
-    Mail,
-    User,
-    Settings,
-    List,
-    Square,
-    Home,
-    FileText,
-    Palette,
-    Zap,
-    Sparkles,
-    Type,
-    ArrowRightLeft,
-    Frame,
-    PieChart,
-    Map: MapIcon,
-    Activity,
-  };
-  return iconName ? iconMap[iconName] || null : null;
-};
-
 function getSectionNavigation(section: SectionType | undefined): import('@/config/navigation').NavItem[] {
   if (section === 'design') return getDesignNavigation();
   if (section === 'templates') return getTemplatesNavigation();
   // Default to mainNav (flattened)
   return navigationConfig.mainNav.flatMap(s => s.items);
 }
+
+// Helper function for consistent icon rendering
+const renderIcon = (icon: LucideIcon | undefined, className: string = 'h-4 w-4') => {
+  return icon ? React.createElement(icon, { className }) : null;
+};
 
 export function UnifiedNavbar({
   className,
@@ -121,12 +131,17 @@ export function UnifiedNavbar({
     setMounted(true);
   }, []);
 
-  // Persistent navigation state using cookies
+  // Persistent navigation state using localStorage - safer approach for SSR
   React.useEffect(() => {
     if (persistentState && mounted) {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme && savedTheme !== theme) {
-        setTheme(savedTheme);
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme && savedTheme !== theme) {
+          setTheme(savedTheme);
+        }
+      } catch (error) {
+        // Silently handle localStorage errors (e.g., in SSR or private browsing)
+        console.warn('Failed to access localStorage for theme:', error);
       }
     }
   }, [mounted, theme, setTheme, persistentState]);
@@ -149,25 +164,25 @@ export function UnifiedNavbar({
     return pathname === href || pathname.startsWith(href + '/');
   };
 
-  // Auth-dependent menu items
-  const authMenu = isLoggedIn
+  // Auth-dependent menu items - now properly typed with Lucide components
+  const authMenu: import('@/config/navigation').NavItem[] = isLoggedIn
     ? [
         {
           label: 'Profile',
           href: '/profile',
-          icon: 'User',
+          icon: User,
         },
         {
           label: 'Logout',
           href: '/logout',
-          icon: 'LogIn',
+          icon: LogIn,
         },
       ]
     : [
         {
           label: 'Login',
           href: '/login',
-          icon: 'LogIn',
+          icon: LogIn,
         },
       ];
 
@@ -244,10 +259,7 @@ export function UnifiedNavbar({
                             }}
                             tabIndex={0}
                           >
-                            {item.icon && (() => {
-                              const IconComponent = getIconComponent(item.icon);
-                              return IconComponent ? <IconComponent className="h-4 w-4" /> : null;
-                            })()}
+                            {renderIcon(item.icon)}
                             <span>{item.label}</span>
                             {item.badge && (
                               <span className="ml-auto px-2 py-0.5 text-xs bg-primary text-primary-foreground rounded-full">
@@ -298,10 +310,7 @@ export function UnifiedNavbar({
                           }}
                           tabIndex={0}
                         >
-                          {item.icon && (() => {
-                            const IconComponent = getIconComponent(item.icon);
-                            return IconComponent ? <IconComponent className="h-4 w-4" /> : null;
-                          })()}
+                          {renderIcon(item.icon)}
                           <span>{item.label}</span>
                         </Link>
                       ))}
@@ -340,10 +349,7 @@ export function UnifiedNavbar({
                   tabIndex={0}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
-                  {item.icon && (() => {
-                    const IconComponent = getIconComponent(item.icon);
-                    return IconComponent ? <IconComponent className="h-4 w-4" /> : null;
-                  })()}
+                  {renderIcon(item.icon)}
                   <span>{item.label}</span>
                   {item.badge && (
                     <span className="ml-2 px-2 py-0.5 text-xs bg-primary text-primary-foreground rounded-full">
@@ -402,10 +408,7 @@ export function UnifiedNavbar({
                 tabIndex={0}
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
-                {item.icon && (() => {
-                  const IconComponent = getIconComponent(item.icon);
-                  return IconComponent ? <IconComponent className="h-4 w-4" /> : null;
-                })()}
+                {renderIcon(item.icon)}
                 <span>{item.label}</span>
               </Link>
             ))}

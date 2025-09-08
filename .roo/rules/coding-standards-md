@@ -1,0 +1,6 @@
+# Global Coding Standards
+
+1. Always use TypeScript for new projects
+2. Write unit tests for all new functions
+3. Use descriptive variable names
+4. Add JSDoc comments for public APIs

@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { motion, useReducedMotion } from "framer-motion";
-import { MenuBar } from "@/components/menu-bar";
+import { motion } from "motion/react";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { MotionProvider, useMotion } from "@/components/motion-provider";
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 
 import HeroLanding from "@/components/landing/HeroLanding";
 import { ToolExplorer } from "@/components/landing/ToolExplorer";
@@ -12,6 +13,7 @@ import ProfessionalPathways from "@/components/landing/ProfessionalPathways";
 import PricingTiers from "@/components/landing/pricing-tiers";
 import { ResourceCards } from "@/components/resource-cards";
 import ClosingCta from "@/components/landing/ClosingCta";
+import { useParticlePositions } from "@/hooks/use-particle-positions";
 
 // Animation helpers (kept simple for type safety)
 const sectionFade = {
@@ -19,17 +21,18 @@ const sectionFade = {
   visible: { opacity: 1, y: 0 }
 };
 
-export default function LandingPage() {
-  const reduce = useReducedMotion();
+function LandingPageContent() {
+  const { reduce } = useMotion();
+  const positions = useParticlePositions();
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Skip link for keyboard users */}
-      <a
-        href="#main-hero-heading"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
-      >
-        Skip to main content
-      </a>
+          {/* Skip link for keyboard users */}
+          <a
+            href="#main-hero-heading"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
+          >
+            Skip to main content
+          </a>
       {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         <FlickeringGrid
@@ -47,16 +50,16 @@ export default function LandingPage() {
 
       <div className="relative z-10">
         {/* Navigation */}
-        <motion.header
-          initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.55 }}
+        <header
           className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
         >
-          <MenuBar />
-        </motion.header>
-
-        {/* Main Flow */}
+          <UnifiedNavbar
+            showPlaybackControls={false}
+            showBreadcrumbs={false}
+            showThemeToggle={true}
+            currentSection="main"
+          />
+        </header>        {/* Main Flow */}
         <main role="main" className="pt-10 md:pt-12">
           {/* HERO */}
           <HeroLanding />
@@ -146,28 +149,27 @@ export default function LandingPage() {
       {/* Decorative floating particles (disabled when user prefers reduced motion) */}
       {!reduce && (
         <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-          {[...Array(18)].map((_, i) => (
-            <motion.div
+          {positions.map((position, i) => (
+            <div
               key={i}
               className="absolute w-1 h-1 bg-primary/20 rounded-full"
-              initial={{
-                x: Math.random() * 100 + '%',
-                y: Math.random() * 100 + '%',
-                scale: 0
-              }}
-              animate={{
-                scale: [0, 1, 0],
-                opacity: [0, 0.5, 0]
-              }}
-              transition={{
-                duration: Math.random() * 3 + 2.5,
-                repeat: Infinity,
-                delay: Math.random() * 2
+              style={{
+                left: position.left,
+                top: position.top,
+                transform: 'scale(0)'
               }}
             />
           ))}
         </div>
       )}
     </div>
+  );
+}
+
+export default function LandingPage() {
+  return (
+    <MotionProvider>
+      <LandingPageContent />
+    </MotionProvider>
   );
 }
