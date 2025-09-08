@@ -33,10 +33,10 @@ import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { PreviewProvider } from "@/components/preview/preview-context";
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -58,13 +58,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
+    <html lang="en">
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         {/*
   WARNING: DO NOT use suppressHydrationWarning globally (e.g., on <html> or root wrappers).
   Global suppression hides real hydration errors; handle client‑only content with useEffect or per‑element suppression.
 */}
-<div>
+        <div>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -72,28 +72,24 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <PreviewProvider>
-            <TooltipProvider>
-              {/* Background - fixed full viewport behind all content */}
-              <div className="fixed inset-0 -z-10">
-                <FlickeringGrid
-                  className="absolute inset-0"
-                  squareSize={4}
-                  gridGap={6}
-                  color="#6B7280"
-                  maxOpacity={0.5}
-                  flickerChance={0.1}
-                />
-                <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
-              </div>
+              <TooltipProvider>
+                {/* Background - fixed full viewport behind all content */}
+                <div className="fixed inset-0 -z-10">
+                  <FlickeringGrid
+                    className="absolute inset-0"
+                    squareSize={4}
+                    gridGap={6}
+                    color="#6B7280"
+                    maxOpacity={0.5}
+                    flickerChance={0.1}
+                  />
+                  <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
+                </div>
 
               {/* Shell: full height, vertical stack */}
               <div className="flex min-h-screen flex-col">
-                <UnifiedNavbar currentSection="main" />
-                <div className="flex flex-1 w-full">
-                  <main className="flex-1 w-full">
-                    {children}
-                  </main>
-                </div>
+                <UnifiedNavbar />
+                <main className="flex-1">{children}</main>
                 <Footer />
               </div>
             </TooltipProvider>

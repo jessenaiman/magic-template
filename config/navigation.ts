@@ -1,155 +1,298 @@
-import type { LucideIcon } from 'lucide-react';
-import {
-  Palette,
-  Sparkles,
-  Frame,
-  Square,
-  ArrowRightLeft,
-  Type,
-  PieChart,
-  Map,
-  LayoutDashboard,
-  Home,
-  FileText,
-  Activity,
-  Zap,
-  User,
-  Settings,
-  List,
-  LogIn,
-  Mail,
-} from 'lucide-react';
+import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map, Activity, User, LogOut, LogIn, UserPlus } from "lucide-react";
 
-/**
- * Navigation configuration data - simplified to just data, no logic
- */
+// Types
 export type NavItem = {
   label: string;
   href: string;
-  icon?: LucideIcon;
+  icon?: string; // Icon name as string
   description?: string;
   children?: NavItem[];
-  external?: boolean;
   badge?: string;
 };
 
-export type NavigationSection = NavItem[];
+export type NavigationSection = {
+  label: string;
+  items: NavItem[];
+};
 
-export type NavigationConfig = {
-  mainNav: NavigationSection;
-  authNav: {
-    authenticated: NavigationSection;
-    unauthenticated: NavigationSection;
+// Icon map for proper rendering
+export const iconMap: Record<string, any> = {
+  'Palette': Palette,
+  'Zap': Zap,
+  'Layout': Layout,
+  'Sparkles': Sparkles,
+  'ArrowRightLeft': ArrowRightLeft,
+  'Type': Type,
+  'Frame': Frame,
+  'PieChart': PieChart,
+  'Map': Map,
+  'Activity': Activity,
+  'User': User,
+  'LogOut': LogOut,
+  'LogIn': LogIn,
+  'UserPlus': UserPlus,
+};
+
+// Helper: icon for category
+const getIconForCategory = (categorySlug: string) => {
+  const iconMap: Record<string, string> = {
+    'animations': 'Palette',
+    'backgrounds': 'Palette',
+    'buttons': 'Zap',
+    'effects': 'Sparkles',
+    'text': 'Type',
+    'transitions': 'ArrowRightLeft',
+    'responsive-design': 'Layout',
+  };
+  return iconMap[categorySlug] || 'Palette';
+};
+
+// Helper: description for category
+const getDescriptionForCategory = (categoryName: string) => {
+  const lowercaseName = categoryName.toLowerCase();
+  if (lowercaseName.includes('animation')) return 'Animated design components and patterns';
+  if (lowercaseName.includes('background')) return 'Animated and static background patterns';
+  if (lowercaseName.includes('button')) return 'Interactive button components and animations';
+  if (lowercaseName.includes('effect')) return 'Visual effects and animations';
+  if (lowercaseName.includes('text')) return 'Typography and text effects';
+  if (lowercaseName.includes('transition')) return 'Smooth page transition effects';
+  if (lowercaseName.includes('responsive')) return 'Mobile-first design patterns';
+  return 'Design components and implementations';
+};
+
+// Dynamic Design section
+const generateDynamicDesignSection = (): NavigationSection => {
+  const categoryData = [
+    {
+      slug: 'animations',
+      name: 'Animations',
+      examples: [
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'animatecss', name: 'Animate.css' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'reactbits', name: 'React Bits' }
+      ]
+    },
+    {
+      slug: 'backgrounds',
+      name: 'Backgrounds',
+      examples: [
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'buttons',
+      name: 'Buttons',
+      examples: [
+        { slug: 'animate-css', name: 'Animate.css' },
+        { slug: 'animate-ui', name: 'Animate UI' },
+        { slug: 'customize', name: 'Customize' },
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magic', name: 'Magic UI' },
+        { slug: 'shadcn', name: 'Shadcn' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'effects',
+      name: 'Effects',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'responsive-design',
+      name: 'Responsive Design',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'nextjs', name: 'Next.js' },
+        { slug: 'tailwindcss', name: 'Tailwind CSS' }
+      ]
+    },
+    {
+      slug: 'text',
+      name: 'Text',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'reactbits', name: 'React Bits' },
+        { slug: 'shadcn', name: 'Shadcn' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'transitions',
+      name: 'Transitions',
+      examples: [
+        { slug: 'html-css', name: 'HTML/CSS' },
+        { slug: 'magicui', name: 'Magic UI' },
+        { slug: 'nextjs', name: 'Next.js' },
+        { slug: 'tailwind', name: 'Tailwind' }
+      ]
+    },
+    {
+      slug: 'templates',
+      name: 'Templates',
+      examples: []
+    }
+  ];
+
+  return {
+    label: "Design",
+    items: categoryData.map(category => {
+      const children: NavItem[] = [
+        {
+          label: "Overview",
+          href: `/design/${category.slug}`
+        },
+        ...category.examples.map(example => ({
+          label: example.name,
+          href: `/design/${category.slug}/${example.slug}`
+        }))
+      ];
+
+      return {
+        label: category.name,
+        href: `/design/${category.slug}`,
+        icon: getIconForCategory(category.slug),
+        description: getDescriptionForCategory(category.name),
+        children
+      };
+    })
   };
 };
 
-export const navigationConfig: NavigationConfig = {
+// Main navigation sections
+export const navigationConfig = {
   mainNav: [
+    ...generateDynamicDesignSection().items,
     {
-      label: 'Home',
-      href: '/',
-      icon: Home,
-      description: 'Go to homepage'
-    },
-    {
-      label: 'Design',
-      href: '/design',
-      icon: Palette,
-      description: 'Design system and components',
+      label: "Projects",
+      href: "/projects",
+      icon: "Frame",
+      description: "Project workshops and resources",
       children: [
         {
-          label: 'Getting Started',
-          href: '/design/getting-started',
-          description: 'Introduction to the design system'
+          label: "Event Planning & Game Hosting",
+          href: "#",
+          icon: "Frame",
+          description: "External event planning and game hosting workshop"
         },
         {
-          label: 'Components',
-          href: '/design/components',
-          description: 'Available UI components'
+          label: "D&D and Tabletop Games",
+          href: "#",
+          icon: "PieChart",
+          description: "External D&D and tabletop games workshop"
         },
         {
-          label: 'Patterns',
-          href: '/design/patterns',
-          description: 'Common design patterns'
+          label: "AI & Machine Learning",
+          href: "#",
+          icon: "Map",
+          description: "External AI and machine learning workshop"
         }
       ]
     },
     {
-      label: 'Templates',
-      href: '/templates',
-      icon: Frame,
-      description: 'Template library',
+      label: "Testing",
+      href: "/testing",
+      icon: "Activity",
+      description: "Testing resources and reports",
       children: [
         {
-          label: 'Web Pages',
-          href: '/templates/pages',
-          description: 'Pre-built page templates'
-        },
-        {
-          label: 'Components',
-          href: '/templates/components',
-          description: 'Component templates'
+          label: "Test Report",
+          href: "/test-report",
+          icon: "Activity",
+          description: "Comprehensive test results and metrics dashboard"
         }
       ]
-    },
-    {
-      label: 'Projects',
-      href: '/projects',
-      icon: Activity,
-      description: 'External project resources',
-      children: [
-        {
-          label: 'Event Planning & Game Hosting',
-          href: '/projects/event-planning',
-          description: 'External event planning workshop',
-          external: true
-        },
-        {
-          label: 'D&D and Tabletop Games',
-          href: '/projects/tabletop-games',
-          description: 'External D&D workshop',
-          external: true
-        },
-        {
-          label: 'AI & Machine Learning',
-          href: '/projects/ai-ml',
-          description: 'External AI workshop',
-          external: true
-        }
-      ]
-    },
-    {
-      label: 'Testing',
-      href: '/test-report',
-      icon: Activity,
-      description: 'Quality assurance resources'
     }
   ],
-
   authNav: {
     authenticated: [
       {
-        label: 'Profile',
-        href: '/profile',
-        icon: User
+        label: "Profile",
+        href: "/profile",
+        icon: "User"
       },
       {
-        label: 'Settings',
-        href: '/settings',
-        icon: Settings
-      },
-      {
-        label: 'Logout',
-        href: '/logout',
-        icon: LogIn
+        label: "Logout",
+        href: "/logout",
+        icon: "LogOut"
       }
     ],
     unauthenticated: [
       {
-        label: 'Login',
-        href: '/login',
-        icon: LogIn
+        label: "Login",
+        href: "/login",
+        icon: "LogIn"
+      },
+      {
+        label: "Sign Up",
+        href: "/signup",
+        icon: "UserPlus"
       }
     ]
   }
+};
+
+// Utility functions
+export const getDesignNavigation = (): NavItem[] => {
+  const designItem = navigationConfig.mainNav.find(item => item.label === "Design");
+  return designItem ? designItem.children || [] : [];
+};
+
+export const findNavItemByPath = (pathname: string, items: NavItem[] = []): NavItem | null => {
+  for (const item of items) {
+    if (item.href === pathname) return item;
+    if (item.children) {
+      const found = findNavItemByPath(pathname, item.children);
+      if (found) return found;
+    }
+  }
+  return null;
+};
+
+export const isNavItemActive = (item: NavItem, pathname: string): boolean => {
+  if (item.href === pathname) return true;
+  if (item.children) {
+    return item.children.some(child => isNavItemActive(child, pathname));
+  }
+  return false;
+};
+
+export const getActiveNavItems = (pathname: string): { section: NavigationSection | null; item: NavItem | null; parent: NavItem | null } => {
+  for (const item of navigationConfig.mainNav) {
+    if (isNavItemActive(item, pathname)) {
+      return { section: null, item, parent: null };
+    }
+    if (item.children) {
+      for (const child of item.children) {
+        if (child.href === pathname) {
+          return { section: null, item: child, parent: item };
+        }
+      }
+    }
+  }
+  return { section: null, item: null, parent: null };
+};
+
+// Breadcrumb generation utility
+export const getBreadcrumbItems = (pathname: string): Array<{ label: string; href: string }> => {
+  const breadcrumbs: Array<{ label: string; href: string }> = [];
+  breadcrumbs.push({ label: 'Home', href: '/' });
+  if (pathname === '/') return breadcrumbs;
+  const { item, parent } = getActiveNavItems(pathname);
+  if (parent) {
+    breadcrumbs.push({ label: parent.label, href: parent.href });
+  }
+  if (item && item.href !== '/') {
+    breadcrumbs.push({ label: item.label, href: item.href });
+  }
+  return breadcrumbs;
 };

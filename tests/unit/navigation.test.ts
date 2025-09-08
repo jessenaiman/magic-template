@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { mainNavigation } from '@/app/navigation.config';
+import { navigationConfig } from '@/app/config/navigation';
 import fs from 'fs';
 import path from 'path';
 
@@ -81,8 +81,8 @@ const pageExists = (routePath: string): boolean => {
 describe('Navigation Configuration', () => {
   it('has valid navigation structure', () => {
     // Basic structure validation
-    expect(Array.isArray(mainNavigation)).toBe(true);
-    expect(mainNavigation.length).toBeGreaterThan(0);
+    expect(Array.isArray(navigationConfig.mainNav)).toBe(true);
+    expect(navigationConfig.mainNav.length).toBeGreaterThan(0);
 
     // List of known routes that might not exist yet
     const knownMissingRoutes = new Set([
@@ -118,9 +118,9 @@ describe('Navigation Configuration', () => {
     };
 
     // Check each section and its items
-    mainNavigation.forEach(section => {
+    navigationConfig.mainNav.forEach(section => {
       expect(section).toHaveProperty('label');
-      expect(section).toHaveProperty('items');
+      expect(section).toHaveProperty('href');
       expect(Array.isArray(section.items)).toBe(true);
       expect(section.items.length).toBeGreaterThan(0);
 
@@ -159,7 +159,7 @@ describe('Navigation Configuration', () => {
       }
     };
 
-    mainNavigation.forEach(section => {
+    navigationConfig.mainNav.forEach(section => {
       section.items.forEach((item: any) => checkItem(item));
     });
 
@@ -194,7 +194,7 @@ describe('Navigation Configuration', () => {
   it('has valid external links', () => {
     console.log('\nChecking external links...');
     
-    const externalLinks = mainNavigation
+    const externalLinks = navigationConfig.mainNav
       .flatMap(section => section.items)
       .filter(item => item.href.startsWith('http'));
 

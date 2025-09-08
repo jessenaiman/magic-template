@@ -29,6 +29,8 @@ export interface ButtonAccessibilityProps {
   role?: string;
   /** Tab index */
   tabIndex?: number;
+  /** Disabled state for ARIA */
+  'aria-disabled'?: boolean;
 }
 
 /**

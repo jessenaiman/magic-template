@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTransition } from 'react';
-import { navigationConfig, type NavItem } from '@/config/navigation';
+import { navigationConfig, type NavItem, isNavItemActive, iconMap } from '@/config/navigation';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -52,17 +52,10 @@ interface UnifiedNavbarProps {
 }
 
 // Helper function for consistent icon rendering
-const renderIcon = (icon: LucideIcon | undefined, className: string = 'h-4 w-4') => {
-  return icon ? React.createElement(icon, { className }) : null;
-};
-
-// Check if navigation item is active
-const isNavItemActive = (item: NavItem, pathname: string): boolean => {
-  if (item.href === pathname) return true;
-  if (item.children) {
-    return item.children.some(child => isNavItemActive(child, pathname));
-  }
-  return false;
+const renderIcon = (iconName?: string, className: string = 'h-4 w-4') => {
+  if (!iconName || !iconMap[iconName]) return null;
+  const Icon = iconMap[iconName];
+  return <Icon className={className} />;
 };
 
 export function UnifiedNavbar({

@@ -38,6 +38,6 @@ We build components that are reusable, robust, and accessible to everyone.
 * **Keep Dependencies Current:** Regularly update your project's dependencies to benefit from the latest features, performance improvements, and, most importantly, security patches.
     * **Example (`package.json`):** The project maintains up-to-date versions of key libraries like React and Next.js, which is crucial for a secure and modern application.
 * **Ensure Consistent Rendering (SSR):** Write components that render identically on the server and the client to avoid hydration errors. This leads to a smoother user experience and better performance.
-    * **Example (`components/theme-provider.tsx`):** This component correctly handles theme changes in a server-side rendered environment without causing hydration mismatches.
+    * **Example (`components/magicui/animated-theme-provider.tsx`):** This component correctly handles theme changes in a server-side rendered environment without causing hydration mismatches.
 
 By following these principles, we can continue to build a high-quality, secure, and user-friendly application. Let me know if you'd like to explore any of these areas in more detail!

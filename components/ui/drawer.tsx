@@ -121,6 +121,19 @@ function DrawerDescription({
   )
 }
 
+// New DrawerBody component to render children inside the drawer content
+function DrawerBody({ className, children, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="drawer-body"
+      className={cn("p-4", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
+
 export {
   Drawer,
   DrawerPortal,
@@ -129,6 +142,7 @@ export {
   DrawerClose,
   DrawerContent,
   DrawerHeader,
+  DrawerBody,
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
