@@ -32,7 +32,7 @@ export function UnifiedBreadcrumbs({
   return (
     <Breadcrumb className={className} aria-label={ariaLabel}>
       <BreadcrumbList>
-        {items.map((item, idx) => {
+        {items.map((item: { label: string; href: string }, idx: number) => {
           const isLast = idx === items.length - 1;
           return (
             <React.Fragment key={item.href}>
