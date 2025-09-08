@@ -1,30 +1,8 @@
 /**
- * Unified Navbar Component
+ * Unified Navbar Component using shadcn Navigation Menu
  *
- * ARCHITECTURE: Client Component
- * - Uses 'use client' directive for navigation state and routing
- * - Handles responsive navigation, theme switching, and user interactions
- * - Manages mobile menu state and navigation transitions
- *
- * CLIENT-SIDE FEATURES:
- * - usePathname() for current route detection
- * - useRouter() for programmatic navigation
- * - useState for mobile menu and theme state
- * - useEffect for scroll-based navigation updates
- * - Event handlers for user interactions
- *
- * WHY CLIENT COMPONENT:
- * - Requires access to current pathname (usePathname hook)
- * - Needs router instance for navigation (useRouter hook)
- * - Manages interactive state (mobile menu, theme toggle)
- * - Handles browser events (scroll, resize, clicks)
- * - Cannot determine active navigation server-side
- *
- * STATE MANAGEMENT:
- * - Mobile menu open/closed state
- * - Current theme (light/dark/system)
- * - Scroll position for navbar styling
- * - Active navigation item based on current route
+ * This component provides a modern navigation experience using Radix UI Navigation Menu
+ * with support for nested menus, keyboard navigation, and responsive design.
  */
 
 'use client';
@@ -32,6 +10,23 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
+import { usePreviewContext } from '../preview/preview-context';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useTransition } from 'react';
+import { navigationConfig, type NavItem } from '@/config/navigation';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
 import {
   Moon,
   Sun,
@@ -39,46 +34,9 @@ import {
   Pause,
   RotateCcw,
   Menu,
-  LayoutDashboard,
-  LogIn,
-  Mail,
-  User,
-  Settings,
-  List,
-  Square,
-  Home,
-  FileText,
-  Palette,
-  Zap,
-  Sparkles,
-  Type,
-  ArrowRightLeft,
-  Frame,
-  PieChart,
-  MapIcon,
-  Activity,
-  LucideIcon
+  LucideIcon,
+  ExternalLink,
 } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { cn } from '@/lib/utils';
-import { usePreviewContext } from '../preview/preview-context';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useTransition } from 'react';
-import { navigationConfig, getDesignNavigation, getTemplatesNavigation, generateBreadcrumbs } from '@/config/navigation';
-import { useMemo } from 'react';
-
-import { UnifiedBreadcrumbs } from './unified-breadcrumbs';
-// Breadcrumb UI primitives (shadcn/ui)
-import {
-  Breadcrumb as UIBreadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
 
 type SectionType = 'main' | 'design' | 'templates';
 
@@ -93,16 +51,18 @@ interface UnifiedNavbarProps {
   currentSection?: SectionType;
 }
 
-function getSectionNavigation(section: SectionType | undefined): import('@/config/navigation').NavItem[] {
-  if (section === 'design') return getDesignNavigation();
-  if (section === 'templates') return getTemplatesNavigation();
-  // Default to mainNav (flattened)
-  return navigationConfig.mainNav.flatMap(s => s.items);
-}
-
 // Helper function for consistent icon rendering
 const renderIcon = (icon: LucideIcon | undefined, className: string = 'h-4 w-4') => {
   return icon ? React.createElement(icon, { className }) : null;
+};
+
+// Check if navigation item is active
+const isNavItemActive = (item: NavItem, pathname: string): boolean => {
+  if (item.href === pathname) return true;
+  if (item.children) {
+    return item.children.some(child => isNavItemActive(child, pathname));
+  }
+  return false;
 };
 
 export function UnifiedNavbar({
@@ -122,9 +82,8 @@ export function UnifiedNavbar({
   const [mounted, setMounted] = React.useState(false);
   const [isPending, startTransition] = useTransition();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-
-  // Select navigation items based on section
-  const navigationItems = useMemo(() => getSectionNavigation(currentSection), [currentSection]);
+  // Ref for the desktop navigation container (must be defined before any early returns)
+  const navRef = React.useRef<HTMLDivElement>(null);
 
   // Prevent hydration mismatch
   React.useEffect(() => {
@@ -154,37 +113,10 @@ export function UnifiedNavbar({
     });
   };
 
-  // Breadcrumbs
-  const breadcrumbs = useMemo(() => generateBreadcrumbs(pathname), [pathname]);
-
-  // Accessibility: keyboard navigation for menu
-  const navRef = React.useRef<HTMLDivElement>(null);
-
-  const isActive = (href: string) => {
-    return pathname === href || pathname.startsWith(href + '/');
-  };
-
-  // Auth-dependent menu items - now properly typed with Lucide components
-  const authMenu: import('@/config/navigation').NavItem[] = isLoggedIn
-    ? [
-        {
-          label: 'Profile',
-          href: '/profile',
-          icon: User,
-        },
-        {
-          label: 'Logout',
-          href: '/logout',
-          icon: LogIn,
-        },
-      ]
-    : [
-        {
-          label: 'Login',
-          href: '/login',
-          icon: LogIn,
-        },
-      ];
+  // Auth-dependent menu items
+  const authMenu = isLoggedIn
+    ? navigationConfig.authNav.authenticated
+    : navigationConfig.authNav.unauthenticated;
 
   if (!mounted) {
     return <Skeleton className="h-16 w-full" />;
@@ -209,6 +141,7 @@ export function UnifiedNavbar({
           >
             <span>Magic Template</span>
           </Link>
+
           <div className="flex items-center space-x-2 md:hidden">
             {/* Mobile Controls */}
             {showThemeToggle && (
@@ -228,6 +161,7 @@ export function UnifiedNavbar({
                 {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
               </Button>
             )}
+
             {showMobileMenu && (
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
@@ -243,13 +177,13 @@ export function UnifiedNavbar({
                 <SheetContent side="right" className="w-80" aria-label="Mobile navigation menu">
                   <div className="flex flex-col space-y-4 mt-4">
                     <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
-                      {navigationItems.map((item) => (
+                      {navigationConfig.mainNav.map((item) => (
                         <div key={item.href}>
                           <Link
                             href={item.href}
                             className={cn(
                               "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                              isActive(item.href)
+                              isNavItemActive(item, pathname)
                                 ? "bg-primary text-primary-foreground"
                                 : "hover:bg-accent hover:text-accent-foreground"
                             )}
@@ -261,14 +195,10 @@ export function UnifiedNavbar({
                           >
                             {renderIcon(item.icon)}
                             <span>{item.label}</span>
-                            {item.badge && (
-                              <span className="ml-auto px-2 py-0.5 text-xs bg-primary text-primary-foreground rounded-full">
-                                {item.badge}
-                              </span>
-                            )}
+                            {item.external && <ExternalLink className="h-3 w-3 ml-1" />}
                           </Link>
                           {/* Mobile children */}
-                          {item.children && item.children.length > 0 && isActive(item.href) && (
+                          {item.children && item.children.length > 0 && isNavItemActive(item, pathname) && (
                             <div className="ml-6 mt-2 space-y-1">
                               {item.children.map((child) => (
                                 <Link
@@ -276,7 +206,7 @@ export function UnifiedNavbar({
                                   href={child.href}
                                   className={cn(
                                     "block px-3 py-2 text-sm rounded-sm transition-colors",
-                                    isActive(child.href)
+                                    isNavItemActive(child, pathname)
                                       ? "bg-accent text-accent-foreground font-medium"
                                       : "hover:bg-accent hover:text-accent-foreground"
                                   )}
@@ -287,6 +217,7 @@ export function UnifiedNavbar({
                                   tabIndex={0}
                                 >
                                   {child.label}
+                                  {child.external && <ExternalLink className="h-3 w-3 ml-1 inline" />}
                                 </Link>
                               ))}
                             </div>
@@ -300,7 +231,7 @@ export function UnifiedNavbar({
                           href={item.href}
                           className={cn(
                             "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                            isActive(item.href)
+                            isNavItemActive(item, pathname)
                               ? "bg-primary text-primary-foreground"
                               : "hover:bg-accent hover:text-accent-foreground"
                           )}
@@ -322,97 +253,124 @@ export function UnifiedNavbar({
           </div>
         </div>
 
-        {/* Breadcrumbs */}
-        {showBreadcrumbs && (
-          <div className="w-full md:w-auto py-2 md:py-0">
-            <UnifiedBreadcrumbs items={breadcrumbs} />
-          </div>
-        )}
-
-        {/* Desktop Navigation & Controls */}
+        {/* Desktop Navigation using shadcn Navigation Menu */}
         <div className="hidden md:flex items-center space-x-6 w-full md:w-auto" ref={navRef} aria-label="Main navigation">
-          <nav className="flex items-center space-x-6" role="navigation" aria-label="Primary">
-            {navigationItems.map((item) => (
-              <div key={item.href} className="relative group">
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    isActive(item.href)
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-accent hover:text-accent-foreground"
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navigationConfig.mainNav.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  {item.children && item.children.length > 0 ? (
+                    <>
+                      <NavigationMenuTrigger
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                        )}
+                        onClick={() => handleNavigation(item.href)}
+                      >
+                        {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                        {item.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
+                          <div className="grid gap-1">
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={item.href}
+                                className={cn(
+                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                  isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                                )}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleNavigation(item.href);
+                                }}
+                              >
+                                <div className="text-sm font-medium leading-none">
+                                  {item.label} Overview
+                                </div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {item.description}
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </div>
+                          <div className="grid gap-1">
+                            {item.children.map((child) => (
+                              <NavigationMenuLink key={child.href} asChild>
+                                <Link
+                                  href={child.href}
+                                  className={cn(
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                    isNavItemActive(child, pathname) && "bg-accent text-accent-foreground"
+                                  )}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavigation(child.href);
+                                  }}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <div className="text-sm font-medium leading-none">
+                                      {child.label}
+                                    </div>
+                                    {child.external && <ExternalLink className="h-3 w-3" />}
+                                  </div>
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                    {child.description}
+                                  </p>
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
+                        </div>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1",
+                          isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                        )}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavigation(item.href);
+                        }}
+                      >
+                        {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                        {item.label}
+                        {item.external && <ExternalLink className="h-3 w-3 ml-1" />}
+                      </Link>
+                    </NavigationMenuLink>
                   )}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavigation(item.href);
-                  }}
-                  tabIndex={0}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                >
-                  {renderIcon(item.icon)}
-                  <span>{item.label}</span>
-                  {item.badge && (
-                    <span className="ml-2 px-2 py-0.5 text-xs bg-primary text-primary-foreground rounded-full">
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-                {/* Dropdown for children */}
-                {item.children && item.children.length > 0 && (
-                  <div
-                    className="absolute top-full left-0 mt-1 w-48 bg-popover border rounded-md shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
-                    role="menu"
-                    aria-label={`${item.label} submenu`}
-                  >
-                    <div className="p-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className={cn(
-                            "block px-3 py-2 text-sm rounded-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                            isActive(child.href)
-                              ? "bg-accent text-accent-foreground font-medium"
-                              : "hover:bg-accent hover:text-accent-foreground"
-                          )}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigation(child.href);
-                          }}
-                          tabIndex={0}
-                          aria-current={isActive(child.href) ? "page" : undefined}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-            {/* Auth menu */}
-            {authMenu.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  isActive(item.href)
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-accent hover:text-accent-foreground"
-                )}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation(item.href);
-                }}
-                tabIndex={0}
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                {renderIcon(item.icon)}
-                <span>{item.label}</span>
-              </Link>
-            ))}
-          </nav>
+                </NavigationMenuItem>
+              ))}
+
+              {/* Auth menu */}
+              {authMenu.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1",
+                        isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                      )}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigation(item.href);
+                      }}
+                    >
+                      {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
           {/* Controls */}
           <div className="flex items-center space-x-2 ml-4">
             {showThemeToggle && (
@@ -432,6 +390,7 @@ export function UnifiedNavbar({
                 {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
               </Button>
             )}
+
             {showPlaybackControls && (
               <div className="flex items-center space-x-1 border rounded-md p-1">
                 <Button
@@ -457,6 +416,7 @@ export function UnifiedNavbar({
           </div>
         </div>
       </div>
+
       {/* Loading indicator for page transitions */}
       {isPending && (
         <div className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center" aria-live="polite">

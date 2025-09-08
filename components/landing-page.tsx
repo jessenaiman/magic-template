@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { MotionProvider, useMotion } from "@/components/motion-provider";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 
 import HeroLanding from "@/components/landing/HeroLanding";
 import { ToolExplorer } from "@/components/landing/ToolExplorer";
@@ -53,12 +52,6 @@ function LandingPageContent() {
         <header
           className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
         >
-          <UnifiedNavbar
-            showPlaybackControls={false}
-            showBreadcrumbs={false}
-            showThemeToggle={true}
-            currentSection="main"
-          />
         </header>        {/* Main Flow */}
         <main role="main" className="pt-10 md:pt-12">
           {/* HERO */}

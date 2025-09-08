@@ -10,9 +10,21 @@ import {
   AlertCircle,
   Loader2
 } from 'lucide-react';
+import * as React from 'react';
 import { useState } from 'react';
 
 // Toggle Button Implementation
+import type { ButtonHTMLAttributes, ReactNode, ElementType } from 'react';
+
+interface ToggleButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  initialState?: boolean;
+  onIcon?: ElementType;
+  offIcon?: ElementType;
+  onLabel?: string;
+  offLabel?: string;
+  className?: string;
+}
+
 const ToggleButton = ({
   initialState = false,
   onIcon: OnIcon = Sun,
@@ -21,22 +33,22 @@ const ToggleButton = ({
   offLabel = "Off",
   className = "",
   ...props
-}: any) => {
+}: ToggleButtonProps) => {
   const [isToggled, setIsToggled] = useState(initialState);
 
   return (
     <button
+      type="button"
       onClick={() => setIsToggled(!isToggled)}
-      className={`
-        flex items-center gap-3 px-4 py-3 rounded-lg font-medium
-        transition-all duration-300 ease-in-out
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-        ${isToggled
-          ? 'bg-blue-600 text-white shadow-lg'
-          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-        }
-        ${className}
-      `}
+      className={[
+        "flex items-center gap-3 px-4 py-3 rounded-lg font-medium",
+        "transition-all duration-300 ease-in-out",
+        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+        isToggled
+          ? "bg-blue-600 text-white shadow-lg"
+          : "bg-gray-100 text-gray-700 hover:bg-gray-200",
+        className
+      ].join(" ")}
       aria-pressed={isToggled}
       role="switch"
       {...props}
@@ -48,13 +60,19 @@ const ToggleButton = ({
 };
 
 // Loading Button Implementation
+interface LoadingButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isLoading?: boolean;
+  className?: string;
+  children: ReactNode;
+}
+
 const LoadingButton = ({
   children,
   isLoading = false,
   disabled = false,
   className = "",
   ...props
-}: any) => {
+}: LoadingButtonProps) => {
   const [internalLoading, setInternalLoading] = useState(false);
   const loading = isLoading || internalLoading;
 
@@ -67,27 +85,42 @@ const LoadingButton = ({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       disabled={loading || disabled}
-      className={`
-        relative flex items-center justify-center gap-2 px-6 py-3
-        bg-blue-600 text-white font-medium rounded-lg
-        transition-all duration-300
-        hover:bg-blue-700
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600
-        ${className}
-      `}
+      className={[
+        "relative flex items-center justify-center gap-2 px-6 py-3",
+        "bg-blue-600 text-white font-medium rounded-lg",
+        "transition-all duration-300",
+        "hover:bg-blue-700",
+        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+        "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600",
+        className
+      ].join(" ")}
       aria-busy={loading}
       {...props}
     >
       {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-      <span className={loading ? 'opacity-70' : ''}>{children}</span>
+      <span className={loading ? "opacity-70" : ""}>{children}</span>
     </button>
   );
 };
 
-function ConfirmationButton({ children, onConfirm, confirmText = "Are you sure?", variant = "danger" }) {
+// Confirmation Button Implementation
+interface ConfirmationButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  onConfirm?: () => void;
+  confirmText?: string;
+  variant?: string;
+  children: ReactNode;
+}
+
+function ConfirmationButton({
+  children,
+  onConfirm,
+  confirmText = "Are you sure?",
+  variant = "danger",
+  ...props
+}: ConfirmationButtonProps) {
   const [showConfirm, setShowConfirm] = useState(false);
   const handleConfirm = () => {
     onConfirm?.();
@@ -101,10 +134,18 @@ function ConfirmationButton({ children, onConfirm, confirmText = "Are you sure?"
           <span className="text-sm">{confirmText}</span>
         </div>
         <div className="flex gap-2">
-          <button onClick={handleConfirm} className="flex-1 px-4 py-2 text-sm font-medium rounded bg-red-600 hover:bg-red-700 text-white">
+          <button
+            type="button"
+            onClick={handleConfirm}
+            className="flex-1 px-4 py-2 text-sm font-medium rounded bg-red-600 hover:bg-red-700 text-white"
+          >
             Delete Item
           </button>
-          <button onClick={() => setShowConfirm(false)} className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200">
+          <button
+            type="button"
+            onClick={() => setShowConfirm(false)}
+            className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200"
+          >
             Cancel
           </button>
         </div>
@@ -112,7 +153,12 @@ function ConfirmationButton({ children, onConfirm, confirmText = "Are you sure?"
     );
   }
   return (
-    <button onClick={() => setShowConfirm(true)} className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-red-600 hover-bg-red-700 text-white">
+    <button
+      type="button"
+      onClick={() => setShowConfirm(true)}
+      className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-red-600 hover:bg-red-700 text-white"
+      {...props}
+    >
       {children}
     </button>
   );

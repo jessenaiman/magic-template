@@ -1,9 +1,10 @@
 // app/design/backgrounds/magicui/page.tsx
 'use client';
 
+// app/design/backgrounds/magicui/page.tsx
 import * as React from 'react';
 import { PreviewTile } from '@/components/preview/preview-tile';
-import { CustomizationSettings } from '@/components/preview/preview-context';
+import { UnifiedBreadcrumbs } from '@/components/navigation/unified-breadcrumbs';
 
 // MagicUI backgrounds (installed components; do not modify)
 import { WarpBackground } from '@/components/magicui/warp-background';
@@ -11,6 +12,9 @@ import { WarpBackground } from '@/components/magicui/warp-background';
 export default function MagicUIBackgroundsPage() {
   return (
     <>
+      <div className="mb-4">
+        <UnifiedBreadcrumbs />
+      </div>
       <PreviewTile
         title="Warp Background"
         componentName="WarpBackground"

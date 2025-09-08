@@ -29,7 +29,6 @@ import { metadataKeywords } from "../metadata";
 import Footer from "@/components/footer";
 import "@/app/globals.css";
 import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
-import { UnifiedSidebar } from "@/components/navigation/unified-sidebar";
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { PreviewProvider } from "@/components/preview/preview-context";
@@ -82,9 +81,6 @@ export default function RootLayout({
               <div className="flex min-h-screen flex-col">
                 <UnifiedNavbar currentSection="main" />
                 <div className="flex flex-1 w-full">
-                  <div className="hidden md:block shrink-0">
-                    <UnifiedSidebar navType="main" />
-                  </div>
                   <main className="flex-1 w-full">
                     {children}
                   </main>

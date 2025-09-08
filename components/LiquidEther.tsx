@@ -532,17 +532,29 @@ export default function LiquidEther({
 }
 `;
 
-    type Uniforms = Record<string, { value: any }>;
+    // Use THREE.IUniform['value'] for uniform values for better type safety
+    type Uniforms = Record<string, { value: THREE.IUniform['value'] }>;
 
+    interface ShaderPassProps {
+      material?: {
+        uniforms?: Uniforms;
+        vertexShader?: string;
+        fragmentShader?: string;
+      };
+      output?: THREE.WebGLRenderTarget | null;
+      output0?: THREE.WebGLRenderTarget | null;
+      output1?: THREE.WebGLRenderTarget | null;
+      [key: string]: unknown;
+    }
     class ShaderPass {
-      props: any;
+      props: ShaderPassProps;
       uniforms?: Uniforms;
       scene: THREE.Scene | null = null;
       camera: THREE.Camera | null = null;
       material: THREE.RawShaderMaterial | null = null;
       geometry: THREE.BufferGeometry | null = null;
       plane: THREE.Mesh | null = null;
-      constructor(props: any) {
+      constructor(props: ShaderPassProps) {
         this.props = props || {};
         this.uniforms = this.props.material?.uniforms;
       }
