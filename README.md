@@ -49,6 +49,18 @@ I'm passionate about building beautiful, functional, and user-friendly web exper
 
 ## 🤝 Let's Build Together: Contributing & Collaboration
 
+### Development Issues
+
+If you encounter build or development issues, check the available prompt files in `.github/prompts/`:
+
+- **`fix-import-paths.prompt.md`** - For resolving Turborepo import path and module resolution issues
+
+These prompts are designed to be used with AI coding agents for systematic problem resolution.
+
+### Contributing
+
+Contributions are always welcome! Here's how you can get involved:
+
 This project is just getting started, and contributions are what make the open-source community such an amazing place to learn and create. I warmly welcome contributors of all skill levels.
 
 ### How You Can Help

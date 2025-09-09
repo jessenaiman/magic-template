@@ -2,7 +2,15 @@
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/ui/*": ["./ui/*"],
+      "@/magicui/*": ["./magicui/*"],
+      "@/animate-ui/*": ["./animate-ui/*"]
+    }
   },
   "include": [
     "**/*.ts",

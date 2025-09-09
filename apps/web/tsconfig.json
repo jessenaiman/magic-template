@@ -10,6 +10,10 @@
       "@repo/components/ui/*": ["../../packages/components/ui/*"],
       "@repo/components/magicui/*": ["../../packages/components/magicui/*"],
       "@repo/components/animate-ui/*": ["../../packages/components/animate-ui/*"],
+      "@repo/components/lib/*": ["../../packages/components/lib/*"],
+      "@workspace/ui/*": ["../../packages/components/ui/*"],
+      "@workspace/magicui/*": ["../../packages/components/magicui/*"],
+      "@workspace/animate-ui/*": ["../../packages/components/animate-ui/*"],
       "@/packages/components/ui/*": ["../../packages/components/ui/*"],
       "@/packages/components/magicui/*": ["../../packages/components/magicui/*"],
       "@/packages/components/animate-ui/*": ["../../packages/components/animate-ui/*"]
