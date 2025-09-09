@@ -1,0 +1,1 @@
+{"version":3,"file":"aurora-text.d.ts","sourceRoot":"","sources":["../../../src/magicui/aurora-text.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAe,MAAM,OAAO,CAAC;AAEpC,UAAU,eAAe;IACvB,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,MAAM,CAAC,EAAE,MAAM,EAAE,CAAC;IAClB,KAAK,CAAC,EAAE,MAAM,CAAC;CAChB;AAED,eAAO,MAAM,UAAU,sEAMlB,eAAe,6CAuBnB,CAAC"}

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "motion/react";
-import { FlickeringGrid } from "@/packages/components/magicui/flickering-grid";
+import { FlickeringGrid } from "@/packages/ui/src/magicui/flickering-grid";
 import { MotionProvider, useMotion } from "@/src/components/motion-provider";
 
 import HeroLanding from "@/src/components/landing/HeroLanding";

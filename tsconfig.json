@@ -23,6 +23,6 @@
       "@/.source": ["./.source"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".source", "packages/components/ui", "packages/components/magicui", "packages/components/animate-ui"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "packages/components/eslint.config.mjs", "packages/logger/eslint.config.js"],
+  "exclude": ["node_modules", ".source", "packages/components/src/uipackages/components/src/magicuipackages/components/src/animate-uiimate-ui"]
 }

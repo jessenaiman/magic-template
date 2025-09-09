@@ -1,0 +1,1 @@
+{"version":3,"file":"ripple.d.ts","sourceRoot":"","sources":["../../../src/magicui/ripple.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,EAAE,wBAAwB,EAAiB,MAAM,OAAO,CAAC;AAIvE,UAAU,WAAY,SAAQ,wBAAwB,CAAC,KAAK,CAAC;IAC3D,cAAc,CAAC,EAAE,MAAM,CAAC;IACxB,iBAAiB,CAAC,EAAE,MAAM,CAAC;IAC3B,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB;AAED,eAAO,MAAM,MAAM,yCA6CjB,CAAC"}

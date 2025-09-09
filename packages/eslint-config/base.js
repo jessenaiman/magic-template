@@ -1,18 +1,32 @@
-const { FlatCompat } = require('@eslint/eslintrc');
+import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import turboPlugin from "eslint-plugin-turbo";
+import tseslint from "typescript-eslint";
+import onlyWarn from "eslint-plugin-only-warn";
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-/** @type {import("eslint").Linter.Config} */
-module.exports = [
-  ...compat.extends('@typescript-eslint/recommended'),
+/**
+ * A shared ESLint configuration for the repository.
+ *
+ * @type {import("eslint").Linter.Config}
+ * */
+export const config = [
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
   {
     plugins: {
-      turbo: require('eslint-plugin-turbo'),
+      turbo: turboPlugin,
     },
     rules: {
-      'turbo/no-undeclared-env-vars': 'error',
+      "turbo/no-undeclared-env-vars": "warn",
     },
+  },
+  {
+    plugins: {
+      onlyWarn,
+    },
+  },
+  {
+    ignores: ["dist/**"],
   },
 ];

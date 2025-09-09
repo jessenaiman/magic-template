@@ -3,21 +3,60 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/app/*": ["./src/app/*"],
-      "@repo/components/ui/*": ["../../packages/components/ui/*"],
-      "@repo/components/magicui/*": ["../../packages/components/magicui/*"],
-      "@repo/components/animate-ui/*": ["../../packages/components/animate-ui/*"],
-      "@repo/components/lib/*": ["../../packages/components/lib/*"],
-      "@workspace/ui/*": ["../../packages/components/ui/*"],
-      "@workspace/magicui/*": ["../../packages/components/magicui/*"],
-      "@workspace/animate-ui/*": ["../../packages/components/animate-ui/*"],
-      "@/packages/components/ui/*": ["../../packages/components/ui/*"],
-      "@/packages/components/magicui/*": ["../../packages/components/magicui/*"],
-      "@/packages/components/animate-ui/*": ["../../packages/components/animate-ui/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/lib/*": [
+        "../../packages/lib/src/*"
+      ],
+      "@/hooks/*": [
+        "../../packages/hooks/src/*"
+      ],
+      "@/app/*": [
+        "./src/app/*"
+      ],
+      "@repo/components/ui/*": [
+        "../../packages/components/ui/*"
+      ],
+      "@repo/components/magicui/*": [
+        "../../packages/components/magicui/*"
+      ],
+      "@repo/components/animate-ui/*": [
+        "../../packages/components/animate-ui/*"
+      ],
+      "@repo/components/lib/*": [
+        "../../packages/components/lib/*"
+      ],
+      "@workspace/ui/*": [
+        "../../packages/components/ui/*"
+      ],
+      "@workspace/magicui/*": [
+        "../../packages/components/magicui/*"
+      ],
+      "@workspace/animate-ui/*": [
+        "../../packages/components/animate-ui/*"
+      ],
+      "@/packages/components/ui/*": [
+        "../../packages/components/ui/*"
+      ],
+      "@/packages/components/magicui/*": [
+        "../../packages/components/magicui/*"
+      ],
+      "@/packages/components/animate-ui/*": [
+        "../../packages/components/animate-ui/*"
+      ]
+    },
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "incremental": true,
+    "resolveJsonModule": true
   },
   "include": [
     "next-env.d.ts",
@@ -25,5 +64,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

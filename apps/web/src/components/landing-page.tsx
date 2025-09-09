@@ -4,14 +4,14 @@ import { motion } from "motion/react";
 import { FlickeringGrid } from "@repo/components/magicui/flickering-grid";
 import { MotionProvider, useMotion } from "@/components/motion-provider";
 
-import HeroLanding from "@repo/components/landing/HeroLanding";
-import { ToolExplorer } from "@repo/components/landing/ToolExplorer";
-import WorkshopValue from "@repo/components/landing/WorkshopValue";
-import SandboxTeaser from "@repo/components/landing/SandboxTeaser";
-import ProfessionalPathways from "@repo/components/landing/ProfessionalPathways";
-import PricingTiers from "@repo/components/landing/pricing-tiers";
+import HeroLanding from "@/components/landing/HeroLanding";
+import { ToolExplorer } from "@/components/landing/ToolExplorer";
+import WorkshopValue from "@/components/landing/WorkshopValue";
+import SandboxTeaser from "@/components/landing/SandboxTeaser";
+import ProfessionalPathways from "@/components/landing/ProfessionalPathways";
+import PricingTiers from "@/components/landing/pricing-tiers";
 import { ResourceCards } from "@/components/resource-cards";
-import ClosingCta from "@repo/components/landing/ClosingCta";
+import ClosingCta from "@/components/landing/ClosingCta";
 import { useParticlePositions } from "@/hooks/use-particle-positions";
 
 // Animation helpers (kept simple for type safety)
