@@ -1,0 +1,14 @@
+{
+  "name": "@repo/test",
+  "private": true,
+  "version": "0.1.0",
+  "main": "index.js",
+  "files": ["**/*"],
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "vitest": "^2.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "jsdom": "^24.0.0"
+  }
+}

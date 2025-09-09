@@ -16,6 +16,18 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "test:unit": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "test:smoke": {
+      "dependsOn": ["build", "start#prod"],
+      "outputs": []
+    },
+    "test:links": {
+      "dependsOn": ["build", "start#prod"],
+      "outputs": []
     }
   }
 }

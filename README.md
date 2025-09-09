@@ -1,3 +1,38 @@
+# Testing
+
+This monorepo uses a modern, minimal test stack:
+
+- **Unit:** [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) (jsdom)
+- **E2E/Smoke/Links:** [Playwright](https://playwright.dev/)
+
+## Quick Start
+
+1. Add tests in `apps/web/tests/smoke/` (smoke) and `apps/web/tests/links/` (link checks).
+2. Run unit tests:
+
+    ```bash
+    pnpm --filter apps/web test:unit
+    ```
+
+3. Run smoke tests (site must be running):
+
+    ```bash
+    PLAYWRIGHT_BASE_URL=http://localhost:3000 pnpm --filter apps/web test:smoke
+    ```
+
+4. Run link tests:
+
+    ```bash
+    PLAYWRIGHT_BASE_URL=http://localhost:3000 pnpm --filter apps/web test:links
+    ```
+
+## CI
+
+See `.github/workflows/ci.yml` for the full pipeline: build → start → smoke → links.
+
+## Shared Config
+
+Test config is centralized in `packages/test` for easy reuse across apps.
 # Web Design Workshop
 
 **An interactive component gallery to accelerate creative development and bridge the gap between design and implementation.**
