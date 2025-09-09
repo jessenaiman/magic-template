@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":["file:///home/adam/Dev/magic-template/apps/web/src/app/page.tsx"],"sourcesContent":["/**\n * Home Page Component\n *\n * ARCHITECTURE: Server Component\n * - No 'use client' directive - runs on server\n * - Composes the landing page from client components\n * - Handles initial page data and routing\n *\n * PATTERN: Server Component with Client Children\n * - Server component handles page-level composition\n * - Client component (LandingPage) handles interactions and animations\n * - Clean separation of concerns between data and presentation\n */\n\nimport LandingPage from \"@/src/components/landing-page\";\n\nexport default function HomePage() {\n  return <LandingPage />;\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;;;CAYC;;;;;;;;;;;AAIc,SAAS;IACtB,qBAAO,sbAAC;;;;;AACV","debugId":null}}]
+}

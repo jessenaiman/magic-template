@@ -1,0 +1,25 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/app/*": ["./src/app/*"],
+      "@repo/components/ui/*": ["../../packages/components/ui/*"],
+      "@repo/components/magicui/*": ["../../packages/components/magicui/*"],
+      "@repo/components/animate-ui/*": ["../../packages/components/animate-ui/*"],
+      "@/packages/components/ui/*": ["../../packages/components/ui/*"],
+      "@/packages/components/magicui/*": ["../../packages/components/magicui/*"],
+      "@/packages/components/animate-ui/*": ["../../packages/components/animate-ui/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

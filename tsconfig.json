@@ -24,5 +24,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".source", "components/ui", "components/magicui", "components/animate-ui"]
+  "exclude": ["node_modules", ".source", "packages/components/ui", "packages/components/magicui", "packages/components/animate-ui"]
 }

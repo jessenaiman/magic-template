@@ -1,0 +1,71 @@
+(()=>{var e={};e.id=2468,e.ids=[2468],e.modules={3295:e=>{"use strict";e.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},9323:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>i});var o=n(11239);function i({children:e}){return(0,o.jsxs)("div",{className:"flex flex-col min-h-screen",children:[(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/components/simple-navbar'");throw e.code="MODULE_NOT_FOUND",e}()),{}),(0,o.jsx)("main",{className:"flex-1 p-4 sm:p-6 pb-24",children:(0,o.jsxs)("div",{className:"container mx-auto max-w-7xl space-y-8",children:[(0,o.jsx)(function(){let{setTitle:e,setDescription:t,setFields:n}=Object(function(){var e=Error("Cannot find module '@/src/components/design-page-context'");throw e.code="MODULE_NOT_FOUND",e}())();return null},{}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/transition-control-panel'");throw e.code="MODULE_NOT_FOUND",e}()),{}),e]})})]})}n(68882),!function(){var e=Error("Cannot find module '@/components/simple-navbar'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/src/components/design-page-context'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/src/components/base-category-options'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/src/components/transition-control-panel'");throw e.code="MODULE_NOT_FOUND",e}()},10846:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},19121:e=>{"use strict";e.exports=require("next/dist/server/app-render/action-async-storage.external.js")},25592:(e,t,n)=>{Promise.resolve().then(n.bind(n,46388))},29294:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-async-storage.external.js")},33873:e=>{"use strict";e.exports=require("path")},46388:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>o});let o=(0,n(79555).registerClientReference)(function(){throw Error("Attempted to call the default export of \"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/magicui/page.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/magicui/page.tsx","default")},46704:(e,t,n)=>{Promise.resolve().then(n.bind(n,73369))},63033:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},73369:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>o});let o=(0,n(79555).registerClientReference)(function(){throw Error("Attempted to call the default export of \"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/layout.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/layout.tsx","default")},79235:(e,t,n)=>{Promise.resolve().then(n.bind(n,86666))},79551:e=>{"use strict";e.exports=require("url")},81552:(e,t,n)=>{Promise.resolve().then(n.bind(n,9323))},86666:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>g});var o=n(11239),i=n(68882);!function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/blur-fade'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/text-animate'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/morphing-text'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/spinning-text'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/hyper-text'");throw e.code="MODULE_NOT_FOUND",e}(),function(){var e=Error("Cannot find module '@/packages/components/magicui/word-rotate'");throw e.code="MODULE_NOT_FOUND",e}();let r=`
+import { BlurFade } from "@/components/magicui/blur-fade";
+
+function Demo() {
+  const [page, setPage] = useState("A");
+  return (
+    <>
+      <button onClick={() => setPage("A")}>Go to Page A</button>
+      <button onClick={() => setPage("B")}>Go to Page B</button>
+      <BlurFade duration={0.6} direction="up">
+        {page === "A" ? "Page A Content" : "Page B Content"}
+      </BlurFade>
+    </>
+  );
+}
+`,a=`
+import { TextAnimate } from "@/components/magicui/text-animate";
+
+function Demo() {
+  return (
+    <TextAnimate
+      by="word"
+      animation="blurIn"
+      duration={0.5}
+    >
+      Click the button to see the text animation
+    </TextAnimate>
+  );
+}
+`,s=`
+import { MorphingText } from "@/components/magicui/morphing-text";
+
+function Demo() {
+  return (
+    <MorphingText texts={["Hello", "World", "React", "MagicUI"]} />
+  );
+}
+`,c=`
+import { SpinningText } from "@/components/magicui/spinning-text";
+
+function Demo() {
+  return (
+    <SpinningText duration={8}>
+      Spinning Text Animation
+    </SpinningText>
+  );
+}
+`,d=`
+import { HyperText } from "@/components/magicui/hyper-text";
+
+function Demo() {
+  return (
+    <HyperText
+      duration={300}
+    >
+      Hover over me to see the effect
+    </HyperText>
+  );
+}
+`,l=`
+import { WordRotate } from "@/components/magicui/word-rotate";
+
+function Demo() {
+  return (
+    <WordRotate
+      words={["First", "Second", "Third", "Fourth"]}
+      duration={2500}
+    />
+  );
+}
+`;function m({customization:e}){let[t,n]=(0,i.useState)("A"),r=e.duration??.6,a=e.direction||"top";return e.ease,(0,o.jsxs)("div",{className:"relative w-full h-40 flex flex-col items-center justify-center",children:[(0,o.jsxs)("div",{className:"mb-4 flex gap-4",children:[(0,o.jsx)("button",{className:"px-4 py-2 rounded bg-blue-500 text-white font-medium transition-colors hover:bg-blue-600",onClick:()=>n("A"),children:"Go to Page A"}),(0,o.jsx)("button",{className:"px-4 py-2 rounded bg-purple-500 text-white font-medium transition-colors hover:bg-purple-600",onClick:()=>n("B"),children:"Go to Page B"})]}),(0,o.jsx)("div",{className:"relative w-full h-24 flex items-center justify-center",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/blur-fade'");throw e.code="MODULE_NOT_FOUND",e}()),{duration:r,direction:a,className:"absolute w-full h-full flex items-center justify-center bg-white rounded shadow",style:{zIndex:2},children:(0,o.jsx)("span",{className:`text-lg font-semibold ${"A"===t?"text-blue-700":"text-purple-700"}`,children:"A"===t?"Page A Content":"Page B Content"})},t)})]})}function u({customization:e}){let t=e.duration??.5,n=e.animation||"blurIn",i=e.by||"word";return(0,o.jsx)("div",{className:"flex items-center justify-center h-40 w-full",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/text-animate'");throw e.code="MODULE_NOT_FOUND",e}()),{by:i,animation:n,duration:t,className:"text-2xl font-bold text-center",children:"Click the replay button to see text animation"})})}function p(){return(0,o.jsx)("div",{className:"flex items-center justify-center h-40 w-full",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/morphing-text'");throw e.code="MODULE_NOT_FOUND",e}()),{texts:["Hello","World","React","MagicUI","Transitions"],className:"text-4xl font-bold"})})}function x({customization:e}){let t=e.duration??8,n=!0===e.reverse;return(0,o.jsx)("div",{className:"flex items-center justify-center h-40 w-full",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/spinning-text'");throw e.code="MODULE_NOT_FOUND",e}()),{duration:t,reverse:n,className:"text-3xl font-bold",children:"Spinning Text"})})}function f({customization:e}){let t=e.duration??300;return(0,o.jsx)("div",{className:"flex items-center justify-center h-40 w-full",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/hyper-text'");throw e.code="MODULE_NOT_FOUND",e}()),{duration:t,className:"text-2xl font-bold cursor-pointer",children:"Hover over me to see the effect"})})}function h({customization:e}){let t=e.duration??2500;return(0,o.jsx)("div",{className:"flex items-center justify-center h-40 w-full",children:(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/packages/components/magicui/word-rotate'");throw e.code="MODULE_NOT_FOUND",e}()),{words:["First","Second","Third","Fourth","Fifth"],duration:t,className:"text-3xl font-bold"})})}function g(){return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"MagicUI BlurFade Page Transition",description:"Simulate navigation between pages using MagicUI's BlurFade animation. Click the buttons to switch pages.",componentName:"BlurFade",code:r,codeType:"tsx",customFields:[{id:"duration",label:"Duration (s)",type:"slider",min:.2,max:2,step:.05},{id:"direction",label:"Direction (top or bottom)",type:"text"},{id:"ease",label:"Easing",type:"text"}],initialCustomization:{duration:.6,direction:"top",ease:"easeOut"},children:e=>(0,o.jsx)(m,{customization:e})}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"Text Animation",description:"Animate text with various effects using MagicUI's TextAnimate component.",componentName:"TextAnimate",code:a,codeType:"tsx",customFields:[{id:"duration",label:"Duration (s)",type:"slider",min:.1,max:1,step:.05},{id:"animation",label:"Animation Type",type:"text",description:"blurIn, fadeIn, slideUp, etc."},{id:"by",label:"Split By",type:"text",description:"word, character, line"}],initialCustomization:{duration:.5,animation:"blurIn",by:"word"},children:e=>(0,o.jsx)(u,{customization:e})}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"Morphing Text",description:"Smoothly morph between different text values using MagicUI's MorphingText component.",componentName:"MorphingText",code:s,codeType:"tsx",children:(0,o.jsx)(p,{})}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"Spinning Text",description:"Text that spins in a circular animation using MagicUI's SpinningText component.",componentName:"SpinningText",code:c,codeType:"tsx",customFields:[{id:"duration",label:"Duration (s)",type:"slider",min:2,max:20,step:.5},{id:"reverse",label:"Reverse Direction",type:"switch"}],initialCustomization:{duration:8,reverse:!1},children:e=>(0,o.jsx)(x,{customization:e})}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"Hyper Text",description:"Text with hover effects using MagicUI's HyperText component.",componentName:"HyperText",code:d,codeType:"tsx",customFields:[{id:"duration",label:"Duration (s)",type:"slider",min:.1,max:1,step:.05}],initialCustomization:{duration:.3},children:e=>(0,o.jsx)(f,{customization:e})}),(0,o.jsx)(Object(function(){var e=Error("Cannot find module '@/src/components/preview/preview-tile'");throw e.code="MODULE_NOT_FOUND",e}()),{title:"Word Rotation",description:"Rotate between different words using MagicUI's WordRotate component.",componentName:"WordRotate",code:l,codeType:"tsx",customFields:[{id:"duration",label:"Duration (ms)",type:"slider",min:1e3,max:5e3,step:100}],initialCustomization:{duration:2500},children:e=>(0,o.jsx)(h,{customization:e})})]})}},99390:(e,t,n)=>{"use strict";n.r(t),n.d(t,{GlobalError:()=>a.a,__next_app__:()=>m,pages:()=>l,routeModule:()=>u,tree:()=>d});var o=n(65231),i=n(57824),r=n(7986),a=n.n(r),s=n(66005),c={};for(let e in s)0>["default","tree","pages","GlobalError","__next_app__","routeModule"].indexOf(e)&&(c[e]=()=>s[e]);n.d(t,c);let d={children:["",{children:["design",{children:["transitions",{children:["magicui",{children:["__PAGE__",{},{page:[()=>Promise.resolve().then(n.bind(n,46388)),"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/magicui/page.tsx"]}]},{}]},{layout:[()=>Promise.resolve().then(n.bind(n,73369)),"/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/layout.tsx"]}]},{layout:[()=>Promise.resolve().then(n.bind(n,55758)),"/home/adam/Dev/magic-template/apps/web/src/app/design/layout.tsx"],metadata:{icon:[async e=>(await Promise.resolve().then(n.bind(n,61280))).default(e)],apple:[],openGraph:[async e=>(await Promise.resolve().then(n.bind(n,32781))).default(e)],twitter:[],manifest:void 0}}]},{layout:[()=>Promise.resolve().then(n.bind(n,47774)),"/home/adam/Dev/magic-template/apps/web/src/app/layout.tsx"],"not-found":[()=>Promise.resolve().then(n.bind(n,26229)),"/home/adam/Dev/magic-template/apps/web/src/app/not-found.tsx"],forbidden:[()=>Promise.resolve().then(n.t.bind(n,54887,23)),"next/dist/client/components/forbidden-error"],unauthorized:[()=>Promise.resolve().then(n.t.bind(n,96844,23)),"next/dist/client/components/unauthorized-error"],metadata:{icon:[async e=>(await Promise.resolve().then(n.bind(n,61280))).default(e)],apple:[],openGraph:[async e=>(await Promise.resolve().then(n.bind(n,32781))).default(e)],twitter:[],manifest:void 0}}]}.children,l=["/home/adam/Dev/magic-template/apps/web/src/app/design/transitions/magicui/page.tsx"],m={require:n,loadChunk:()=>Promise.resolve()},u=new o.AppPageRouteModule({definition:{kind:i.RouteKind.APP_PAGE,page:"/design/transitions/magicui/page",pathname:"/design/transitions/magicui",bundlePath:"",filename:"",appPaths:[]},userland:{loaderTree:d}})}};var t=require("../../../../webpack-runtime.js");t.C(e);var n=e=>t(t.s=e),o=t.X(0,[5063,7867,812],()=>n(99390));module.exports=o})();
