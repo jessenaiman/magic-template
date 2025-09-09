@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -13,7 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-import { NAVIGATION_CONFIG } from "@/config/navigation"
+import { NAVIGATION_CONFIG } from "@/lib/navigation"
 import { isNavItemActive, renderIcon, type NavItem } from "@/lib/navigation-utils"
 import { ExternalLink } from "lucide-react"
 

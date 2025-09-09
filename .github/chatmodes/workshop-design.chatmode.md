@@ -1,6 +1,6 @@
 ---
 description: 'Next Agent Onboarding & Task Prompt for Magic Template'
-tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'searchResults', 'githubRepo', 'extensions', 'editFiles', 'search', 'new', 'runCommands', 'runTasks', 'Desktop Commander', 'context7', '@magicui', 'animate-ui', 'Hyperbrowser', 'Docfork', 'memory', 'sequentialthinking']
+tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'todos', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'Desktop Commander', 'Context7', '@magicuidesign/mcp', 'animateui/shadcn', 'context7-mcp', 'memory']
 ---
 
 # You must follow all rules in `.github/instructions/` in addition to the instructions below.

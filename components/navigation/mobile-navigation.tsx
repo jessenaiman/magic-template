@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -7,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { NAVIGATION_CONFIG } from "@/config/navigation"
+import { NAVIGATION_CONFIG } from "@/lib/navigation"
 import { isNavItemActive, renderIcon, type NavItem } from "@/lib/navigation-utils"
 
 interface MobileNavigationProps {

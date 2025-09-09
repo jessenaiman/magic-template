@@ -4,7 +4,7 @@ import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
+import { UnifiedNavbar } from "@/components/navigation/navbar";
 import { PageBreadcrumb } from "@/components/navigation/page-breadcrumb";
 import { PreviewProvider } from "@/components/preview/preview-context";
 import * as React from "react";

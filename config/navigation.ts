@@ -33,19 +33,19 @@ export const navigationItems: NavItem[] = [
   },
   {
     label: "Templates",
-    href: "/templates",
+    href: "/template",
     icon: "Layout",
     description: "Template components and examples",
     children: [
       {
         label: "Landing Pages",
-        href: "/templates/landing",
+        href: "/template/landing",
         icon: "Layout",
         description: "Landing page templates"
       },
       {
         label: "Dashboards",
-        href: "/templates/dashboard",
+        href: "/template/dashboard",
         icon: "Layout",
         description: "Dashboard templates"
       }
