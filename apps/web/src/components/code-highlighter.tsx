@@ -6,14 +6,14 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Check, Copy } from 'lucide-react';
 import { toast } from 'sonner';
 
-import { cn } from '@/src/lib/utils';
-import { Button } from '@/packages/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Button } from '@repo/components/ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/packages/components/ui/tooltip';
+} from '@repo/components/ui/tooltip';
 
 interface CodeHighlighterProps {
   language: string;

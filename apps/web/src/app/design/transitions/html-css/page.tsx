@@ -2,7 +2,7 @@
 // HTML/CSS Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewTile } from "@/src/components/preview/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 
 const transitionCode = `
 <div class="transition-demo">

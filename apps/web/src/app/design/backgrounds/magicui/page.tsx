@@ -3,11 +3,11 @@
 
 // app/design/backgrounds/magicui/page.tsx
 import * as React from 'react';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { PageBreadcrumb } from '@/src/components/navigation/page-breadcrumb';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { PageBreadcrumb } from '@/components/navigation/page-breadcrumb';
 
 // MagicUI backgrounds (installed components; do not modify)
-import { WarpBackground } from '@/packages/components/magicui/warp-background';
+import { WarpBackground } from '@repo/components/magicui/warp-background';
 
 export default function MagicUIBackgroundsPage() {
   return (

@@ -2,8 +2,8 @@
 
 import React from "react";
 import { SimpleNavbar } from "@/components/simple-navbar";
-import { useDesignPage } from "@/src/components/design-page-context";
-import { getBaseFields } from "@/src/components/base-category-options";
+import { useDesignPage } from "@/components/design-page-context";
+import { getBaseFields } from "@/components/base-category-options";
 
 interface LayoutProps {
   children: React.ReactNode;

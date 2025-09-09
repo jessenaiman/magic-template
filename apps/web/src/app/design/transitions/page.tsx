@@ -3,7 +3,7 @@
 
 import React from "react";
 import Link from "next/link";
-import ShinyText from "@/packages/components/ShinyText";
+import ShinyText from "@repo/components/ShinyText";
 
 export default function TransitionsPage() {
   return (

@@ -1,7 +1,7 @@
 'use client';
 
-import { TemplatePreview } from '@/packages/components/templates/template-preview';
-import { TemplateCustomizationPanel } from '@/packages/components/templates/template-customization-panel';
+import { TemplatePreview } from '@repo/components/templates/template-preview';
+import { TemplateCustomizationPanel } from '@repo/components/templates/template-customization-panel';
 import { useState } from 'react';
 import { ChevronUp, ChevronDown, Search } from 'lucide-react';
 

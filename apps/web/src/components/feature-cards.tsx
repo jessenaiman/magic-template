@@ -8,7 +8,7 @@ import React, {
   MutableRefObject,
 } from "react";
 import { gsap } from "gsap";
-import CountUp from "@/packages/components/CountUp";
+import CountUp from "@repo/components/CountUp";
 import "./landing/FeatureCards/FeatureCards.css";
 
 /**

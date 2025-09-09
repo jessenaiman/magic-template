@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 import { Play, Pause, Square, RotateCcw } from 'lucide-react';
-import { Button } from '@/packages/components/ui/button';
-import { usePreviewContext } from '@/src/components/preview/preview-context';
-import { ThemeToggle } from '@/src/components/theme-toggle';
-import { cn } from '@/src/lib/utils';
+import { Button } from '@repo/components/ui/button';
+import { usePreviewContext } from '@/components/preview/preview-context';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { cn } from '@/lib/utils';
 import { useCallback } from 'react';
 
 export function PreviewControlsBar() {

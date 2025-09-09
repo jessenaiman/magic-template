@@ -9,10 +9,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/packages/components/ui/navigation-menu"
-import { cn } from "@/src/lib/utils"
-import { NAVIGATION_CONFIG } from "@/src/lib/navigation"
-import { isNavItemActive, renderIcon, type NavItem } from "@/src/lib/navigation-utils"
+} from "@repo/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
+import { NAVIGATION_CONFIG } from "@/lib/navigation"
+import { isNavItemActive, renderIcon, type NavItem } from "@/lib/navigation-utils"
 import { ExternalLink } from "lucide-react"
 
 export function MainNavigation() {

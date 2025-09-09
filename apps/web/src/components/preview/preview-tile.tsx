@@ -2,18 +2,18 @@
 
 import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/packages/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/packages/components/ui/tooltip';
-import { Button } from '@/packages/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@repo/components/ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@repo/components/ui/tooltip';
+import { Button } from '@repo/components/ui/button';
 import { X } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
-import { usePreviewTileExpansion } from '@/src/components/preview/preview-context';
-import { usePreviewContext, CustomizationSettings } from '@/src/components/preview/preview-context';
+import { cn } from '@/lib/utils';
+import { usePreviewTileExpansion } from '@/components/preview/preview-context';
+import { usePreviewContext, CustomizationSettings } from '@/components/preview/preview-context';
 import PreviewCustomizationPanel, {
   FieldConfig,
-} from '@/src/components/preview/preview-customization-panel';
-import { PreviewTileHeader } from '@/src/components/preview/preview-tile-header';
-import { CodeHighlighter } from '@/src/components/code-highlighter';
+} from '@/components/preview/preview-customization-panel';
+import { PreviewTileHeader } from '@/components/preview/preview-tile-header';
+import { CodeHighlighter } from '@/components/code-highlighter';
 
 // Utility function to get language for syntax highlighting based on code type
 function getLanguageForCodeType(codeType: string): string {

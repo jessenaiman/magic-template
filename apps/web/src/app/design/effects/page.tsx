@@ -3,12 +3,12 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/packages/components/ui/card';
-import { Button } from '@/packages/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@repo/components/ui/card';
+import { Button } from '@repo/components/ui/button';
 import { ArrowRight, Code, Sparkles, Wand2 } from 'lucide-react';
-import { GridBeams } from '@/packages/components/magicui/grid-beams';
-import { Meteors } from '@/packages/components/magicui/meteors';
-import { RetroGrid } from '@/packages/components/magicui/retro-grid';
+import { GridBeams } from '@repo/components/magicui/grid-beams';
+import { Meteors } from '@repo/components/magicui/meteors';
+import { RetroGrid } from '@repo/components/magicui/retro-grid';
 
 export default function EffectsPage() {
   return (

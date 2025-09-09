@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { NAVIGATION_CONFIG } from "@/src/lib/navigation";
-import { renderIcon, type NavItem } from "@/src/lib/navigation-utils";
-import { useDesignPage } from "@/src/components/design-page-context";
-import { cn } from "@/src/lib/utils";
+import { NAVIGATION_CONFIG } from "@/lib/navigation";
+import { renderIcon, type NavItem } from "@/lib/navigation-utils";
+import { useDesignPage } from "@/components/design-page-context";
+import { cn } from "@/lib/utils";
 
 function PageConfigurator() {
   const { setTitle, setDescription, setFields } = useDesignPage();

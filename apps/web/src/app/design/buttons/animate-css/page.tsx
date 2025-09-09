@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { useDesignPage } from '@/src/components/design-page-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { useDesignPage } from '@/components/design-page-context';
 import { Play, Heart, Download, Share, Zap, Sparkles } from 'lucide-react';
 
 function PageConfigurator() {

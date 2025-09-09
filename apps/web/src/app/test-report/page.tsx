@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/packages/components/ui/card';
-import { Badge } from '@/packages/components/ui/badge';
-import { Button } from '@/packages/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/packages/components/ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/components/ui/card';
+import { Badge } from '@repo/components/ui/badge';
+import { Button } from '@repo/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@repo/components/ui/tabs';
 import { 
   CheckCircle, 
   XCircle, 
@@ -24,7 +24,7 @@ import {
   Navigation
 } from 'lucide-react';
 import { NavigationResults } from './navigation-results';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/packages/components/ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@repo/components/ui/accordion';
 
 interface TestCase {
   name: string;

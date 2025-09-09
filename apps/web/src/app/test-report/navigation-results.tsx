@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/packages/components/ui/card';
-import { Badge } from '@/packages/components/ui/badge';
-import { Button } from '@/packages/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/components/ui/card';
+import { Badge } from '@repo/components/ui/badge';
+import { Button } from '@repo/components/ui/button';
 import { CheckCircle, XCircle, Clock, AlertTriangle } from 'lucide-react';
 
 interface NavigationTestResult {

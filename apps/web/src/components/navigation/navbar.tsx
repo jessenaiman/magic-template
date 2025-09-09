@@ -9,9 +9,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { usePreviewContext } from '../preview/preview-context';
-import { Skeleton } from '@/packages/components/ui/skeleton';
+import { Skeleton } from '@repo/components/ui/skeleton';
 import { useTransition } from 'react';
 
 // Import sub-components for Single Responsibility

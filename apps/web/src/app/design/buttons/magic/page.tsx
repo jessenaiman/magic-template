@@ -2,11 +2,11 @@
 
 "use client";
 
-import { useDesignPage } from "@/src/components/design-page-context";
-import { PreviewTile } from "@/src/components/preview/preview-tile";
-import { Button } from "@/packages/components/ui/button";
-import { RainbowButton } from "@/packages/components/ui/rainbow-button";
-import { RippleButton } from "@/packages/components/ui/ripple-button";
+import { useDesignPage } from "@/components/design-page-context";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { Button } from "@repo/components/ui/button";
+import { RainbowButton } from "@repo/components/ui/rainbow-button";
+import { RippleButton } from "@repo/components/ui/ripple-button";
 import React from "react";
 
 export default function MagicButtonsPage() {

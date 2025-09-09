@@ -1,4 +1,4 @@
-import type { NavItem } from '@/src/lib/navigation-utils';
+import type { NavItem } from '@/lib/navigation-utils';
 
 // Simple navigation configuration
 // Add new navigation items here - that's it!

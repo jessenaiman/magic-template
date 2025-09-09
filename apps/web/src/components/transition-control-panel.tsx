@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { useDesignPage } from './design-page-context';
 import { RotateCcw } from 'lucide-react';
-import { Button } from '@/packages/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/packages/components/ui/tooltip';
+import { Button } from '@repo/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@repo/components/ui/tooltip';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function TransitionControlPanel() {

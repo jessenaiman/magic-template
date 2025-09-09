@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { FieldConfig } from '@/src/components/preview/preview-customization-panel';
+import { FieldConfig } from '@/components/preview/preview-customization-panel';
 
 // Context for the hero content (title, description, fields, background customization)
 interface DesignPageContextType {

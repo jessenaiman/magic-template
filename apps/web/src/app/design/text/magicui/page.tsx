@@ -1,11 +1,11 @@
-import { PreviewTile } from "@/src/components/preview/preview-tile";
-import { AnimatedGradientText } from "@/packages/components/magicui/animated-gradient-text";
-import { AuroraText } from "@/packages/components/magicui/aurora-text";
-import { FlipText } from "@/packages/components/magicui/flip-text";
-import { SparklesText } from "@/packages/components/magicui/sparkles-text";
-import { TextAnimate } from "@/packages/components/magicui/text-animate";
-import { WordRotate } from "@/packages/components/magicui/word-rotate";
-import { TextReveal } from "@/packages/components/magicui/text-reveal";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { AnimatedGradientText } from "@repo/components/magicui/animated-gradient-text";
+import { AuroraText } from "@repo/components/magicui/aurora-text";
+import { FlipText } from "@repo/components/magicui/flip-text";
+import { SparklesText } from "@repo/components/magicui/sparkles-text";
+import { TextAnimate } from "@repo/components/magicui/text-animate";
+import { WordRotate } from "@repo/components/magicui/word-rotate";
+import { TextReveal } from "@repo/components/magicui/text-reveal";
 
 export default function MagicUITextPage() {
   return (

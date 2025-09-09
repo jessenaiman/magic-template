@@ -8,12 +8,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/packages/components/ui/dropdown-menu"
+} from "@repo/components/ui/dropdown-menu"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/packages/components/ui/sidebar"
+} from "@repo/components/ui/sidebar"
 
 export function VersionSwitcher({
   versions,

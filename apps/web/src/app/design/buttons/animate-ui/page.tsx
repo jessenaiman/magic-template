@@ -1,16 +1,16 @@
 "use client";
 
-import { PreviewTile } from "@/src/components/preview/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { Copy } from "lucide-react";
 import React, { useEffect } from "react";
-import { RippleButton } from "@/packages/components/animate-ui/buttons/ripple";
-import { LiquidButton } from "@/packages/components/animate-ui/buttons/liquid";
-import { FlipButton } from "@/packages/components/animate-ui/buttons/flip";
-import { CopyButton } from "@/packages/components/animate-ui/buttons/copy";
-import { GitHubStarsButton } from "@/packages/components/animate-ui/buttons/github-stars";
-import { IconButton } from "@/packages/components/animate-ui/buttons/icon";
-import { InputButton } from "@/packages/components/animate-ui/buttons/input";
-import { useDesignPage } from "@/src/components/design-page-context";
+import { RippleButton } from "@repo/components/animate-ui/buttons/ripple";
+import { LiquidButton } from "@repo/components/animate-ui/buttons/liquid";
+import { FlipButton } from "@repo/components/animate-ui/buttons/flip";
+import { CopyButton } from "@repo/components/animate-ui/buttons/copy";
+import { GitHubStarsButton } from "@repo/components/animate-ui/buttons/github-stars";
+import { IconButton } from "@repo/components/animate-ui/buttons/icon";
+import { InputButton } from "@repo/components/animate-ui/buttons/input";
+import { useDesignPage } from "@/components/design-page-context";
 
 export default function AnimateUIButtonsPage() {
   const { setTitle, setDescription } = useDesignPage();

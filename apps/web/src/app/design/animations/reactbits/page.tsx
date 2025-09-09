@@ -1,11 +1,11 @@
 // ReactBits Animation Demo Page
 "use client";
-import { PreviewTile } from "@/src/components/preview/preview-tile";
-import LogoLoop from "@/packages/components/LogoLoop";
-import ClickSpark from "@/packages/components/ClickSpark";
-import MetaBalls from "@/packages/components/MetaBalls";
-import FadeContent from "@/packages/components/FadeContent";
-import Ribbons from "@/packages/components/Ribbons";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import LogoLoop from "@repo/components/LogoLoop";
+import ClickSpark from "@repo/components/ClickSpark";
+import MetaBalls from "@repo/components/MetaBalls";
+import FadeContent from "@repo/components/FadeContent";
+import Ribbons from "@repo/components/Ribbons";
 
 export default function Page() {
   return (

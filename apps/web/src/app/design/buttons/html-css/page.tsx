@@ -1,11 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { useDesignPage } from '@/src/components/design-page-context';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { FieldConfig } from '@/src/components/preview/preview-customization-panel';
-import { CustomizationSettings } from '@/src/components/preview/preview-context';
-import { cn } from '@/src/lib/utils';
+import { useDesignPage } from '@/components/design-page-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { FieldConfig } from '@/components/preview/preview-customization-panel';
+import { CustomizationSettings } from '@/components/preview/preview-context';
+import { cn } from '@/lib/utils';
 
 // Default values for the preview context
 const defaultCustomization: Partial<CustomizationSettings> = {

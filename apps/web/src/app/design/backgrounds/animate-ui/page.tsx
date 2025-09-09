@@ -1,11 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { useDesignPage } from '@/src/components/design-page-context';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { BubbleBackground } from '@/packages/components/animate-ui/backgrounds/bubble';
-import { GradientBackground } from '@/packages/components/animate-ui/backgrounds/gradient';
-import { StarsBackground } from '@/packages/components/animate-ui/backgrounds/stars';
+import { useDesignPage } from '@/components/design-page-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { BubbleBackground } from '@repo/components/animate-ui/backgrounds/bubble';
+import { GradientBackground } from '@repo/components/animate-ui/backgrounds/gradient';
+import { StarsBackground } from '@repo/components/animate-ui/backgrounds/stars';
 
 function PageConfigurator() {
   const { setTitle, setDescription } = useDesignPage();

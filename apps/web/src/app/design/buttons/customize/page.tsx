@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from "react";
-import { Button } from "@/packages/components/ui/button";
-import { Slider } from "@/packages/components/ui/slider";
-import { Label } from "@/packages/components/ui/label";
+import { Button } from "@repo/components/ui/button";
+import { Slider } from "@repo/components/ui/slider";
+import { Label } from "@repo/components/ui/label";
 import {
   BaseCustomizerComponent,
   defaultBaseSettings,
   type BaseCustomizationSettings,
-} from "@/src/components/base-customizer";
+} from "@/components/base-customizer";
 
 export default function CustomizeButtonsPage() {
   const [settings, setSettings] = useState(defaultBaseSettings);

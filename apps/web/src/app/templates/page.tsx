@@ -1,4 +1,4 @@
-import { TemplatePreview } from '@/packages/components/templates/template-preview';
+import { TemplatePreview } from '@repo/components/templates/template-preview';
 
 export default function TemplatesPage() {
   return (

@@ -4,9 +4,9 @@ import React from "react";
 
 import { SimpleNavbar } from "@/components/simple-navbar";
 import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
-import { useDesignPage } from "@/src/components/design-page-context";
-import { getBaseFields } from "@/src/components/base-category-options";
-import { BackgroundCustomizationPanel } from "@/src/components/background-customization-panel";
+import { useDesignPage } from "@/components/design-page-context";
+import { getBaseFields } from "@/components/base-category-options";
+import { BackgroundCustomizationPanel } from "@/components/background-customization-panel";
 
 interface LayoutProps {
   children: React.ReactNode;

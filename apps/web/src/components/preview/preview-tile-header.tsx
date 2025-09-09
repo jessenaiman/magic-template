@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Button } from '@/packages/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/packages/components/ui/tooltip';
+import { Button } from '@repo/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@repo/components/ui/tooltip';
 import { Code2, Settings, Share, X } from 'lucide-react';
 
 export interface PreviewTileHeaderProps {

@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/packages/components/ui/card";
-import { Button } from "@/packages/components/ui/button";
-import { Slider } from "@/packages/components/ui/slider";
-import { Input } from "@/packages/components/ui/input";
-import { Label } from "@/packages/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@repo/components/ui/card";
+import { Button } from "@repo/components/ui/button";
+import { Slider } from "@repo/components/ui/slider";
+import { Input } from "@repo/components/ui/input";
+import { Label } from "@repo/components/ui/label";
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
   return (

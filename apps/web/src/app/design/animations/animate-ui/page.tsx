@@ -1,5 +1,5 @@
 "use client";
-import { PreviewTile } from "@/src/components/preview/preview-tile";
+import { PreviewTile } from "@/components/preview/preview-tile";
 import { Copy } from "lucide-react";
 import React, { useState } from "react";
 

@@ -4,11 +4,11 @@ import * as React from 'react';
 import { useDesignPage } from './design-page-context';
 import { usePreviewContext } from './preview/preview-context';
 import { PreviewCustomizationPanel, FieldConfig } from './preview/preview-customization-panel';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { Settings, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/packages/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/packages/components/ui/tooltip';
+import { Button } from '@repo/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@repo/components/ui/tooltip';
 // Import with dynamic to prevent hydration errors
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';

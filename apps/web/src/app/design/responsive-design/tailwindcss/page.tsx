@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/packages/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@repo/components/ui/card";
 import { ToyBrick } from "lucide-react";
 
 export default function MagicUIContentLayoutPage() {

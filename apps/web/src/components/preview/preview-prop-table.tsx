@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { Copy, Check } from 'lucide-react';
 
 export interface PreviewPropRow {

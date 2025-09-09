@@ -2,16 +2,16 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { CustomizationSettings } from '@/src/components/preview/preview-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { CustomizationSettings } from '@/components/preview/preview-context';
 
 // MagicUI effects (installed components; do not modify)
-import { GridBeams } from '@/packages/components/magicui/grid-beams';
-import { Meteors } from '@/packages/components/magicui/meteors';
-import { RetroGrid } from '@/packages/components/magicui/retro-grid';
-import { DotPattern } from '@/packages/components/magicui/dot-pattern';
-import { FlickeringGrid } from '@/packages/components/magicui/flickering-grid';
-import { WarpBackground } from '@/packages/components/magicui/warp-background';
+import { GridBeams } from '@repo/components/magicui/grid-beams';
+import { Meteors } from '@repo/components/magicui/meteors';
+import { RetroGrid } from '@repo/components/magicui/retro-grid';
+import { DotPattern } from '@repo/components/magicui/dot-pattern';
+import { FlickeringGrid } from '@repo/components/magicui/flickering-grid';
+import { WarpBackground } from '@repo/components/magicui/warp-background';
 
 function Container({ children, customization }: { children: React.ReactNode; customization: Partial<CustomizationSettings>; }) {
   const { backgroundColor, borderRadius = 12, padding = 16 } = customization;

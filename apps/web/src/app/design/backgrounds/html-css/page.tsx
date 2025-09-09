@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { useDesignPage } from '@/src/components/design-page-context';
-import { BackgroundPreviewTile, BackgroundPreviewTileProps } from '@/src/components/background-preview-tile';
-import { FieldConfig } from '@/src/components/preview/preview-customization-panel';
-import { CustomizationSettings } from '@/src/components/preview/preview-context';
+import { useDesignPage } from '@/components/design-page-context';
+import { BackgroundPreviewTile, BackgroundPreviewTileProps } from '@/components/background-preview-tile';
+import { FieldConfig } from '@/components/preview/preview-customization-panel';
+import { CustomizationSettings } from '@/components/preview/preview-context';
 
 function PageConfigurator() {
   const { setTitle, setDescription, setFields } = useDesignPage();

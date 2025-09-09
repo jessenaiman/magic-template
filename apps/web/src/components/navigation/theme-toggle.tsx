@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { useTheme } from 'next-themes';
-import { Button } from '@/packages/components/ui/button';
+import { Button } from '@repo/components/ui/button';
 import { Moon, Sun } from 'lucide-react';
 
 interface ThemeToggleProps {

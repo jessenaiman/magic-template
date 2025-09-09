@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { Button } from '@/packages/components/ui/button';
-import { useDesignPage } from '@/src/components/design-page-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { Button } from '@repo/components/ui/button';
+import { useDesignPage } from '@/components/design-page-context';
 import { Download, Heart, Share, Trash2 } from 'lucide-react';
 
 function PageConfigurator() {

@@ -1,18 +1,18 @@
 'use client';
 
 import { motion } from "motion/react";
-import { FlickeringGrid } from "@/packages/components/magicui/flickering-grid";
-import { MotionProvider, useMotion } from "@/src/components/motion-provider";
+import { FlickeringGrid } from "@repo/components/magicui/flickering-grid";
+import { MotionProvider, useMotion } from "@/components/motion-provider";
 
-import HeroLanding from "@/packages/components/landing/HeroLanding";
-import { ToolExplorer } from "@/packages/components/landing/ToolExplorer";
-import WorkshopValue from "@/packages/components/landing/WorkshopValue";
-import SandboxTeaser from "@/packages/components/landing/SandboxTeaser";
-import ProfessionalPathways from "@/packages/components/landing/ProfessionalPathways";
-import PricingTiers from "@/packages/components/landing/pricing-tiers";
-import { ResourceCards } from "@/src/components/resource-cards";
-import ClosingCta from "@/packages/components/landing/ClosingCta";
-import { useParticlePositions } from "@/src/hooks/use-particle-positions";
+import HeroLanding from "@repo/components/landing/HeroLanding";
+import { ToolExplorer } from "@repo/components/landing/ToolExplorer";
+import WorkshopValue from "@repo/components/landing/WorkshopValue";
+import SandboxTeaser from "@repo/components/landing/SandboxTeaser";
+import ProfessionalPathways from "@repo/components/landing/ProfessionalPathways";
+import PricingTiers from "@repo/components/landing/pricing-tiers";
+import { ResourceCards } from "@/components/resource-cards";
+import ClosingCta from "@repo/components/landing/ClosingCta";
+import { useParticlePositions } from "@/hooks/use-particle-positions";
 
 // Animation helpers (kept simple for type safety)
 const sectionFade = {

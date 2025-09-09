@@ -7,7 +7,7 @@ import {
   Command,
   LucideIcon,
 } from 'lucide-react';
-import { SlidingNumber } from '@/packages/components/animate-ui/text/sliding-number';
+import { SlidingNumber } from '@repo/components/animate-ui/text/sliding-number';
 import { motion, type Variants, type Transition } from 'motion/react';
 import { usePreviewContext } from './preview/preview-context';
 

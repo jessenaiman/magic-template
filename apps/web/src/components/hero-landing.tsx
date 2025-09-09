@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import landingBlur from "@/assets/svg/landing-blur.svg";
-import { cn } from "@/src/lib/utils";
-import ShinyText from "@/packages/components/ShinyText";
+import { cn } from "@/lib/utils";
+import ShinyText from "@repo/components/ShinyText";
 
 interface HeroLandingProps {
   className?: string;

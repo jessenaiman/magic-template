@@ -8,8 +8,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/packages/components/ui/breadcrumb"
-import { getBreadcrumbItems } from "@/src/lib/navigation"
+} from "@repo/components/ui/breadcrumb"
+import { getBreadcrumbItems } from "@/lib/navigation"
 
 export function PageBreadcrumb() {
   const pathname = usePathname()

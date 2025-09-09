@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { useDesignPage } from '@/src/components/design-page-context';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { useDesignPage } from '@/components/design-page-context';
 
-import { PreviewGrid } from '@/src/components/preview/preview-grid';
+import { PreviewGrid } from '@/components/preview/preview-grid';
 
 function PageConfigurator() {
   const { setTitle, setDescription } = useDesignPage();

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 type MotionDivProps = React.ComponentPropsWithoutRef<typeof motion.div>;
 

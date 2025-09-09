@@ -1,5 +1,5 @@
-import { TemplatePreview } from '@/packages/components/templates/template-preview';
-import { TemplateCustomizationPanel } from '@/packages/components/templates/template-customization-panel';
+import { TemplatePreview } from '@repo/components/templates/template-preview';
+import { TemplateCustomizationPanel } from '@repo/components/templates/template-customization-panel';
 
 export default function ContactTemplatePage() {
   return (

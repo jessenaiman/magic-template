@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { PreviewTile } from "@/src/components/preview/preview-tile";
-import { Button } from "@/packages/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/packages/components/ui/card";
-import { Badge } from "@/packages/components/ui/badge";
-import { Input } from "@/packages/components/ui/input";
-import { Label } from "@/packages/components/ui/label";
-import { Textarea } from "@/packages/components/ui/textarea";
-import { Toggle } from "@/packages/components/ui/toggle";
-import { Switch } from "@/packages/components/ui/switch";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { Button } from "@repo/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/components/ui/card";
+import { Badge } from "@repo/components/ui/badge";
+import { Input } from "@repo/components/ui/input";
+import { Label } from "@repo/components/ui/label";
+import { Textarea } from "@repo/components/ui/textarea";
+import { Toggle } from "@repo/components/ui/toggle";
+import { Switch } from "@repo/components/ui/switch";
 
 export default function ShadCNTextPage() {
   const [isBold, setIsBold] = useState(false);

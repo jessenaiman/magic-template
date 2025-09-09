@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { PreviewSlider } from './preview-slider';
 import { PreviewInput } from './preview-input';
 import { PreviewSwitch } from './preview-switch';

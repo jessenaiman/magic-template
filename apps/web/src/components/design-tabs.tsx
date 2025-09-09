@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter, usePathname } from "next/navigation"
-import { Tabs, TabsList, TabsTrigger } from "@/packages/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@repo/components/ui/tabs"
 
 interface DesignTabsProps {
   items: Array<{

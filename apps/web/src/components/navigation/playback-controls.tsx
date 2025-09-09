@@ -6,7 +6,7 @@
 'use client';
 
 import * as React from 'react';
-import { Button } from '@/packages/components/ui/button';
+import { Button } from '@repo/components/ui/button';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 
 interface PlaybackControlsProps {

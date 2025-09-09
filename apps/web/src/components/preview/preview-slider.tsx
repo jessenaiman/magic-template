@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { cn } from '@/src/lib/utils';
-import { Slider } from '@/packages/components/ui/slider';
+import { cn } from '@/lib/utils';
+import { Slider } from '@repo/components/ui/slider';
 
 export interface PreviewSliderProps {
   label?: string;

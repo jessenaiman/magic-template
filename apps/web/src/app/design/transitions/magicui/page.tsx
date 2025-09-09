@@ -2,13 +2,13 @@
 // MagicUI Page Transitions Demo using PreviewSurface/PreviewTile
 
 import React, { useState } from "react";
-import { PreviewTile } from "@/src/components/preview/preview-tile";
-import { BlurFade } from "@/packages/components/magicui/blur-fade";
-import { TextAnimate } from "@/packages/components/magicui/text-animate";
-import { MorphingText } from "@/packages/components/magicui/morphing-text";
-import { SpinningText } from "@/packages/components/magicui/spinning-text";
-import { HyperText } from "@/packages/components/magicui/hyper-text";
-import { WordRotate } from "@/packages/components/magicui/word-rotate";
+import { PreviewTile } from "@/components/preview/preview-tile";
+import { BlurFade } from "@repo/components/magicui/blur-fade";
+import { TextAnimate } from "@repo/components/magicui/text-animate";
+import { MorphingText } from "@repo/components/magicui/morphing-text";
+import { SpinningText } from "@repo/components/magicui/spinning-text";
+import { HyperText } from "@repo/components/magicui/hyper-text";
+import { WordRotate } from "@repo/components/magicui/word-rotate";
 
 const magicuiTransitionCode = `
 import { BlurFade } from "@/components/magicui/blur-fade";

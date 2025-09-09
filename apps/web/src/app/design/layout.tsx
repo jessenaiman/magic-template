@@ -25,15 +25,15 @@
  */
 
 import type { Metadata, Viewport } from "next";
-import { siteConfig } from "@/src/lib/site";
+import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "@/metadata";
 import "@/app/globals.css";
-import PageTransition from "@/src/components/page-transition";
+import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
-import { LoadingIndicator } from "@/src/components/loading-indicator";
-import { PageBreadcrumb } from "@/src/components/navigation/page-breadcrumb";
-import { DesignPageProvider } from "@/src/components/design-page-context";
-import { PreviewProvider } from "@/src/components/preview/preview-context";
+import { LoadingIndicator } from "@/components/loading-indicator";
+import { PageBreadcrumb } from "@/components/navigation/page-breadcrumb";
+import { DesignPageProvider } from "@/components/design-page-context";
+import { PreviewProvider } from "@/components/preview/preview-context";
 
 import * as React from "react";
 

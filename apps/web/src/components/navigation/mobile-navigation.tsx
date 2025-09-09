@@ -1,12 +1,12 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "@/packages/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/packages/components/ui/sheet"
+import { Button } from "@repo/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@repo/components/ui/sheet"
 import { Menu, ExternalLink } from "lucide-react"
-import { cn } from "@/src/lib/utils"
-import { NAVIGATION_CONFIG } from "@/src/lib/navigation"
-import { isNavItemActive, renderIcon, type NavItem } from "@/src/lib/navigation-utils"
+import { cn } from "@/lib/utils"
+import { NAVIGATION_CONFIG } from "@/lib/navigation"
+import { isNavItemActive, renderIcon, type NavItem } from "@/lib/navigation-utils"
 
 interface MobileNavigationProps {
   mobileMenuOpen: boolean

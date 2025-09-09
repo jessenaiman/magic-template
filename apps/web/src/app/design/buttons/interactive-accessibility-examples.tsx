@@ -1,7 +1,7 @@
 'use client';
 
-import { PreviewTile } from '@/src/components/preview/preview-tile';
-import { PreviewGrid } from '@/src/components/preview/preview-grid';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { PreviewGrid } from '@/components/preview/preview-grid';
 import {
   Heart,
   BookOpen,

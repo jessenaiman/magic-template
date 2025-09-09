@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/packages/components/ui/button";
-import { FlickeringGrid } from "@/packages/components/magicui/flickering-grid";
+import { Button } from "@repo/components/ui/button";
+import { FlickeringGrid } from "@repo/components/magicui/flickering-grid";
 
 export default function NotFound() {
   return (

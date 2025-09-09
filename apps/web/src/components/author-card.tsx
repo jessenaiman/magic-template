@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { type Author } from "@/src/lib/authors";
-import { cn } from "@/src/lib/utils";
+import { type Author } from "@/lib/authors";
+import { cn } from "@/lib/utils";
 
 interface AuthorCardProps {
   author: Author;

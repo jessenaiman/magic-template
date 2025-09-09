@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface PromoContentProps {
   variant?: "desktop" | "mobile";
