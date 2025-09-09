@@ -2,10 +2,10 @@
     script: typeof document === "object" ? document.currentScript : undefined,
     chunks: [
   "static/chunks/_785c7747._.css",
-  "static/chunks/_29136d50._.js",
+  "static/chunks/_2a3784bf._.js",
   "static/chunks/dc37d_tailwindcss_dist_6f2d85c1._.js",
-  "static/chunks/8484d_tailwind-merge_dist_bundle-mjs_mjs_4d8e7d9e._.js",
-  "static/chunks/node_modules__pnpm_0ae08b83._.js"
+  "static/chunks/node_modules__pnpm_4b8c5ea5._.js",
+  "static/chunks/node_modules__pnpm_9e10be93._.js"
 ],
     source: "dynamic"
 });

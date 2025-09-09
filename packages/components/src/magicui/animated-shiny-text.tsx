@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, CSSProperties, FC } from "react";
 
-import { cn } from "@/src/lib/utils";
+import { cn } from "../../lib/utils";
 
 export interface AnimatedShinyTextProps
   extends ComponentPropsWithoutRef<"span"> {
@@ -37,3 +37,5 @@ export const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({
     </span>
   );
 };
+
+export const ShinyText = AnimatedShinyText;

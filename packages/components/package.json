@@ -6,7 +6,10 @@
     "./ui/*": "./src/ui/*",
     "./magicui/*": "./src/magicui/*",
     "./animate-ui/*": "./src/animate-ui/*",
+    "./reactbits/*": "./src/reactbits/*",
     "./lib/*": "./lib/*",
+    "./DecryptedText": "./src/reactbits/DecryptedText.tsx",
+    "./ShinyText": "./src/reactbits/ShinyText.tsx",
     "./*": "./*"
   },
   "scripts": {

@@ -11,7 +11,8 @@
   "build-storybook": "storybook build",
   "test:unit": "vitest --config ../../packages/test/vitest.config.ts",
   "test:smoke": "playwright test tests/smoke --config=../../packages/test/playwright.config.ts",
-  "test:links": "playwright test tests/links --config=../../packages/test/playwright.config.ts"
+  "test:links": "playwright test tests/links --config=../../packages/test/playwright.config.ts",
+  "e2e": "playwright test --config=../../packages/test/playwright.config.ts"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",

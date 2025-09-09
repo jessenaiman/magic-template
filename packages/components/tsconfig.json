@@ -5,14 +5,16 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
       "@/lib/*": ["../../lib/src/*"],
-      "@/src/lib/*": ["../../lib/src/*"],
-      "@/packages/ui/src/ui/*": ["./src/ui/*"],
-      "@/packages/ui/src/animate-ui/*": ["./src/animate-ui/*"],
-      "@/packages/ui/src/magicui/*": ["./src/magicui/*"],
-      "@/packages/ui/src/reactbits/*": ["./src/reactbits/*"],
-      "@/src/hooks/*": ["../../hooks/src/*"],
-      "@/hooks/*": ["../../hooks/src/*"]
+      "@/hooks/*": ["../../hooks/src/*"],
+      "@repo/components/*": ["./src/*"],
+      "@repo/lib/*": ["../../lib/src/*"],
+      "@repo/hooks/*": ["../../hooks/src/*"],
+      "@workspace/ui/*": ["./ui/*"],
+      "@workspace/magicui/*": ["./magicui/*"],
+      "@workspace/animate-ui/*": ["./animate-ui/*"]
     }
   },
   "include": ["src"],

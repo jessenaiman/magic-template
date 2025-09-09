@@ -28,6 +28,10 @@
     "test:links": {
       "dependsOn": ["build", "start#prod"],
       "outputs": []
+    },
+    "e2e": {
+      "dependsOn": ["build"],
+      "passThroughEnv": ["PLAYWRIGHT_*"]
     }
   }
 }

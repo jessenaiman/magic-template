@@ -1,0 +1,17 @@
+{
+  "extends": "../typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": "../../",
+    "paths": {
+      "@repo/components/*": ["packages/components/src/*"],
+      "@repo/lib/*": ["packages/lib/src/*"],
+      "@repo/hooks/*": ["packages/hooks/src/*"],
+      "@workspace/ui/*": ["packages/components/ui/*"],
+      "@workspace/magicui/*": ["packages/components/magicui/*"],
+      "@workspace/animate-ui/*": ["packages/components/animate-ui/*"],
+      "@web/*": ["apps/web/*"]
+    },
+    "types": ["node", "@playwright/test"]
+  },
+  "include": ["../../apps/web/tests/**/*.ts", "../../apps/web/tests/**/*.tsx"]
+}

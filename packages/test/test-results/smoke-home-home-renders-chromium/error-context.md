@@ -1,0 +1,391 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e5]:
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - link "Skip to main content" [ref=e8] [cursor=pointer]:
+        - /url: "#main-hero-heading"
+      - main [ref=e12]:
+        - region "Remove Interface Drag. Ship Creative UI Faster.Remove Interface Drag. Ship Creative UI Faster." [ref=e13]:
+          - img [ref=e15]
+          - generic [ref=e16]:
+            - generic [ref=e17]: Friction Reduction Lab
+            - heading "Remove Interface Drag. Ship Creative UI Faster.Remove Interface Drag. Ship Creative UI Faster." [level=1] [ref=e18]:
+              - generic [ref=e19]: Remove Interface Drag. Ship Creative UI Faster.
+              - generic [ref=e20]:
+                - text: Remove Interface
+                - generic [ref=e21]: Drag
+                - text: .
+              - generic [ref=e22]:
+                - text: Ship
+                - generic [ref=e23]: Creative UI
+                - text: Faster
+                - generic [ref=e24]: .
+            - paragraph [ref=e25]: A tactile design workshop + component sandbox. Touch layouts, motion, spacing & styling directly. Each tweak yields clean React + Tailwind code. Exploration first—commit later.
+            - generic [ref=e26]:
+              - link "Start Experimenting" [ref=e28] [cursor=pointer]:
+                - /url: "#tool-explorer"
+                - generic [ref=e29] [cursor=pointer]: Start Experimenting
+                - img [ref=e31] [cursor=pointer]
+              - link "Style Guides" [ref=e34] [cursor=pointer]:
+                - /url: /styleguides
+                - generic [ref=e35] [cursor=pointer]: Style Guides
+                - img [ref=e37] [cursor=pointer]
+              - link "Design Library" [ref=e40] [cursor=pointer]:
+                - /url: /design
+                - generic [ref=e41] [cursor=pointer]: Design Library
+                - img [ref=e43] [cursor=pointer]
+              - link "Services" [ref=e46] [cursor=pointer]:
+                - /url: "#pricing"
+                - generic [ref=e47] [cursor=pointer]: Services
+                - img [ref=e49] [cursor=pointer]
+            - generic [ref=e52]: Resize the window—tokens + motion adapt live.
+        - region "Launch a Tool. Start Touching the Interface." [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Live Tool Surface
+              - heading "Launch a Tool. Start Touching the Interface." [level=2] [ref=e58]
+              - paragraph [ref=e59]:
+                - text: Skip the blank screen. Open a sandboxed surface and push shapes, tokens, motion and narrative systems immediately. Peek into the
+                - link "design recipes" [ref=e60] [cursor=pointer]:
+                  - /url: /design
+                - text: or the
+                - link "style guides" [ref=e61] [cursor=pointer]:
+                  - /url: /styleguides
+                - text: while you iterate—every tweak teaches the engine what you want next.
+            - list "External interactive tools" [ref=e62]:
+              - listitem "Dice Wizard Character Builder" [ref=e63] [cursor=pointer]:
+                - generic [ref=e64] [cursor=pointer]:
+                  - generic [ref=e65] [cursor=pointer]: Story
+                  - img [ref=e67] [cursor=pointer]
+                - heading "Dice Wizard Character Builder" [level=3] [ref=e71] [cursor=pointer]
+                - paragraph [ref=e72] [cursor=pointer]: Spin up narrative-ready characters & archetypes in seconds.
+                - generic [ref=e74] [cursor=pointer]:
+                  - text: Open sandbox
+                  - generic [ref=e75] [cursor=pointer]: →
+              - listitem "Lazy DM Toolkit" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77] [cursor=pointer]:
+                  - generic [ref=e78] [cursor=pointer]: Prep
+                  - img [ref=e80] [cursor=pointer]
+                - heading "Lazy DM Toolkit" [level=3] [ref=e84] [cursor=pointer]
+                - paragraph [ref=e85] [cursor=pointer]: Slice session prep time. Focus on table fun, not spreadsheets.
+                - generic [ref=e87] [cursor=pointer]:
+                  - text: Open sandbox
+                  - generic [ref=e88] [cursor=pointer]: →
+              - listitem "Omega Spiral Design Tools" [ref=e89] [cursor=pointer]:
+                - generic [ref=e90] [cursor=pointer]:
+                  - generic [ref=e91] [cursor=pointer]: Design
+                  - img [ref=e93] [cursor=pointer]
+                - heading "Omega Spiral Design Tools" [level=3] [ref=e97] [cursor=pointer]
+                - paragraph [ref=e98] [cursor=pointer]: Prototype layout & motion. Tweak visually. Export clean code.
+                - generic [ref=e100] [cursor=pointer]:
+                  - text: Open sandbox
+                  - generic [ref=e101] [cursor=pointer]: →
+              - listitem "AI Imagination Playground" [ref=e102] [cursor=pointer]:
+                - generic [ref=e103] [cursor=pointer]:
+                  - generic [ref=e104] [cursor=pointer]: AI
+                  - img [ref=e106] [cursor=pointer]
+                - heading "AI Imagination Playground" [level=3] [ref=e110] [cursor=pointer]
+                - paragraph [ref=e111] [cursor=pointer]: Generate wild interface & interaction ideas on tap.
+                - generic [ref=e113] [cursor=pointer]:
+                  - text: Open sandbox
+                  - generic [ref=e114] [cursor=pointer]: →
+              - listitem "Game Development Portal" [ref=e115] [cursor=pointer]:
+                - generic [ref=e116] [cursor=pointer]:
+                  - generic [ref=e117] [cursor=pointer]: Build
+                  - img [ref=e119] [cursor=pointer]
+                - heading "Game Development Portal" [level=3] [ref=e123] [cursor=pointer]
+                - paragraph [ref=e124] [cursor=pointer]: Mechanics hub, iteration logs, assets & playtest notes.
+                - generic [ref=e126] [cursor=pointer]:
+                  - text: Open sandbox
+                  - generic [ref=e127] [cursor=pointer]: →
+            - paragraph [ref=e129]:
+              - text: These mini-surfaces form your rapid experimentation belt. Open, poke, observe, repeat. Every second not fighting boilerplate is a second spent shaping feel and flow. Reference
+              - link "background systems" [ref=e130] [cursor=pointer]:
+                - /url: /design/backgrounds
+              - text: and audit consistency in
+              - link "style guides" [ref=e131] [cursor=pointer]:
+                - /url: /styleguides
+              - text: as you refine.
+        - region "Visual Adjustments→Immediate Code Output" [ref=e133]:
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e136]: Rapid Iteration Loop
+              - heading "Visual Adjustments→Immediate Code Output" [level=2] [ref=e137]:
+                - generic [ref=e138]:
+                  - generic [ref=e139]: Visual
+                  - text: Adjustments
+                - generic [ref=e140]: →
+                - generic [ref=e142]: Immediate Code Output
+              - paragraph [ref=e143]: Skip static mockups. Touch real components, test motion & spacing, then ship the code you just shaped. Creative velocity without structural debt.
+              - generic [ref=e144]:
+                - link "Open Sandbox" [ref=e145] [cursor=pointer]:
+                  - /url: "#sandbox"
+                - link "View Behaviors" [ref=e146] [cursor=pointer]:
+                  - /url: /design
+            - list "Workshop value features" [ref=e147]:
+              - listitem [ref=e148]:
+                - heading "Tweak Visually" [level=3] [ref=e149]
+                - paragraph [ref=e150]: Drag, nudge, restyle components right in the canvas.
+                - generic [ref=e151]: "01"
+              - listitem [ref=e152]:
+                - heading "Variant Compare" [level=3] [ref=e153]
+                - paragraph [ref=e154]: Snapshot multiple looks & flip through instantly.
+                - generic [ref=e155]: "02"
+              - listitem [ref=e156]:
+                - heading "Instant Clean Code" [level=3] [ref=e157]
+                - paragraph [ref=e158]: Export minimal React + Tailwind primitives—no noise.
+                - generic [ref=e159]: "03"
+              - listitem [ref=e160]:
+                - heading "Design → Dev Sync" [level=3] [ref=e161]
+                - paragraph [ref=e162]: Share reproducible design states teams can trust.
+                - generic [ref=e163]: "04"
+        - region "Experiment First. Decide Faster." [ref=e165]:
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - heading "Live Variant Cycler" [level=3] [ref=e169]
+              - generic [ref=e171]:
+                - generic [ref=e173]: Button
+                - generic [ref=e175]: Card
+                - generic [ref=e177]: Panel
+                - generic [ref=e179]: Chip
+              - generic [ref=e180]:
+                - code [ref=e181]: <MotionButton variant="ghost" radius="lg" glow />
+                - paragraph [ref=e182]: Every visual nudge is serialised to clean component props.
+            - generic [ref=e183]:
+              - generic [ref=e184]: Sandbox Portal
+              - heading "Experiment First. Decide Faster." [level=2] [ref=e185]
+              - paragraph [ref=e186]: The sandbox is where layout feel, timing curves, responsive shifts & spacing scales become tangible. Try a variant, commit or discard—zero cost. Save only what works.
+              - list [ref=e187]:
+                - listitem [ref=e188]:
+                  - generic [ref=e189]: Cycle visual + motion variants in a single viewport.
+                - listitem [ref=e190]:
+                  - generic [ref=e191]: Adjust spacing tokens & radii and watch every nested piece adapt.
+                - listitem [ref=e192]:
+                  - generic [ref=e193]: Hand-off states devs can reproduce exactly—no pixel guesswork.
+              - generic [ref=e194]:
+                - link "Background Systems→" [ref=e195] [cursor=pointer]:
+                  - /url: /design/backgrounds
+                  - text: Background Systems
+                  - generic [ref=e196] [cursor=pointer]: →
+                - link "Responsive Recipes→" [ref=e197] [cursor=pointer]:
+                  - /url: /design/responsive-design
+                  - text: Responsive Recipes
+                  - generic [ref=e198] [cursor=pointer]: →
+                - link "Typography Motion→" [ref=e199] [cursor=pointer]:
+                  - /url: /design/text
+                  - text: Typography Motion
+                  - generic [ref=e200] [cursor=pointer]: →
+              - paragraph [ref=e201]: Prefer minimalist? Motion trims itself for reduced-motion users automagically.
+        - region "Need Momentum? Plug Me In." [ref=e203]:
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - generic [ref=e206]: Professional Pathways
+              - heading "Need Momentum? Plug Me In." [level=2] [ref=e207]
+              - paragraph [ref=e208]: From rapid prototyping sprints to embedded design-engineering collaboration—pick the level of involvement that accelerates your roadmap without slowing experimentation.
+            - list "Credibility metrics" [ref=e209]:
+              - listitem [ref=e210]: 100+ Creative Components
+              - listitem [ref=e211]: 110% Dev Appreciation Index
+              - listitem [ref=e212]: Friction-Less Iteration
+            - generic [ref=e213]:
+              - link "View Resume / Portfolio→" [ref=e214] [cursor=pointer]:
+                - /url: /blog/react-portfolio-templates
+                - text: View Resume / Portfolio
+                - generic [ref=e215] [cursor=pointer]: →
+              - link "Contact→" [ref=e216] [cursor=pointer]:
+                - /url: /contact
+                - text: Contact
+                - generic [ref=e217] [cursor=pointer]: →
+              - link "Service Levels→" [ref=e218] [cursor=pointer]:
+                - /url: "#pricing"
+                - text: Service Levels
+                - generic [ref=e219] [cursor=pointer]: →
+            - paragraph [ref=e221]: Open-source foundations + focused collaboration. Sustainable velocity without reinventing the wheel.
+        - region "Choose Acceleration Intensity" [ref=e223]:
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - generic [ref=e226]: Service Levels
+              - heading "Choose Acceleration Intensity" [level=2] [ref=e227]
+              - paragraph [ref=e228]:
+                - text: Start playful. Scale into focused output. Embed sustained momentum when you need a design-engineering multiplier. Reference
+                - link "design systems" [ref=e229] [cursor=pointer]:
+                  - /url: /design
+                - text: and audit implementation patterns in
+                - link "style guides" [ref=e230] [cursor=pointer]:
+                  - /url: /styleguides
+                - text: as you scale.
+            - list "Pricing tiers" [ref=e231]:
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - heading "Experiment Mode" [level=3] [ref=e234]
+                  - paragraph [ref=e235]: Starter
+                  - generic [ref=e237]: $0
+                  - paragraph [ref=e238]: Great for casual exploration
+                  - list [ref=e239]:
+                    - listitem [ref=e240]:
+                      - generic [ref=e241]: Public sandbox access
+                    - listitem [ref=e242]:
+                      - generic [ref=e243]: Component variant previews
+                    - listitem [ref=e244]:
+                      - generic [ref=e245]: Limited exports (5 / day)
+                    - listitem [ref=e246]:
+                      - generic [ref=e247]: Community tips feed
+                    - listitem [ref=e248]:
+                      - generic [ref=e249]: Basic motion presets
+                  - link "Start Free→" [ref=e251] [cursor=pointer]:
+                    - /url: /contact
+                    - text: Start Free
+                    - generic [ref=e252] [cursor=pointer]: →
+              - listitem [ref=e253]:
+                - generic [ref=e254]: Popular
+                - generic [ref=e255]:
+                  - heading "Focused Output" [level=3] [ref=e256]
+                  - paragraph [ref=e257]: Builder
+                  - generic [ref=e258]:
+                    - generic [ref=e259]: $—
+                    - generic [ref=e260]: /month
+                  - paragraph [ref=e261]: Most popular for product teams
+                  - list [ref=e262]:
+                    - listitem [ref=e263]:
+                      - generic [ref=e264]: Private sessions
+                    - listitem [ref=e265]:
+                      - generic [ref=e266]: Unlimited clean exports
+                    - listitem [ref=e267]:
+                      - generic [ref=e268]: Custom component extraction
+                    - listitem [ref=e269]:
+                      - generic [ref=e270]: Performance + a11y pass
+                    - listitem [ref=e271]:
+                      - generic [ref=e272]: Variant diff snapshots
+                    - listitem [ref=e273]:
+                      - generic [ref=e274]: Priority feature voting
+                  - link "Request Access→" [ref=e276] [cursor=pointer]:
+                    - /url: /contact
+                    - text: Request Access
+                    - generic [ref=e277] [cursor=pointer]: →
+              - listitem [ref=e278]:
+                - generic [ref=e279]:
+                  - heading "Embedded Velocity" [level=3] [ref=e280]
+                  - paragraph [ref=e281]: Partner
+                  - generic [ref=e282]:
+                    - generic [ref=e283]: $—
+                    - generic [ref=e284]: /engagement
+                  - paragraph [ref=e285]: Tailored collaboration
+                  - list [ref=e286]:
+                    - listitem [ref=e287]:
+                      - generic [ref=e288]: Strategic design-engineering advisory
+                    - listitem [ref=e289]:
+                      - generic [ref=e290]: Bespoke tooling scripts
+                    - listitem [ref=e291]:
+                      - generic [ref=e292]: Design → code pipeline audits
+                    - listitem [ref=e293]:
+                      - generic [ref=e294]: Custom token system alignment
+                    - listitem [ref=e295]:
+                      - generic [ref=e296]: Async iteration reports
+                    - listitem [ref=e297]:
+                      - generic [ref=e298]: Retained rapid prototype sprints
+                  - link "Open Conversation→" [ref=e300] [cursor=pointer]:
+                    - /url: /contact
+                    - text: Open Conversation
+                    - generic [ref=e301] [cursor=pointer]: →
+            - paragraph [ref=e302]: Pricing values shown as placeholders while packaging final access tiers. Custom / hybrid models available for teams with unique pipeline constraints.
+        - region [ref=e303]:
+          - generic [ref=e305]:
+            - generic [ref=e306]:
+              - heading "Developer Resources" [level=2] [ref=e307]
+              - paragraph [ref=e308]: Discover amazing tools and libraries to enhance your development workflow
+            - generic [ref=e309]:
+              - heading "Featured Resources" [level=3] [ref=e310]
+              - generic [ref=e311]:
+                - generic [ref=e313]:
+                  - generic [ref=e314]:
+                    - generic [ref=e315]: UI Library
+                    - generic [ref=e316]: Featured
+                  - heading "Magic UI" [level=3] [ref=e317]
+                  - paragraph [ref=e318]: Beautifully designed components and templates for your next project
+                  - generic [ref=e319]:
+                    - link "Visit Magic UI (UI Library) – opens in new tab" [ref=e320] [cursor=pointer]:
+                      - /url: https://magicui.design
+                      - text: Visit website
+                      - img [ref=e321] [cursor=pointer]
+                    - img [ref=e326]
+                - generic [ref=e329]:
+                  - generic [ref=e330]:
+                    - generic [ref=e331]: Component Library
+                    - generic [ref=e332]: Featured
+                  - heading "React Bits" [level=3] [ref=e333]
+                  - paragraph [ref=e334]: Collection of animated React components for creative developers
+                  - generic [ref=e335]:
+                    - link "Visit React Bits (Component Library) – opens in new tab" [ref=e336] [cursor=pointer]:
+                      - /url: https://reactbits.dev
+                      - text: Visit website
+                      - img [ref=e337] [cursor=pointer]
+                    - img [ref=e342]
+            - generic [ref=e344]:
+              - heading "More Resources" [level=3] [ref=e345]
+              - generic [ref=e346]:
+                - generic [ref=e348]:
+                  - generic [ref=e350]: CSS Framework
+                  - heading "Tailwind CSS" [level=3] [ref=e351]
+                  - paragraph [ref=e352]: A utility-first CSS framework for rapid UI development
+                  - generic [ref=e353]:
+                    - link "Visit Tailwind CSS (CSS Framework) – opens in new tab" [ref=e354] [cursor=pointer]:
+                      - /url: https://tailwindcss.com
+                      - text: Visit website
+                      - img [ref=e355] [cursor=pointer]
+                    - img [ref=e360]
+                - generic [ref=e363]:
+                  - generic [ref=e365]: Framework
+                  - heading "Next.js" [level=3] [ref=e366]
+                  - paragraph [ref=e367]: The React framework for production-grade applications
+                  - generic [ref=e368]:
+                    - link "Visit Next.js (Framework) – opens in new tab" [ref=e369] [cursor=pointer]:
+                      - /url: https://nextjs.org
+                      - text: Visit website
+                      - img [ref=e370] [cursor=pointer]
+                    - img [ref=e375]
+                - generic [ref=e378]:
+                  - generic [ref=e380]: Animation
+                  - heading "Framer Motion" [level=3] [ref=e381]
+                  - paragraph [ref=e382]: Production-ready motion library for React
+                  - generic [ref=e383]:
+                    - link "Visit Framer Motion (Animation) – opens in new tab" [ref=e384] [cursor=pointer]:
+                      - /url: https://framer.com/motion
+                      - text: Visit website
+                      - img [ref=e385] [cursor=pointer]
+                    - img [ref=e390]
+                - generic [ref=e393]:
+                  - generic [ref=e395]: UI Library
+                  - heading "shadcn/ui" [level=3] [ref=e396]
+                  - paragraph [ref=e397]: Beautifully designed components built with Radix UI and Tailwind CSS
+                  - generic [ref=e398]:
+                    - link "Visit shadcn/ui (UI Library) – opens in new tab" [ref=e399] [cursor=pointer]:
+                      - /url: https://ui.shadcn.com
+                      - text: Visit website
+                      - img [ref=e400] [cursor=pointer]
+                    - img [ref=e405]
+            - generic [ref=e407]:
+              - paragraph [ref=e408]: Have a resource to suggest?
+              - link "Email us to suggest a resource" [ref=e409] [cursor=pointer]:
+                - /url: mailto:hello@example.com
+                - text: Contact us to add your resource
+                - img [ref=e410] [cursor=pointer]
+        - region "Stop Wrestling Interfaces. Start Sculpting Them." [ref=e413]:
+          - generic [ref=e414]:
+            - generic [ref=e415]:
+              - generic [ref=e416]: Final Nudge
+              - heading "Stop Wrestling Interfaces. Start Sculpting Them." [level=2] [ref=e417]
+              - paragraph [ref=e418]: Open a surface, poke the pixels, feel the motion, export clean code. Exploration-first workflow that preserves velocity while keeping handoff faithful.
+            - generic [ref=e419]:
+              - link "Begin in the Sandbox→" [ref=e420] [cursor=pointer]:
+                - /url: "#tool-explorer"
+                - text: Begin in the Sandbox
+                - generic [ref=e421] [cursor=pointer]: →
+              - link "Request Collaboration→" [ref=e422] [cursor=pointer]:
+                - /url: /contact
+                - text: Request Collaboration
+                - generic [ref=e423] [cursor=pointer]: →
+            - paragraph [ref=e424]: Prefer async review? Send context & goals—receive variants + annotated diffs.
+  - contentinfo [ref=e425]:
+    - paragraph [ref=e427]: © 2025 Your Company. All rights reserved.
+```
