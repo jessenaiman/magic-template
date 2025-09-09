@@ -36,7 +36,7 @@ import "@/app/globals.css";
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { PreviewProvider } from "@/components/preview/preview-context";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
+import { UnifiedNavbar } from "@/components/navigation/navbar";
 
 export const viewport: Viewport = {
   themeColor: "black",

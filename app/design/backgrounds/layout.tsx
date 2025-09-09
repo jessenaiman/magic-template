@@ -3,7 +3,7 @@
 import React from "react";
 
 import { SimpleNavbar } from "@/components/simple-navbar";
-import { ConsolidatedNavbar } from "@/components/consolidated-navbar";
+import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
 import { useDesignPage } from "@/components/design-page-context";
 import { getBaseFields } from "@/components/base-category-options";
 import { BackgroundCustomizationPanel } from "@/components/background-customization-panel";
@@ -50,7 +50,7 @@ export default function BackgroundsLayout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen w-full">
   <SimpleNavbar />
-  <ConsolidatedNavbar navigationItems={navigationItems} />
+  <UnifiedNavbar />
       <main className="flex-1 w-full">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 space-y-8">
           <BackgroundsConfigurator />

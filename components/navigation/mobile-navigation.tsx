@@ -1,24 +1,19 @@
-/**
- * Mobile Navigation Component
- * Handles mobile-specific navigation rendering and state
- */
+"use client"
 
-'use client';
-
-import * as React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { navigationConfig } from '@/config/navigation';
-import { isNavItemActive, renderIcon, type NavItem } from '@/lib/navigation-utils';
-import { Menu, ExternalLink } from 'lucide-react';
+import * as React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu, ExternalLink } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { NAVIGATION_CONFIG } from "@/config/navigation"
+import { isNavItemActive, renderIcon, type NavItem } from "@/lib/navigation-utils"
 
 interface MobileNavigationProps {
-  mobileMenuOpen: boolean;
-  setMobileMenuOpen: (open: boolean) => void;
-  onNavigate: (href: string) => void;
+  mobileMenuOpen: boolean
+  setMobileMenuOpen: (open: boolean) => void
+  onNavigate: (href: string) => void
 }
 
 export function MobileNavigation({
@@ -26,24 +21,19 @@ export function MobileNavigation({
   setMobileMenuOpen,
   onNavigate
 }: MobileNavigationProps) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
       <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-8 w-8 p-0"
-          aria-label="Open navigation menu"
-        >
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-80" aria-label="Mobile navigation menu">
+      <SheetContent side="right" className="w-80">
         <div className="flex flex-col space-y-4 mt-4">
-          <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
-            {navigationConfig.mainNav.map((item: NavItem) => (
+          <nav className="flex flex-col space-y-2">
+            {NAVIGATION_CONFIG.mainNav.map((item: NavItem) => (
               <div key={item.href}>
                 <Link
                   href={item.href}
@@ -53,16 +43,16 @@ export function MobileNavigation({
                       ? "bg-primary text-primary-foreground"
                       : "hover:bg-accent hover:text-accent-foreground"
                   )}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate(item.href);
+                  onClick={() => {
+                    onNavigate(item.href)
+                    setMobileMenuOpen(false)
                   }}
-                  tabIndex={0}
                 >
                   {renderIcon(item.icon)}
                   <span>{item.label}</span>
                   {item.external && <ExternalLink className="h-3 w-3 ml-1" />}
                 </Link>
+
                 {/* Mobile children */}
                 {item.children && item.children.length > 0 && isNavItemActive(item, pathname) && (
                   <div className="ml-6 mt-2 space-y-1">
@@ -76,11 +66,10 @@ export function MobileNavigation({
                             ? "bg-accent text-accent-foreground font-medium"
                             : "hover:bg-accent hover:text-accent-foreground"
                         )}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          onNavigate(child.href);
+                        onClick={() => {
+                          onNavigate(child.href)
+                          setMobileMenuOpen(false)
                         }}
-                        tabIndex={0}
                       >
                         {child.label}
                         {child.external && <ExternalLink className="h-3 w-3 ml-1 inline" />}
@@ -94,5 +83,5 @@ export function MobileNavigation({
         </div>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

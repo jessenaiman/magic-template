@@ -1,6 +1,6 @@
 import type { NavItem } from '@/lib/navigation-utils';
 
-// Simple static navigation configuration
+// Simple navigation configuration
 // Add new navigation items here - that's it!
 export const navigationItems: NavItem[] = [
   {
@@ -8,7 +8,26 @@ export const navigationItems: NavItem[] = [
     href: "/design",
     icon: "Palette",
     description: "Design components and examples",
-    children: [], // Will be populated dynamically
+    children: [
+      {
+        label: "Animations",
+        href: "/design/animations",
+        icon: "Sparkles",
+        description: "Animated design components"
+      },
+      {
+        label: "Backgrounds",
+        href: "/design/backgrounds",
+        icon: "Palette",
+        description: "Background patterns and effects"
+      },
+      {
+        label: "Buttons",
+        href: "/design/buttons",
+        icon: "Zap",
+        description: "Interactive button components"
+      }
+    ],
     isActive: false,
     external: false
   },
@@ -17,7 +36,20 @@ export const navigationItems: NavItem[] = [
     href: "/template",
     icon: "Layout",
     description: "Template components and examples",
-    children: [], // Will be populated dynamically
+    children: [
+      {
+        label: "Landing Pages",
+        href: "/template/landing",
+        icon: "Layout",
+        description: "Landing page templates"
+      },
+      {
+        label: "Dashboards",
+        href: "/template/dashboard",
+        icon: "Layout",
+        description: "Dashboard templates"
+      }
+    ],
     isActive: false,
     external: false
   },
@@ -42,11 +74,11 @@ export const navigationItems: NavItem[] = [
 ];
 
 // Navigation configuration
-export const navigationConfig = {
+export const NAVIGATION_CONFIG = {
   mainNav: navigationItems
 };
 
-// Simple utility functions
+// Simple breadcrumb utility
 export const getBreadcrumbItems = (pathname: string): Array<{ label: string; href: string }> => {
   const items: Array<{ label: string; href: string }> = [{ label: 'Home', href: '/' }];
 

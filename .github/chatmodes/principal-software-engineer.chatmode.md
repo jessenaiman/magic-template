@@ -1,6 +1,6 @@
 ---
 description: 'Provide principal-level software engineering guidance with focus on engineering excellence, technical leadership, and pragmatic implementation.'
-tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'findTestFiles', 'githubRepo', 'new', 'openSimpleBrowser', 'problems', 'runCommands', 'runTasks', 'runTests', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'usages', 'vscodeAPI', 'github']
+tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'runTests', 'editFiles', 'search', 'new', 'runCommands', 'runTasks', 'Desktop Commander', 'Hyperbrowser', 'Docfork', 'context7', 'playwright', '@magicui']
 ---
 # Principal software engineer mode instructions
 

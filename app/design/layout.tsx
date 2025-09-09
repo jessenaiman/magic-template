@@ -31,7 +31,7 @@ import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
 import { LoadingIndicator } from "@/components/loading-indicator";
-import { UnifiedBreadcrumbs } from "@/components/navigation/unified-breadcrumbs";
+import { PageBreadcrumb } from "@/components/navigation/page-breadcrumb";
 import { DesignPageProvider } from "@/components/design-page-context";
 import { PreviewProvider } from "@/components/preview/preview-context";
 
@@ -59,7 +59,7 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
             {/* Main content grows and prevents overflow */}
             <main className="flex-1 min-w-0">
               <div className="mb-4">
-                <UnifiedBreadcrumbs />
+                <PageBreadcrumb />
               </div>
               <Suspense fallback={<LoadingIndicator className="h-[calc(100vh-6rem)]" />}>
                 <PageTransition>

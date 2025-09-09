@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { navigationConfig, type NavItem } from "@/config/navigation";
+import { NAVIGATION_CONFIG } from "@/config/navigation";
+import { renderIcon, type NavItem } from "@/lib/navigation-utils";
 import { useDesignPage } from "@/components/design-page-context";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +20,6 @@ function PageConfigurator() {
 }
 
 function CategoryCard({ item }: { item: NavItem }) {
-  const Icon = item.icon;
   return (
     <Link
       href={item.href}
@@ -29,9 +29,9 @@ function CategoryCard({ item }: { item: NavItem }) {
       )}
     >
       <div className="flex items-start gap-3">
-        {Icon && (
+        {item.icon && (
           <div className="mt-0.5 rounded-md border p-2 bg-background/60">
-            <Icon className="h-5 w-5" />
+            {renderIcon(item.icon, "h-5 w-5")}
           </div>
         )}
         <div className="space-y-1">
@@ -65,13 +65,13 @@ function CategoryCard({ item }: { item: NavItem }) {
 
 function DesignPage() {
   // Find the 'Design' section in mainNav
-  const designSection = navigationConfig.mainNav.find((item) => item.label === 'Design');
+  const designSection = NAVIGATION_CONFIG.mainNav.find((item: NavItem) => item.label === 'Design');
   const categories = designSection?.children ?? [];
   return (
     <div className="space-y-6">
       <PageConfigurator />
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-        {categories.map((cat) => (
+        {categories.map((cat: NavItem) => (
           <CategoryCard key={cat.href} item={cat} />
         ))}
       </div>

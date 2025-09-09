@@ -51,3 +51,4 @@ storybook-static
 /coverage
 /jest
 /test-results
+/playwright-report

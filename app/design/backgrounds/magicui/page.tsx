@@ -4,7 +4,7 @@
 // app/design/backgrounds/magicui/page.tsx
 import * as React from 'react';
 import { PreviewTile } from '@/components/preview/preview-tile';
-import { UnifiedBreadcrumbs } from '@/components/navigation/unified-breadcrumbs';
+import { PageBreadcrumb } from '@/components/navigation/page-breadcrumb';
 
 // MagicUI backgrounds (installed components; do not modify)
 import { WarpBackground } from '@/components/magicui/warp-background';
@@ -13,7 +13,7 @@ export default function MagicUIBackgroundsPage() {
   return (
     <>
       <div className="mb-4">
-        <UnifiedBreadcrumbs />
+        <PageBreadcrumb />
       </div>
       <PreviewTile
         title="Warp Background"
