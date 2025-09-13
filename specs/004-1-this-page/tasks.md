@@ -103,12 +103,29 @@
 **Setup phase complete. All configuration and structure validated.**
 
 ## Phase 3.2: Tests First (TDD)
-- [ ] T004 [P] Ensure all test matcher typings (e.g., Testing Library, jest-dom) are present and recognized by the test runner
-- [ ] T005 [P] Fix or update all tests to match the actual implementation API and props (update tests if implementation changes, and update implementation if tests are correct)
-- [ ] T006 [P] Write contract test for design page customization API (placeholder, see contracts/design-page-customization.md)
-- [ ] T007 [P] Write integration test: design page renders with default customization options (tests/integration/design-page-defaults.test.tsx)
-- [ ] T008 [P] Write integration test: preview tiles expand responsively on all breakpoints (tests/integration/preview-tiles-responsive.test.tsx)
-- [ ] T009 [P] Write integration test: customization panel applies changes to preview tiles (tests/integration/customization-panel.test.tsx)
+
+### Test Setup Review (2025-09-13)
+
+- **Playwright** is present in devDependencies and used in npm scripts for e2e and navigation tests, but there is no explicit playwright.config file. Playwright is not the main runner for integration tests.
+- **Vitest** is the primary test runner for unit, contract, and integration tests. It is configured in `vitest.config.ts` and uses Testing Library for React component tests.
+- **Testing Library** is used for all React integration/unit tests. Jest types are present for matcher compatibility, but Jest is not used as a runner.
+- **Storybook Vitest** plugin is present for story-based tests.
+- **Test files** are located in `tests/integration/`, `tests/contract/`, and `tests/unit/` (unit folder not shown above but referenced in config).
+
+#### Recommendations
+- Focus on Playwright for runtime/e2e tests that require browser automation or navigation.
+- Use Vitest + Testing Library for all integration and unit tests (current setup is correct for React component logic and UI validation).
+- Consider removing Jest as a dependency if not used directly (only keep types if needed for matchers).
+- Document Playwright usage and add a playwright.config file if advanced Playwright features are needed in the future.
+
+---
+
+[ ] T004 [P] Ensure all test matcher typings (e.g., Testing Library, jest-dom) are present and recognized by the test runner
+[ ] T005 [P] Fix or update all tests to match the actual implementation API and props (update tests if implementation changes, and update implementation if tests are correct)
+[ ] T006 [P] Write contract test for design page customization API (placeholder, see contracts/design-page-customization.md)
+[ ] T007 [P] Write integration test: design page renders with default customization options (tests/integration/design-page-defaults.test.tsx)
+[ ] T008 [P] Write integration test: preview tiles expand responsively on all breakpoints (tests/integration/preview-tiles-responsive.test.tsx)
+[ ] T009 [P] Write integration test: customization panel applies changes to preview tiles (tests/integration/customization-panel.test.tsx)
 
 ## Phase 3.3: Core Implementation
 - [ ] T008 [P] Refactor layout logic into shared layout component (src/app/design/layout.tsx)
