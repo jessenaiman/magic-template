@@ -6,6 +6,9 @@
         "-y",
         "@modelcontextprotocol/server-filesystem",
         "/home/adam/Dev/magic-template/"
+      ],
+      "alwaysAllow": [
+        "directory_tree"
       ]
     },
     "desktop-commander": {
@@ -24,11 +27,17 @@
     },
     "context7": {
       "type": "streamable-http",
-      "url": "https://mcp.context7.com/mcp"
+      "url": "https://mcp.context7.com/mcp",
+      "alwaysAllow": [
+        "resolve-library-id"
+      ]
     },
     "@magicuidesign/mcp": {
       "command": "npx",
-      "args": ["-y", "@magicuidesign/mcp@latest"]
+      "args": [
+        "-y",
+        "@magicuidesign/mcp@latest"
+      ]
     }
   }
 }

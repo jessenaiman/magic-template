@@ -8,7 +8,7 @@ import {
   type SlidingNumberProps,
 } from '@/components/animate-ui/text/sliding-number';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type CounterProps = HTMLMotionProps<'div'> & {
   number: number;

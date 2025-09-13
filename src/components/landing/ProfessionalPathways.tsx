@@ -3,7 +3,7 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 interface ProfessionalPathwaysProps {
   className?: string;

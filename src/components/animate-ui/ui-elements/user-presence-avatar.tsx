@@ -11,7 +11,7 @@ import {
   AvatarGroup,
   AvatarGroupTooltip,
 } from '@/components/animate-ui/components/avatar-group';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 const USERS = [
   {

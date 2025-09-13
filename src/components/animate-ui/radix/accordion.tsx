@@ -10,7 +10,7 @@ import {
   type HTMLMotionProps,
 } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type AccordionItemContextType = {
   isOpen: boolean;

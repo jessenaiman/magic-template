@@ -12,7 +12,7 @@ import {
 } from 'motion/react';
 import useMeasure from 'react-use-measure';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type SlidingNumberRollerProps = {
   prevValue: number;

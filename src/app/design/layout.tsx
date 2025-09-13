@@ -25,7 +25,7 @@
  */
 
 import type { Metadata, Viewport } from "next";
-import { siteConfig } from "@/src/app/lib/site";
+import { siteConfig } from "@/app/lib/site";
 import { metadataKeywords } from "@/metadata";
 import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";

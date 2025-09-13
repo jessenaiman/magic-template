@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { useEffect, useMemo, useState } from "react";
 
 type Grid = {

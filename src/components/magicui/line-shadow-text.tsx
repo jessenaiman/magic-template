@@ -1,4 +1,4 @@
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { motion, MotionProps } from "motion/react";
 
 interface LineShadowTextProps

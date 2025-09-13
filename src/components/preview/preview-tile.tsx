@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { usePreviewTileExpansion } from '@/components/preview/preview-context';
 import { usePreviewContext, CustomizationSettings } from '@/components/preview/preview-context';
 import PreviewCustomizationPanel, {

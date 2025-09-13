@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 interface PricingTiersProps {
   className?: string;

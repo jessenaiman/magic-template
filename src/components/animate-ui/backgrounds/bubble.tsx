@@ -8,7 +8,7 @@ import {
   useSpring,
 } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type BubbleBackgroundProps = React.ComponentProps<'div'> & {
   interactive?: boolean;

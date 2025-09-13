@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import React, { HTMLAttributes, useMemo } from "react";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 const createGridMask = (start: number, end: number): string => {
   const mid = (start + end) / 2;

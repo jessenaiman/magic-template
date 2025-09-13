@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 interface Heading {
   id: string;

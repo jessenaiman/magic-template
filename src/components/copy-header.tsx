@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link } from "lucide-react";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 interface CopyHeaderProps extends React.HTMLAttributes<HTMLHeadingElement> {
     level: number;

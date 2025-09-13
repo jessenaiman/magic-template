@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { navigationConfig, type NavItem } from "@/config/navigation";
+import { navigationConfig, type NavItem } from "@/app/config/navigation";
 import { useDesignPage } from "@/components/design-page-context";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 
 function PageConfigurator() {
   const { setTitle, setDescription, setFields } = useDesignPage();

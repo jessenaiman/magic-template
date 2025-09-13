@@ -9,7 +9,7 @@ import {
   type UseInViewOptions,
 } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type HighlightTextProps = HTMLMotionProps<'span'> & {
   text: string;

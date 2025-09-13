@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion, useInView, type UseInViewOptions } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 function CursorBlinker({ className }: { className?: string }) {
   return (

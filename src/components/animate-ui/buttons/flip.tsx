@@ -8,7 +8,7 @@ import {
   motion,
 } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type FlipDirection = 'top' | 'bottom' | 'left' | 'right';
 

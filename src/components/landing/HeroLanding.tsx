@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import landingBlur from "@/assets/svg/landing-blur.svg";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import ShinyText from "@/components/ShinyText";
 
 interface HeroLandingProps {
@@ -46,7 +45,7 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
       {/* Soft blurred ambient */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <img
-          src={landingBlur as unknown as string}
+          src="/landing-blur.svg"
           alt=""
           aria-hidden="true"
           loading="lazy"

@@ -8,7 +8,7 @@ import {
   type Transition,
 } from 'motion/react';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type RotatingTextProps = {
   text: string | string[];

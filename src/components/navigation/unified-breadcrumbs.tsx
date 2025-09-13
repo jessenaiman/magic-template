@@ -11,7 +11,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from '@/components/ui/breadcrumb';
-import { getBreadcrumbItems } from '@/config/navigation';
+import { getBreadcrumbItems } from '@/app/config/navigation';
 
 interface UnifiedBreadcrumbsProps {
   className?: string;

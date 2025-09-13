@@ -12,7 +12,7 @@ import ProfessionalPathways from "@/components/landing/ProfessionalPathways";
 import PricingTiers from "@/components/landing/pricing-tiers";
 import { ResourceCards } from "@/components/resource-cards";
 import ClosingCta from "@/components/landing/ClosingCta";
-import { useParticlePositions } from "@/src/app/hooks/use-particle-positions";
+import { useParticlePositions } from "@/app/hooks/use-particle-positions";
 
 // Animation helpers (kept simple for type safety)
 const sectionFade = {

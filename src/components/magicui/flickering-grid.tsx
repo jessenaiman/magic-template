@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import React, {
   useCallback,
   useEffect,

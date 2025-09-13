@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, Variants, MotionProps } from "motion/react";
 
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { ElementType } from "react";
 import React from "react";
 

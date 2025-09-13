@@ -10,14 +10,14 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { useTheme } from 'next-themes';
 import { usePreviewContext } from '../preview/preview-context';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTransition } from 'react';
-import { navigationConfig, type NavItem, isNavItemActive, iconMap } from '@/config/navigation';
+import { navigationConfig, type NavItem, isNavItemActive, iconMap } from '@/app/config/navigation';
 import {
   NavigationMenu,
   NavigationMenuContent,

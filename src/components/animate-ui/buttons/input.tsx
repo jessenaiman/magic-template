@@ -8,7 +8,7 @@ import {
   Transition,
 } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 
 type InputButtonContextType = {
   showInput: boolean;

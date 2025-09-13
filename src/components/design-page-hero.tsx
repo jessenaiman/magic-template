@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useDesignPage } from './design-page-context';
 import { usePreviewContext } from './preview/preview-context';
 import { PreviewCustomizationPanel, FieldConfig } from './preview/preview-customization-panel';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { Settings, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';

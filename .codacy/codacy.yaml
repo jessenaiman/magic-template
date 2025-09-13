@@ -1,3 +1,12 @@
+exclude_paths:
+    - src/components/ui/**/*
+    - src/components/magicui/**/*
+    - src/components/animate-ui/**/*
+    - src/components/[A-Z]*.tsx
+    - node_modules/**/*
+    - .next/**/*
+    - test-results/**/*
+    - playwright-report/**/*
 runtimes:
     - java@17.0.10
     - node@22.2.0

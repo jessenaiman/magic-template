@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useInView, type UseInViewOptions } from 'motion/react';
 import { useTheme } from 'next-themes';
 
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { CopyButton } from '@/components/animate-ui/buttons/copy';
 
 type CodeEditorProps = Omit<React.ComponentProps<'div'>, 'onCopy'> & {

@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { motion } from "motion/react";
 import { CSSProperties } from "react";
 

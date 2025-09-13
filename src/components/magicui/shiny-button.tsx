@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/src/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { motion, MotionProps, type AnimationProps } from "motion/react";
 import React from "react";
 

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useDesignPage } from './design-page-context';
 import { PreviewSlider } from './preview/preview-slider';
 import { PreviewInput } from './preview/preview-input';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { cn } from '@/src/app/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { usePreviewContext, useCustomizationProp } from './preview-context';
 
 export interface PreviewInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
