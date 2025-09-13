@@ -248,23 +248,23 @@ export default function TestReportPage() {
           fetch('/api/test-results/unit', { cache: 'no-store' })
         ]);
 
-        let builtSuites: TestSuite[] = [];
+        const builtSuites: TestSuite[] = [];
         // E2E
         if (e2eRes.ok) {
           const e2eData: E2EReporterResult = await e2eRes.json();
           const totals = e2eData.totals || { total: 0, passed: 0, failed: 0, skipped: 0 };
           const cases: TestCase[] = (e2eData.suites || []).map((c, idx) => ({
             name: c.name || `E2E Test #${idx + 1}`,
-            status: (c.status as any) || 'failed',
+            status: (c.status as TestCase['status']) || 'failed',
             error: c.error,
             terminalOutput: c.terminalOutput,
             codeSnippet: c.codeSnippet,
             filePath: c.filePath,
-            lineNumber: c.lineNumber as any,
-            category: c.category as any,
-            tags: c.tags as any,
-            priority: c.priority as any,
-            suggestions: c.suggestions as any,
+            lineNumber: c.lineNumber as number | undefined,
+            category: c.category as string | undefined,
+            tags: c.tags as string[] | undefined,
+            priority: c.priority as TestCase['priority'] | undefined,
+            suggestions: c.suggestions as string[] | undefined,
           }));
           builtSuites.push({
             name: 'End-to-End (Playwright)',
@@ -306,9 +306,9 @@ export default function TestReportPage() {
           setLoading(false);
           setLastFetchedAt(new Date().toLocaleString());
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (!cancelled) {
-          setError(String(err?.message || err));
+          setError(String((err as Error)?.message || err));
           setLoading(false);
         }
       }

@@ -2,11 +2,12 @@
 
 import { PreviewTile } from "@/components/preview/preview-tile";
 import { PreviewGrid } from "@/components/preview/preview-grid";
-import { Smartphone, Tablet, Monitor, ChevronDown } from "lucide-react";
+import { Smartphone, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { ComponentType, ButtonHTMLAttributes } from "react";
 
 // Mobile-First Button
-const MobileFirstButton = ({ children, className = "", ...props }: any) => (
+const MobileFirstButton = ({ children, className = "", ...props }: { children: React.ReactNode; className?: string; [key: string]: unknown }) => (
   <button
     className={`
       w-full px-4 py-3 text-sm font-medium rounded-lg
@@ -24,7 +25,7 @@ const MobileFirstButton = ({ children, className = "", ...props }: any) => (
 );
 
 // Stack to Horizontal Button Group
-const ResponsiveButtonGroup = ({ buttons = ["Primary", "Secondary", "Tertiary"], className = "" }: any) => (
+const ResponsiveButtonGroup = ({ buttons = ["Primary", "Secondary", "Tertiary"], className = "" }: { buttons?: string[]; className?: string }) => (
   <div className={`flex flex-col gap-3 w-full sm:flex-row sm:w-auto sm:gap-2 ${className}`}>
     {buttons.map((label: string, index: number) => (
       <button
@@ -47,7 +48,11 @@ const ResponsiveButtonGroup = ({ buttons = ["Primary", "Secondary", "Tertiary"],
 );
 
 // Adaptive Icon Button
-const AdaptiveIconButton = ({ children, icon: Icon, className = "", ...props }: any) => (
+const AdaptiveIconButton = ({ children, icon: Icon, className = "", ...props }: {
+  children: React.ReactNode;
+  icon?: ComponentType<{ className?: string }>;
+  className?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
     className={`
       flex items-center justify-center gap-2
@@ -65,7 +70,10 @@ const AdaptiveIconButton = ({ children, icon: Icon, className = "", ...props }: 
 );
 
 // Collapsible Button Menu
-const CollapsibleButtonMenu = ({ items = ["Option 1", "Option 2", "Option 3"], className = "" }: any) => {
+const CollapsibleButtonMenu = ({ items = ["Option 1", "Option 2", "Option 3"], className = "" }: {
+  items?: string[];
+  className?: string;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -138,8 +146,9 @@ export default function ResponsiveButtonExamplesPage() {
     {children}
   </button>
 );`}
-          children={<MobileFirstButton>Responsive Button</MobileFirstButton>}
-        />
+        >
+          <MobileFirstButton>Responsive Button</MobileFirstButton>
+        </PreviewTile>
 
         <PreviewTile
           title="Responsive Button Group"
@@ -167,8 +176,9 @@ export default function ResponsiveButtonExamplesPage() {
     ))}
   </div>
 );`}
-          children={<ResponsiveButtonGroup />}
-        />
+        >
+          <ResponsiveButtonGroup />
+        </PreviewTile>
 
         <PreviewTile
           title="Adaptive Icon Button"
@@ -190,10 +200,11 @@ export default function ResponsiveButtonExamplesPage() {
     <span className="text-sm sm:text-base">{children}</span>
   </button>
 );`}
-          children={<AdaptiveIconButton icon={ Smartphone }>
+        >
+          <AdaptiveIconButton icon={Smartphone}>
             Download App
-          </AdaptiveIconButton>}
-        />
+          </AdaptiveIconButton>
+        </PreviewTile>
 
         <PreviewTile
           title="Collapsible Button Menu"
@@ -235,8 +246,9 @@ export default function ResponsiveButtonExamplesPage() {
     </div>
   );
 };`}
-          children={<CollapsibleButtonMenu />}
-        />
+        >
+          <CollapsibleButtonMenu />
+        </PreviewTile>
       </PreviewGrid>
 
       <div className="mt-8 p-6 bg-muted rounded-lg">

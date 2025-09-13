@@ -6,7 +6,7 @@ export default function TailwindBackgroundsPage() {
       <div className="max-w-2xl">
         <p className="text-muted-foreground text-sm leading-relaxed">
           Explore Tailwind CSS-powered background patterns and effects. These examples demonstrate
-          how to create beautiful, responsive backgrounds using Tailwind's utility classes.
+          how to create beautiful, responsive backgrounds using Tailwind&apos;s utility classes.
         </p>
         <div className="mt-4 flex gap-2">
           <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">

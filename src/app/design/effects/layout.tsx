@@ -20,14 +20,7 @@ export default function Layout({ children }: LayoutProps) {
     return null;
   }
 
-  const tabs = {
-    items: [
-      { label: "HTML/CSS", value: "html-css" },
-      { label: "Tailwind", value: "tailwind" },
-      { label: "MagicUI", value: "magicui" },
-    ],
-    basePath: "/design/effects"
-  };
+  // Tabs configuration removed - not currently used in this layout
 
   return (
         <div className="flex flex-col min-h-screen"> 

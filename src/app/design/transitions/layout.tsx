@@ -21,15 +21,7 @@ export default function TransitionsLayout({ children }: LayoutProps) {
     return null;
   }
 
-  const tabs = {
-    items: [
-      { label: "HTML/CSS", value: "html-css" },
-      { label: "Tailwind", value: "tailwind" },
-      { label: "MagicUI", value: "magicui" },
-      { label: "Next.js", value: "nextjs" }
-    ],
-    basePath: "/design/transitions"
-  };
+  // Tabs configuration removed - not currently used in this layout
 
   return (
     <div className="flex flex-col min-h-screen">

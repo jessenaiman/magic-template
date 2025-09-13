@@ -9,15 +9,7 @@ interface LayoutProps {
 }
 
 export default function TextLayout({ children }: LayoutProps) {
-  const tabs = {
-    items: [
-      { label: "HTML/CSS", value: "html-css" },
-      { label: "Tailwind", value: "tailwind" },
-      { label: "Shadcn", value: "shadcn" },
-      { label: "MagicUI", value: "magicui" },
-    ],
-    basePath: "/design/text"
-  };
+  // Tabs configuration removed - not currently used in this layout
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -295,10 +295,6 @@ function NeumorphicCardPreview() {
         const intensity = customization.shadowIntensity || 0.2;
         const radius = customization.borderRadius || 16;
         
-        // Calculate shadow colors based on base color and intensity
-        const darkenAmount = Math.round(255 * intensity);
-        const lightenAmount = Math.round(255 * intensity * 0.8);
-        
         return (
           <Container customization={customization}>
             <style>{`

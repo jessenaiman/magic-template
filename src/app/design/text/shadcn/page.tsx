@@ -8,13 +8,13 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Toggle } from "@/components/ui/toggle";
+
 import { Switch } from "@/components/ui/switch";
 
 export default function ShadCNTextPage() {
-  const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-  const [textSize, setTextSize] = useState<'sm' | 'base' | 'lg' | 'xl' | '2xl'>('base');
+  const [isBold] = useState(false);
+  const [isItalic] = useState(false);
+  const [textSize] = useState<'sm' | 'base' | 'lg' | 'xl' | '2xl'>('base');
 
   const textSizeClasses = {
     sm: 'text-sm',

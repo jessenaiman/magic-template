@@ -24,9 +24,7 @@
  * - Clean separation between static layout and dynamic features
  */
 
-import type { Metadata, Viewport } from "next";
-import { siteConfig } from "@/app/lib/site";
-import { metadataKeywords } from "@/metadata";
+import type { Viewport } from "next";
 import "@/app/globals.css";
 import PageTransition from "@/components/page-transition";
 import { Suspense } from "react";
@@ -51,13 +49,12 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
   return (
     <DesignPageProvider>
       <PreviewProvider>
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex gap-6">
+        <div className="flex gap-6">
             {/* Sidebar: hidden on mobile, fixed width on md+ */}
             <aside className="hidden md:block w-64 flex-shrink-0">
             </aside>
             {/* Main content grows and prevents overflow */}
-            <main className="flex-1 min-w-0">
+            <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8">
               <div className="mb-4">
                 <UnifiedBreadcrumbs />
               </div>
@@ -68,7 +65,6 @@ export default function DesignLayout({ children }: DesignLayoutProps) {
               </Suspense>
             </main>
           </div>
-        </div>
       </PreviewProvider>
     </DesignPageProvider>
   );

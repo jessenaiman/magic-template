@@ -49,7 +49,7 @@ const ToggleButton = ({
           : "bg-gray-100 text-gray-700 hover:bg-gray-200",
         className
       ].join(" ")}
-      aria-pressed={isToggled}
+      aria-checked={isToggled}
       role="switch"
       {...props}
     >
@@ -110,7 +110,6 @@ const LoadingButton = ({
 interface ConfirmationButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onConfirm?: () => void;
   confirmText?: string;
-  variant?: string;
   children: ReactNode;
 }
 
@@ -118,7 +117,6 @@ function ConfirmationButton({
   children,
   onConfirm,
   confirmText = "Are you sure?",
-  variant = "danger",
   ...props
 }: ConfirmationButtonProps) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -257,7 +255,7 @@ export default function InteractiveAccessibilityExamplesPage() {
         }
         \${className}
       }
-      aria-pressed={isToggled}
+      aria-checked={isToggled}
       role="switch"
       {...props}
     >
@@ -266,8 +264,9 @@ export default function InteractiveAccessibilityExamplesPage() {
     </button>
   );
 };`}
-          children={<ToggleButton />}
-        />
+        >
+          <ToggleButton />
+        </PreviewTile>
 
         <PreviewTile
           title="Loading Button"
@@ -310,12 +309,11 @@ export default function InteractiveAccessibilityExamplesPage() {
     </button>
   );
 };`}
-          children={
-            <LoadingButton isLoading={false}>
-              Click to Load
-            </LoadingButton>
-          }
-        />
+        >
+          <LoadingButton isLoading={false}>
+            Click to Load
+          </LoadingButton>
+        </PreviewTile>
 
 <PreviewTile
           title="Confirmation Button"
@@ -358,12 +356,11 @@ export default function InteractiveAccessibilityExamplesPage() {
     </button>
   );
 };`}
-          children={
-            <ConfirmationButton>
-              Delete Item
-            </ConfirmationButton>
-          }
-        />
+        >
+          <ConfirmationButton>
+            Delete Item
+          </ConfirmationButton>
+        </PreviewTile>
 
         <PreviewTile
           title="Favorite Toggle"
@@ -404,14 +401,13 @@ export default function InteractiveAccessibilityExamplesPage() {
     </button>
   );
 };`}
-          children={
-            <FavoriteButton
-              onToggle={(favorited: boolean) =>
-                console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
-              }
-            />
-          }
-        />
+        >
+          <FavoriteButton
+            onToggle={(favorited: boolean) =>
+              console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
+            }
+          />
+        </PreviewTile>
 
         <PreviewTile
           title="Screen Reader Optimized"
@@ -442,15 +438,14 @@ export default function InteractiveAccessibilityExamplesPage() {
     </button>
   );
 };`}
-          children={
-            <AccessibleButton
-              description="Opens the document reader with enhanced accessibility features"
-              shortcut="Ctrl+R"
-            >
-              Read Document
-            </AccessibleButton>
-          }
-        />
+        >
+          <AccessibleButton
+            description="Opens the document reader with enhanced accessibility features"
+            shortcut="Ctrl+R"
+          >
+            Read Document
+          </AccessibleButton>
+        </PreviewTile>
       </PreviewGrid>
 
       <div className="mt-8 p-6 bg-muted rounded-lg">

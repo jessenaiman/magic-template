@@ -30,7 +30,6 @@ docs/
 src/components/ui/
 src/components/magicui/
 src/components/animate-ui/
-src/components/[A-Z]*.tsx
 
 # Test results and reports
 playwright-report/

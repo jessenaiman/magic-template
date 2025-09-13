@@ -16,7 +16,7 @@ export type NavigationSection = {
 };
 
 // Icon map for proper rendering
-export const iconMap: Record<string, any> = {
+export const iconMap: Record<string, unknown> = {
   'Palette': Palette,
   'Zap': Zap,
   'Layout': Layout,
