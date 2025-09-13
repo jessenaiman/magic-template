@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+dist/
+build/
+
+# Generated files
+*.min.js
+*.min.css
+
+# Config files that should not be formatted
+package.json
+pnpm-lock.yaml
+tsconfig.json
+components.json
+.next/
+
+# Specific problematic files
+codacy-results.json
+specs/001-home-page-code-review/contracts/component-validation.json
+
+# Documentation and markdown files (optional - remove if you want to format them)
+*.md
+docs/
+
+# Third-party components (locked and read-only)
+src/components/ui/
+src/components/magicui/
+src/components/animate-ui/
+src/components/[A-Z]*.tsx
+
+# Test results and reports
+playwright-report/
+test-results/
+coverage/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+
+# Codacy
+.codacy/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env*
+!.env.example
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Storybook
+storybook-static/
+out/

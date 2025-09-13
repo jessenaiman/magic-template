@@ -1,6 +1,3 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -15,14 +12,19 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  ...storybook.configs["flat/recommended"],
   {
     ignores: [
       "playwright-report/**",
       "**/trace/**",
       "**/dist/**",
       "**/build/**",
-      "**/*.min.js"
+      "**/*.min.js",
+      // Third-party components - locked and read-only per standards
+      "src/components/ui/**",
+      "src/components/magicui/**", 
+      "src/components/animate-ui/**",
+      // ReactBits components (UpperCase files)
+      "src/components/[A-Z]*.tsx"
     ]
   }
 ];

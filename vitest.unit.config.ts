@@ -3,7 +3,11 @@ import path from 'path';
 
 export default defineConfig({
   test: {
-    include: ['tests/unit/**/*.test.{ts,tsx}'],
+    include: [
+      'tests/unit/**/*.test.{ts,tsx}',
+      'tests/contract/**/*.test.{ts,tsx}',
+      'tests/integration/**/*.test.{ts,tsx}'
+    ],
     environment: 'jsdom',
     globals: true,
     pool: 'threads',

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { siteConfig } from "@/lib/site";
+import { siteConfig } from "@/src/app/lib/site";
 
 export const metadataKeywords = [
     "React",

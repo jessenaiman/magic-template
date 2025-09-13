@@ -1,68 +1,42 @@
-// Vitest setup file (jsdom)
-import { vi, beforeAll, afterEach, afterAll } from 'vitest';
-import '@testing-library/jest-dom';
+/**
+ * Vitest setup file for contract and integration tests
+ * This file runs before all tests and sets up the testing environment
+ */
+
+import { expect, afterEach, beforeAll, afterAll } from 'vitest';
 import { cleanup } from '@testing-library/react';
+import * as matchers from '@testing-library/jest-dom/matchers';
 
-declare global {
-  interface Window {
-    ResizeObserver: typeof ResizeObserver;
-  }
-}
+// Extend Vitest's expect with testing-library matchers
+expect.extend(matchers);
 
-// Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn().mockImplementation((query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
-});
-
-// Mock ResizeObserver
-class ResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-}
-
-window.ResizeObserver = ResizeObserver;
-
-// Cleanup after each test
+// Clean up after each test case
 afterEach(() => {
   cleanup();
 });
 
-// Mock console methods in test environment
-const consoleError = console.error;
-const consoleWarn = console.warn;
+// Mock console methods to reduce noise during testing
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
 
 beforeAll(() => {
-  // Suppress expected error messages in tests
-  console.error = (...args) => {
-    // Ignore specific expected errors
-    if (args[0]?.includes('usePreviewTileExpansion must be used within a PreviewSurface')) {
-      return;
+  console.error = (...args: any[]) => {
+    // Only show errors that are not from our intentionally failing tests
+    if (!args[0]?.includes?.('Cannot find module')) {
+      originalConsoleError(...args);
     }
-    consoleError(...args);
   };
 
-  console.warn = (...args) => {
-    // Suppress specific warnings
-    if (args[0]?.includes('A component is changing an uncontrolled input to be controlled')) {
-      return;
+  console.warn = (...args: any[]) => {
+    // Suppress warnings during test runs
+    if (!args[0]?.includes?.('ReactDOMTestUtils')) {
+      originalConsoleWarn(...args);
     }
-    consoleWarn(...args);
   };
 });
 
 afterAll(() => {
   // Restore original console methods
-  console.error = consoleError;
-  console.warn = consoleWarn;
+  console.error = originalConsoleError;
+  console.warn = originalConsoleWarn;
 });
