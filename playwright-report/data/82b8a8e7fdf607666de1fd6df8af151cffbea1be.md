@@ -1,0 +1,105 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e10] [cursor=pointer]: Magic Template
+        - generic "Main navigation" [ref=e11]:
+          - navigation "Main" [ref=e12]:
+            - list [ref=e14]:
+              - listitem [ref=e15]:
+                - button "Animations" [ref=e16]:
+                  - img [ref=e17]
+                  - text: Animations
+                  - img [ref=e23]
+              - listitem [ref=e25]:
+                - button "Backgrounds" [ref=e26]:
+                  - img [ref=e27]
+                  - text: Backgrounds
+                  - img [ref=e33]
+              - listitem [ref=e35]:
+                - button "Buttons" [ref=e36]:
+                  - img [ref=e37]
+                  - text: Buttons
+                  - img [ref=e39]
+              - listitem [ref=e41]:
+                - button "Effects" [ref=e42]:
+                  - img [ref=e43]
+                  - text: Effects
+                  - img [ref=e45]
+              - listitem [ref=e47]:
+                - button "Responsive Design" [ref=e48]:
+                  - img [ref=e49]
+                  - text: Responsive Design
+                  - img [ref=e51]
+              - listitem [ref=e53]:
+                - button "Text" [ref=e54]:
+                  - img [ref=e55]
+                  - text: Text
+                  - img [ref=e57]
+              - listitem [ref=e59]:
+                - button "Transitions" [ref=e60]:
+                  - img [ref=e61]
+                  - text: Transitions
+                  - img [ref=e64]
+              - listitem [ref=e66]:
+                - button "Templates" [ref=e67]:
+                  - img [ref=e68]
+                  - text: Templates
+                  - img [ref=e74]
+              - listitem [ref=e76]:
+                - button "Projects" [ref=e77]:
+                  - img [ref=e78]
+                  - text: Projects
+                  - img [ref=e79]
+              - listitem [ref=e81]:
+                - button "Testing" [ref=e82]:
+                  - img [ref=e83]
+                  - text: Testing
+                  - img [ref=e85]
+              - listitem [ref=e87]:
+                - link "Login" [ref=e88] [cursor=pointer]:
+                  - /url: /login
+                  - text: Login
+              - listitem [ref=e91]:
+                - link "Sign Up" [ref=e92] [cursor=pointer]:
+                  - /url: /signup
+                  - text: Sign Up
+          - generic [ref=e95]:
+            - button "Switch to light theme" [ref=e96]:
+              - img
+            - generic [ref=e97]:
+              - button "Pause animations" [ref=e98]:
+                - img
+              - button "Reset animations" [ref=e99]:
+                - img
+    - main [ref=e100]:
+      - generic [ref=e101]:
+        - complementary [ref=e102]
+        - main [ref=e103]:
+          - navigation "Breadcrumb" [ref=e105]:
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - link "Home" [ref=e108] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e109]:
+                - img [ref=e110]
+              - listitem [ref=e112]:
+                - link "Text" [disabled] [ref=e113]
+          - generic [ref=e116]:
+            - paragraph [ref=e117]: Discover a comprehensive collection of text styling and animation patterns. From basic typography to advanced text effects, each implementation demonstrates modern design principles and accessibility best practices. Select a technology stack above to explore specific implementations.
+            - generic [ref=e119]:
+              - generic [ref=e120]: Key Features
+              - list [ref=e121]:
+                - listitem [ref=e122]: Responsive typography
+                - listitem [ref=e123]: Text animations and effects
+                - listitem [ref=e124]: Accessibility-first design
+                - listitem [ref=e125]: Cross-browser compatibility
+    - contentinfo [ref=e126]:
+      - paragraph [ref=e128]: © 2025 Your Company. All rights reserved.
+  - alert [ref=e129]
+```

@@ -1,6 +1,6 @@
 ---
 description: 'Next Agent Onboarding & Task Prompt for Magic Template'
-tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'todos', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'playwright', 'filesystem', '@magicuidesign/mcp', 'shadcn', 'context7', 'codacy_get_file_issues', 'codacy_get_file_with_analysis']
+tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'todos', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'playwright', 'filesystem', '@magicuidesign/mcp', 'shadcn', 'context7', 'codacy']
 ---
 
 # You must follow all rules in `.github/instructions/` in addition to the instructions below.

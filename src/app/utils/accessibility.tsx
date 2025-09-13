@@ -253,8 +253,7 @@ AccessibleButton.displayName = 'AccessibleButton';
 /**
  * Accessible toggle button with improved UX patterns
  */
-export interface ToggleButtonProps
-  extends Omit<AccessibleButtonProps, 'onClick' | 'isPressed'> {
+export interface ToggleButtonProps {
   /** Current pressed state */
   pressed: boolean;
   /** Toggle handler */
@@ -267,6 +266,48 @@ export interface ToggleButtonProps
   pressedLabel?: string;
   /** Label for unpressed state */
   unpressedLabel?: string;
+  /** Alternative text when button has no visible content */
+  label?: string;
+  /** True when button is in loading state */
+  isLoading?: boolean;
+  /** Additional description for screen readers */
+  description?: string;
+  /** Keyboard shortcut hint */
+  shortcut?: string;
+  /** ARIA role override */
+  role?: 'button' | 'switch' | 'tab';
+  /** Focus style variant */
+  focusVariant?: keyof typeof focusStyles;
+  /** Show loading spinner */
+  showLoadingSpinner?: boolean;
+  /** Loading spinner component */
+  loadingIcon?: React.ComponentType<{ className?: string }>;
+  /** Disabled loading state */
+  loadingDisabled?: boolean;
+  /** CSS class name */
+  className?: string;
+  /** Button children */
+  children?: React.ReactNode;
+  /** Disabled state */
+  disabled?: boolean;
+  /** Button type */
+  type?: 'button' | 'submit' | 'reset';
+  /** Form association */
+  form?: string;
+  /** Form validation */
+  formAction?: string;
+  /** Form encoding */
+  formEncType?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+  /** Form method */
+  formMethod?: 'post' | 'get' | 'dialog';
+  /** Form no validation */
+  formNoValidate?: boolean;
+  /** Form target */
+  formTarget?: '_self' | '_blank' | '_parent' | '_top';
+  /** Button name */
+  name?: string;
+  /** Button value */
+  value?: string;
 }
 
 export const ToggleButton = React.forwardRef<

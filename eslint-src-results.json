@@ -1,0 +1,14 @@
+
+/home/adam/Dev/magic-template/src/app/hooks/useScrollVisibility.js
+   7:5   error  'window' is not defined  no-undef
+   9:20  error  'window' is not defined  no-undef
+  11:5   error  'window' is not defined  no-undef
+  12:18  error  'window' is not defined  no-undef
+
+/home/adam/Dev/magic-template/src/app/hooks/useStars.js
+  14:28  error  'localStorage' is not defined  no-undef
+  28:9   error  'localStorage' is not defined  no-undef
+  38:9   error  'console' is not defined       no-undef
+  40:28  error  'localStorage' is not defined  no-undef
+
+✖ 8 problems (8 errors, 0 warnings)

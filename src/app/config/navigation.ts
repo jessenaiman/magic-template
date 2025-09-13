@@ -14,6 +14,7 @@ import {
   LogIn,
   UserPlus,
 } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 // Types
 export type NavItem = {
@@ -23,6 +24,7 @@ export type NavItem = {
   description?: string;
   children?: NavItem[];
   badge?: string;
+  external?: boolean;
 };
 
 export type NavigationSection = {
@@ -31,7 +33,7 @@ export type NavigationSection = {
 };
 
 // Icon map for proper rendering
-export const iconMap: Record<string, unknown> = {
+export const iconMap: Record<string, LucideIcon> = {
   Palette: Palette,
   Zap: Zap,
   Layout: Layout,

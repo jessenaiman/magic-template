@@ -1,0 +1,21 @@
+exclude_paths:
+  - "src/components/ui/**/*"
+  - "src/components/magicui/**/*"
+  - "src/components/animate-ui/**/*"
+  - "src/components/[A-Z]*.tsx"
+  - "node_modules/**/*"
+  - ".next/**/*"
+  - "test-results/**/*"
+  - "playwright-report/**/*"
+
+tools:
+  eslint:
+    enabled: true
+  lizard:
+    enabled: true
+  pmd:
+    enabled: true
+  semgrep:
+    enabled: true
+  trivy:
+    enabled: true

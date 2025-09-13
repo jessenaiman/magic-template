@@ -7,6 +7,11 @@ exclude_paths:
     - .next/**/*
     - test-results/**/*
     - playwright-report/**/*
+    - .codacy/**/*
+    - assets/**/*
+    - public/**/*
+    - build/**/*
+    - dist/**/*
 runtimes:
     - java@17.0.10
     - node@22.2.0

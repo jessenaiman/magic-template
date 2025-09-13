@@ -1,0 +1,1 @@
+export { getStarsCount } from './utils';

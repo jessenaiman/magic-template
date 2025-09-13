@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { navigationConfig, type NavItem } from '@/app/config/navigation';
+import { navigationConfig, type NavItem, iconMap } from '@/app/config/navigation';
 import { useDesignPage } from '@/components/design-page-context';
 import { cn } from '@/app/lib/utils';
 
@@ -19,7 +19,7 @@ function PageConfigurator() {
 }
 
 function CategoryCard({ item }: { item: NavItem }) {
-  const Icon = item.icon;
+  const Icon = item.icon ? iconMap[item.icon] as React.ComponentType<{ className?: string }> : null;
   return (
     <Link
       href={item.href}

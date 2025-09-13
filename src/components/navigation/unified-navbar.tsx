@@ -59,7 +59,7 @@ interface UnifiedNavbarProps {
 // Helper function for consistent icon rendering
 const renderIcon = (iconName?: string, className: string = 'h-4 w-4') => {
   if (!iconName || !iconMap[iconName]) return null;
-  const Icon = iconMap[iconName];
+  const Icon = iconMap[iconName] as React.ComponentType<{ className?: string }>;
   return <Icon className={className} />;
 };
 
