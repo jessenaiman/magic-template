@@ -20,15 +20,14 @@ interface PreviewGridProps {
  * Maintains 4:3 aspect ratio through individual tile styling.
  * Each tile handles its own expansion behavior when selected.
  */
-export function PreviewGrid({
-  children,
-  className,
-  gapClass = 'gap-6',
-}: PreviewGridProps) {
+function PreviewGrid(props: PreviewGridProps) {
+  const { children, className, gapClass = 'gap-6' } = props;
   return (
     <div
       className={cn(
         'grid',
+        'w-full',
+        'auto-rows-fr',
         // Responsive column layout
         'grid-cols-1', // Mobile: 1 column
         'sm:grid-cols-2', // Tablet: 2 columns
@@ -38,10 +37,14 @@ export function PreviewGrid({
         gapClass,
         className
       )}
+      role="list"
+      aria-label="Preview Tiles"
     >
       {children}
     </div>
   );
 }
+
+export { PreviewGrid };
 
 export default PreviewGrid;

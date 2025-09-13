@@ -9,8 +9,8 @@
 - opening customization should make the preview tile center screen and not be larger than the display size. The current effect is jarring, the ui should expand and display a different layout made for customization
 - the example when expanding should be larger, but with enough room to view all the customization options without scrolling
 - customization options should be responsive and designed using shadcn components that and tailwindcss that optimizes screen real estate for every responsive display size.
-3. Customization must be implemented at least with default options for every design page. Default options are set on the layout.tsx file one directory above that page. KISS and do not code defaults on every page.tsx
-4. Look for ways the refactor and simplify all repetition and duplication of logic and code
+3. Customization must be implemented at least with default options for every design page. Default options are set on the shared layout.tsx file one directory above that page. KISS and do not code defaults on every page.tsx. All per-category layouts (e.g., text, effects, backgrounds, etc.) must be pass-throughs, delegating layout and context to the shared design layout.
+4. Refactor and simplify all repetition and duplication of logic and code. Remove redundant wrappers, navbars, and configurators from per-category layouts. All layout and customization logic should be centralized in the shared design layout.
 
 ## Rules
 
@@ -18,7 +18,10 @@
 - KISS means that anything repeated with design pages must be refactored into the layout pages. 
 
 Final Steps
-Review the design/layout.tsx for inconsistencies that need to be addressed for responsive design. Provide a detailed report of outstanding issues and check in the code for review."
+Review the design/layout.tsx for inconsistencies that need to be addressed for responsive design. Provide a detailed report of outstanding issues and check in the code for review.
+
+## Refactor Note (2025-09-13)
+- All per-category layouts are now pass-throughs. Layout and customization logic is centralized in the shared design layout. This ensures maintainability, consistency, and eliminates code duplication. See tasks.md and research.md for rationale and implementation details.
 
 ## Execution Flow (main)
 ```

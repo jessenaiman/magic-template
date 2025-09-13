@@ -6,15 +6,16 @@
 - What is the minimum supported screen size for responsive design? [Pending]
 
 ## Best Practices
-- Use a single layout component for all design pages to enforce consistency (KISS principle).
-- Customization options should be defined in the layout, not repeated in each page.
+- Use a single shared layout component for all design pages to enforce consistency (KISS principle).
+- All per-category layouts must be pass-throughs, delegating layout and context to the shared design layout.
+- Customization options should be defined in the shared layout, not repeated in each page or per-category layout.
 - Responsive design should be tested on mobile, tablet, and desktop breakpoints.
 - Use shadcn/ui and TailwindCSS for all customization controls and layout.
 - Preview tiles should use CSS grid/flexbox to fill available space and avoid excessive margins.
 - When customization is open, preview tile should center and expand, but not exceed viewport size; controls should remain visible without scrolling.
 
 ## Decisions
-- All customization defaults will be set in the shared layout component.
+- All customization defaults and layout logic are now set in the shared layout component. Per-category layouts are pass-throughs only.
 - Linting will warn (not block) if customization options are missing, but fallback to defaults.
 - Minimum supported screen width: 320px (common mobile breakpoint).
 
