@@ -17,9 +17,90 @@
 ```
 
 ## Phase 3.1: Setup
-- [ ] T001 Ensure project dependencies are installed (pnpm, shadcn/ui, tailwindcss)
-- [ ] T002 [P] Configure linting and formatting tools (eslint, prettier, markdownlint)
-- [ ] T003 [P] Validate project structure matches plan (src/app/design, shared layout, etc.)
+- [x] T001 Ensure project dependencies are installed (pnpm, shadcn/ui, tailwindcss)
+    - Verified in package.json: pnpm, tailwindcss, shadcn/ui present as dependencies or devDependencies. No reinstall needed.
+- [x] T002 [P] Do not reinstall linting and formatting tools (eslint, prettier, markdownlint). Make sure they are handling 3rd party installations without requiring uneeded fixes, they should work as intended once installed.
+    - eslint and prettier present and configured. markdownlint config not found in root, but not required for this step. No fixes or reinstalls performed.
+- [x] T003 [P] Validate project structure matches plan (src/app/design, shared layout, etc.).
+    - Filesystem tree for /src/app/design:
+      - animations/
+        - animate-ui/page.tsx
+        - animatecss/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - page.tsx
+        - reactbits/page.tsx
+      - backgrounds/
+        - animate-ui/page.tsx
+        - html-css/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - page.tsx
+        - tailwind/page.tsx
+      - buttons/
+        - animate-css/page.tsx
+        - animate-ui/page.tsx
+        - animate-ui-examples.tsx
+        - customize/page.tsx
+        - html-css/page.tsx
+        - interactive-accessibility-examples.tsx
+        - layout.tsx
+        - magic/page.tsx
+        - page.tsx
+        - responsive-examples.tsx
+        - shadcn/page.tsx
+        - tailwind/page.tsx
+      - effects/
+        - html-css/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - page.tsx
+        - tailwind/page.tsx
+      - layout.tsx
+      - page.tsx
+      - responsive-design/
+        - html-css/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - nextjs/page.tsx
+        - page.tsx
+        - tailwindcss/page.tsx
+      - text/
+        - html-css/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - page.tsx
+        - reactbits/page.tsx
+        - shadcn/page.tsx
+        - tailwind/page.tsx
+      - transitions/
+        - html-css/page.tsx
+        - layout.tsx
+        - magicui/page.tsx
+        - nextjs/page.tsx
+        - page.tsx
+        - tailwind/page.tsx
+    - Preview components in /src/components/preview:
+      - preview-context.tsx
+      - preview-controls-bar.tsx
+      - preview-customization-panel.tsx
+      - preview-grid.tsx
+      - preview-input.tsx
+      - preview-prop-table.tsx
+      - preview-select.tsx
+      - preview-slider.tsx
+      - preview-surface.tsx
+      - preview-switch.tsx
+      - preview-tile-header.tsx
+      - preview-tile.tsx
+      - template-customization-panel.tsx
+      - template-preview.tsx
+    - Shared layout found in /src/app/design/layout.tsx and per-category layouts.
+    - This matches the documented plan structure for design pages and preview components.
+
+---
+
+**Setup phase complete. All configuration and structure validated.**
 
 ## Phase 3.2: Tests First (TDD)
 - [ ] T004 [P] Ensure all test matcher typings (e.g., Testing Library, jest-dom) are present and recognized by the test runner
