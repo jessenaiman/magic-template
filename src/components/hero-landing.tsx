@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import landingBlur from "@/assets/svg/landing-blur.svg";
-import { cn } from "@/app/lib/utils";
-import ShinyText from "@/components/ShinyText";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
+import landingBlur from '@/assets/svg/landing-blur.svg';
+import { cn } from '@/app/lib/utils';
+import ShinyText from '@/components/ShinyText';
 
 interface HeroLandingProps {
   className?: string;
@@ -31,14 +31,14 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   return (
     <section
       className={cn(
-        "relative flex min-h-[88vh] items-center justify-center px-6 pt-28 md:pt-32",
+        'relative flex min-h-[88vh] items-center justify-center px-6 pt-28 md:pt-32',
         className
       )}
       aria-labelledby="main-hero-heading"
@@ -80,18 +80,21 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
           variants={headlineVariants}
           transition={{ duration: 0.7, ease: [0.16, 0.8, 0.24, 1] }}
           className={cn(
-            "text-balance relative",
-            "text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
+            'text-balance relative',
+            'text-4xl md:text-6xl font-extrabold tracking-tight leading-tight'
           )}
         >
-          <span className="sr-only">Remove Interface Drag. Ship Creative UI Faster.</span>
+          <span className="sr-only">
+            Remove Interface Drag. Ship Creative UI Faster.
+          </span>
           <span className="bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent">
-            Remove Interface{" "}
+            Remove Interface{' '}
             <ShinyText text="Drag" speed={6} className="px-1" />.
           </span>
           <br className="hidden md:block" />
           <span className="bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent inline-block mt-2">
-            Ship <ShinyText text="Creative UI" speed={7} className="px-1" /> Faster
+            Ship <ShinyText text="Creative UI" speed={7} className="px-1" />{' '}
+            Faster
             <span className="text-foreground/60">.</span>
           </span>
         </motion.h1>
@@ -101,32 +104,37 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
           initial="hidden"
           animate="visible"
           variants={subVariants}
-          transition={{ delay: 0.15, duration: 0.65, ease: [0.16, 0.8, 0.24, 1] }}
+          transition={{
+            delay: 0.15,
+            duration: 0.65,
+            ease: [0.16, 0.8, 0.24, 1],
+          }}
           className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground"
         >
-          A tactile design workshop + component sandbox. Touch layouts, motion, spacing & styling
-          directly. Each tweak yields clean React + Tailwind code. Exploration first—commit later.
+          A tactile design workshop + component sandbox. Touch layouts, motion,
+          spacing & styling directly. Each tweak yields clean React + Tailwind
+          code. Exploration first—commit later.
         </motion.p>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           {[
             {
-              href: "#tool-explorer",
-              label: "Start Experimenting",
+              href: '#tool-explorer',
+              label: 'Start Experimenting',
               primary: true,
             },
             {
-              href: "/styleguides",
-              label: "Style Guides",
+              href: '/styleguides',
+              label: 'Style Guides',
             },
             {
-              href: "/design",
-              label: "Design Library",
+              href: '/design',
+              label: 'Design Library',
             },
             {
-              href: "#pricing",
-              label: "Services",
+              href: '#pricing',
+              label: 'Services',
             },
           ].map((btn, i) => (
             <motion.div
@@ -134,15 +142,19 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
               initial="hidden"
               animate="visible"
               variants={ctaVariants}
-              transition={{ delay: 0.15 + i * 0.08, duration: 0.55, ease: [0.16, 0.8, 0.24, 1] }}
+              transition={{
+                delay: 0.15 + i * 0.08,
+                duration: 0.55,
+                ease: [0.16, 0.8, 0.24, 1],
+              }}
             >
               <Link
                 href={btn.href}
                 className={cn(
-                  "group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+                  'group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
                   btn.primary
-                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40"
-                    : "border border-border/60 bg-background/60 text-foreground backdrop-blur-sm hover:border-border"
+                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40'
+                    : 'border border-border/60 bg-background/60 text-foreground backdrop-blur-sm hover:border-border'
                 )}
               >
                 <span>{btn.label}</span>
@@ -175,25 +187,31 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({ className }) => {
         >
           <span>
             {isMobile
-              ? "Optimized for mobile experimentation."
-              : "Resize the window—tokens + motion adapt live."}
+              ? 'Optimized for mobile experimentation.'
+              : 'Resize the window—tokens + motion adapt live.'}
           </span>
         </motion.div>
 
         {/* Ambient accent shapes */}
         {!reduce && (
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10"
+          >
             <motion.div
               className="absolute left-[10%] top-[25%] h-40 w-40 rounded-full bg-primary/10 blur-3xl"
               initial={{ opacity: 0.15, scale: 0.8 }}
               animate={{ opacity: [0.15, 0.35, 0.15], scale: [0.8, 1.05, 0.8] }}
-              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
             />
             <motion.div
               className="absolute right-[8%] bottom-[20%] h-56 w-56 rounded-full bg-secondary/10 blur-3xl"
               initial={{ opacity: 0.12, scale: 0.85 }}
-              animate={{ opacity: [0.12, 0.3, 0.12], scale: [0.85, 1.07, 0.85] }}
-              transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+              animate={{
+                opacity: [0.12, 0.3, 0.12],
+                scale: [0.85, 1.07, 0.85],
+              }}
+              transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
         )}

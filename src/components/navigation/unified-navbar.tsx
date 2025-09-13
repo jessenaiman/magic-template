@@ -17,7 +17,12 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTransition } from 'react';
-import { navigationConfig, type NavItem, isNavItemActive, iconMap } from '@/app/config/navigation';
+import {
+  navigationConfig,
+  type NavItem,
+  isNavItemActive,
+  iconMap,
+} from '@/app/config/navigation';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -118,7 +123,7 @@ export function UnifiedNavbar({
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        'sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60',
         className
       )}
       role="banner"
@@ -151,7 +156,11 @@ export function UnifiedNavbar({
                 className="h-8 w-8 p-0"
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
               >
-                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                {theme === 'light' ? (
+                  <Moon className="h-4 w-4" />
+                ) : (
+                  <Sun className="h-4 w-4" />
+                )}
               </Button>
             )}
 
@@ -167,20 +176,27 @@ export function UnifiedNavbar({
                     <Menu className="h-4 w-4" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-80" aria-label="Mobile navigation menu">
+                <SheetContent
+                  side="right"
+                  className="w-80"
+                  aria-label="Mobile navigation menu"
+                >
                   <div className="flex flex-col space-y-4 mt-4">
-                    <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
-                      {navigationConfig.mainNav.map((item) => (
+                    <nav
+                      className="flex flex-col space-y-2"
+                      aria-label="Mobile navigation"
+                    >
+                      {navigationConfig.mainNav.map(item => (
                         <div key={item.href}>
                           <Link
                             href={item.href}
                             className={cn(
-                              "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                              'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                               isNavItemActive(item, pathname)
-                                ? "bg-primary text-primary-foreground"
-                                : "hover:bg-accent hover:text-accent-foreground"
+                                ? 'bg-primary text-primary-foreground'
+                                : 'hover:bg-accent hover:text-accent-foreground'
                             )}
-                            onClick={(e) => {
+                            onClick={e => {
                               e.preventDefault();
                               handleNavigation(item.href);
                             }}
@@ -188,47 +204,53 @@ export function UnifiedNavbar({
                           >
                             {renderIcon(item.icon)}
                             <span>{item.label}</span>
-                            {item.external && <ExternalLink className="h-3 w-3 ml-1" />}
+                            {item.external && (
+                              <ExternalLink className="h-3 w-3 ml-1" />
+                            )}
                           </Link>
                           {/* Mobile children */}
-                          {item.children && item.children.length > 0 && isNavItemActive(item, pathname) && (
-                            <div className="ml-6 mt-2 space-y-1">
-                              {item.children.map((child) => (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  className={cn(
-                                    "block px-3 py-2 text-sm rounded-sm transition-colors",
-                                    isNavItemActive(child, pathname)
-                                      ? "bg-accent text-accent-foreground font-medium"
-                                      : "hover:bg-accent hover:text-accent-foreground"
-                                  )}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    handleNavigation(child.href);
-                                  }}
-                                  tabIndex={0}
-                                >
-                                  {child.label}
-                                  {child.external && <ExternalLink className="h-3 w-3 ml-1 inline" />}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
+                          {item.children &&
+                            item.children.length > 0 &&
+                            isNavItemActive(item, pathname) && (
+                              <div className="ml-6 mt-2 space-y-1">
+                                {item.children.map(child => (
+                                  <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    className={cn(
+                                      'block px-3 py-2 text-sm rounded-sm transition-colors',
+                                      isNavItemActive(child, pathname)
+                                        ? 'bg-accent text-accent-foreground font-medium'
+                                        : 'hover:bg-accent hover:text-accent-foreground'
+                                    )}
+                                    onClick={e => {
+                                      e.preventDefault();
+                                      handleNavigation(child.href);
+                                    }}
+                                    tabIndex={0}
+                                  >
+                                    {child.label}
+                                    {child.external && (
+                                      <ExternalLink className="h-3 w-3 ml-1 inline" />
+                                    )}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
                         </div>
                       ))}
                       {/* Auth menu */}
-                      {authMenu.map((item) => (
+                      {authMenu.map(item => (
                         <Link
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                            'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                             isNavItemActive(item, pathname)
-                              ? "bg-primary text-primary-foreground"
-                              : "hover:bg-accent hover:text-accent-foreground"
+                              ? 'bg-primary text-primary-foreground'
+                              : 'hover:bg-accent hover:text-accent-foreground'
                           )}
-                          onClick={(e) => {
+                          onClick={e => {
                             e.preventDefault();
                             handleNavigation(item.href);
                           }}
@@ -247,21 +269,26 @@ export function UnifiedNavbar({
         </div>
 
         {/* Desktop Navigation using shadcn Navigation Menu */}
-        <div className="hidden md:flex items-center space-x-6 w-full md:w-auto" ref={navRef} aria-label="Main navigation">
+        <div
+          className="hidden md:flex items-center space-x-6 w-full md:w-auto"
+          ref={navRef}
+          aria-label="Main navigation"
+        >
           <NavigationMenu>
             <NavigationMenuList>
-              {navigationConfig.mainNav.map((item) => (
+              {navigationConfig.mainNav.map(item => (
                 <NavigationMenuItem key={item.href}>
                   {item.children && item.children.length > 0 ? (
                     <>
                       <NavigationMenuTrigger
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                          isNavItemActive(item, pathname) &&
+                            'bg-accent text-accent-foreground'
                         )}
                         onClick={() => handleNavigation(item.href)}
                       >
-                        {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                        {renderIcon(item.icon, 'h-4 w-4 mr-2')}
                         {item.label}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -271,10 +298,11 @@ export function UnifiedNavbar({
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                  isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                                  'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                                  isNavItemActive(item, pathname) &&
+                                    'bg-accent text-accent-foreground'
                                 )}
-                                onClick={(e) => {
+                                onClick={e => {
                                   e.preventDefault();
                                   handleNavigation(item.href);
                                 }}
@@ -289,15 +317,16 @@ export function UnifiedNavbar({
                             </NavigationMenuLink>
                           </div>
                           <div className="grid gap-1">
-                            {item.children.map((child) => (
+                            {item.children.map(child => (
                               <NavigationMenuLink key={child.href} asChild>
                                 <Link
                                   href={child.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                    isNavItemActive(child, pathname) && "bg-accent text-accent-foreground"
+                                    'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                                    isNavItemActive(child, pathname) &&
+                                      'bg-accent text-accent-foreground'
                                   )}
-                                  onClick={(e) => {
+                                  onClick={e => {
                                     e.preventDefault();
                                     handleNavigation(child.href);
                                   }}
@@ -306,7 +335,9 @@ export function UnifiedNavbar({
                                     <div className="text-sm font-medium leading-none">
                                       {child.label}
                                     </div>
-                                    {child.external && <ExternalLink className="h-3 w-3" />}
+                                    {child.external && (
+                                      <ExternalLink className="h-3 w-3" />
+                                    )}
                                   </div>
                                   <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                                     {child.description}
@@ -323,17 +354,20 @@ export function UnifiedNavbar({
                       <Link
                         href={item.href}
                         className={cn(
-                          "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1",
-                          isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                          'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1',
+                          isNavItemActive(item, pathname) &&
+                            'bg-accent text-accent-foreground'
                         )}
-                        onClick={(e) => {
+                        onClick={e => {
                           e.preventDefault();
                           handleNavigation(item.href);
                         }}
                       >
-                        {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                        {renderIcon(item.icon, 'h-4 w-4 mr-2')}
                         {item.label}
-                        {item.external && <ExternalLink className="h-3 w-3 ml-1" />}
+                        {item.external && (
+                          <ExternalLink className="h-3 w-3 ml-1" />
+                        )}
                       </Link>
                     </NavigationMenuLink>
                   )}
@@ -341,21 +375,22 @@ export function UnifiedNavbar({
               ))}
 
               {/* Auth menu */}
-              {authMenu.map((item) => (
+              {authMenu.map(item => (
                 <NavigationMenuItem key={item.href}>
                   <NavigationMenuLink asChild>
                     <Link
                       href={item.href}
                       className={cn(
-                        "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1",
-                        isNavItemActive(item, pathname) && "bg-accent text-accent-foreground"
+                        'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none  focus-visible:ring-[3px] focus-visible:outline-1',
+                        isNavItemActive(item, pathname) &&
+                          'bg-accent text-accent-foreground'
                       )}
-                      onClick={(e) => {
+                      onClick={e => {
                         e.preventDefault();
                         handleNavigation(item.href);
                       }}
                     >
-                      {renderIcon(item.icon, "h-4 w-4 mr-2")}
+                      {renderIcon(item.icon, 'h-4 w-4 mr-2')}
                       {item.label}
                     </Link>
                   </NavigationMenuLink>
@@ -380,7 +415,11 @@ export function UnifiedNavbar({
                 className="h-8 w-8 p-0"
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
               >
-                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                {theme === 'light' ? (
+                  <Moon className="h-4 w-4" />
+                ) : (
+                  <Sun className="h-4 w-4" />
+                )}
               </Button>
             )}
 
@@ -391,9 +430,15 @@ export function UnifiedNavbar({
                   size="sm"
                   onClick={() => setPlaying(!state.playing)}
                   className="h-8 w-8 p-0"
-                  aria-label={state.playing ? "Pause animations" : "Play animations"}
+                  aria-label={
+                    state.playing ? 'Pause animations' : 'Play animations'
+                  }
                 >
-                  {state.playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                  {state.playing ? (
+                    <Pause className="h-4 w-4" />
+                  ) : (
+                    <Play className="h-4 w-4" />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
@@ -412,7 +457,10 @@ export function UnifiedNavbar({
 
       {/* Loading indicator for page transitions */}
       {isPending && (
-        <div className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center" aria-live="polite">
+        <div
+          className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center"
+          aria-live="polite"
+        >
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       )}

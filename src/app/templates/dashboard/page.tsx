@@ -20,14 +20,36 @@ function DataTable() {
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   const users: User[] = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', lastLogin: '2024-01-15' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'active', lastLogin: '2024-01-14' },
-    { id: 3, name: 'Mike Johnson', email: 'mike@example.com', role: 'User', status: 'inactive', lastLogin: '2024-01-10' },
+    {
+      id: 1,
+      name: 'John Doe',
+      email: 'john@example.com',
+      role: 'Admin',
+      status: 'active',
+      lastLogin: '2024-01-15',
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      email: 'jane@example.com',
+      role: 'User',
+      status: 'active',
+      lastLogin: '2024-01-14',
+    },
+    {
+      id: 3,
+      name: 'Mike Johnson',
+      email: 'mike@example.com',
+      role: 'User',
+      status: 'inactive',
+      lastLogin: '2024-01-10',
+    },
   ];
 
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUsers = users.filter(
+    user =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {
@@ -58,7 +80,7 @@ function DataTable() {
               type="text"
               placeholder="Search users..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={e => setSearchTerm(e.target.value)}
               className="pl-10 pr-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
@@ -68,7 +90,7 @@ function DataTable() {
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              {['name', 'email', 'role', 'status', 'lastLogin'].map((field) => (
+              {['name', 'email', 'role', 'status', 'lastLogin'].map(field => (
                 <th
                   key={field}
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
@@ -76,18 +98,19 @@ function DataTable() {
                 >
                   <div className="flex items-center">
                     {field.charAt(0).toUpperCase() + field.slice(1)}
-                    {sortField === field && (
-                      sortDirection === 'asc' ?
-                        <ChevronUp className="w-4 h-4 ml-1" /> :
+                    {sortField === field &&
+                      (sortDirection === 'asc' ? (
+                        <ChevronUp className="w-4 h-4 ml-1" />
+                      ) : (
                         <ChevronDown className="w-4 h-4 ml-1" />
-                    )}
+                      ))}
                   </div>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {sortedUsers.map((user) => (
+            {sortedUsers.map(user => (
               <tr key={user.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {user.name}
@@ -99,11 +122,14 @@ function DataTable() {
                   {user.role}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={"inline-flex px-2 py-1 text-xs font-semibold rounded-full " + (
-                    user.status === 'active'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  )}>
+                  <span
+                    className={
+                      'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' +
+                      (user.status === 'active'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800')
+                    }
+                  >
                     {user.status}
                   </span>
                 </td>
@@ -133,7 +159,9 @@ function ChartWidget() {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Monthly Performance</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        Monthly Performance
+      </h3>
       <div className="space-y-3">
         {data.map((item, index) => (
           <div key={index} className="flex items-center">
@@ -146,7 +174,9 @@ function ChartWidget() {
                 />
               </div>
             </div>
-            <div className="w-12 text-sm text-gray-900 text-right">{item.value}</div>
+            <div className="w-12 text-sm text-gray-900 text-right">
+              {item.value}
+            </div>
           </div>
         ))}
       </div>
@@ -169,8 +199,9 @@ export default function DashboardTemplatePage() {
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Dashboard Template</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Comprehensive dashboard layouts with data visualization, metrics cards,
-          and responsive grid systems. Perfect for admin panels and analytics interfaces.
+          Comprehensive dashboard layouts with data visualization, metrics
+          cards, and responsive grid systems. Perfect for admin panels and
+          analytics interfaces.
         </p>
       </div>
 

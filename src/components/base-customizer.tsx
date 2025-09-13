@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import React, { useState, useMemo } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 function CodeBlock({ code, language }: { code: string; language: string }) {
   return (
@@ -65,7 +65,8 @@ export function BaseCustomizerComponent({
   codeGenerators,
   additionalOptions,
 }: BaseCustomizerProps) {
-  const [settings, setSettings] = useState<BaseCustomizationSettings>(initialSettings);
+  const [settings, setSettings] =
+    useState<BaseCustomizationSettings>(initialSettings);
 
   const updateSettings = (updates: Partial<BaseCustomizationSettings>) => {
     const newSettings = { ...settings, ...updates };
@@ -74,21 +75,38 @@ export function BaseCustomizerComponent({
   };
 
   const generateTailwindClasses = () => {
-    const rounded = settings.borderRadius <= 4 ? 'rounded' :
-                   settings.borderRadius <= 8 ? 'rounded-md' :
-                   settings.borderRadius <= 12 ? 'rounded-lg' : 'rounded-xl';
+    const rounded =
+      settings.borderRadius <= 4
+        ? 'rounded'
+        : settings.borderRadius <= 8
+          ? 'rounded-md'
+          : settings.borderRadius <= 12
+            ? 'rounded-lg'
+            : 'rounded-xl';
 
-    const shadow = settings.shadowStyle === 'none' ? '' :
-                   settings.shadowStyle === 'subtle' ? 'shadow-sm' :
-                   settings.shadowStyle === 'medium' ? 'shadow-md' :
-                   settings.shadowStyle === 'large' ? 'shadow-lg' : 'shadow-xl';
+    const shadow =
+      settings.shadowStyle === 'none'
+        ? ''
+        : settings.shadowStyle === 'subtle'
+          ? 'shadow-sm'
+          : settings.shadowStyle === 'medium'
+            ? 'shadow-md'
+            : settings.shadowStyle === 'large'
+              ? 'shadow-lg'
+              : 'shadow-xl';
 
-    const animation = settings.animationType === 'scale' ? 'hover:scale-105' :
-                     settings.animationType === 'glow' ? '' :
-                     settings.animationType === 'pulse' ? 'animate-pulse' :
-                     settings.animationType === 'shimmer' ? '' : '';
+    const animation =
+      settings.animationType === 'scale'
+        ? 'hover:scale-105'
+        : settings.animationType === 'glow'
+          ? ''
+          : settings.animationType === 'pulse'
+            ? 'animate-pulse'
+            : settings.animationType === 'shimmer'
+              ? ''
+              : '';
 
-    return `className="px-${Math.round(settings.paddingX/4)} py-${Math.round(settings.paddingY/4)} ${rounded} font-medium text-${settings.fontSize >= 16 ? 'base' : 'sm'} ${shadow} ${animation ? `hover:${animation}` : ''} transition-all duration-200"`;
+    return `className="px-${Math.round(settings.paddingX / 4)} py-${Math.round(settings.paddingY / 4)} ${rounded} font-medium text-${settings.fontSize >= 16 ? 'base' : 'sm'} ${shadow} ${animation ? `hover:${animation}` : ''} transition-all duration-200"`;
   };
 
   const generateCSS = () => `.custom-component {
@@ -140,7 +158,9 @@ export function BaseCustomizerComponent({
                   id="bg-color"
                   type="color"
                   value={settings.backgroundColor}
-                  onChange={(e) => updateSettings({ backgroundColor: e.target.value })}
+                  onChange={e =>
+                    updateSettings({ backgroundColor: e.target.value })
+                  }
                   className="w-full h-10"
                 />
               </div>
@@ -151,7 +171,7 @@ export function BaseCustomizerComponent({
                   id="text-color"
                   type="color"
                   value={settings.textColor}
-                  onChange={(e) => updateSettings({ textColor: e.target.value })}
+                  onChange={e => updateSettings({ textColor: e.target.value })}
                   className="w-full h-10"
                 />
               </div>
@@ -161,7 +181,11 @@ export function BaseCustomizerComponent({
                 <Label>Border Radius: {settings.borderRadius}px</Label>
                 <Slider
                   value={[settings.borderRadius]}
-                  onValueChange={(value) => updateSettings({ borderRadius: value[0] ?? settings.borderRadius })}
+                  onValueChange={value =>
+                    updateSettings({
+                      borderRadius: value[0] ?? settings.borderRadius,
+                    })
+                  }
                   max={20}
                   min={0}
                   step={1}
@@ -173,7 +197,9 @@ export function BaseCustomizerComponent({
                 <Label>Horizontal Padding: {settings.paddingX}px</Label>
                 <Slider
                   value={[settings.paddingX]}
-                  onValueChange={(value) => updateSettings({ paddingX: value[0] ?? settings.paddingX })}
+                  onValueChange={value =>
+                    updateSettings({ paddingX: value[0] ?? settings.paddingX })
+                  }
                   max={32}
                   min={8}
                   step={2}
@@ -185,7 +211,9 @@ export function BaseCustomizerComponent({
                 <Label>Vertical Padding: {settings.paddingY}px</Label>
                 <Slider
                   value={[settings.paddingY]}
-                  onValueChange={(value) => updateSettings({ paddingY: value[0] ?? settings.paddingY })}
+                  onValueChange={value =>
+                    updateSettings({ paddingY: value[0] ?? settings.paddingY })
+                  }
                   max={24}
                   min={6}
                   step={2}
@@ -197,7 +225,9 @@ export function BaseCustomizerComponent({
                 <Label>Font Size: {settings.fontSize}px</Label>
                 <Slider
                   value={[settings.fontSize]}
-                  onValueChange={(value) => updateSettings({ fontSize: value[0] ?? settings.fontSize })}
+                  onValueChange={value =>
+                    updateSettings({ fontSize: value[0] ?? settings.fontSize })
+                  }
                   max={24}
                   min={12}
                   step={1}
@@ -225,21 +255,30 @@ export function BaseCustomizerComponent({
               {codeGenerators?.css && (
                 <div>
                   <h4 className="text-sm font-medium mb-2">CSS</h4>
-                  <CodeBlock code={codeGenerators.css(settings)} language="css" />
+                  <CodeBlock
+                    code={codeGenerators.css(settings)}
+                    language="css"
+                  />
                 </div>
               )}
 
               {codeGenerators?.tailwind && (
                 <div>
                   <h4 className="text-sm font-medium mb-2">Tailwind CSS</h4>
-                  <CodeBlock code={codeGenerators.tailwind(settings)} language="html" />
+                  <CodeBlock
+                    code={codeGenerators.tailwind(settings)}
+                    language="html"
+                  />
                 </div>
               )}
 
               {codeGenerators?.react && (
                 <div>
                   <h4 className="text-sm font-medium mb-2">React/JSX</h4>
-                  <CodeBlock code={codeGenerators.react(settings)} language="tsx" />
+                  <CodeBlock
+                    code={codeGenerators.react(settings)}
+                    language="tsx"
+                  />
                 </div>
               )}
 
@@ -253,7 +292,10 @@ export function BaseCustomizerComponent({
 
                   <div>
                     <h4 className="text-sm font-medium mb-2">Tailwind CSS</h4>
-                    <CodeBlock code={`<div ${generateTailwindClasses()}>Custom Component</div>`} language="html" />
+                    <CodeBlock
+                      code={`<div ${generateTailwindClasses()}>Custom Component</div>`}
+                      language="html"
+                    />
                   </div>
 
                   <div>
@@ -280,7 +322,9 @@ export function BaseCustomizerComponent({
                 <select
                   className="w-full p-2 border rounded"
                   value={settings.animationType}
-                  onChange={(e) => updateSettings({ animationType: e.target.value })}
+                  onChange={e =>
+                    updateSettings({ animationType: e.target.value })
+                  }
                 >
                   <option value="none">None</option>
                   <option value="scale">Hover Scale</option>
@@ -295,7 +339,9 @@ export function BaseCustomizerComponent({
                 <select
                   className="w-full p-2 border rounded"
                   value={settings.shadowStyle}
-                  onChange={(e) => updateSettings({ shadowStyle: e.target.value })}
+                  onChange={e =>
+                    updateSettings({ shadowStyle: e.target.value })
+                  }
                 >
                   <option value="none">None</option>
                   <option value="subtle">Subtle</option>

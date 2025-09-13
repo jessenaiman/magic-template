@@ -6,8 +6,9 @@ export default function TemplatesPage() {
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Templates</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Ready-to-use templates that demonstrate best practices for common web development patterns.
-          Each template includes customizable components, preview functionality, and copy-paste code.
+          Ready-to-use templates that demonstrate best practices for common web
+          development patterns. Each template includes customizable components,
+          preview functionality, and copy-paste code.
         </p>
         <div className="mt-4 flex gap-2">
           <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
@@ -61,7 +62,9 @@ export default function TemplatesPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Password</label>
+                <label className="block text-sm font-medium mb-2">
+                  Password
+                </label>
                 <input
                   type="password"
                   className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
@@ -160,7 +163,9 @@ export default function TemplatesPage() {
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">First Name</label>
+                  <label className="block text-sm font-medium mb-2">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
@@ -168,7 +173,9 @@ export default function TemplatesPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Last Name</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
@@ -185,7 +192,9 @@ export default function TemplatesPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium mb-2">
+                  Message
+                </label>
                 <textarea
                   rows={4}
                   className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"

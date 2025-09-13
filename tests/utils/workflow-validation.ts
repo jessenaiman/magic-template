@@ -5,7 +5,12 @@
  * These utilities are used by integration tests to ensure the entire validation pipeline works.
  */
 
-import { validateMagicUIComponents, validateShadcnComponents, validateAnimateUIComponents, validateReactBitsComponents } from './component-validation';
+import {
+  validateMagicUIComponents,
+  validateShadcnComponents,
+  validateAnimateUIComponents,
+  validateReactBitsComponents,
+} from './component-validation';
 
 export interface ComponentValidationPipelineResult {
   status: 'success' | 'error';
@@ -74,16 +79,16 @@ export async function runComponentValidationPipeline(): Promise<ComponentValidat
       status: issues.length === 0 ? 'success' : 'error',
       librariesValidated,
       issues,
-      duration
+      duration,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return {
       status: 'error',
       librariesValidated,
       issues: [`Component validation pipeline failed: ${errorMessage}`],
-      duration: Date.now() - startTime
+      duration: Date.now() - startTime,
     };
   }
 }
@@ -100,32 +105,32 @@ export async function detectComponentIssues(): Promise<ComponentIssuesResult> {
       library: 'Unknown', // Would need more sophisticated parsing in real implementation
       severity: (['low', 'medium', 'high', 'critical'] as const)[index % 4], // Cycle through severity levels
       description: issue,
-      recommendation: 'Review and fix the reported issue'
+      recommendation: 'Review and fix the reported issue',
     }));
 
     const severityLevels = {
       low: issues.filter(i => i.severity === 'low').length,
       medium: issues.filter(i => i.severity === 'medium').length,
       high: issues.filter(i => i.severity === 'high').length,
-      critical: issues.filter(i => i.severity === 'critical').length
+      critical: issues.filter(i => i.severity === 'critical').length,
     };
 
     const recommendations = [
       'Fix all critical and high severity issues immediately',
       'Address medium severity issues in the next sprint',
       'Review low severity issues for future improvements',
-      'Consider updating component library versions if compatibility issues exist'
+      'Consider updating component library versions if compatibility issues exist',
     ];
 
     return {
       issuesDetected: issues.length > 0,
       issues,
       severityLevels,
-      recommendations
+      recommendations,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Component issue detection failed: ${errorMessage}`);
   }
 }

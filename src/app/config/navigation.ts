@@ -1,4 +1,19 @@
-import { Palette, Zap, Layout, Sparkles, ArrowRightLeft, Type, Frame, PieChart, Map, Activity, User, LogOut, LogIn, UserPlus } from "lucide-react";
+import {
+  Palette,
+  Zap,
+  Layout,
+  Sparkles,
+  ArrowRightLeft,
+  Type,
+  Frame,
+  PieChart,
+  Map,
+  Activity,
+  User,
+  LogOut,
+  LogIn,
+  UserPlus,
+} from 'lucide-react';
 
 // Types
 export type NavItem = {
@@ -17,31 +32,31 @@ export type NavigationSection = {
 
 // Icon map for proper rendering
 export const iconMap: Record<string, unknown> = {
-  'Palette': Palette,
-  'Zap': Zap,
-  'Layout': Layout,
-  'Sparkles': Sparkles,
-  'ArrowRightLeft': ArrowRightLeft,
-  'Type': Type,
-  'Frame': Frame,
-  'PieChart': PieChart,
-  'Map': Map,
-  'Activity': Activity,
-  'User': User,
-  'LogOut': LogOut,
-  'LogIn': LogIn,
-  'UserPlus': UserPlus,
+  Palette: Palette,
+  Zap: Zap,
+  Layout: Layout,
+  Sparkles: Sparkles,
+  ArrowRightLeft: ArrowRightLeft,
+  Type: Type,
+  Frame: Frame,
+  PieChart: PieChart,
+  Map: Map,
+  Activity: Activity,
+  User: User,
+  LogOut: LogOut,
+  LogIn: LogIn,
+  UserPlus: UserPlus,
 };
 
 // Helper: icon for category
 const getIconForCategory = (categorySlug: string) => {
   const iconMap: Record<string, string> = {
-    'animations': 'Palette',
-    'backgrounds': 'Palette',
-    'buttons': 'Zap',
-    'effects': 'Sparkles',
-    'text': 'Type',
-    'transitions': 'ArrowRightLeft',
+    animations: 'Palette',
+    backgrounds: 'Palette',
+    buttons: 'Zap',
+    effects: 'Sparkles',
+    text: 'Type',
+    transitions: 'ArrowRightLeft',
     'responsive-design': 'Layout',
   };
   return iconMap[categorySlug] || 'Palette';
@@ -50,13 +65,18 @@ const getIconForCategory = (categorySlug: string) => {
 // Helper: description for category
 const getDescriptionForCategory = (categoryName: string) => {
   const lowercaseName = categoryName.toLowerCase();
-  if (lowercaseName.includes('animation')) return 'Animated design components and patterns';
-  if (lowercaseName.includes('background')) return 'Animated and static background patterns';
-  if (lowercaseName.includes('button')) return 'Interactive button components and animations';
+  if (lowercaseName.includes('animation'))
+    return 'Animated design components and patterns';
+  if (lowercaseName.includes('background'))
+    return 'Animated and static background patterns';
+  if (lowercaseName.includes('button'))
+    return 'Interactive button components and animations';
   if (lowercaseName.includes('effect')) return 'Visual effects and animations';
   if (lowercaseName.includes('text')) return 'Typography and text effects';
-  if (lowercaseName.includes('transition')) return 'Smooth page transition effects';
-  if (lowercaseName.includes('responsive')) return 'Mobile-first design patterns';
+  if (lowercaseName.includes('transition'))
+    return 'Smooth page transition effects';
+  if (lowercaseName.includes('responsive'))
+    return 'Mobile-first design patterns';
   return 'Design components and implementations';
 };
 
@@ -70,8 +90,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'animate-ui', name: 'Animate UI' },
         { slug: 'animatecss', name: 'Animate.css' },
         { slug: 'magicui', name: 'Magic UI' },
-        { slug: 'reactbits', name: 'React Bits' }
-      ]
+        { slug: 'reactbits', name: 'React Bits' },
+      ],
     },
     {
       slug: 'backgrounds',
@@ -80,8 +100,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'animate-ui', name: 'Animate UI' },
         { slug: 'html-css', name: 'HTML/CSS' },
         { slug: 'magicui', name: 'Magic UI' },
-        { slug: 'tailwind', name: 'Tailwind' }
-      ]
+        { slug: 'tailwind', name: 'Tailwind' },
+      ],
     },
     {
       slug: 'buttons',
@@ -93,8 +113,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'html-css', name: 'HTML/CSS' },
         { slug: 'magic', name: 'Magic UI' },
         { slug: 'shadcn', name: 'Shadcn' },
-        { slug: 'tailwind', name: 'Tailwind' }
-      ]
+        { slug: 'tailwind', name: 'Tailwind' },
+      ],
     },
     {
       slug: 'effects',
@@ -102,8 +122,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
       examples: [
         { slug: 'html-css', name: 'HTML/CSS' },
         { slug: 'magicui', name: 'Magic UI' },
-        { slug: 'tailwind', name: 'Tailwind' }
-      ]
+        { slug: 'tailwind', name: 'Tailwind' },
+      ],
     },
     {
       slug: 'responsive-design',
@@ -112,8 +132,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'html-css', name: 'HTML/CSS' },
         { slug: 'magicui', name: 'Magic UI' },
         { slug: 'nextjs', name: 'Next.js' },
-        { slug: 'tailwindcss', name: 'Tailwind CSS' }
-      ]
+        { slug: 'tailwindcss', name: 'Tailwind CSS' },
+      ],
     },
     {
       slug: 'text',
@@ -123,8 +143,8 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'magicui', name: 'Magic UI' },
         { slug: 'reactbits', name: 'React Bits' },
         { slug: 'shadcn', name: 'Shadcn' },
-        { slug: 'tailwind', name: 'Tailwind' }
-      ]
+        { slug: 'tailwind', name: 'Tailwind' },
+      ],
     },
     {
       slug: 'transitions',
@@ -133,28 +153,28 @@ const generateDynamicDesignSection = (): NavigationSection => {
         { slug: 'html-css', name: 'HTML/CSS' },
         { slug: 'magicui', name: 'Magic UI' },
         { slug: 'nextjs', name: 'Next.js' },
-        { slug: 'tailwind', name: 'Tailwind' }
-      ]
+        { slug: 'tailwind', name: 'Tailwind' },
+      ],
     },
     {
       slug: 'templates',
       name: 'Templates',
-      examples: []
-    }
+      examples: [],
+    },
   ];
 
   return {
-    label: "Design",
+    label: 'Design',
     items: categoryData.map(category => {
       const children: NavItem[] = [
         {
-          label: "Overview",
-          href: `/design/${category.slug}`
+          label: 'Overview',
+          href: `/design/${category.slug}`,
         },
         ...category.examples.map(example => ({
           label: example.name,
-          href: `/design/${category.slug}/${example.slug}`
-        }))
+          href: `/design/${category.slug}/${example.slug}`,
+        })),
       ];
 
       return {
@@ -162,9 +182,9 @@ const generateDynamicDesignSection = (): NavigationSection => {
         href: `/design/${category.slug}`,
         icon: getIconForCategory(category.slug),
         description: getDescriptionForCategory(category.name),
-        children
+        children,
       };
-    })
+    }),
   };
 };
 
@@ -173,81 +193,86 @@ export const navigationConfig = {
   mainNav: [
     ...generateDynamicDesignSection().items,
     {
-      label: "Projects",
-      href: "/projects",
-      icon: "Frame",
-      description: "Project workshops and resources",
+      label: 'Projects',
+      href: '/projects',
+      icon: 'Frame',
+      description: 'Project workshops and resources',
       children: [
         {
-          label: "Event Planning & Game Hosting",
-          href: "#",
-          icon: "Frame",
-          description: "External event planning and game hosting workshop"
+          label: 'Event Planning & Game Hosting',
+          href: '#',
+          icon: 'Frame',
+          description: 'External event planning and game hosting workshop',
         },
         {
-          label: "D&D and Tabletop Games",
-          href: "#",
-          icon: "PieChart",
-          description: "External D&D and tabletop games workshop"
+          label: 'D&D and Tabletop Games',
+          href: '#',
+          icon: 'PieChart',
+          description: 'External D&D and tabletop games workshop',
         },
         {
-          label: "AI & Machine Learning",
-          href: "#",
-          icon: "Map",
-          description: "External AI and machine learning workshop"
-        }
-      ]
+          label: 'AI & Machine Learning',
+          href: '#',
+          icon: 'Map',
+          description: 'External AI and machine learning workshop',
+        },
+      ],
     },
     {
-      label: "Testing",
-      href: "/testing",
-      icon: "Activity",
-      description: "Testing resources and reports",
+      label: 'Testing',
+      href: '/testing',
+      icon: 'Activity',
+      description: 'Testing resources and reports',
       children: [
         {
-          label: "Test Report",
-          href: "/test-report",
-          icon: "Activity",
-          description: "Comprehensive test results and metrics dashboard"
-        }
-      ]
-    }
+          label: 'Test Report',
+          href: '/test-report',
+          icon: 'Activity',
+          description: 'Comprehensive test results and metrics dashboard',
+        },
+      ],
+    },
   ],
   authNav: {
     authenticated: [
       {
-        label: "Profile",
-        href: "/profile",
-        icon: "User"
+        label: 'Profile',
+        href: '/profile',
+        icon: 'User',
       },
       {
-        label: "Logout",
-        href: "/logout",
-        icon: "LogOut"
-      }
+        label: 'Logout',
+        href: '/logout',
+        icon: 'LogOut',
+      },
     ],
     unauthenticated: [
       {
-        label: "Login",
-        href: "/login",
-        icon: "LogIn"
+        label: 'Login',
+        href: '/login',
+        icon: 'LogIn',
       },
       {
-        label: "Sign Up",
-        href: "/signup",
-        icon: "UserPlus"
-      }
-    ]
-  }
+        label: 'Sign Up',
+        href: '/signup',
+        icon: 'UserPlus',
+      },
+    ],
+  },
 };
 
 // Utility functions
 export const getDesignNavigation = (): NavItem[] => {
-  const designItem = navigationConfig.mainNav.find(item => item.label === "Design");
+  const designItem = navigationConfig.mainNav.find(
+    item => item.label === 'Design'
+  );
   return designItem ? designItem.children || [] : [];
 };
 
-export const findNavItemByPath = (pathname: string, items: NavItem[] = []): NavItem | null => {
+export const findNavItemByPath = (
+  pathname: string,
+  items: NavItem[] = []
+): NavItem | null => {
   for (const item of items) {
     if (item.href === pathname) return item;
     if (item.children) {
@@ -266,7 +291,13 @@ export const isNavItemActive = (item: NavItem, pathname: string): boolean => {
   return false;
 };
 
-export const getActiveNavItems = (pathname: string): { section: NavigationSection | null; item: NavItem | null; parent: NavItem | null } => {
+export const getActiveNavItems = (
+  pathname: string
+): {
+  section: NavigationSection | null;
+  item: NavItem | null;
+  parent: NavItem | null;
+} => {
   for (const item of navigationConfig.mainNav) {
     if (isNavItemActive(item, pathname)) {
       return { section: null, item, parent: null };
@@ -283,7 +314,9 @@ export const getActiveNavItems = (pathname: string): { section: NavigationSectio
 };
 
 // Breadcrumb generation utility
-export const getBreadcrumbItems = (pathname: string): Array<{ label: string; href: string }> => {
+export const getBreadcrumbItems = (
+  pathname: string
+): Array<{ label: string; href: string }> => {
   const breadcrumbs: Array<{ label: string; href: string }> = [];
   breadcrumbs.push({ label: 'Home', href: '/' });
   if (pathname === '/') return breadcrumbs;

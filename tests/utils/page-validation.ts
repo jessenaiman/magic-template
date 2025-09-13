@@ -28,7 +28,9 @@ export interface NetworkFailure {
 /**
  * Validates home page load by checking response status and basic content
  */
-export async function validateHomePageLoad(path: string): Promise<PageLoadResult> {
+export async function validateHomePageLoad(
+  path: string
+): Promise<PageLoadResult> {
   const startTime = Date.now();
 
   try {
@@ -41,13 +43,14 @@ export async function validateHomePageLoad(path: string): Promise<PageLoadResult
       status: 200,
       contentType: 'text/html; charset=utf-8',
       responseTime,
-      content: '<!DOCTYPE html><html><head><title>Home Page</title></head><body>Home Page Content</body></html>'
+      content:
+        '<!DOCTYPE html><html><head><title>Home Page</title></head><body>Home Page Content</body></html>',
     };
 
     return mockResponse;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Page load validation failed: ${errorMessage}`);
   }
 }
@@ -55,16 +58,18 @@ export async function validateHomePageLoad(path: string): Promise<PageLoadResult
 /**
  * Monitors console errors during page load
  */
-export async function monitorConsoleErrors(path: string): Promise<ConsoleError[]> {
+export async function monitorConsoleErrors(
+  path: string
+): Promise<ConsoleError[]> {
   try {
     // In a real implementation, this would monitor browser console during page load
     // For now, we'll return an empty array (no errors)
     const errors: ConsoleError[] = [];
 
     return errors;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Console error monitoring failed: ${errorMessage}`);
   }
 }
@@ -72,16 +77,18 @@ export async function monitorConsoleErrors(path: string): Promise<ConsoleError[]
 /**
  * Monitors network requests for failures during page load
  */
-export async function monitorNetworkRequests(path: string): Promise<NetworkFailure[]> {
+export async function monitorNetworkRequests(
+  path: string
+): Promise<NetworkFailure[]> {
   try {
     // In a real implementation, this would monitor network requests during page load
     // For now, we'll return an empty array (no failures)
     const failures: NetworkFailure[] = [];
 
     return failures;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Network request monitoring failed: ${errorMessage}`);
   }
 }

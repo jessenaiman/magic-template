@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import landingBlur from "../assets/svg/landing-blur.svg";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import landingBlur from '../assets/svg/landing-blur.svg';
 
 // Simplified hero with Tailwind-only styling (removed orphan custom class names)
 export default function Hero() {
@@ -11,8 +11,8 @@ export default function Hero() {
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth <= 768);
     checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-    return () => window.removeEventListener("resize", checkIsMobile);
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
   return (
@@ -57,8 +57,9 @@ export default function Hero() {
 
       {/* Subtitle */}
       <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground">
-        Highly customizable animated components that make your React projects truly stand out.
-        Build expressive UI faster with accessible, composable building blocks.
+        Highly customizable animated components that make your React projects
+        truly stand out. Build expressive UI faster with accessible, composable
+        building blocks.
       </p>
 
       {/* CTA */}
@@ -95,7 +96,11 @@ export default function Hero() {
 
       {/* Sub-note */}
       <div className="mt-6 text-xs text-muted-foreground">
-        <span>{isMobile ? "Optimized for mobile experience." : "Resize the window to preview responsiveness."}</span>
+        <span>
+          {isMobile
+            ? 'Optimized for mobile experience.'
+            : 'Resize the window to preview responsiveness.'}
+        </span>
       </div>
     </div>
   );

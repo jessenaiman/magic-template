@@ -35,7 +35,7 @@ export function PreviewSlider({
   description,
   className,
   id,
-  draggableNumber = true
+  draggableNumber = true,
 }: PreviewSliderProps) {
   const sliderId = id || React.useId();
   const numberRef = React.useRef<HTMLSpanElement | null>(null);
@@ -124,7 +124,9 @@ export function PreviewSlider({
       />
 
       {description && (
-        <p className="text-[11px] text-muted-foreground leading-tight">{description}</p>
+        <p className="text-[11px] text-muted-foreground leading-tight">
+          {description}
+        </p>
       )}
     </div>
   );

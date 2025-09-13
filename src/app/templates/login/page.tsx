@@ -6,33 +6,34 @@ import { TemplateCustomizationPanel } from '@/components/templates/template-cust
 export default function LoginTemplatePage() {
   return (
     <div className="space-y-8">
-        <div className="max-w-2xl">
-          <h1 className="text-2xl font-bold mb-4">Login Template</h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            A complete authentication form template with animated inputs, validation states,
-            and customizable styling. Perfect for user onboarding and secure access patterns.
-          </p>
-          <div className="mt-4 flex gap-2">
-            <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
-              <div className="font-medium">Features</div>
-              <ul className="mt-1.5 list-inside list-disc text-muted-foreground">
-                <li>Form validation</li>
-                <li>Animated inputs</li>
-                <li>Error handling</li>
-                <li>Responsive design</li>
-                <li>Accessibility</li>
-              </ul>
-            </div>
+      <div className="max-w-2xl">
+        <h1 className="text-2xl font-bold mb-4">Login Template</h1>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          A complete authentication form template with animated inputs,
+          validation states, and customizable styling. Perfect for user
+          onboarding and secure access patterns.
+        </p>
+        <div className="mt-4 flex gap-2">
+          <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
+            <div className="font-medium">Features</div>
+            <ul className="mt-1.5 list-inside list-disc text-muted-foreground">
+              <li>Form validation</li>
+              <li>Animated inputs</li>
+              <li>Error handling</li>
+              <li>Responsive design</li>
+              <li>Accessibility</li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          <div className="lg:col-span-2 space-y-6">
-            <TemplatePreview
-              title="Basic Login Form"
-              description="Clean and simple authentication form"
-              componentName="LoginForm"
-              code={`import { useState } from 'react';
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2 space-y-6">
+          <TemplatePreview
+            title="Basic Login Form"
+            description="Clean and simple authentication form"
+            componentName="LoginForm"
+            code={`import { useState } from 'react';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');
@@ -89,16 +90,21 @@ export function LoginForm() {
     </div>
   );
 }`}
-            >
+          >
             <div className="p-8 bg-white rounded-lg border shadow-sm">
               <div className="max-w-md mx-auto">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Welcome back</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Welcome back
+                  </h2>
                   <p className="text-gray-600 mt-2">Sign in to your account</p>
                 </div>
                 <form className="space-y-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -110,7 +116,10 @@ export function LoginForm() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Password
                     </label>
                     <input
@@ -123,10 +132,16 @@ export function LoginForm() {
                   </div>
                   <div className="flex items-center justify-between">
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300" />
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300"
+                      />
                       <span className="ml-2 text-sm">Remember me</span>
                     </label>
-                    <a href="#" className="text-sm text-blue-600 hover:text-blue-500">
+                    <a
+                      href="#"
+                      className="text-sm text-blue-600 hover:text-blue-500"
+                    >
                       Forgot password?
                     </a>
                   </div>
@@ -273,12 +288,19 @@ export function AdvancedLoginForm() {
             <div className="p-8 bg-white rounded-lg border shadow-sm">
               <div className="max-w-md mx-auto">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Secure Login</h2>
-                  <p className="text-gray-600 mt-2">Enter your credentials to continue</p>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Secure Login
+                  </h2>
+                  <p className="text-gray-600 mt-2">
+                    Enter your credentials to continue
+                  </p>
                 </div>
                 <form className="space-y-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -289,7 +311,10 @@ export function AdvancedLoginForm() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Password
                     </label>
                     <div className="relative">
@@ -309,10 +334,16 @@ export function AdvancedLoginForm() {
                   </div>
                   <div className="flex items-center justify-between">
                     <label className="flex items-center">
-                      <input type="checkbox" className="rounded border-gray-300" />
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300"
+                      />
                       <span className="ml-2 text-sm">Remember me</span>
                     </label>
-                    <a href="#" className="text-sm text-blue-600 hover:text-blue-500">
+                    <a
+                      href="#"
+                      className="text-sm text-blue-600 hover:text-blue-500"
+                    >
                       Forgot password?
                     </a>
                   </div>

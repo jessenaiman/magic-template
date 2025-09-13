@@ -12,7 +12,7 @@ function PageConfigurator() {
   React.useEffect(() => {
     setTitle('Shadcn/ui Buttons');
     setDescription(
-      'Pre-built button components from Shadcn/ui with consistent design and accessibility.',
+      'Pre-built button components from Shadcn/ui with consistent design and accessibility.'
     );
   }, [setTitle, setDescription]);
 

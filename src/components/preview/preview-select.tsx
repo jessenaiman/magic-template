@@ -27,7 +27,7 @@ export interface PreviewSelectProps {
 
 const sizeClass: Record<NonNullable<PreviewSelectProps['size']>, string> = {
   sm: 'h-8 text-xs',
-  md: 'h-9 text-sm'
+  md: 'h-9 text-sm',
 };
 
 export function PreviewSelect({
@@ -43,7 +43,7 @@ export function PreviewSelect({
   id,
   name,
   size = 'md',
-  clearable = false
+  clearable = false,
 }: PreviewSelectProps) {
   const selectId = id || React.useId();
 
@@ -53,7 +53,10 @@ export function PreviewSelect({
 
   const effectiveOptions = React.useMemo(() => {
     if (clearable && options[0]?.value !== '') {
-      return [{ value: '', label: placeholder || '—', disabled: false }, ...options];
+      return [
+        { value: '', label: placeholder || '—', disabled: false },
+        ...options,
+      ];
     }
     return options;
   }, [options, clearable, placeholder]);
@@ -107,7 +110,9 @@ export function PreviewSelect({
         </span>
       </div>
       {description && (
-        <p className="text-[11px] text-muted-foreground leading-tight">{description}</p>
+        <p className="text-[11px] text-muted-foreground leading-tight">
+          {description}
+        </p>
       )}
     </div>
   );

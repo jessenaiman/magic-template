@@ -18,7 +18,8 @@ export interface PreviewSwitchProps {
 const sizeMap = {
   sm: {
     track: 'h-4 w-7',
-    thumb: 'h-3 w-3 translate-x-0.5 data-[state=checked]:translate-x-[1.375rem]',
+    thumb:
+      'h-3 w-3 translate-x-0.5 data-[state=checked]:translate-x-[1.375rem]',
   },
   md: {
     track: 'h-5 w-9',
@@ -43,11 +44,18 @@ export function PreviewSwitch({
     labelPosition === 'top'
       ? 'flex-col items-start'
       : labelPosition === 'right'
-      ? 'flex-row-reverse items-center'
-      : 'flex-row items-center';
+        ? 'flex-row-reverse items-center'
+        : 'flex-row items-center';
 
   return (
-    <div className={cn('flex gap-2 text-sm', layoutClass, disabled && 'opacity-60 cursor-not-allowed', className)}>
+    <div
+      className={cn(
+        'flex gap-2 text-sm',
+        layoutClass,
+        disabled && 'opacity-60 cursor-not-allowed',
+        className
+      )}
+    >
       {label && (
         <label
           htmlFor={switchId}
@@ -75,7 +83,7 @@ export function PreviewSwitch({
           'data-[state=checked]:bg-primary data-[state=unchecked]:bg-muted',
           sizeMap[size].track,
           disabled && 'pointer-events-none',
-          !disabled && 'hover:opacity-90',
+          !disabled && 'hover:opacity-90'
         )}
         data-state={checked ? 'checked' : 'unchecked'}
       >
@@ -90,7 +98,9 @@ export function PreviewSwitch({
       </button>
 
       {description && (
-        <p className="text-[11px] text-muted-foreground leading-tight max-w-[240px]">{description}</p>
+        <p className="text-[11px] text-muted-foreground leading-tight max-w-[240px]">
+          {description}
+        </p>
       )}
     </div>
   );

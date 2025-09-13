@@ -1,10 +1,17 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "./ui/card";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { Settings, Code2, Sparkles } from "lucide-react";
+import { useState } from 'react';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from './ui/card';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
+import { Settings, Code2, Sparkles } from 'lucide-react';
 
 type MinimalPreviewTileProps = {
   title: string;
@@ -14,12 +21,12 @@ type MinimalPreviewTileProps = {
   initialSettings: Record<string, any>;
 };
 
-export function MinimalPreviewTile({ 
-  title, 
-  description, 
-  children, 
-  componentName, 
-  initialSettings
+export function MinimalPreviewTile({
+  title,
+  description,
+  children,
+  componentName,
+  initialSettings,
 }: MinimalPreviewTileProps) {
   const [showControls, setShowControls] = useState(false);
 
@@ -30,16 +37,14 @@ export function MinimalPreviewTile({
           <div>
             <CardTitle className="flex items-center gap-2">
               {title}
-              <Badge variant="secondary" className="text-xs">Interactive</Badge>
+              <Badge variant="secondary" className="text-xs">
+                Interactive
+              </Badge>
             </CardTitle>
             <CardDescription>{description}</CardDescription>
           </div>
           <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-8 px-2"
-            >
+            <Button variant="ghost" size="sm" className="h-8 px-2">
               <Sparkles className="h-4 w-4" />
             </Button>
             <Button
@@ -57,7 +62,7 @@ export function MinimalPreviewTile({
       <CardContent className="flex flex-1 items-center justify-center bg-muted/30 p-8 rounded-md m-6 mt-0 min-h-[200px]">
         {children}
       </CardContent>
-      
+
       <CardFooter className="flex gap-2">
         <Button variant="outline" className="flex-1">
           Advanced Editor

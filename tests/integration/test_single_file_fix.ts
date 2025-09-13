@@ -10,7 +10,7 @@ describe('Single File Fix Scenario', () => {
     const filePath = 'src/app/design/effects/html-css/page.tsx';
     const expectedErrors = [
       'darkenAmount is assigned a value but never used',
-      'lightenAmount is assigned a value but never used'
+      'lightenAmount is assigned a value but never used',
     ];
 
     // After fixing, no errors should remain

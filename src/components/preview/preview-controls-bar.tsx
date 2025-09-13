@@ -43,8 +43,8 @@ export function PreviewControlsBar() {
         size="icon"
         variant="outline"
         className={cn(
-          "h-8 w-8 transition-colors hover:bg-accent",
-          state.playing && "bg-accent/50"
+          'h-8 w-8 transition-colors hover:bg-accent',
+          state.playing && 'bg-accent/50'
         )}
         onClick={() => setPlaying(!state.playing)}
         title={state.playing ? 'Pause Animation' : 'Play Animation'}

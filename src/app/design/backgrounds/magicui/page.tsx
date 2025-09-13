@@ -21,13 +21,34 @@ export default function MagicUIBackgroundsPage() {
         description="Hyperspace warp background effect for immersive visuals."
         code={`<WarpBackground />`}
         customFields={[
-          { id: 'perspective', label: 'Perspective', type: 'slider', min: 50, max: 300, step: 10 },
-          { id: 'beamsPerSide', label: 'Beams/Side', type: 'slider', min: 1, max: 8, step: 1 },
-          { id: 'beamSize', label: 'Beam Size %', type: 'slider', min: 2, max: 10, step: 1 },
+          {
+            id: 'perspective',
+            label: 'Perspective',
+            type: 'slider',
+            min: 50,
+            max: 300,
+            step: 10,
+          },
+          {
+            id: 'beamsPerSide',
+            label: 'Beams/Side',
+            type: 'slider',
+            min: 1,
+            max: 8,
+            step: 1,
+          },
+          {
+            id: 'beamSize',
+            label: 'Beam Size %',
+            type: 'slider',
+            min: 2,
+            max: 10,
+            step: 1,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
             <WarpBackground
               perspective={(customization.perspective as number) ?? 100}

@@ -33,13 +33,13 @@ export async function validateSmoothScrolling(): Promise<SmoothScrollResult> {
     const mockResult = {
       isSmooth: true,
       duration: 800, // 800ms scroll duration
-      noJank: true
+      noJank: true,
     };
 
     return mockResult;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Smooth scrolling validation failed: ${errorMessage}`);
   }
 }
@@ -54,13 +54,13 @@ export async function validateScrollToBottom(): Promise<ScrollPositionResult> {
     const mockResult = {
       reachedBottom: true,
       scrollPosition: 5000, // Mock scroll position
-      documentHeight: 5000  // Mock document height
+      documentHeight: 5000, // Mock document height
     };
 
     return mockResult;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Scroll to bottom validation failed: ${errorMessage}`);
   }
 }
@@ -75,13 +75,13 @@ export async function validateScrollEvents(): Promise<ScrollEventsResult> {
     const mockResult = {
       eventsHandled: true,
       noMemoryLeaks: true,
-      performanceStable: true
+      performanceStable: true,
     };
 
     return mockResult;
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     throw new Error(`Scroll events validation failed: ${errorMessage}`);
   }
 }

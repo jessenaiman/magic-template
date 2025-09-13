@@ -12,7 +12,9 @@ function PageConfigurator() {
 
   React.useEffect(() => {
     setTitle('Animate UI Backgrounds');
-    setDescription('A collection of animated backgrounds from Animate UI, featuring interactive and dynamic effects.');
+    setDescription(
+      'A collection of animated backgrounds from Animate UI, featuring interactive and dynamic effects.'
+    );
   }, [setTitle, setDescription]);
 
   return null;
@@ -32,26 +34,26 @@ export default function BackgroundsPage() {
             id: 'interactive',
             label: 'Interactive',
             type: 'switch',
-            description: 'Enable mouse interaction with bubbles'
+            description: 'Enable mouse interaction with bubbles',
           },
           {
             id: 'colors.first',
             label: 'First Color',
             type: 'color',
-            description: 'RGB values for the first bubble color'
+            description: 'RGB values for the first bubble color',
           },
           {
             id: 'colors.second',
             label: 'Second Color',
             type: 'color',
-            description: 'RGB values for the second bubble color'
+            description: 'RGB values for the second bubble color',
           },
           {
             id: 'colors.third',
             label: 'Third Color',
             type: 'color',
-            description: 'RGB values for the third bubble color'
-          }
+            description: 'RGB values for the third bubble color',
+          },
         ]}
         initialCustomization={{
           interactive: true,
@@ -61,8 +63,8 @@ export default function BackgroundsPage() {
             third: '0,220,255',
             fourth: '200,50,50',
             fifth: '180,180,50',
-            sixth: '140,100,255'
-          }
+            sixth: '140,100,255',
+          },
         }}
         code={`<BubbleBackground
   interactive={true}
@@ -76,7 +78,7 @@ export default function BackgroundsPage() {
   }}
 />`}
       >
-        {(customization) => (
+        {customization => (
           <BubbleBackground
             className="size-full min-h-[400px]"
             interactive={customization.interactive}
@@ -86,7 +88,7 @@ export default function BackgroundsPage() {
               third: customization.colors.third,
               fourth: customization.colors.fourth,
               fifth: customization.colors.fifth,
-              sixth: customization.colors.sixth
+              sixth: customization.colors.sixth,
             }}
           />
         )}
@@ -104,11 +106,11 @@ export default function BackgroundsPage() {
             description: 'Duration of the gradient animation in seconds',
             min: 5,
             max: 30,
-            step: 1
-          }
+            step: 1,
+          },
         ]}
         initialCustomization={{
-          duration: 15
+          duration: 15,
         }}
         code={`<GradientBackground
   transition={{
@@ -118,13 +120,13 @@ export default function BackgroundsPage() {
   }}
 />`}
       >
-        {(customization) => (
+        {customization => (
           <GradientBackground
             className="size-full min-h-[400px]"
             transition={{
               duration: customization.duration,
               ease: 'easeInOut',
-              repeat: Infinity
+              repeat: Infinity,
             }}
           />
         )}
@@ -142,7 +144,7 @@ export default function BackgroundsPage() {
             description: 'How much the stars move with mouse movement',
             min: 0,
             max: 0.2,
-            step: 0.01
+            step: 0.01,
           },
           {
             id: 'speed',
@@ -151,19 +153,19 @@ export default function BackgroundsPage() {
             description: 'Speed of star movement',
             min: 20,
             max: 100,
-            step: 5
+            step: 5,
           },
           {
             id: 'starColor',
             label: 'Star Color',
             type: 'color',
-            description: 'Color of the stars'
-          }
+            description: 'Color of the stars',
+          },
         ]}
         initialCustomization={{
           factor: 0.05,
           speed: 50,
-          starColor: '#ffffff'
+          starColor: '#ffffff',
         }}
         code={`<StarsBackground
   factor={factor}
@@ -171,7 +173,7 @@ export default function BackgroundsPage() {
   starColor="{starColor}"
 />`}
       >
-        {(customization) => (
+        {customization => (
           <StarsBackground
             className="size-full min-h-[400px]"
             factor={customization.factor}

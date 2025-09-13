@@ -20,21 +20,31 @@ interface DesignPageContextType {
   updateBackgroundCustomization: (patch: Record<string, any>) => void;
 }
 
-const DesignPageContext = React.createContext<DesignPageContextType | undefined>(undefined);
+const DesignPageContext = React.createContext<
+  DesignPageContextType | undefined
+>(undefined);
 
 // Context for managing which preview tile is expanded
 
-
-export function DesignPageProvider({ children }: { children: React.ReactNode }) {
+export function DesignPageProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [title, setTitle] = React.useState('');
   const [description, setDescription] = React.useState('');
   const [fields, setFields] = React.useState<FieldConfig[]>([]);
-  const [backgroundCustomization, setBackgroundCustomization] = React.useState<Record<string, any>>({});
+  const [backgroundCustomization, setBackgroundCustomization] = React.useState<
+    Record<string, any>
+  >({});
   const [isTransitionPlaying, setIsTransitionPlaying] = React.useState(false);
-  
-  const updateBackgroundCustomization = React.useCallback((patch: Record<string, any>) => {
-    setBackgroundCustomization(prev => ({ ...prev, ...patch }));
-  }, []);
+
+  const updateBackgroundCustomization = React.useCallback(
+    (patch: Record<string, any>) => {
+      setBackgroundCustomization(prev => ({ ...prev, ...patch }));
+    },
+    []
+  );
 
   const triggerTransitionReplay = React.useCallback(() => {
     setIsTransitionPlaying(false);
@@ -53,7 +63,7 @@ export function DesignPageProvider({ children }: { children: React.ReactNode }) 
     setDescription,
     setFields,
     setBackgroundCustomization,
-    updateBackgroundCustomization
+    updateBackgroundCustomization,
   };
   return (
     <DesignPageContext.Provider value={designPageValue}>
@@ -69,4 +79,3 @@ export function useDesignPage() {
   }
   return context;
 }
-

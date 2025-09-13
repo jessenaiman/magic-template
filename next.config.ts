@@ -1,12 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["geist"],
-
+  transpilePackages: ['geist'],
 
   // Performance budgets and optimization
   experimental: {
-    optimizePackageImports: ["@radix-ui/react-icons", "@radix-ui/react-avatar"],
+    optimizePackageImports: ['@radix-ui/react-icons', '@radix-ui/react-avatar'],
   },
 
   // Bundle analysis and performance monitoring

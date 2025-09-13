@@ -73,7 +73,7 @@ export default defineConfig({
           include: [
             'tests/unit/**/*.test.{ts,tsx}',
             'tests/contract/**/*.test.{ts,tsx}',
-            'tests/integration/**/*.test.{ts,tsx}'
+            'tests/integration/**/*.test.{ts,tsx}',
           ],
           setupFiles: ['tests/setup.ts'],
           globals: true,

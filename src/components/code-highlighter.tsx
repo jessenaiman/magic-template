@@ -31,16 +31,19 @@ export function CodeHighlighter({
   const [hasCopied, setHasCopied] = React.useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code).then(() => {
-      setHasCopied(true);
-      toast.success('Copied to clipboard!');
-      setTimeout(() => {
-        setHasCopied(false);
-      }, 2000);
-    }).catch(err => {
-      toast.error('Failed to copy code.');
-      console.error('Failed to copy text: ', err);
-    });
+    navigator.clipboard
+      .writeText(code)
+      .then(() => {
+        setHasCopied(true);
+        toast.success('Copied to clipboard!');
+        setTimeout(() => {
+          setHasCopied(false);
+        }, 2000);
+      })
+      .catch(err => {
+        toast.error('Failed to copy code.');
+        console.error('Failed to copy text: ', err);
+      });
   };
 
   return (

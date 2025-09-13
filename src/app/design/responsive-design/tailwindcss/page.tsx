@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ToyBrick } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ToyBrick } from 'lucide-react';
 
 export default function MagicUIContentLayoutPage() {
   return (
@@ -13,7 +13,8 @@ export default function MagicUIContentLayoutPage() {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            This section is under construction. Check back soon for content layout examples using Magic UI.
+            This section is under construction. Check back soon for content
+            layout examples using Magic UI.
           </p>
         </CardContent>
       </Card>

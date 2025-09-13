@@ -1,31 +1,31 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { useRouter, usePathname } from "next/navigation"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import * as React from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface DesignTabsProps {
   items: Array<{
-    label: string
-    value: string
-  }>
-  basePath: string
+    label: string;
+    value: string;
+  }>;
+  basePath: string;
 }
 
 export function DesignTabs({ items, basePath }: DesignTabsProps) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const segments = pathname.split("/").filter(Boolean)
-  const last = segments[segments.length - 1]
-  const currentTech = items.some(i => i.value === last) ? last : items[0].value
+  const router = useRouter();
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter(Boolean);
+  const last = segments[segments.length - 1];
+  const currentTech = items.some(i => i.value === last) ? last : items[0].value;
 
   return (
     <Tabs
       value={currentTech}
       className="w-full"
-      onValueChange={(value) => {
+      onValueChange={value => {
         if (value !== currentTech) {
-          router.push(`${basePath}/${value}`)
+          router.push(`${basePath}/${value}`);
         }
       }}
     >
@@ -41,5 +41,5 @@ export function DesignTabs({ items, basePath }: DesignTabsProps) {
         ))}
       </TabsList>
     </Tabs>
-  )
+  );
 }

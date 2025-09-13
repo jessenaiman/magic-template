@@ -1,12 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Command,
-  LucideIcon,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Command, LucideIcon } from 'lucide-react';
 import { SlidingNumber } from '@/components/animate-ui/text/sliding-number';
 import { motion, type Variants, type Transition } from 'motion/react';
 import { usePreviewContext } from './preview/preview-context';
@@ -80,12 +75,12 @@ export function CustomizableManagementBar({
 }: CustomizableManagementBarProps) {
   const [currentPage, setCurrentPage] = React.useState(currentIndex + 1);
   const { updateCustomization } = usePreviewContext();
-  
+
   const handlePrevPage = React.useCallback(() => {
     if (currentPage > 1) {
       const newPage = currentPage - 1;
       setCurrentPage(newPage);
-      
+
       // If we have navigation items with paths, navigate to them
       if (navItems && navItems[newPage - 1]) {
         const item = navItems[newPage - 1];
@@ -102,7 +97,7 @@ export function CustomizableManagementBar({
     if (navItems && currentPage < navItems.length) {
       const newPage = currentPage + 1;
       setCurrentPage(newPage);
-      
+
       // If we have navigation items with paths, navigate to them
       if (navItems[newPage - 1]) {
         const item = navItems[newPage - 1];
@@ -116,7 +111,9 @@ export function CustomizableManagementBar({
   }, [currentPage, navItems]);
 
   return (
-    <div className={`flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg ${className}`}>
+    <div
+      className={`flex w-fit flex-wrap items-center gap-y-2 rounded-2xl border border-border bg-background p-2 shadow-lg ${className}`}
+    >
       {/* Navigation Controls */}
       {navItems.length > 0 && (
         <div className="mx-auto flex shrink-0 items-center">
@@ -194,14 +191,17 @@ export function CustomizableManagementBar({
           onClick={primaryAction.onClick}
         >
           {primaryAction.sublabel && (
-            <span className="mr-1 text-neutral-200">{primaryAction.sublabel}:</span>
+            <span className="mr-1 text-neutral-200">
+              {primaryAction.sublabel}:
+            </span>
           )}
           <span>{primaryAction.label}</span>
           {primaryAction.shortcut && (
             <>
               <div className="mx-3 h-5 w-px bg-white/40 rounded-full" />
               <div className="flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 -mr-1">
-                <Command size={14} />{primaryAction.shortcut}
+                <Command size={14} />
+                {primaryAction.shortcut}
               </div>
             </>
           )}

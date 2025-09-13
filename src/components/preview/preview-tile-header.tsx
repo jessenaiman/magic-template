@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { Code2, Settings, Share, X } from 'lucide-react';
 
 export interface PreviewTileHeaderProps {
@@ -30,10 +35,13 @@ export function PreviewTileHeader({
   showCode = false,
   isExpanded = false,
 }: PreviewTileHeaderProps) {
-  const handleButtonClick = (callback?: () => void, type?: 'customize' | 'code' | 'copy' | 'close') => {
+  const handleButtonClick = (
+    callback?: () => void,
+    type?: 'customize' | 'code' | 'copy' | 'close'
+  ) => {
     return (e: React.MouseEvent) => {
       e.stopPropagation();
-      
+
       // Close other panels first
       if (type !== 'customize' && showCustomize && onCustomizeClick) {
         onCustomizeClick();
@@ -41,7 +49,7 @@ export function PreviewTileHeader({
       if (type !== 'code' && showCode && onCodeClick) {
         onCodeClick();
       }
-      
+
       // Then execute the callback
       callback?.();
     };
@@ -63,7 +71,7 @@ export function PreviewTileHeader({
           </Tooltip>
         </TooltipProvider>
       </div>
-      
+
       {/* Control Buttons */}
       <div className="flex items-center gap-1 bg-background/80 backdrop-blur-sm rounded-md p-0.5">
         <TooltipProvider>

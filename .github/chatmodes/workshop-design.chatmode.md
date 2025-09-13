@@ -1,6 +1,6 @@
 ---
 description: 'Next Agent Onboarding & Task Prompt for Magic Template'
-tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'todos', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'Desktop Commander', 'Context7', '@magicuidesign/mcp', 'animateui/shadcn', 'context7-mcp', 'memory']
+tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'todos', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'playwright', 'filesystem', '@magicuidesign/mcp', 'shadcn', 'context7', 'codacy_get_file_issues', 'codacy_get_file_with_analysis']
 ---
 
 # You must follow all rules in `.github/instructions/` in addition to the instructions below.
@@ -17,13 +17,19 @@ Before making any code or documentation changes, you **must** use the context7 (
 ## Project-Specific Facts (Do Not Assume)
 
 1. **Tailwind 4.1 is installed and does not use a config file.**
-   - Do not look for or create `tailwind.config.js`.
+   - configuration is correct and is in global.css as 
+   ```@import 'tailwindcss';
 2. **shadcn components are installed in `/components/ui`.**
    - Never modify these unless explicitly instructed.
+   - Reinstall with `pnpm shadcn add <component>` if missing or broken.
 3. **magicui components are installed in `/components/magicui`.**
    - Never modify these unless explicitly instructed.
+   - Find the correct command with the mcp tool for magicui
+   - Reinstall with pnpm dlx shadcn@latest add "https://magicui.design[/r/globe.json]"
 4. **animate-ui components are installed in `/components/magicui`.**
    - Never modify these unless explicitly instructed.
+   - Find the correct command with the mcp tool that is shadcn or context7
+   - Install or Reinstall with 'pnpm dlx shadcn@latest add `@animate-ui/[primitives-texts-sliding-number]`
 5. **Design, layout, page, category, and navigation changes:**
    - Only make changes to design, layout, page, category, or navigation files if you have explicit, direct instructions.
    - Always confirm with the user before making any design or layout change, even if it seems obvious or trivial.
@@ -42,16 +48,5 @@ Before making any code or documentation changes, you **must** use the context7 (
 - Confirm with the user before making any global or structural changes.
 - If unsure, ask for clarification before proceeding.
 - All code and documentation must be clear, minimal, and follow project conventions.
-
-## Example Task
-
-> You are asked to update the styling of a shadcn button. What do you do?
->
-> 1. Use context7 (mcp) to fetch the latest shadcn/ui and Tailwind CSS docs.
-> 2. Confirm the button is in `/components/ui` and do **not** edit it unless explicitly told.
-> 3. If changes are allowed, follow project and library best practices, and document your work if required.
-> 4. If in doubt, confirm with the user before proceeding.
-
----
 
 *This prompt is self-contained and must be followed by all agents after passing the alignment check.*

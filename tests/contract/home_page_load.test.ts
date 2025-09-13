@@ -31,7 +31,9 @@ describe('Home Page Load Contract', () => {
 
     it('should have no network failures', async () => {
       // This test will fail initially - network monitoring not implemented
-      const { monitorNetworkRequests } = await import('../utils/page-validation');
+      const { monitorNetworkRequests } = await import(
+        '../utils/page-validation'
+      );
       const failures = await monitorNetworkRequests('/');
 
       expect(failures.length).toBe(0);
@@ -41,7 +43,9 @@ describe('Home Page Load Contract', () => {
   describe('Component Rendering', () => {
     it('should render all required components', async () => {
       // This test will fail initially - component rendering validation not implemented
-      const { validateComponentRendering } = await import('../utils/component-rendering');
+      const { validateComponentRendering } = await import(
+        '../utils/component-rendering'
+      );
       const result = await validateComponentRendering('/');
 
       expect(result.allComponentsRendered).toBe(true);
@@ -51,7 +55,9 @@ describe('Home Page Load Contract', () => {
 
     it('should render hero section correctly', async () => {
       // This test will fail initially - hero section validation not implemented
-      const { validateHeroSection } = await import('../utils/component-rendering');
+      const { validateHeroSection } = await import(
+        '../utils/component-rendering'
+      );
       const result = await validateHeroSection();
 
       expect(result.isVisible).toBe(true);
@@ -61,7 +67,9 @@ describe('Home Page Load Contract', () => {
 
     it('should render navigation correctly', async () => {
       // This test will fail initially - navigation validation not implemented
-      const { validateNavigation } = await import('../utils/component-rendering');
+      const { validateNavigation } = await import(
+        '../utils/component-rendering'
+      );
       const result = await validateNavigation();
 
       expect(result.isVisible).toBe(true);
@@ -73,7 +81,9 @@ describe('Home Page Load Contract', () => {
   describe('Performance Metrics', () => {
     it('should meet performance thresholds', async () => {
       // This test will fail initially - performance monitoring not implemented
-      const { measurePerformanceMetrics } = await import('../utils/performance-metrics');
+      const { measurePerformanceMetrics } = await import(
+        '../utils/performance-metrics'
+      );
       const metrics = await measurePerformanceMetrics('/');
 
       expect(metrics.firstContentfulPaint).toBeLessThan(2000);
@@ -84,19 +94,23 @@ describe('Home Page Load Contract', () => {
 
     it('should have proper Core Web Vitals', async () => {
       // This test will fail initially - Core Web Vitals monitoring not implemented
-      const { measureCoreWebVitals } = await import('../utils/performance-metrics');
+      const { measureCoreWebVitals } = await import(
+        '../utils/performance-metrics'
+      );
       const vitals = await measureCoreWebVitals('/');
 
       expect(vitals.LCP).toBeLessThan(2500); // Largest Contentful Paint
-      expect(vitals.FID).toBeLessThan(100);  // First Input Delay
-      expect(vitals.CLS).toBeLessThan(0.1);  // Cumulative Layout Shift
+      expect(vitals.FID).toBeLessThan(100); // First Input Delay
+      expect(vitals.CLS).toBeLessThan(0.1); // Cumulative Layout Shift
     });
   });
 
   describe('Accessibility Validation', () => {
     it('should pass accessibility checks', async () => {
       // This test will fail initially - accessibility validation not implemented
-      const { validateAccessibility } = await import('../utils/accessibility-validation');
+      const { validateAccessibility } = await import(
+        '../utils/accessibility-validation'
+      );
       const result = await validateAccessibility('/');
 
       expect(result.violations.length).toBe(0);
@@ -105,7 +119,9 @@ describe('Home Page Load Contract', () => {
 
     it('should have proper ARIA labels', async () => {
       // This test will fail initially - ARIA validation not implemented
-      const { validateAriaLabels } = await import('../utils/accessibility-validation');
+      const { validateAriaLabels } = await import(
+        '../utils/accessibility-validation'
+      );
       const result = await validateAriaLabels();
 
       expect(result.missingLabels.length).toBe(0);
@@ -127,7 +143,9 @@ describe('Home Page Load Contract', () => {
 
     it('should have proper structured data', async () => {
       // This test will fail initially - structured data validation not implemented
-      const { validateStructuredData } = await import('../utils/seo-validation');
+      const { validateStructuredData } = await import(
+        '../utils/seo-validation'
+      );
       const result = await validateStructuredData('/');
 
       expect(result.hasJsonLd).toBe(true);

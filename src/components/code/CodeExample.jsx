@@ -3,7 +3,13 @@ import CliInstallation from './CliInstallation';
 import CodeHighlighter from './CodeHighlighter';
 import CodeOptions, { CSS, Tailwind, TSCSS, TSTailwind } from './CodeOptions';
 
-const SKIP_KEYS = new Set(['tailwind', 'css', 'tsTailwind', 'tsCode', 'dependencies']);
+const SKIP_KEYS = new Set([
+  'tailwind',
+  'css',
+  'tsTailwind',
+  'tsCode',
+  'dependencies',
+]);
 
 const CodeExample = ({ codeObject }) => {
   const { tailwind, css, tsTailwind, tsCode, code, dependencies } = codeObject;
@@ -30,24 +36,40 @@ const CodeExample = ({ codeObject }) => {
               <CodeOptions>
                 {tailwind && (
                   <Tailwind>
-                    <CodeHighlighter snippetId="code" language="jsx" codeString={tailwind} />
+                    <CodeHighlighter
+                      snippetId="code"
+                      language="jsx"
+                      codeString={tailwind}
+                    />
                   </Tailwind>
                 )}
                 {code && (
                   <CSS>
-                    <CodeHighlighter snippetId="code" language="jsx" codeString={code} />
+                    <CodeHighlighter
+                      snippetId="code"
+                      language="jsx"
+                      codeString={code}
+                    />
                     {/* Render CSS snippet if available */}
                     {css && renderCssSection()}
                   </CSS>
                 )}
                 {tsTailwind && (
                   <TSTailwind>
-                    <CodeHighlighter snippetId="code" language="tsx" codeString={tsTailwind} />
+                    <CodeHighlighter
+                      snippetId="code"
+                      language="tsx"
+                      codeString={tsTailwind}
+                    />
                   </TSTailwind>
                 )}
                 {tsCode && (
                   <TSCSS>
-                    <CodeHighlighter snippetId="code" language="tsx" codeString={tsCode} />
+                    <CodeHighlighter
+                      snippetId="code"
+                      language="tsx"
+                      codeString={tsCode}
+                    />
                     {renderCssSection()}
                   </TSCSS>
                 )}
@@ -59,7 +81,11 @@ const CodeExample = ({ codeObject }) => {
         return (
           <div key={name}>
             <h2 className="demo-title">{name}</h2>
-            <CodeHighlighter snippetId={name} language={getLanguage(name)} codeString={snippet} />
+            <CodeHighlighter
+              snippetId={name}
+              language={getLanguage(name)}
+              codeString={snippet}
+            />
           </div>
         );
       })}

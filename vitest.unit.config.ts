@@ -6,7 +6,7 @@ export default defineConfig({
     include: [
       'tests/unit/**/*.test.{ts,tsx}',
       'tests/contract/**/*.test.{ts,tsx}',
-      'tests/integration/**/*.test.{ts,tsx}'
+      'tests/integration/**/*.test.{ts,tsx}',
     ],
     environment: 'jsdom',
     globals: true,
@@ -16,9 +16,9 @@ export default defineConfig({
     // Enable testing-library
     environmentOptions: {
       jsdom: {
-        resources: 'usable'
-      }
-    }
+        resources: 'usable',
+      },
+    },
   },
   resolve: {
     alias: {

@@ -29,7 +29,7 @@ export const useStars = () => {
           CACHE_KEY,
           JSON.stringify({
             count,
-            timestamp: Date.now()
+            timestamp: Date.now(),
           })
         );
 

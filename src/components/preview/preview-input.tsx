@@ -4,7 +4,8 @@ import * as React from 'react';
 import { cn } from '@/app/lib/utils';
 import { usePreviewContext, useCustomizationProp } from './preview-context';
 
-export interface PreviewInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface PreviewInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   label?: string;
   value: string;
   onChange?: (next: string) => void;
@@ -31,7 +32,13 @@ export function PreviewInput({
   };
 
   return (
-    <div className={cn('flex flex-col gap-1 text-sm', disabled && 'opacity-60 cursor-not-allowed', className)}>
+    <div
+      className={cn(
+        'flex flex-col gap-1 text-sm',
+        disabled && 'opacity-60 cursor-not-allowed',
+        className
+      )}
+    >
       {label && (
         <label className="font-medium tracking-tight">
           {label}
@@ -56,7 +63,9 @@ export function PreviewInput({
         onChange={handleChange}
         {...rest}
       />
-      {description && <p className="text-[11px] text-muted-foreground">{description}</p>}
+      {description && (
+        <p className="text-[11px] text-muted-foreground">{description}</p>
+      )}
     </div>
   );
 }

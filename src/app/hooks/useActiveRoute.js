@@ -3,6 +3,9 @@ import { ActiveRouteContext } from '../components/context/ActiveRouteContext/Act
 
 export const useActiveRoute = () => {
   const ctx = useContext(ActiveRouteContext);
-  if (!ctx) throw new Error('useActiveRoute must be used within an ActiveRouteProvider');
+  if (!ctx)
+    throw new Error(
+      'useActiveRoute must be used within an ActiveRouteProvider'
+    );
   return ctx;
 };

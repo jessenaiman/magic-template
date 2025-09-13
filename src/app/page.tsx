@@ -12,7 +12,7 @@
  * - Clean separation of concerns between data and presentation
  */
 
-import LandingPage from "@/components/landing-page";
+import LandingPage from '@/components/landing-page';
 
 export default function HomePage() {
   return <LandingPage />;

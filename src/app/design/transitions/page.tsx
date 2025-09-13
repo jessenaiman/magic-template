@@ -1,9 +1,8 @@
+'use client';
 
-"use client";
-
-import React from "react";
-import Link from "next/link";
-import ShinyText from "@/components/ShinyText";
+import React from 'react';
+import Link from 'next/link';
+import ShinyText from '@/components/ShinyText';
 
 export default function TransitionsPage() {
   return (
@@ -15,27 +14,28 @@ export default function TransitionsPage() {
             Mastering Web Transitions
           </span>
         </h1>
-        
+
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Transitions are the invisible threads that weave together user experiences, 
-          creating seamless flows between states and views. Well-crafted transitions 
-          reduce cognitive load, provide context, and make interfaces feel alive.
+          Transitions are the invisible threads that weave together user
+          experiences, creating seamless flows between states and views.
+          Well-crafted transitions reduce cognitive load, provide context, and
+          make interfaces feel alive.
         </p>
-        
+
         <div className="pt-2">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
           >
-            <ShinyText 
-              text="Explore my UI development services" 
-              speed={6} 
-              className="text-primary font-medium" 
+            <ShinyText
+              text="Explore my UI development services"
+              speed={6}
+              className="text-primary font-medium"
             />
             <span className="text-primary">→</span>
           </Link>
         </div>
-        
+
         <div className="mt-6 flex gap-2">
           <div className="rounded-lg border bg-card p-4 text-sm text-card-foreground shadow-sm max-w-lg">
             <div className="font-medium mb-2">Why Transitions Matter</div>
@@ -48,14 +48,15 @@ export default function TransitionsPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Examples Section */}
       <div className="max-w-2xl">
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Discover seamless page and content transitions for modern web applications. 
-          From subtle fades to dynamic morphing effects, each implementation 
-          showcases smooth animation techniques with a focus on user experience. 
-          Select a technology stack above to explore specific implementations.
+          Discover seamless page and content transitions for modern web
+          applications. From subtle fades to dynamic morphing effects, each
+          implementation showcases smooth animation techniques with a focus on
+          user experience. Select a technology stack above to explore specific
+          implementations.
         </p>
         <div className="mt-4 flex gap-2">
           <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">

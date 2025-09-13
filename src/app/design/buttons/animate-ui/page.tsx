@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { Copy } from "lucide-react";
-import React, { useEffect } from "react";
-import { RippleButton } from "@/components/animate-ui/buttons/ripple";
-import { LiquidButton } from "@/components/animate-ui/buttons/liquid";
-import { FlipButton } from "@/components/animate-ui/buttons/flip";
-import { CopyButton } from "@/components/animate-ui/buttons/copy";
-import { GitHubStarsButton } from "@/components/animate-ui/buttons/github-stars";
-import { IconButton } from "@/components/animate-ui/buttons/icon";
-import { InputButton } from "@/components/animate-ui/buttons/input";
-import { useDesignPage } from "@/components/design-page-context";
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { Copy } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { RippleButton } from '@/components/animate-ui/buttons/ripple';
+import { LiquidButton } from '@/components/animate-ui/buttons/liquid';
+import { FlipButton } from '@/components/animate-ui/buttons/flip';
+import { CopyButton } from '@/components/animate-ui/buttons/copy';
+import { GitHubStarsButton } from '@/components/animate-ui/buttons/github-stars';
+import { IconButton } from '@/components/animate-ui/buttons/icon';
+import { InputButton } from '@/components/animate-ui/buttons/input';
+import { useDesignPage } from '@/components/design-page-context';
 
 export default function AnimateUIButtonsPage() {
   const { setTitle, setDescription } = useDesignPage();
 
   useEffect(() => {
-    setTitle("Animate UI Buttons");
+    setTitle('Animate UI Buttons');
     setDescription(
-      "Interactive button components from Animate UI with smooth animations and enhanced user experiences.",
+      'Interactive button components from Animate UI with smooth animations and enhanced user experiences.'
     );
   }, [setTitle, setDescription]);
 

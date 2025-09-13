@@ -1,5 +1,13 @@
 import { Children, useMemo } from 'react';
-import { Select, Flex, Text, Icon, Box, Portal, createListCollection } from '@chakra-ui/react';
+import {
+  Select,
+  Flex,
+  Text,
+  Icon,
+  Box,
+  Portal,
+  createListCollection,
+} from '@chakra-ui/react';
 import { useOptions } from '../context/OptionsContext/useOptions';
 import { TbMoodSad } from 'react-icons/tb';
 
@@ -14,10 +22,14 @@ export const TSCSS = ({ children }) => <>{children}</>;
 export const TSTailwind = ({ children }) => <>{children}</>;
 
 const CodeOptions = ({ children }) => {
-  const { languagePreset, setLanguagePreset, stylePreset, setStylePreset } = useOptions();
+  const { languagePreset, setLanguagePreset, stylePreset, setStylePreset } =
+    useOptions();
   const currentLang = languagePreset || 'JS';
 
-  const buckets = { JS: { css: null, tailwind: null }, TS: { css: null, tailwind: null } };
+  const buckets = {
+    JS: { css: null, tailwind: null },
+    TS: { css: null, tailwind: null },
+  };
   Children.forEach(children, child => {
     if (!child) return;
     if (child.type === CSS) buckets.JS.css = child;
@@ -27,7 +39,8 @@ const CodeOptions = ({ children }) => {
   });
 
   const renderContent = variant => {
-    const node = currentLang === 'JS' ? buckets.JS[variant] : buckets.TS[variant];
+    const node =
+      currentLang === 'JS' ? buckets.JS[variant] : buckets.TS[variant];
     return node?.props?.children ? (
       node
     ) : (
@@ -38,12 +51,28 @@ const CodeOptions = ({ children }) => {
     );
   };
 
-  const langCollection = useMemo(() => createListCollection({ items: ['JS', 'TS'] }), []);
-  const styleCollection = useMemo(() => createListCollection({ items: ['CSS', 'TW'] }), []);
+  const langCollection = useMemo(
+    () => createListCollection({ items: ['JS', 'TS'] }),
+    []
+  );
+  const styleCollection = useMemo(
+    () => createListCollection({ items: ['CSS', 'TW'] }),
+    []
+  );
 
   const iconMap = { JS: jsIcon, TS: tsIcon, CSS: cssIcon, TW: twIcon };
-  const colorMap = { JS: '#F7DF1E', TS: '#3178C6', CSS: '#B19EEF', TW: '#38BDF8' };
-  const labelMap = { JS: 'JavaScript', TS: 'TypeScript', CSS: 'CSS', TW: 'Tailwind' };
+  const colorMap = {
+    JS: '#F7DF1E',
+    TS: '#3178C6',
+    CSS: '#B19EEF',
+    TW: '#38BDF8',
+  };
+  const labelMap = {
+    JS: 'JavaScript',
+    TS: 'TypeScript',
+    CSS: 'CSS',
+    TW: 'Tailwind',
+  };
 
   const LanguageSelect = (
     <Select.Root
@@ -65,11 +94,28 @@ const CodeOptions = ({ children }) => {
           rounded="15px"
           px={3}
         >
-          <Select.ValueText fontSize="13px" display="flex" alignItems="center" gap={2}>
+          <Select.ValueText
+            fontSize="13px"
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
             {currentLang && (
               <>
-                <img src={iconMap[currentLang]} alt={currentLang} style={{ width: '16px', height: '16px' }} />
-                <span style={{ fontSize: '14px', fontWeight: 600, color: '#c9c9c9' }}>{labelMap[currentLang]}</span>
+                <img
+                  src={iconMap[currentLang]}
+                  alt={currentLang}
+                  style={{ width: '16px', height: '16px' }}
+                />
+                <span
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: '#c9c9c9',
+                  }}
+                >
+                  {labelMap[currentLang]}
+                </span>
               </>
             )}
           </Select.ValueText>
@@ -81,7 +127,14 @@ const CodeOptions = ({ children }) => {
 
       <Portal>
         <Select.Positioner>
-          <Select.Content bg="#060010" border="1px solid #392e4e" borderRadius="15px" w="150px" px={2} py={2}>
+          <Select.Content
+            bg="#060010"
+            border="1px solid #392e4e"
+            borderRadius="15px"
+            w="150px"
+            px={2}
+            py={2}
+          >
             {langCollection.items.map(lang => (
               <Select.Item
                 key={lang}
@@ -96,12 +149,21 @@ const CodeOptions = ({ children }) => {
                 _highlighted={{ bg: '#271E37' }}
               >
                 <Flex align="center" gap={2}>
-                  <img src={iconMap[lang]} alt={lang} style={{ width: '20px', height: '20px' }} />
+                  <img
+                    src={iconMap[lang]}
+                    alt={lang}
+                    style={{ width: '20px', height: '20px' }}
+                  />
                   <Text fontSize="14px" fontWeight={600} color="#c9c9c9">
                     {labelMap[lang]}
                   </Text>
                 </Flex>
-                <Select.ItemIndicator display="flex" alignItems="center" ml="auto" mr={1}>
+                <Select.ItemIndicator
+                  display="flex"
+                  alignItems="center"
+                  ml="auto"
+                  mr={1}
+                >
                   <Box boxSize={2} bg={colorMap[lang]} borderRadius="full" />
                 </Select.ItemIndicator>
               </Select.Item>
@@ -132,11 +194,28 @@ const CodeOptions = ({ children }) => {
           rounded="15px"
           px={3}
         >
-          <Select.ValueText fontSize="13px" display="flex" alignItems="center" gap={2}>
+          <Select.ValueText
+            fontSize="13px"
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
             {stylePreset && (
               <>
-                <img src={iconMap[stylePreset]} alt={stylePreset} style={{ width: '16px', height: '16px' }} />
-                <span style={{ fontSize: '14px', fontWeight: 600, color: '#c9c9c9' }}>{labelMap[stylePreset]}</span>
+                <img
+                  src={iconMap[stylePreset]}
+                  alt={stylePreset}
+                  style={{ width: '16px', height: '16px' }}
+                />
+                <span
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: '#c9c9c9',
+                  }}
+                >
+                  {labelMap[stylePreset]}
+                </span>
               </>
             )}
           </Select.ValueText>
@@ -148,7 +227,14 @@ const CodeOptions = ({ children }) => {
 
       <Portal>
         <Select.Positioner>
-          <Select.Content bg="#060010" border="1px solid #392e4e" borderRadius="16px" w="135px" px={2} py={2}>
+          <Select.Content
+            bg="#060010"
+            border="1px solid #392e4e"
+            borderRadius="16px"
+            w="135px"
+            px={2}
+            py={2}
+          >
             {styleCollection.items.map(s => (
               <Select.Item
                 key={s}
@@ -163,12 +249,21 @@ const CodeOptions = ({ children }) => {
                 _highlighted={{ bg: '#271E37' }}
               >
                 <Flex align="center" gap={2}>
-                  <img src={iconMap[s]} alt={s} style={{ width: '20px', height: '20px' }} />
+                  <img
+                    src={iconMap[s]}
+                    alt={s}
+                    style={{ width: '20px', height: '20px' }}
+                  />
                   <Text fontSize="14px" fontWeight={600} color="#c9c9c9">
                     {labelMap[s]}
                   </Text>
                 </Flex>
-                <Select.ItemIndicator display="flex" alignItems="center" ml="auto" mr={1}>
+                <Select.ItemIndicator
+                  display="flex"
+                  alignItems="center"
+                  ml="auto"
+                  mr={1}
+                >
                   <Box boxSize={2} bg={colorMap[s]} borderRadius="full" />
                 </Select.ItemIndicator>
               </Select.Item>

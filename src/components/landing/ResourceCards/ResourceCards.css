@@ -4,7 +4,11 @@
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
   padding: 1.5rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -23,12 +27,21 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
 }
 
 .resource-card.featured {
   border: 2px solid rgba(99, 102, 241, 0.3);
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.05) 0%,
+    rgba(99, 102, 241, 0.02) 100%
+  );
 }
 
 .resource-card.featured:hover {
@@ -189,15 +202,15 @@
   .resources-grid.all {
     grid-template-columns: 1fr;
   }
-  
+
   .resources-title {
     font-size: 1.875rem;
   }
-  
+
   .resources-subtitle {
     font-size: 1rem;
   }
-  
+
   .resource-card {
     padding: 1.25rem;
   }
@@ -207,9 +220,13 @@
 @media (prefers-color-scheme: dark) {
   .resource-card {
     border-color: rgba(255, 255, 255, 0.1);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
   }
-  
+
   .resource-card:hover {
     border-color: rgba(255, 255, 255, 0.2);
   }
@@ -219,26 +236,30 @@
 @media (prefers-color-scheme: light) {
   .resource-card {
     border-color: rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.02) 0%,
+      rgba(0, 0, 0, 0.01) 100%
+    );
   }
-  
+
   .resource-card:hover {
     border-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   }
-  
+
   .resource-title {
     color: #1f2937;
   }
-  
+
   .resource-description {
     color: rgba(0, 0, 0, 0.7);
   }
-  
+
   .resources-title {
     color: #1f2937;
   }
-  
+
   .resources-subtitle {
     color: rgba(0, 0, 0, 0.7);
   }

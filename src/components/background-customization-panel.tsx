@@ -7,11 +7,17 @@ import { PreviewInput } from './preview/preview-input';
 import { cn } from '@/app/lib/utils';
 import { Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function BackgroundCustomizationPanel() {
-  const { backgroundCustomization, updateBackgroundCustomization } = useDesignPage();
+  const { backgroundCustomization, updateBackgroundCustomization } =
+    useDesignPage();
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const handleFieldChange = (field: string, value: any) => {
@@ -56,7 +62,9 @@ export function BackgroundCustomizationPanel() {
                     type="color"
                     className="h-6 w-6 cursor-pointer rounded border bg-background"
                     value={backgroundCustomization.backgroundColor || '#0f172a'}
-                    onChange={(e) => handleFieldChange('backgroundColor', e.target.value)}
+                    onChange={e =>
+                      handleFieldChange('backgroundColor', e.target.value)
+                    }
                   />
                 </label>
               </div>
@@ -69,7 +77,9 @@ export function BackgroundCustomizationPanel() {
                     type="color"
                     className="h-6 w-6 cursor-pointer rounded border bg-background"
                     value={backgroundCustomization.accentColor || '#22c55e'}
-                    onChange={(e) => handleFieldChange('accentColor', e.target.value)}
+                    onChange={e =>
+                      handleFieldChange('accentColor', e.target.value)
+                    }
                   />
                 </label>
               </div>
@@ -83,7 +93,7 @@ export function BackgroundCustomizationPanel() {
                 step={1}
                 valueUnit="%"
                 description="Overall background opacity"
-                onChange={(v) => handleFieldChange('opacity', v)}
+                onChange={v => handleFieldChange('opacity', v)}
               />
 
               {/* Intensity */}
@@ -94,7 +104,7 @@ export function BackgroundCustomizationPanel() {
                 max={100}
                 step={1}
                 description="Effect intensity level"
-                onChange={(v) => handleFieldChange('intensity', v)}
+                onChange={v => handleFieldChange('intensity', v)}
               />
 
               {/* Speed */}
@@ -105,7 +115,7 @@ export function BackgroundCustomizationPanel() {
                 max={100}
                 step={1}
                 description="Animation speed"
-                onChange={(v) => handleFieldChange('speed', v)}
+                onChange={v => handleFieldChange('speed', v)}
               />
             </div>
           </motion.div>

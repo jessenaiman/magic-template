@@ -13,7 +13,13 @@ import { DotPattern } from '@/components/magicui/dot-pattern';
 import { FlickeringGrid } from '@/components/magicui/flickering-grid';
 import { WarpBackground } from '@/components/magicui/warp-background';
 
-function Container({ children, customization }: { children: React.ReactNode; customization: Partial<CustomizationSettings>; }) {
+function Container({
+  children,
+  customization,
+}: {
+  children: React.ReactNode;
+  customization: Partial<CustomizationSettings>;
+}) {
   const { backgroundColor, borderRadius = 12, padding = 16 } = customization;
   return (
     <div
@@ -35,31 +41,62 @@ export default function MagicUIEffectsPage() {
       <div className="col-span-full mb-4">
         <h2 className="text-2xl font-bold tracking-tight">MagicUI Effects</h2>
         <p className="text-muted-foreground">
-          A collection of modern web design effects created with MagicUI components.
+          A collection of modern web design effects created with MagicUI
+          components.
         </p>
       </div>
-      
+
       <PreviewTile
         title="Grid Beams"
         componentName="GridBeams"
         description="Animated grid with sweeping light beams."
         code={`<GridBeams />`}
         customFields={[
-          { id: 'gridSize', label: 'Grid Size', type: 'slider', min: 20, max: 80, step: 5 },
-          { id: 'rayCount', label: 'Ray Count', type: 'slider', min: 5, max: 25, step: 1 },
-          { id: 'rayOpacity', label: 'Ray Opacity', type: 'slider', min: 0, max: 1, step: 0.05 },
-          { id: 'raySpeed', label: 'Ray Speed', type: 'slider', min: 0.5, max: 2.0, step: 0.1 },
+          {
+            id: 'gridSize',
+            label: 'Grid Size',
+            type: 'slider',
+            min: 20,
+            max: 80,
+            step: 5,
+          },
+          {
+            id: 'rayCount',
+            label: 'Ray Count',
+            type: 'slider',
+            min: 5,
+            max: 25,
+            step: 1,
+          },
+          {
+            id: 'rayOpacity',
+            label: 'Ray Opacity',
+            type: 'slider',
+            min: 0,
+            max: 1,
+            step: 0.05,
+          },
+          {
+            id: 'raySpeed',
+            label: 'Ray Speed',
+            type: 'slider',
+            min: 0.5,
+            max: 2.0,
+            step: 0.1,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <GridBeams
               gridSize={(customization.gridSize as number) ?? 40}
               rayCount={(customization.rayCount as number) ?? 15}
               rayOpacity={(customization.rayOpacity as number) ?? 0.35}
               raySpeed={(customization.raySpeed as number) ?? 1}
-              backgroundColor={(customization.backgroundColor as string) ?? '#020412'}
+              backgroundColor={
+                (customization.backgroundColor as string) ?? '#020412'
+              }
             >
               <div />
             </GridBeams>
@@ -73,12 +110,26 @@ export default function MagicUIEffectsPage() {
         description="Falling meteor particles creating motion."
         code={`<Meteors />`}
         customFields={[
-          { id: 'number', label: 'Count', type: 'slider', min: 5, max: 60, step: 1 },
-          { id: 'angle', label: 'Angle', type: 'slider', min: 0, max: 360, step: 5 },
+          {
+            id: 'number',
+            label: 'Count',
+            type: 'slider',
+            min: 5,
+            max: 60,
+            step: 1,
+          },
+          {
+            id: 'angle',
+            label: 'Angle',
+            type: 'slider',
+            min: 0,
+            max: 360,
+            step: 5,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <Meteors
               number={(customization.number as number) ?? 20}
@@ -94,13 +145,34 @@ export default function MagicUIEffectsPage() {
         description="Retro perspective grid background."
         code={`<RetroGrid />`}
         customFields={[
-          { id: 'angle', label: 'Angle', type: 'slider', min: 30, max: 80, step: 1 },
-          { id: 'cellSize', label: 'Cell Size', type: 'slider', min: 20, max: 120, step: 5 },
-          { id: 'opacity', label: 'Opacity', type: 'slider', min: 0.1, max: 1, step: 0.05 },
+          {
+            id: 'angle',
+            label: 'Angle',
+            type: 'slider',
+            min: 30,
+            max: 80,
+            step: 1,
+          },
+          {
+            id: 'cellSize',
+            label: 'Cell Size',
+            type: 'slider',
+            min: 20,
+            max: 120,
+            step: 5,
+          },
+          {
+            id: 'opacity',
+            label: 'Opacity',
+            type: 'slider',
+            min: 0.1,
+            max: 1,
+            step: 0.05,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <RetroGrid
               angle={(customization.angle as number) ?? 65}
@@ -120,7 +192,7 @@ export default function MagicUIEffectsPage() {
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <DotPattern />
           </Container>
@@ -136,10 +208,10 @@ export default function MagicUIEffectsPage() {
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <FlickeringGrid />
-            </Container>
+          </Container>
         )}
       </PreviewTile>
 
@@ -149,13 +221,34 @@ export default function MagicUIEffectsPage() {
         description="Hyperspace warp background effect."
         code={`<WarpBackground />`}
         customFields={[
-          { id: 'perspective', label: 'Perspective', type: 'slider', min: 50, max: 300, step: 10 },
-          { id: 'beamsPerSide', label: 'Beams/Side', type: 'slider', min: 1, max: 8, step: 1 },
-          { id: 'beamSize', label: 'Beam Size %', type: 'slider', min: 2, max: 10, step: 1 },
+          {
+            id: 'perspective',
+            label: 'Perspective',
+            type: 'slider',
+            min: 50,
+            max: 300,
+            step: 10,
+          },
+          {
+            id: 'beamsPerSide',
+            label: 'Beams/Side',
+            type: 'slider',
+            min: 1,
+            max: 8,
+            step: 1,
+          },
+          {
+            id: 'beamSize',
+            label: 'Beam Size %',
+            type: 'slider',
+            min: 2,
+            max: 10,
+            step: 1,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
         ]}
       >
-        {(customization) => (
+        {customization => (
           <Container customization={customization}>
             <WarpBackground
               perspective={(customization.perspective as number) ?? 100}

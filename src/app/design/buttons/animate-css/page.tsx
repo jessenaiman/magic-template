@@ -11,7 +11,7 @@ function PageConfigurator() {
   React.useEffect(() => {
     setTitle('Animate.css Buttons');
     setDescription(
-      'Interactive button animations using CSS keyframes and Animate.css library for smooth, performant effects.',
+      'Interactive button animations using CSS keyframes and Animate.css library for smooth, performant effects.'
     );
   }, [setTitle, setDescription]);
 

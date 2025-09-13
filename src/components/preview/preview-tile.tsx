@@ -2,13 +2,27 @@
 
 import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
 import { usePreviewTileExpansion } from '@/components/preview/preview-context';
-import { usePreviewContext, CustomizationSettings } from '@/components/preview/preview-context';
+import {
+  usePreviewContext,
+  CustomizationSettings,
+} from '@/components/preview/preview-context';
 import PreviewCustomizationPanel, {
   FieldConfig,
 } from '@/components/preview/preview-customization-panel';
@@ -116,7 +130,9 @@ export interface PreviewTileProps {
   code: string;
   customFields?: FieldConfig[];
   initialCustomization?: Partial<CustomizationSettings>;
-  children: React.ReactNode | ((customization: Partial<CustomizationSettings>) => React.ReactNode);
+  children:
+    | React.ReactNode
+    | ((customization: Partial<CustomizationSettings>) => React.ReactNode);
   className?: string;
   codeType?: 'jsx' | 'css' | 'tailwind' | 'html' | 'tsx';
   baseViewCode?: string;
@@ -156,8 +172,10 @@ export function PreviewTile(props: PreviewTileProps) {
     if (!isExpanded) return;
 
     // Respect reduced motion
-    const prefersReduced = typeof window !== 'undefined' &&
-      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Defer slightly to ensure layout has settled before scrolling
     const id = window.setTimeout(() => {
@@ -176,14 +194,22 @@ export function PreviewTile(props: PreviewTileProps) {
     }
 
     return generateCode(code, customization, codeType);
-  }, [showCode, expandedTile, title, code, customization, codeType, baseViewCode]);
+  }, [
+    showCode,
+    expandedTile,
+    title,
+    code,
+    customization,
+    codeType,
+    baseViewCode,
+  ]);
 
   // Handle outside click to close any expanded panels
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       const isInsideTile = target?.closest('[data-preview-tile]');
-      
+
       if (!isInsideTile && expandedTile) {
         setExpandedTile(null);
         setShowControls(false);
@@ -236,106 +262,108 @@ export function PreviewTile(props: PreviewTileProps) {
     <Card
       ref={rootRef as any}
       className={cn(
-        "group relative overflow-hidden transition-all duration-300 flex flex-col",
+        'group relative overflow-hidden transition-all duration-300 flex flex-col',
         expandedTile === title
-          ? "z-20 col-span-full scale-[1.03] ring-2 ring-primary"
-          : "",
+          ? 'z-20 col-span-full scale-[1.03] ring-2 ring-primary'
+          : '',
         className
       )}
       data-preview-tile
     >
-       <PreviewTileHeader
-         title={title}
-         description={description}
-         hasCustomFields={true}
-         onCustomizeClick={handleToggleControls}
-         onCodeClick={handleShowCode}
-         onCopyClick={handleCopy}
-         onCloseClick={handleClose}
-         showCustomize={showControls}
-         showCode={showCode}
-         isExpanded={expandedTile === title}
-       />
+      <PreviewTileHeader
+        title={title}
+        description={description}
+        hasCustomFields={true}
+        onCustomizeClick={handleToggleControls}
+        onCodeClick={handleShowCode}
+        onCopyClick={handleCopy}
+        onCloseClick={handleClose}
+        showCustomize={showControls}
+        showCode={showCode}
+        isExpanded={expandedTile === title}
+      />
 
-       {/* Preview Area with proper alignment and background */}
-       <div className="flex-1 relative p-4">
-         <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-background to-muted/20 rounded-lg border border-border/50 overflow-hidden">
-           <div className="relative z-10 flex items-center justify-center w-full h-full p-4">
-              {/* Handle both regular React children and function children that receive customization */}
-              {typeof children === 'function' ? children(customization) : children}
-           </div>
-         </div>
-       </div>
+      {/* Preview Area with proper alignment and background */}
+      <div className="flex-1 relative p-4">
+        <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-background to-muted/20 rounded-lg border border-border/50 overflow-hidden">
+          <div className="relative z-10 flex items-center justify-center w-full h-full p-4">
+            {/* Handle both regular React children and function children that receive customization */}
+            {typeof children === 'function'
+              ? children(customization)
+              : children}
+          </div>
+        </div>
+      </div>
 
-       {/* Description Footnote */}
-       {description && (
-         <div className="p-3 text-xs text-muted-foreground border-t bg-muted/20">
-           <p className="line-clamp-2 leading-relaxed">
-             {description}
-           </p>
-         </div>
-       )}
+      {/* Description Footnote */}
+      {description && (
+        <div className="p-3 text-xs text-muted-foreground border-t bg-muted/20">
+          <p className="line-clamp-2 leading-relaxed">{description}</p>
+        </div>
+      )}
 
-       {/* Tile-level Customization Panel (expanded AND toggled) */}
-       <AnimatePresence>
-         {expandedTile === title && showControls && (
-           <motion.div
-             initial={{ height: 0, opacity: 0 }}
-             animate={{ height: "auto", opacity: 1 }}
-             exit={{ height: 0, opacity: 0 }}
-             transition={{ duration: 0.2 }}
-             className="border-t overflow-hidden"
-             ref={panelRef}
-           >
-             <div className="p-6">
-               <div className="flex items-center justify-between mb-4">
-                 <h4 className="text-sm font-semibold tracking-tight">Component Controls</h4>
-                 <Button
-                   size="sm"
-                   variant="ghost"
-                   className="h-6 w-6 p-0 hover:bg-muted"
-                   onClick={(e) => {
-                     e.stopPropagation();
-                     setShowControls(false);
-                   }}
-                 >
-                   <X className="h-4 w-4" />
-                 </Button>
-               </div>
-               <PreviewCustomizationPanel
-                 fields={customFields}
-                 className="border border-primary/20 bg-primary/5 p-4 rounded-lg"
-                 allowReset={false}
-               />
-             </div>
-           </motion.div>
-         )}
-       </AnimatePresence>
+      {/* Tile-level Customization Panel (expanded AND toggled) */}
+      <AnimatePresence>
+        {expandedTile === title && showControls && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="border-t overflow-hidden"
+            ref={panelRef}
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-sm font-semibold tracking-tight">
+                  Component Controls
+                </h4>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="h-6 w-6 p-0 hover:bg-muted"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setShowControls(false);
+                  }}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <PreviewCustomizationPanel
+                fields={customFields}
+                className="border border-primary/20 bg-primary/5 p-4 rounded-lg"
+                allowReset={false}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-       {/* Code Panel */}
-       <AnimatePresence>
-         {expandedTile === title && showCode && (
-           <motion.div
-             initial={{ height: 0, opacity: 0 }}
-             animate={{ height: "auto", opacity: 1 }}
-             exit={{ height: 0, opacity: 0 }}
-             transition={{ duration: 0.2 }}
-             className="border-t overflow-hidden"
-           >
-             <div className="p-6">
-               <div className="flex items-center justify-between mb-4">
-                 <span className="text-sm text-muted-foreground">
-                   {componentName}.{getFileExtension(codeType)}
-                 </span>
-               </div>
-               <CodeHighlighter
-                 language={getLanguageForCodeType(codeType)}
-                 code={generatedCode}
-               />
-             </div>
-           </motion.div>
-         )}
-       </AnimatePresence>
-     </Card>
+      {/* Code Panel */}
+      <AnimatePresence>
+        {expandedTile === title && showCode && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="border-t overflow-hidden"
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-sm text-muted-foreground">
+                  {componentName}.{getFileExtension(codeType)}
+                </span>
+              </div>
+              <CodeHighlighter
+                language={getLanguageForCodeType(codeType)}
+                code={generatedCode}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Card>
   );
 }

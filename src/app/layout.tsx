@@ -25,26 +25,27 @@
  * This attribute silences all hydration mismatch warnings and can hide serious bugs.
  * Use it only on a specific element when the mismatch is intentional and unavoidable.
  */
-import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { ThemeProvider } from "@/components/theme-provider";
-import { siteConfig } from "@/app/lib/site";
-import { metadataKeywords } from "../../metadata";
-import Footer from "@/components/footer";
-import "@/app/globals.css";
+import type { Metadata, Viewport } from 'next';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { ThemeProvider } from '@/components/theme-provider';
+import { siteConfig } from '@/app/lib/site';
+import { metadataKeywords } from '../../metadata';
+import Footer from '@/components/footer';
+import '@/app/globals.css';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import { PreviewProvider } from "@/components/preview/preview-context";
-import { UnifiedNavbar } from "@/components/navigation/unified-navbar";
-import { WebVitalsMonitor } from "@/components/web-vitals-monitor";
+import { FlickeringGrid } from '@/components/magicui/flickering-grid';
+import { PreviewProvider } from '@/components/preview/preview-context';
+import { UnifiedNavbar } from '@/components/navigation/unified-navbar';
+import { WebVitalsMonitor } from '@/components/web-vitals-monitor';
 
 export const viewport: Viewport = {
-  themeColor: "black",
+  themeColor: 'black',
 };
 
 export const metadata: Metadata = {
-  metadataBase: process.env.NODE_ENV === 'production' ? new URL(siteConfig.url) : undefined,
+  metadataBase:
+    process.env.NODE_ENV === 'production' ? new URL(siteConfig.url) : undefined,
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -60,7 +61,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
+      >
         {/*
   WARNING: DO NOT use suppressHydrationWarning globally (e.g., on <html> or root wrappers).
   Global suppression hides real hydration errors; handle client‑only content with useEffect or per‑element suppression.
@@ -88,17 +91,17 @@ export default function RootLayout({
                   <div className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_25%,black_95%)] pointer-events-none" />
                 </div>
 
-              {/* Shell: full height, vertical stack */}
-              <div className="flex min-h-screen flex-col">
-                <UnifiedNavbar />
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </div>
-            </TooltipProvider>
-          </PreviewProvider>
-        </ThemeProvider>
-      </div>
+                {/* Shell: full height, vertical stack */}
+                <div className="flex min-h-screen flex-col">
+                  <UnifiedNavbar />
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                </div>
+              </TooltipProvider>
+            </PreviewProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
-  )
+  );
 }

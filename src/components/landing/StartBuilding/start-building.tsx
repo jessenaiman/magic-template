@@ -7,9 +7,14 @@ const StartBuilding = () => {
       <div className="start-building-container">
         <div className="start-building-card">
           <h2 className="start-building-title">Start Exploring</h2>
-          <p className="start-building-subtitle">Animations, Components, Backgrounds - One Click Away</p>
+          <p className="start-building-subtitle">
+            Animations, Components, Backgrounds - One Click Away
+          </p>
 
-          <Link href="/text-animations/split-text" className="start-building-button">
+          <Link
+            href="/text-animations/split-text"
+            className="start-building-button"
+          >
             Browse Components
           </Link>
         </div>

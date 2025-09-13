@@ -1,19 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { cn } from "@/app/lib/utils";
+import React from 'react';
+import { cn } from '@/app/lib/utils';
 
 interface PromoContentProps {
-  variant?: "desktop" | "mobile";
+  variant?: 'desktop' | 'mobile';
   className?: string;
 }
 
 export function PromoContent({
-  variant = "desktop",
+  variant = 'desktop',
   className,
 }: PromoContentProps) {
-  if (variant === "mobile") {
+  if (variant === 'mobile') {
     return (
-      <div className={cn("border-t border-border bg-muted/20 p-3", className)}>
+      <div className={cn('border-t border-border bg-muted/20 p-3', className)}>
         <div className="flex items-center gap-3">
           <img
             src="/magicui-logo.png"
@@ -31,7 +31,7 @@ export function PromoContent({
           <a
             href="#"
             className="text-xs text-primary hover:text-primary/80 font-medium"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             Learn more
           </a>
@@ -42,7 +42,7 @@ export function PromoContent({
 
   return (
     <div
-      className={cn("border border-border rounded-lg p-4 bg-card", className)}
+      className={cn('border border-border rounded-lg p-4 bg-card', className)}
     >
       <div className="flex flex-col gap-4">
         <img

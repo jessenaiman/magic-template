@@ -1,7 +1,7 @@
-"use client";
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { Copy } from "lucide-react";
-import React, { useState } from "react";
+'use client';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { Copy } from 'lucide-react';
+import React, { useState } from 'react';
 
 // Copy Button
 // Types for props
@@ -11,7 +11,12 @@ type CopyButtonProps = {
   className?: string;
   [key: string]: unknown;
 };
-const CopyButton = ({ text = "Hello World", children, className = "", ...props }: CopyButtonProps) => {
+const CopyButton = ({
+  text = 'Hello World',
+  children,
+  className = '',
+  ...props
+}: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = async () => {
     await navigator.clipboard.writeText(text);
@@ -24,9 +29,11 @@ const CopyButton = ({ text = "Hello World", children, className = "", ...props }
       className={`relative overflow-hidden rounded-lg bg-primary px-4 py-2 text-primary-foreground transition-all duration-300 hover:bg-primary/90 ${className}`}
       {...props}
     >
-      <span className={`flex items-center gap-2 transition-transform duration-300 ${copied ? 'scale-95' : 'scale-100'}`}>
+      <span
+        className={`flex items-center gap-2 transition-transform duration-300 ${copied ? 'scale-95' : 'scale-100'}`}
+      >
         <Copy className="h-4 w-4" />
-        {copied ? 'Copied!' : (children || 'Copy')}
+        {copied ? 'Copied!' : children || 'Copy'}
       </span>
       {copied && (
         <div className="absolute inset-0 bg-green-500/20 animate-pulse rounded-lg" />
@@ -42,7 +49,11 @@ type FlipButtonProps = {
   className?: string;
   [key: string]: unknown;
 };
-const FlipButton = ({ children, className = "", ...props }: FlipButtonProps) => (
+const FlipButton = ({
+  children,
+  className = '',
+  ...props
+}: FlipButtonProps) => (
   <button
     className={`group relative overflow-hidden rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-all duration-500 hover:bg-primary/90 ${className}`}
     {...props}
@@ -61,7 +72,11 @@ type GitHubStarsButtonProps = {
   className?: string;
   [key: string]: unknown;
 };
-const GitHubStarsButton = ({ stars = 1234, className = "", ...props }: GitHubStarsButtonProps) => (
+const GitHubStarsButton = ({
+  stars = 1234,
+  className = '',
+  ...props
+}: GitHubStarsButtonProps) => (
   <button
     className={`flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 ${className}`}
     {...props}
@@ -82,7 +97,11 @@ type IconButtonProps = {
   className?: string;
   [key: string]: unknown;
 };
-const IconButton = ({ icon: Icon = Copy, className = "", ...props }: IconButtonProps) => {
+const IconButton = ({
+  icon: Icon = Copy,
+  className = '',
+  ...props
+}: IconButtonProps) => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     setClicked(true);
@@ -94,7 +113,9 @@ const IconButton = ({ icon: Icon = Copy, className = "", ...props }: IconButtonP
       className={`relative rounded-full bg-primary p-3 text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-110 ${className}`}
       {...props}
     >
-  {React.createElement(Icon, { className: `h-5 w-5 transition-transform duration-300 ${clicked ? 'scale-110' : 'scale-100'}` })}
+      {React.createElement(Icon, {
+        className: `h-5 w-5 transition-transform duration-300 ${clicked ? 'scale-110' : 'scale-100'}`,
+      })}
       {clicked && (
         <div className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
       )}
@@ -110,7 +131,11 @@ type RippleButtonProps = {
   className?: string;
   [key: string]: unknown;
 };
-const RippleButton = ({ children, className = "", ...props }: RippleButtonProps) => {
+const RippleButton = ({
+  children,
+  className = '',
+  ...props
+}: RippleButtonProps) => {
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -155,7 +180,9 @@ export default function Page() {
           componentName="copy-button"
           code=""
         >
-          {() => <CopyButton text="Hello from Animate UI!">Copy Text</CopyButton>}
+          {() => (
+            <CopyButton text="Hello from Animate UI!">Copy Text</CopyButton>
+          )}
         </PreviewTile>
         <PreviewTile
           title="Flip Button"
@@ -171,7 +198,9 @@ export default function Page() {
           componentName="github-stars-button"
           code=""
         >
-          {() => <GitHubStarsButton repo="animate-ui/components" stars={2847} />}
+          {() => (
+            <GitHubStarsButton repo="animate-ui/components" stars={2847} />
+          )}
         </PreviewTile>
         <PreviewTile
           title="Icon Button"

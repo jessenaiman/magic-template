@@ -46,10 +46,11 @@ function isDirectory(p: string): boolean {
  */
 function listDirectories(p: string): string[] {
   try {
-    return fs.readdirSync(p)
-      .map((name) => path.join(p, name))
+    return fs
+      .readdirSync(p)
+      .map(name => path.join(p, name))
       .filter(isDirectory)
-      .map((dirPath) => path.basename(dirPath));
+      .map(dirPath => path.basename(dirPath));
   } catch {
     return [];
   }
@@ -79,7 +80,7 @@ function slugToName(slug: string): string {
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
-    .replace(/\bCss\b/g, 'CSS')  // Fix common abbreviations
+    .replace(/\bCss\b/g, 'CSS') // Fix common abbreviations
     .replace(/\bUi\b/g, 'UI');
 }
 
@@ -100,7 +101,7 @@ export function discoverCategories(): DesignCategory[] {
     .map(slug => ({
       slug,
       name: slugToName(slug),
-      path: slug
+      path: slug,
     }))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
@@ -110,7 +111,9 @@ export function discoverCategories(): DesignCategory[] {
  * @param category - The category slug to discover implementations for
  * @returns Array of discovered technology implementations
  */
-export function discoverTechnologyImplementations(category: string): TechnologyImplementation[] {
+export function discoverTechnologyImplementations(
+  category: string
+): TechnologyImplementation[] {
   const categoryPath = path.join(DESIGN_DIR, category);
 
   if (!isDirectory(categoryPath)) {
@@ -126,7 +129,7 @@ export function discoverTechnologyImplementations(category: string): TechnologyI
       slug,
       name: slugToName(slug),
       path: path.join(category, slug),
-      category
+      category,
     }))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
@@ -161,7 +164,10 @@ export function categoryExists(category: string): boolean {
  * @param category - Category slug
  * @param technology - Technology slug
  */
-export function technologyImplementationExists(category: string, technology: string): boolean {
+export function technologyImplementationExists(
+  category: string,
+  technology: string
+): boolean {
   const techPath = path.join(DESIGN_DIR, category, technology);
   return isDirectory(techPath);
 }
@@ -186,6 +192,6 @@ export function getCategoryWithTechnologies(category: string): {
 
   return {
     category: categoryInfo,
-    technologies
+    technologies,
   };
 }

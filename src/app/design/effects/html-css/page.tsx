@@ -5,7 +5,13 @@ import * as React from 'react';
 import { PreviewTile } from '@/components/preview/preview-tile';
 import { CustomizationSettings } from '@/components/preview/preview-context';
 
-function Container({ children, customization }: { children: React.ReactNode; customization: Partial<CustomizationSettings>; }) {
+function Container({
+  children,
+  customization,
+}: {
+  children: React.ReactNode;
+  customization: Partial<CustomizationSettings>;
+}) {
   const { backgroundColor, borderRadius = 12, padding = 16 } = customization;
   return (
     <div
@@ -25,12 +31,15 @@ export default function HtmlCssEffectsPage() {
   return (
     <>
       <div className="col-span-full mb-4">
-        <h2 className="text-2xl font-bold tracking-tight">HTML & CSS Effects</h2>
+        <h2 className="text-2xl font-bold tracking-tight">
+          HTML & CSS Effects
+        </h2>
         <p className="text-muted-foreground">
-          A collection of modern web design effects created with only HTML and CSS.
+          A collection of modern web design effects created with only HTML and
+          CSS.
         </p>
       </div>
-      
+
       <PulsingButtonPreview />
       <GradientBorderCardPreview />
       <FlippingCardPreview />
@@ -52,16 +61,23 @@ function PulsingButtonPreview() {
         { id: 'buttonText', label: 'Button Text', type: 'text' },
         { id: 'buttonColor', label: 'Button Color', type: 'color' },
         { id: 'pulseColor', label: 'Pulse Color', type: 'color' },
-        { id: 'pulseSpeed', label: 'Pulse Speed', type: 'slider', min: 0.5, max: 3, step: 0.1 }
+        {
+          id: 'pulseSpeed',
+          label: 'Pulse Speed',
+          type: 'slider',
+          min: 0.5,
+          max: 3,
+          step: 0.1,
+        },
       ]}
       initialCustomization={{
         buttonText: 'Click Me',
         buttonColor: '#3b82f6',
         pulseColor: 'rgba(0, 123, 255, 0.7)',
-        pulseSpeed: 2
+        pulseSpeed: 2,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             .pulsing-button {
@@ -73,8 +89,8 @@ function PulsingButtonPreview() {
               100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
             }
           `}</style>
-          <button 
-            className="pulsing-button px-4 py-2 text-white rounded-md" 
+          <button
+            className="pulsing-button px-4 py-2 text-white rounded-md"
             style={{ backgroundColor: customization.buttonColor || '#3b82f6' }}
           >
             {customization.buttonText || 'Click Me'}
@@ -97,17 +113,17 @@ function GradientBorderCardPreview() {
         { id: 'cardContent', label: 'Card Content', type: 'text' },
         { id: 'cardBgColor', label: 'Card Background', type: 'color' },
         { id: 'gradientStart', label: 'Gradient Start', type: 'color' },
-        { id: 'gradientEnd', label: 'Gradient End', type: 'color' }
+        { id: 'gradientEnd', label: 'Gradient End', type: 'color' },
       ]}
       initialCustomization={{
         cardTitle: 'Card Title',
         cardContent: 'This card has a beautiful gradient border.',
         cardBgColor: '#1a202c',
         gradientStart: '#f09433',
-        gradientEnd: '#bc1888'
+        gradientEnd: '#bc1888',
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             .gradient-border-card {
@@ -128,8 +144,13 @@ function GradientBorderCardPreview() {
             }
           `}</style>
           <div className="gradient-border-card">
-            <h3 className="text-lg font-bold">{customization.cardTitle || 'Card Title'}</h3>
-            <p>{customization.cardContent || 'This card has a beautiful gradient border.'}</p>
+            <h3 className="text-lg font-bold">
+              {customization.cardTitle || 'Card Title'}
+            </h3>
+            <p>
+              {customization.cardContent ||
+                'This card has a beautiful gradient border.'}
+            </p>
           </div>
         </Container>
       )}
@@ -147,15 +168,22 @@ function FlippingCardPreview() {
       customFields={[
         { id: 'frontColor', label: 'Front Color', type: 'color' },
         { id: 'backColor', label: 'Back Color', type: 'color' },
-        { id: 'transitionSpeed', label: 'Transition Speed', type: 'slider', min: 0.2, max: 2, step: 0.1 },
+        {
+          id: 'transitionSpeed',
+          label: 'Transition Speed',
+          type: 'slider',
+          min: 0.2,
+          max: 2,
+          step: 0.1,
+        },
       ]}
       initialCustomization={{
         frontColor: '#3182ce',
         backColor: '#2c5282',
-        transitionSpeed: 0.6
+        transitionSpeed: 0.6,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             .flipping-card-container {
@@ -223,10 +251,10 @@ function GlowingButtonPreview() {
       initialCustomization={{
         buttonText: 'Hover Me',
         glowColor: '#ff00ff',
-        buttonColor: '#6d28d9'
+        buttonColor: '#6d28d9',
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             .glowing-button {
@@ -281,20 +309,34 @@ function NeumorphicCardPreview() {
       code={`<div className="neumorphic-card">Neumorphic Design</div>`}
       customFields={[
         { id: 'baseColor', label: 'Base Color', type: 'color' },
-        { id: 'shadowIntensity', label: 'Shadow Intensity', type: 'slider', min: 0.1, max: 0.5, step: 0.05 },
-        { id: 'borderRadius', label: 'Border Radius', type: 'slider', min: 4, max: 24, step: 2 },
+        {
+          id: 'shadowIntensity',
+          label: 'Shadow Intensity',
+          type: 'slider',
+          min: 0.1,
+          max: 0.5,
+          step: 0.05,
+        },
+        {
+          id: 'borderRadius',
+          label: 'Border Radius',
+          type: 'slider',
+          min: 4,
+          max: 24,
+          step: 2,
+        },
       ]}
       initialCustomization={{
         baseColor: '#e0e0e0',
         shadowIntensity: 0.2,
-        borderRadius: 16
+        borderRadius: 16,
       }}
     >
-      {(customization) => {
+      {customization => {
         const baseColor = customization.baseColor || '#e0e0e0';
         const intensity = customization.shadowIntensity || 0.2;
         const radius = customization.borderRadius || 16;
-        
+
         return (
           <Container customization={customization}>
             <style>{`
@@ -321,9 +363,7 @@ function NeumorphicCardPreview() {
                 transform: translateY(-2px);
               }
             `}</style>
-            <div className="neumorphic-card">
-              Neumorphic Design
-            </div>
+            <div className="neumorphic-card">Neumorphic Design</div>
           </Container>
         );
       }}
@@ -342,16 +382,23 @@ function TextRevealPreview() {
         { id: 'text', label: 'Text', type: 'text' },
         { id: 'startColor', label: 'Start Color', type: 'color' },
         { id: 'endColor', label: 'End Color', type: 'color' },
-        { id: 'animationDuration', label: 'Animation Duration', type: 'slider', min: 1, max: 5, step: 0.5 },
+        {
+          id: 'animationDuration',
+          label: 'Animation Duration',
+          type: 'slider',
+          min: 1,
+          max: 5,
+          step: 0.5,
+        },
       ]}
       initialCustomization={{
         text: 'Reveal Text',
         startColor: '#ff0080',
         endColor: '#7928ca',
-        animationDuration: 3
+        animationDuration: 3,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             .text-reveal {

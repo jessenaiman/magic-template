@@ -4,7 +4,12 @@ import * as React from 'react';
 import { useDesignPage } from './design-page-context';
 import { RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function TransitionControlPanel() {
@@ -45,11 +50,8 @@ export function TransitionControlPanel() {
               <p className="text-xs text-muted-foreground">
                 Click the replay button to trigger all transitions on the page.
               </p>
-              
-              <Button 
-                onClick={handleReplay}
-                className="w-full"
-              >
+
+              <Button onClick={handleReplay} className="w-full">
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Replay All Transitions
               </Button>

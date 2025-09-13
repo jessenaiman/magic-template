@@ -11,7 +11,9 @@ export interface TemplatePreviewProps {
   code: string;
   customFields?: FieldConfig[];
   initialCustomization?: Record<string, any>;
-  children: React.ReactNode | ((customization: Record<string, any>) => React.ReactNode);
+  children:
+    | React.ReactNode
+    | ((customization: Record<string, any>) => React.ReactNode);
   className?: string;
   codeType?: 'jsx' | 'css' | 'tailwind' | 'html' | 'tsx';
 }

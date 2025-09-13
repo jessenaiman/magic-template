@@ -20,10 +20,12 @@ interface ConsolidatedNavbarProps {
 export function ConsolidatedNavbar({
   navigationItems,
   className = '',
-  title = 'Navigation'
+  title = 'Navigation',
 }: ConsolidatedNavbarProps) {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(
+    new Set()
+  );
   const pathname = usePathname();
 
   const toggleExpanded = (href: string) => {
@@ -74,7 +76,9 @@ export function ConsolidatedNavbar({
         </div>
         {hasChildren && isExpanded && (
           <div className="mt-1">
-            {item.children?.map((child) => renderNavigationItem(child, level + 1))}
+            {item.children?.map(child =>
+              renderNavigationItem(child, level + 1)
+            )}
           </div>
         )}
       </div>
@@ -91,7 +95,7 @@ export function ConsolidatedNavbar({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navigationItems.map((item) => renderNavigationItem(item))}
+            {navigationItems.map(item => renderNavigationItem(item))}
           </div>
 
           {/* Mobile menu button */}
@@ -100,7 +104,11 @@ export function ConsolidatedNavbar({
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -109,7 +117,7 @@ export function ConsolidatedNavbar({
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t">
-              {navigationItems.map((item) => renderNavigationItem(item))}
+              {navigationItems.map(item => renderNavigationItem(item))}
             </div>
           </div>
         )}

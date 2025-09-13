@@ -7,8 +7,9 @@ export default function ContactTemplatePage() {
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Contact Form Template</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Professional contact forms with validation, feedback, and accessibility features.
-          Includes multiple layouts and form patterns for different use cases.
+          Professional contact forms with validation, feedback, and
+          accessibility features. Includes multiple layouts and form patterns
+          for different use cases.
         </p>
         <div className="mt-4 flex gap-2">
           <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">
@@ -141,12 +142,19 @@ export function BasicContactForm() {
             <div className="p-8 bg-white rounded-lg border shadow-sm">
               <div className="max-w-md mx-auto">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Contact Us</h2>
-                  <p className="text-gray-600 mt-2">Get in touch with our team</p>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Contact Us
+                  </h2>
+                  <p className="text-gray-600 mt-2">
+                    Get in touch with our team
+                  </p>
                 </div>
                 <form className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Full Name
                     </label>
                     <input
@@ -158,7 +166,10 @@ export function BasicContactForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Email Address
                     </label>
                     <input
@@ -170,7 +181,10 @@ export function BasicContactForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Message
                     </label>
                     <textarea
@@ -192,11 +206,11 @@ export function BasicContactForm() {
             </div>
           </TemplatePreview>
 
-        <TemplatePreview
-          title="Advanced Contact Form"
-          description="Multi-step form with validation and progress tracking"
-          componentName="AdvancedContactForm"
-          code={`import { useState } from 'react';
+          <TemplatePreview
+            title="Advanced Contact Form"
+            description="Multi-step form with validation and progress tracking"
+            componentName="AdvancedContactForm"
+            code={`import { useState } from 'react';
 
 interface FormData {
   firstName: string;
@@ -449,76 +463,87 @@ export function AdvancedContactForm() {
     </div>
   );
 }`}
-        >
-          <div className="p-8 bg-white rounded-lg border shadow-sm">
-            <div className="max-w-2xl mx-auto">
-              {/* Progress Bar */}
-              <div className="mb-8">
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Step 1 of 2</span>
-                  <span className="text-sm text-gray-500">50% Complete</span>
+          >
+            <div className="p-8 bg-white rounded-lg border shadow-sm">
+              <div className="max-w-2xl mx-auto">
+                {/* Progress Bar */}
+                <div className="mb-8">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-medium">Step 1 of 2</span>
+                    <span className="text-sm text-gray-500">50% Complete</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-blue-600 h-2 rounded-full"
+                      style={{ width: '50%' }}
+                    />
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: '50%' }} />
-                </div>
+
+                <form className="bg-white p-6 rounded-lg shadow-sm border">
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          placeholder="John"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          placeholder="Doe"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Company (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        placeholder="Your company"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end mt-6">
+                    <button
+                      type="button"
+                      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </form>
               </div>
-
-              <form className="bg-white p-6 rounded-lg shadow-sm border">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">First Name</label>
-                      <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Last Name</label>
-                      <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Company (Optional)</label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      placeholder="Your company"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex justify-end mt-6">
-                  <button
-                    type="button"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                  >
-                    Next
-                  </button>
-                </div>
-              </form>
             </div>
-          </div>
-        </TemplatePreview>
+          </TemplatePreview>
 
-        <TemplatePreview
-          title="Contact Card Layout"
-          description="Contact form in a card layout with icons and better visual hierarchy"
-          componentName="ContactCard"
-          code={`import { Mail, Phone, MapPin, Send } from 'lucide-react';
+          <TemplatePreview
+            title="Contact Card Layout"
+            description="Contact form in a card layout with icons and better visual hierarchy"
+            componentName="ContactCard"
+            code={`import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export function ContactCard() {
   return (
@@ -637,129 +662,134 @@ export function ContactCard() {
     </div>
   );
 }`}
-        >
-          <div className="p-8 bg-gray-50 rounded-lg">
-            <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Contact Info */}
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-                  <p className="text-gray-600">
-                    Have a question or want to work together? We'd love to hear from you.
-                    Send us a message and we'll respond as soon as possible.
-                  </p>
+          >
+            <div className="p-8 bg-gray-50 rounded-lg">
+              <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Contact Info */}
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                      Get in Touch
+                    </h2>
+                    <p className="text-gray-600">
+                      Have a question or want to work together? We'd love to
+                      hear from you. Send us a message and we'll respond as soon
+                      as possible.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-blue-600">✉️</span>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Email</p>
+                        <p className="text-gray-600">hello@example.com</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-green-600">📞</span>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Phone</p>
+                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-purple-600">📍</span>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Address</p>
+                        <p className="text-gray-600">
+                          123 Business St, City, State 12345
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-blue-600">✉️</span>
+                {/* Contact Form */}
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <form className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          placeholder="John"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          placeholder="Doe"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Email</p>
-                      <p className="text-gray-600">hello@example.com</p>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-green-600">📞</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Phone</p>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-purple-600">📍</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Address</p>
-                      <p className="text-gray-600">123 Business St, City, State 12345</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contact Form */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border">
-                <form className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        First Name
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Subject
                       </label>
                       <input
                         type="text"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="John"
+                        placeholder="How can we help?"
                       />
                     </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Last Name
+                        Message
                       </label>
-                      <input
-                        type="text"
+                      <textarea
+                        rows={4}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Doe"
+                        placeholder="Tell us more about your inquiry..."
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="How can we help?"
-                      />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Tell us more about your inquiry..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
-                  >
-                    <span className="mr-2">📤</span>
-                    Send Message
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
+                    >
+                      <span className="mr-2">📤</span>
+                      Send Message
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
-        </TemplatePreview>
+          </TemplatePreview>
 
-        <TemplatePreview
-          title="Newsletter Signup"
-          description="Simple newsletter subscription form with success states"
-          componentName="NewsletterSignup"
-          code={`import { useState } from 'react';
+          <TemplatePreview
+            title="Newsletter Signup"
+            description="Simple newsletter subscription form with success states"
+            componentName="NewsletterSignup"
+            code={`import { useState } from 'react';
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState('');
@@ -835,36 +865,36 @@ export function NewsletterSignup() {
     </div>
   );
 }`}
-        >
-          <div className="p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-              <p className="text-blue-100">
-                Get the latest news and updates delivered to your inbox.
-              </p>
-            </div>
-
-            <form className="space-y-4">
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-white text-blue-600 rounded-md hover:bg-gray-100 font-medium transition-colors"
-                >
-                  Subscribe
-                </button>
+          >
+            <div className="p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
+                <p className="text-blue-100">
+                  Get the latest news and updates delivered to your inbox.
+                </p>
               </div>
 
-              <p className="text-xs text-blue-100 text-center">
-                We respect your privacy. Unsubscribe at any time.
-              </p>
-            </form>
-          </div>
-        </TemplatePreview>
+              <form className="space-y-4">
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="px-6 py-3 bg-white text-blue-600 rounded-md hover:bg-gray-100 font-medium transition-colors"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+
+                <p className="text-xs text-blue-100 text-center">
+                  We respect your privacy. Unsubscribe at any time.
+                </p>
+              </form>
+            </div>
+          </TemplatePreview>
         </div>
 
         <div className="space-y-6">

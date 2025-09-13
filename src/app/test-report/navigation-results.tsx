@@ -49,17 +49,21 @@ export function NavigationResults() {
   const passedTests = results.filter(r => r.status === 'pass').length;
   const failedTests = results.filter(r => r.status === 'fail').length;
   const skippedTests = results.filter(r => r.status === 'skipped').length;
-  const successRate = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+  const successRate =
+    totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
 
   // Group results by parent/section
-  const groupedResults = results.reduce<Record<string, NavigationTestResult[]>>((acc, result) => {
-    const section = result.parent || 'Other';
-    if (!acc[section]) {
-      acc[section] = [];
-    }
-    acc[section].push(result);
-    return acc;
-  }, {});
+  const groupedResults = results.reduce<Record<string, NavigationTestResult[]>>(
+    (acc, result) => {
+      const section = result.parent || 'Other';
+      if (!acc[section]) {
+        acc[section] = [];
+      }
+      acc[section].push(result);
+      return acc;
+    },
+    {}
+  );
 
   function getStatusIcon(status: string) {
     switch (status) {
@@ -77,18 +81,34 @@ export function NavigationResults() {
   function getStatusBadge(status: string) {
     switch (status) {
       case 'pass':
-        return <Badge className="bg-green-100 text-green-800 border-green-200">Pass</Badge>;
+        return (
+          <Badge className="bg-green-100 text-green-800 border-green-200">
+            Pass
+          </Badge>
+        );
       case 'fail':
-        return <Badge className="bg-red-100 text-red-800 border-red-200">Fail</Badge>;
+        return (
+          <Badge className="bg-red-100 text-red-800 border-red-200">Fail</Badge>
+        );
       case 'skipped':
-        return <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200">Skipped</Badge>;
+        return (
+          <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200">
+            Skipped
+          </Badge>
+        );
       default:
-        return <Badge className="bg-gray-100 text-gray-800 border-gray-200">Unknown</Badge>;
+        return (
+          <Badge className="bg-gray-100 text-gray-800 border-gray-200">
+            Unknown
+          </Badge>
+        );
     }
   }
 
   if (loading) {
-    return <div className="p-8 text-center">Loading navigation test results...</div>;
+    return (
+      <div className="p-8 text-center">Loading navigation test results...</div>
+    );
   }
 
   if (error) {
@@ -98,7 +118,9 @@ export function NavigationResults() {
         <p className="text-sm text-muted-foreground">
           Make sure you've run the navigation tests with:
           <br />
-          <code className="bg-gray-100 px-2 py-1 rounded">pnpm test:e2e e2e/navigation-links.spec.ts</code>
+          <code className="bg-gray-100 px-2 py-1 rounded">
+            pnpm test:e2e e2e/navigation-links.spec.ts
+          </code>
         </p>
       </div>
     );
@@ -111,7 +133,9 @@ export function NavigationResults() {
         <p className="text-sm text-muted-foreground">
           Run the navigation tests with:
           <br />
-          <code className="bg-gray-100 px-2 py-1 rounded">pnpm test:e2e e2e/navigation-links.spec.ts</code>
+          <code className="bg-gray-100 px-2 py-1 rounded">
+            pnpm test:e2e e2e/navigation-links.spec.ts
+          </code>
         </p>
       </div>
     );
@@ -132,20 +156,26 @@ export function NavigationResults() {
             </div>
             <div>
               <span className="font-medium">Passed:</span>
-              <div className="text-lg font-bold text-green-600">{passedTests}</div>
+              <div className="text-lg font-bold text-green-600">
+                {passedTests}
+              </div>
             </div>
             <div>
               <span className="font-medium">Failed:</span>
-              <div className="text-lg font-bold text-red-600">{failedTests}</div>
+              <div className="text-lg font-bold text-red-600">
+                {failedTests}
+              </div>
             </div>
             <div>
               <span className="font-medium">Skipped:</span>
-              <div className="text-lg font-bold text-yellow-600">{skippedTests}</div>
+              <div className="text-lg font-bold text-yellow-600">
+                {skippedTests}
+              </div>
             </div>
           </div>
           <div className="mt-4">
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
+              <div
                 className="bg-green-500 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${successRate}%` }}
               />
@@ -171,7 +201,9 @@ export function NavigationResults() {
                     <div className="flex items-center gap-2">
                       {getStatusIcon(result.status)}
                       <span className="font-medium">{result.label}</span>
-                      <span className="text-xs text-muted-foreground">({result.href})</span>
+                      <span className="text-xs text-muted-foreground">
+                        ({result.href})
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       {result.responseTime && (
@@ -197,10 +229,7 @@ export function NavigationResults() {
       ))}
 
       <div className="text-center mt-4">
-        <Button 
-          onClick={() => window.location.reload()}
-          variant="outline"
-        >
+        <Button onClick={() => window.location.reload()} variant="outline">
           Refresh Results
         </Button>
       </div>

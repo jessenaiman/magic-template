@@ -1,12 +1,12 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from 'next/og';
 
-export const runtime = "edge";
-export const alt = "Magic UI";
+export const runtime = 'edge';
+export const alt = 'Magic UI';
 export const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = "image/png";
+export const contentType = 'image/png';
 
 const getAssetData = async () => {
   try {
@@ -35,7 +35,7 @@ const getAssetData = async () => {
     ]);
 
     const logoBase64 = `data:image/png;base64,${Buffer.from(logoImage).toString(
-      "base64"
+      'base64'
     )}`;
 
     return {
@@ -44,50 +44,50 @@ const getAssetData = async () => {
       logoBase64,
     };
   } catch (error) {
-    console.error("Failed to load assets:", error);
+    console.error('Failed to load assets:', error);
     return null;
   }
 };
 
 const styles = {
   wrapper: {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-    padding: "40px",
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    padding: '40px',
   },
   container: {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "4px solid black",
-    padding: "60px",
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: '4px solid black',
+    padding: '60px',
   },
   title: {
-    fontSize: "64px",
-    color: "black",
-    marginBottom: "10px",
-    textAlign: "center",
-    fontFamily: "Clash Display",
-    letterSpacing: "0.5px",
+    fontSize: '64px',
+    color: 'black',
+    marginBottom: '10px',
+    textAlign: 'center',
+    fontFamily: 'Clash Display',
+    letterSpacing: '0.5px',
   },
   description: {
-    fontSize: "28px",
-    color: "black",
-    textAlign: "center",
-    maxWidth: "800px",
-    fontFamily: "Clash Display",
-    letterSpacing: "0.5px",
-    border: "3px solid black",
-    padding: "10px 15px",
-    borderRadius: "100px",
+    fontSize: '28px',
+    color: 'black',
+    textAlign: 'center',
+    maxWidth: '800px',
+    fontFamily: 'Clash Display',
+    letterSpacing: '0.5px',
+    border: '3px solid black',
+    padding: '10px 15px',
+    borderRadius: '100px',
   },
 } as const;
 
@@ -100,7 +100,7 @@ export default async function Image() {
         <div
           style={{
             ...styles.wrapper,
-            fontFamily: assetData ? "Clash Display" : "system-ui",
+            fontFamily: assetData ? 'Clash Display' : 'system-ui',
           }}
         >
           <div style={styles.container}>
@@ -125,26 +125,26 @@ export default async function Image() {
         fonts: assetData
           ? [
               {
-                name: "Clash Display",
+                name: 'Clash Display',
                 data: assetData.clashDisplay,
                 weight: 500,
-                style: "normal",
+                style: 'normal',
               },
               {
-                name: "Cabinet Grotesk",
+                name: 'Cabinet Grotesk',
                 data: assetData.cabinetGrotesk,
                 weight: 500,
-                style: "normal",
+                style: 'normal',
               },
             ]
           : undefined,
       }
     );
   } catch (error) {
-    console.error("Error generating image:", error);
+    console.error('Error generating image:', error);
     return new Response(
       `Failed to generate image: ${
-        error instanceof Error ? error.message : "Unknown error"
+        error instanceof Error ? error.message : 'Unknown error'
       }`,
       {
         status: 500,

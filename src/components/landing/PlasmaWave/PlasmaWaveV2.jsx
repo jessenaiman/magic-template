@@ -109,7 +109,7 @@ export default function PlasmaWaveV2({
   autoPauseOnScroll = true,
   scrollPauseThreshold = null,
   resumeOnScrollUp = false,
-  dynamicDpr = false
+  dynamicDpr = false,
 }) {
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
@@ -127,7 +127,18 @@ export default function PlasmaWaveV2({
   const appliedScrollThresholdRef = useRef(null);
 
   const propsRef = useRef({});
-  propsRef.current = { xOffset, yOffset, rotationDeg, focalLength, speed1, speed2, dir2, bend1, bend2, fadeInDuration };
+  propsRef.current = {
+    xOffset,
+    yOffset,
+    rotationDeg,
+    focalLength,
+    speed1,
+    speed2,
+    dir2,
+    bend1,
+    bend2,
+    fadeInDuration,
+  };
 
   useEffect(() => {
     const f = () => setIsMobile(window.innerWidth <= 768);
@@ -145,7 +156,7 @@ export default function PlasmaWaveV2({
       antialias: false,
       depth: false,
       stencil: false,
-      powerPreference: 'high-performance'
+      powerPreference: 'high-performance',
     });
     rendererRef.current = renderer;
 
@@ -156,7 +167,9 @@ export default function PlasmaWaveV2({
     const camera = new Camera(gl);
     const scene = new Transform();
 
-    const geometry = new Geometry(gl, { position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) } });
+    const geometry = new Geometry(gl, {
+      position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) },
+    });
 
     const program = new Program(gl, {
       vertex,
@@ -174,8 +187,8 @@ export default function PlasmaWaveV2({
         bend2: { value: bend2 },
         bendAdj1: { value: 0 },
         bendAdj2: { value: 0 },
-        uOpacity: { value: 0 }
-      }
+        uOpacity: { value: 0 },
+      },
     });
     new Mesh(gl, { geometry, program }).setParent(scene);
 
@@ -185,7 +198,11 @@ export default function PlasmaWaveV2({
       const { width, height } = el.getBoundingClientRect();
       const rw = width * renderer.dpr,
         rh = height * renderer.dpr;
-      if (rw === uniformResolution.current[0] && rh === uniformResolution.current[1]) return;
+      if (
+        rw === uniformResolution.current[0] &&
+        rh === uniformResolution.current[1]
+      )
+        return;
       renderer.setSize(width, height);
       uniformResolution.current[0] = rw;
       uniformResolution.current[1] = rh;
@@ -212,10 +229,11 @@ export default function PlasmaWaveV2({
         yOffset: yOff,
         rotationDeg: rot,
         focalLength: fLen,
-        fadeInDuration: fadeDur
+        fadeInDuration: fadeDur,
       } = propsRef.current;
       const t = (now - startTimeRef.current) * 0.001;
-      if (fadeStartTime.current === null && t > 0.1) fadeStartTime.current = now;
+      if (fadeStartTime.current === null && t > 0.1)
+        fadeStartTime.current = now;
       let opacity = 0;
       if (fadeStartTime.current !== null) {
         const fe = now - fadeStartTime.current;
@@ -234,7 +252,8 @@ export default function PlasmaWaveV2({
     const start = () => {
       if (runningRef.current || permaPausedRef.current) return;
       runningRef.current = true;
-      startTimeRef.current = performance.now() - program.uniforms.iTime.value * 1000;
+      startTimeRef.current =
+        performance.now() - program.uniforms.iTime.value * 1000;
       if (dynamicDpr) {
         const target = Math.min(window.devicePixelRatio, 1);
         if (renderer.dpr !== target) renderer.dpr = target;
@@ -273,7 +292,8 @@ export default function PlasmaWaveV2({
         resizeTimeoutRef.current = null;
       }
       if (observerRef.current && containerEl) {
-        if (typeof observerRef.current.unobserve === 'function') observerRef.current.unobserve(containerEl);
+        if (typeof observerRef.current.unobserve === 'function')
+          observerRef.current.unobserve(containerEl);
         observerRef.current.disconnect();
         observerRef.current = null;
       }
@@ -285,7 +305,8 @@ export default function PlasmaWaveV2({
   useEffect(() => {
     if (isMobile || !autoPauseOnScroll) return;
     if (!appliedScrollThresholdRef.current)
-      appliedScrollThresholdRef.current = scrollPauseThreshold ?? Math.round(window.innerHeight * 1.2);
+      appliedScrollThresholdRef.current =
+        scrollPauseThreshold ?? Math.round(window.innerHeight * 1.2);
     const limit = appliedScrollThresholdRef.current;
     const onScroll = () => {
       const y = window.scrollY || window.pageYOffset;
@@ -313,7 +334,7 @@ export default function PlasmaWaveV2({
         width: '100vw',
         height: '100vh',
         pointerEvents: 'none',
-        willChange: 'opacity'
+        willChange: 'opacity',
       }}
     >
       <div
@@ -325,7 +346,7 @@ export default function PlasmaWaveV2({
           height: 200,
           background: 'linear-gradient(to top, #060010, transparent)',
           pointerEvents: 'none',
-          zIndex: 1
+          zIndex: 1,
         }}
       />
     </div>

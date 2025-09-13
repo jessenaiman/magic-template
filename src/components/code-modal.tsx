@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
-import { Button } from "./ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Copy, Check } from "lucide-react";
+import { useState } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
+import { Button } from './ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Copy, Check } from 'lucide-react';
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -16,12 +16,12 @@ interface CodeModalProps {
   tailwindCode: string;
 }
 
-export function CodeModal({ 
-  open, 
-  onOpenChange, 
-  componentName, 
-  componentCode, 
-  tailwindCode 
+export function CodeModal({
+  open,
+  onOpenChange,
+  componentName,
+  componentCode,
+  tailwindCode,
 }: CodeModalProps) {
   const [copied, setCopied] = useState(false);
 
@@ -35,17 +35,15 @@ export function CodeModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
         <DialogHeader>
-          <DialogTitle>
-            {componentName} - Code
-          </DialogTitle>
+          <DialogTitle>{componentName} - Code</DialogTitle>
         </DialogHeader>
-        
+
         <Tabs defaultValue="component" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="component">Component</TabsTrigger>
             <TabsTrigger value="tailwind">Tailwind Only</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="component" className="mt-4">
             <div className="relative">
               <Button
@@ -67,7 +65,7 @@ export function CodeModal({
               </div>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="tailwind" className="mt-4">
             <div className="relative">
               <Button

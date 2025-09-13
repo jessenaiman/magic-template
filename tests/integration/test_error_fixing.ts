@@ -19,7 +19,7 @@ describe('Error Fixing Workflow Integration', () => {
     const filesWithUnescapedEntities = [
       'src/app/design/effects/page.tsx',
       'src/app/design/text/shadcn/page.tsx',
-      'src/app/not-found.tsx'
+      'src/app/not-found.tsx',
     ];
 
     // After fixing, this should be empty
@@ -31,7 +31,7 @@ describe('Error Fixing Workflow Integration', () => {
     const filesWithAnyTypes = [
       'src/app/design/transitions/html-css/page.tsx',
       'src/components/design-page-context.tsx',
-      'src/components/preview/preview-customization-panel.tsx'
+      'src/components/preview/preview-customization-panel.tsx',
     ];
 
     // After fixing, this should be empty
@@ -43,7 +43,7 @@ describe('Error Fixing Workflow Integration', () => {
     const filesWithHookViolations = [
       'src/components/preview/preview-select.tsx',
       'src/components/preview/preview-slider.tsx',
-      'src/components/preview/preview-switch.tsx'
+      'src/components/preview/preview-switch.tsx',
     ];
 
     // After fixing, this should be empty
@@ -55,7 +55,7 @@ describe('Error Fixing Workflow Integration', () => {
     const filesWithImgElements = [
       'src/components/feature-cards.tsx',
       'src/components/hero-landing.tsx',
-      'src/components/hero.tsx'
+      'src/components/hero.tsx',
     ];
 
     // After fixing, this should be empty

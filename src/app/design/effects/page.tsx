@@ -1,9 +1,15 @@
-
 'use client';
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Sparkles, Wand2 } from 'lucide-react';
 import { GridBeams } from '@/components/magicui/grid-beams';
@@ -16,11 +22,14 @@ export default function EffectsPage() {
       {/* Hero Section with MagicUI Effect */}
       <div className="relative overflow-hidden rounded-xl border bg-background p-8 shadow-md">
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold tracking-tight mb-4">Visual Effects Gallery</h1>
+          <h1 className="text-3xl font-bold tracking-tight mb-4">
+            Visual Effects Gallery
+          </h1>
           <p className="text-muted-foreground max-w-2xl mb-6">
-            Explore a collection of interactive and animated visual effects. 
-            From subtle glows to dynamic particles, each implementation demonstrates 
-            modern animation techniques with a focus on performance and interactivity.
+            Explore a collection of interactive and animated visual effects.
+            From subtle glows to dynamic particles, each implementation
+            demonstrates modern animation techniques with a focus on performance
+            and interactivity.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild>
@@ -57,17 +66,23 @@ export default function EffectsPage() {
           </div>
           <CardHeader>
             <CardTitle>HTML & CSS Effects</CardTitle>
-            <CardDescription>Pure CSS animations and transitions without JavaScript</CardDescription>
+            <CardDescription>
+              Pure CSS animations and transitions without JavaScript
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Discover the power of modern CSS with animations, transitions, and visual effects 
-              that don't require any JavaScript. Perfect for lightweight implementations.
+              Discover the power of modern CSS with animations, transitions, and
+              visual effects that don't require any JavaScript. Perfect for
+              lightweight implementations.
             </p>
           </CardContent>
           <CardFooter>
             <Button asChild variant="ghost" className="w-full">
-              <Link href="/design/effects/html-css" className="flex justify-between w-full">
+              <Link
+                href="/design/effects/html-css"
+                className="flex justify-between w-full"
+              >
                 <span>Explore HTML & CSS Effects</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -87,17 +102,23 @@ export default function EffectsPage() {
           </div>
           <CardHeader>
             <CardTitle>Tailwind Effects</CardTitle>
-            <CardDescription>Utility-first animations and effects</CardDescription>
+            <CardDescription>
+              Utility-first animations and effects
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Leverage Tailwind's utility classes to create stunning animations and effects 
-              with minimal custom CSS. Ideal for rapid development and consistent design.
+              Leverage Tailwind's utility classes to create stunning animations
+              and effects with minimal custom CSS. Ideal for rapid development
+              and consistent design.
             </p>
           </CardContent>
           <CardFooter>
             <Button asChild variant="ghost" className="w-full">
-              <Link href="/design/effects/tailwind" className="flex justify-between w-full">
+              <Link
+                href="/design/effects/tailwind"
+                className="flex justify-between w-full"
+              >
                 <span>Explore Tailwind Effects</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -112,24 +133,35 @@ export default function EffectsPage() {
               <span className="relative z-10">MagicUI</span>
             </div>
             <div className="absolute inset-0">
-              <GridBeams gridSize={40} rayCount={10} rayOpacity={0.3} backgroundColor="transparent">
+              <GridBeams
+                gridSize={40}
+                rayCount={10}
+                rayOpacity={0.3}
+                backgroundColor="transparent"
+              >
                 <div />
               </GridBeams>
             </div>
           </div>
           <CardHeader>
             <CardTitle>MagicUI Effects</CardTitle>
-            <CardDescription>Pre-built React components with stunning effects</CardDescription>
+            <CardDescription>
+              Pre-built React components with stunning effects
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Explore our collection of ready-to-use React components with built-in animations 
-              and effects. Drop them into your project for instant visual impact.
+              Explore our collection of ready-to-use React components with
+              built-in animations and effects. Drop them into your project for
+              instant visual impact.
             </p>
           </CardContent>
           <CardFooter>
             <Button asChild variant="ghost" className="w-full">
-              <Link href="/design/effects/magicui" className="flex justify-between w-full">
+              <Link
+                href="/design/effects/magicui"
+                className="flex justify-between w-full"
+              >
                 <span>Explore MagicUI Effects</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -140,7 +172,12 @@ export default function EffectsPage() {
 
       {/* Features Section */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {['Interactive animations', 'Dynamic particles', 'Glowing effects', 'Smooth transitions'].map((feature, i) => (
+        {[
+          'Interactive animations',
+          'Dynamic particles',
+          'Glowing effects',
+          'Smooth transitions',
+        ].map((feature, i) => (
           <Card key={i} className="bg-muted/50">
             <CardContent className="pt-6">
               <div className="rounded-full w-10 h-10 bg-primary/10 flex items-center justify-center mb-4">

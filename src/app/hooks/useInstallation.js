@@ -3,6 +3,7 @@ import { InstallationContext } from '../components/context/InstallationContext/I
 
 export const useInstallation = () => {
   const ctx = useContext(InstallationContext);
-  if (!ctx) throw new Error('useInstallation must be used within InstallationProvider');
+  if (!ctx)
+    throw new Error('useInstallation must be used within InstallationProvider');
   return ctx;
 };

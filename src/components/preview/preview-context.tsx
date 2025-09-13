@@ -95,24 +95,24 @@ export function PreviewProvider({
   const [expandedTile, setExpandedTile] = useState<string | null>(null);
 
   const setPlaying = useCallback(
-    (p: boolean) => setState((s) => ({ ...s, playing: p })),
-    [],
+    (p: boolean) => setState(s => ({ ...s, playing: p })),
+    []
   );
 
   const setDisplayText = useCallback(
-    (t: string) => setState((s) => ({ ...s, displayText: t })),
-    [],
+    (t: string) => setState(s => ({ ...s, displayText: t })),
+    []
   );
 
   const updateCustomization = useCallback(
     (patch: Partial<CustomizationSettings>) =>
-      setState((s) => {
+      setState(s => {
         const newCustomization = { ...s.customization, ...patch };
         if (typeof window !== 'undefined') {
           try {
             localStorage.setItem(
               'preview-customization',
-              JSON.stringify(newCustomization),
+              JSON.stringify(newCustomization)
             );
           } catch (e) {
             console.warn('Failed to persist preview customization:', e);
@@ -120,7 +120,7 @@ export function PreviewProvider({
         }
         return { ...s, customization: newCustomization };
       }),
-    [],
+    []
   );
 
   const reset = useCallback(
@@ -130,12 +130,12 @@ export function PreviewProvider({
         displayText: initialValues.current.text,
         customization: { ...initialValues.current.customization },
       }),
-    [], // No dependencies since we use refs
+    [] // No dependencies since we use refs
   );
 
   const replay = useCallback(
-    () => setState((s) => ({ ...s, playing: true })),
-    [],
+    () => setState(s => ({ ...s, playing: true })),
+    []
   );
 
   const value = useMemo(
@@ -157,7 +157,7 @@ export function PreviewProvider({
       reset,
       expandedTile,
       setExpandedTile,
-    ],
+    ]
   );
 
   return (
@@ -177,7 +177,7 @@ export const usePreviewTileExpansion = () => {
   const context = useContext(PreviewContext);
   if (!context) {
     throw new Error(
-      'usePreviewTileExpansion must be used within a PreviewProvider',
+      'usePreviewTileExpansion must be used within a PreviewProvider'
     );
   }
   return {
@@ -188,7 +188,7 @@ export const usePreviewTileExpansion = () => {
 
 // Utility hook for binding a single customization property to a control
 export function useCustomizationProp<K extends keyof CustomizationSettings>(
-  key: K,
+  key: K
 ) {
   const { state, updateCustomization } = usePreviewContext();
   return {

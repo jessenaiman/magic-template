@@ -2,7 +2,10 @@
 
 import * as React from 'react';
 import { useDesignPage } from '@/components/design-page-context';
-import { BackgroundPreviewTile, BackgroundPreviewTileProps } from '@/components/background-preview-tile';
+import {
+  BackgroundPreviewTile,
+  BackgroundPreviewTileProps,
+} from '@/components/background-preview-tile';
 import { FieldConfig } from '@/components/preview/preview-customization-panel';
 import { CustomizationSettings } from '@/components/preview/preview-context';
 
@@ -14,7 +17,14 @@ function PageConfigurator() {
     const fields: FieldConfig[] = [
       { id: 'backgroundColor', label: 'Background', type: 'color' },
       { id: 'accentColor', label: 'Accent', type: 'color' },
-      { id: 'opacity', label: 'Opacity', type: 'slider', min: 0, max: 100, step: 1 },
+      {
+        id: 'opacity',
+        label: 'Opacity',
+        type: 'slider',
+        min: 0,
+        max: 100,
+        step: 1,
+      },
     ];
     setFields(fields);
   }, [setTitle, setDescription, setFields]);
@@ -34,16 +44,19 @@ const stripesConfig: BackgroundPreviewTileProps = {
   children: (customization: Partial<CustomizationSettings>) => (
     <div
       className="h-40 w-full rounded-md border"
-      style={{
-        '--c1': customization.backgroundColor,
-        '--c2': customization.accentColor,
-        opacity: (customization.opacity ?? 100) / 100,
-      } as React.CSSProperties}
+      style={
+        {
+          '--c1': customization.backgroundColor,
+          '--c2': customization.accentColor,
+          opacity: (customization.opacity ?? 100) / 100,
+        } as React.CSSProperties
+      }
     >
       <div
         className="h-full w-full rounded-md"
         style={{
-          background: 'repeating-linear-gradient(45deg, var(--c1), var(--c1) 10px, var(--c2) 10px, var(--c2) 20px)',
+          background:
+            'repeating-linear-gradient(45deg, var(--c1), var(--c1) 10px, var(--c2) 10px, var(--c2) 20px)',
         }}
       />
     </div>

@@ -4,7 +4,13 @@ import * as React from 'react';
 import { PreviewTile } from '@/components/preview/preview-tile';
 import { CustomizationSettings } from '@/components/preview/preview-context';
 
-function Container({ children, customization }: { children: React.ReactNode; customization: Partial<CustomizationSettings>; }) {
+function Container({
+  children,
+  customization,
+}: {
+  children: React.ReactNode;
+  customization: Partial<CustomizationSettings>;
+}) {
   const { backgroundColor, borderRadius = 12, padding = 16 } = customization;
   return (
     <div
@@ -24,12 +30,15 @@ export default function TailwindEffectsPage() {
   return (
     <>
       <div className="col-span-full mb-4">
-        <h2 className="text-2xl font-bold tracking-tight">Tailwind CSS Effects</h2>
+        <h2 className="text-2xl font-bold tracking-tight">
+          Tailwind CSS Effects
+        </h2>
         <p className="text-muted-foreground">
-          A collection of modern web design effects created with Tailwind CSS utility classes.
+          A collection of modern web design effects created with Tailwind CSS
+          utility classes.
         </p>
       </div>
-      
+
       <PulseEffectPreview />
       <HoverGrowPreview />
       <GradientTextPreview />
@@ -48,19 +57,26 @@ function PulseEffectPreview() {
       description="A pulsing animation effect using Tailwind's animate-pulse"
       code={`<div className="animate-pulse bg-blue-500 rounded-full h-24 w-24"></div>`}
       customFields={[
-        { id: 'size', label: 'Size', type: 'slider', min: 40, max: 120, step: 10 },
+        {
+          id: 'size',
+          label: 'Size',
+          type: 'slider',
+          min: 40,
+          max: 120,
+          step: 10,
+        },
         { id: 'color', label: 'Color', type: 'color' },
-        { id: 'shape', label: 'Shape', type: 'text' }
+        { id: 'shape', label: 'Shape', type: 'text' },
       ]}
       initialCustomization={{
         size: 80,
         color: '#3b82f6',
-        shape: 'rounded-full'
+        shape: 'rounded-full',
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
-          <div 
+          <div
             className={`animate-pulse ${customization.shape || 'rounded-full'}`}
             style={{
               backgroundColor: customization.color || '#3b82f6',
@@ -83,30 +99,44 @@ function HoverGrowPreview() {
       code={`<div className="transform transition-all duration-300 hover:scale-110 bg-indigo-600 text-white p-4 rounded-lg shadow-lg">Hover me</div>`}
       customFields={[
         { id: 'text', label: 'Text', type: 'text' },
-        { id: 'scale', label: 'Scale Amount', type: 'slider', min: 1.05, max: 1.5, step: 0.05 },
-        { id: 'duration', label: 'Duration (ms)', type: 'slider', min: 100, max: 1000, step: 100 },
-        { id: 'bgColor', label: 'Background Color', type: 'color' }
+        {
+          id: 'scale',
+          label: 'Scale Amount',
+          type: 'slider',
+          min: 1.05,
+          max: 1.5,
+          step: 0.05,
+        },
+        {
+          id: 'duration',
+          label: 'Duration (ms)',
+          type: 'slider',
+          min: 100,
+          max: 1000,
+          step: 100,
+        },
+        { id: 'bgColor', label: 'Background Color', type: 'color' },
       ]}
       initialCustomization={{
         text: 'Hover me',
         scale: 1.1,
         duration: 300,
-        bgColor: '#4f46e5'
+        bgColor: '#4f46e5',
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
-          <div 
+          <div
             className="transform transition-all rounded-lg shadow-lg text-white p-4 text-center font-medium"
             style={{
               backgroundColor: customization.bgColor || '#4f46e5',
               transitionDuration: `${customization.duration || 300}ms`,
               cursor: 'pointer',
             }}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               e.currentTarget.style.transform = `scale(${customization.scale || 1.1})`;
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               e.currentTarget.style.transform = 'scale(1)';
             }}
           >
@@ -129,18 +159,25 @@ function GradientTextPreview() {
         { id: 'text', label: 'Text', type: 'text' },
         { id: 'fromColor', label: 'From Color', type: 'color' },
         { id: 'toColor', label: 'To Color', type: 'color' },
-        { id: 'fontSize', label: 'Font Size', type: 'slider', min: 24, max: 72, step: 4 }
+        {
+          id: 'fontSize',
+          label: 'Font Size',
+          type: 'slider',
+          min: 24,
+          max: 72,
+          step: 4,
+        },
       ]}
       initialCustomization={{
         text: 'Gradient Text',
         fromColor: '#8b5cf6',
         toColor: '#ec4899',
-        fontSize: 36
+        fontSize: 36,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
-          <h2 
+          <h2
             className="font-bold bg-clip-text text-transparent"
             style={{
               backgroundImage: `linear-gradient(to right, ${customization.fromColor || '#8b5cf6'}, ${customization.toColor || '#ec4899'})`,
@@ -169,28 +206,42 @@ function BackdropBlurPreview() {
   </div>
 </div>`}
       customFields={[
-        { id: 'blurAmount', label: 'Blur Amount', type: 'slider', min: 2, max: 20, step: 2 },
-        { id: 'opacity', label: 'Background Opacity', type: 'slider', min: 0.1, max: 0.9, step: 0.1 },
+        {
+          id: 'blurAmount',
+          label: 'Blur Amount',
+          type: 'slider',
+          min: 2,
+          max: 20,
+          step: 2,
+        },
+        {
+          id: 'opacity',
+          label: 'Background Opacity',
+          type: 'slider',
+          min: 0.1,
+          max: 0.9,
+          step: 0.1,
+        },
         { id: 'fromColor', label: 'Gradient From', type: 'color' },
-        { id: 'toColor', label: 'Gradient To', type: 'color' }
+        { id: 'toColor', label: 'Gradient To', type: 'color' },
       ]}
       initialCustomization={{
         blurAmount: 8,
         opacity: 0.3,
         fromColor: '#06b6d4',
-        toColor: '#3b82f6'
+        toColor: '#3b82f6',
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <div className="relative w-full max-w-sm h-48 p-8">
-            <div 
+            <div
               className="absolute inset-0 opacity-75 rounded-lg"
               style={{
                 backgroundImage: `linear-gradient(to right, ${customization.fromColor || '#06b6d4'}, ${customization.toColor || '#3b82f6'})`,
               }}
             ></div>
-            <div 
+            <div
               className="relative p-6 rounded-lg shadow-xl h-full flex flex-col justify-center"
               style={{
                 backdropFilter: `blur(${customization.blurAmount || 8}px)`,
@@ -198,7 +249,9 @@ function BackdropBlurPreview() {
               }}
             >
               <h3 className="text-white font-bold text-xl">Frosted Glass</h3>
-              <p className="text-white/80 mt-2">This card has a backdrop blur effect</p>
+              <p className="text-white/80 mt-2">
+                This card has a backdrop blur effect
+              </p>
             </div>
           </div>
         </Container>
@@ -222,26 +275,33 @@ function AnimatedBorderPreview() {
         { id: 'text', label: 'Button Text', type: 'text' },
         { id: 'color1', label: 'Border Color 1', type: 'color' },
         { id: 'color2', label: 'Border Color 2', type: 'color' },
-        { id: 'offset', label: 'Border Offset', type: 'slider', min: 1, max: 8, step: 1 }
+        {
+          id: 'offset',
+          label: 'Border Offset',
+          type: 'slider',
+          min: 1,
+          max: 8,
+          step: 1,
+        },
       ]}
       initialCustomization={{
         text: 'Hover Me',
         color1: '#5b21b6',
         color2: '#9d174d',
-        offset: 3
+        offset: 3,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <button className="relative px-6 py-3 font-bold text-white rounded-lg group">
-            <span 
+            <span
               className="absolute inset-0 w-full h-full transition duration-300 transform ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"
               style={{
                 backgroundColor: customization.color1 || '#5b21b6',
                 transform: `translate(-${customization.offset || 3}px, -${customization.offset || 3}px)`,
               }}
             ></span>
-            <span 
+            <span
               className="absolute inset-0 w-full h-full transition duration-300 transform ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"
               style={{
                 backgroundColor: customization.color2 || '#9d174d',
@@ -268,31 +328,45 @@ function ShimmerEffectPreview() {
       customFields={[
         { id: 'baseColor', label: 'Base Color', type: 'color' },
         { id: 'shimmerColor', label: 'Shimmer Color', type: 'color' },
-        { id: 'duration', label: 'Animation Duration (s)', type: 'slider', min: 0.5, max: 5, step: 0.5 },
-        { id: 'height', label: 'Height (px)', type: 'slider', min: 40, max: 200, step: 20 }
+        {
+          id: 'duration',
+          label: 'Animation Duration (s)',
+          type: 'slider',
+          min: 0.5,
+          max: 5,
+          step: 0.5,
+        },
+        {
+          id: 'height',
+          label: 'Height (px)',
+          type: 'slider',
+          min: 40,
+          max: 200,
+          step: 20,
+        },
       ]}
       initialCustomization={{
         baseColor: '#e5e7eb',
         shimmerColor: '#ffffff',
         duration: 2,
-        height: 80
+        height: 80,
       }}
     >
-      {(customization) => (
+      {customization => (
         <Container customization={customization}>
           <style>{`
             @keyframes shimmer {
               100% { transform: translateX(100%); }
             }
           `}</style>
-          <div 
+          <div
             className="relative overflow-hidden w-full rounded-lg"
             style={{
               backgroundColor: customization.baseColor || '#e5e7eb',
               height: `${customization.height || 80}px`,
             }}
           >
-            <div 
+            <div
               className="absolute inset-0 -translate-x-full bg-gradient-to-r"
               style={{
                 backgroundImage: `linear-gradient(to right, ${customization.baseColor || '#e5e7eb'}, ${customization.shimmerColor || '#ffffff'}, ${customization.baseColor || '#e5e7eb'})`,

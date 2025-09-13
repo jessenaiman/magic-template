@@ -19,7 +19,7 @@ describe('Linting Process Contract', () => {
       '@typescript-eslint/no-explicit-any',
       'react/no-unescaped-entities',
       'react-hooks/rules-of-hooks',
-      '@next/next/no-img-element'
+      '@next/next/no-img-element',
     ];
 
     // This will fail - we need to implement error categorization
@@ -36,7 +36,7 @@ describe('Linting Process Contract', () => {
     const excludedDirs = [
       'src/components/ui',
       'src/components/magicui',
-      'src/components/animate-ui'
+      'src/components/animate-ui',
     ];
 
     // This will fail - need to verify exclusions work

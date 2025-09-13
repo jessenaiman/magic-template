@@ -23,7 +23,7 @@ const defaultCustomization: Partial<CustomizationSettings> = {
   hoverTranslateY: -2,
   gradientFrom: '#8b5cf6',
   gradientTo: '#ec4899',
-  gradientAngle: 135
+  gradientAngle: 135,
 };
 
 // This small component's only job is to send this page's specific
@@ -33,26 +33,28 @@ function PageConfigurator() {
 
   React.useEffect(() => {
     setTitle('HTML & CSS Buttons');
-    setDescription('A collection of buttons created with only HTML and CSS, focusing on semantic and accessible design. These examples share a common set of controls.');
-    
+    setDescription(
+      'A collection of buttons created with only HTML and CSS, focusing on semantic and accessible design. These examples share a common set of controls.'
+    );
+
     // Define the controls that are common to ALL button examples on this page.
     const buttonFields: FieldConfig[] = [
-      { 
-        id: 'buttonText', 
-        label: 'Button Text', 
+      {
+        id: 'buttonText',
+        label: 'Button Text',
         type: 'text',
         description: 'The text displayed on the button',
-        placeholder: 'Click Me'
+        placeholder: 'Click Me',
       },
-      { 
-        id: 'fontSize', 
-        label: 'Font Size', 
-        type: 'slider', 
-        min: 12, 
-        max: 24, 
-        step: 1, 
+      {
+        id: 'fontSize',
+        label: 'Font Size',
+        type: 'slider',
+        min: 12,
+        max: 24,
+        step: 1,
         unit: 'px',
-        description: 'Size of the button text'
+        description: 'Size of the button text',
       },
       {
         id: 'fontWeight',
@@ -61,29 +63,29 @@ function PageConfigurator() {
         min: 400,
         max: 700,
         step: 100,
-        description: 'Thickness of the button text'
+        description: 'Thickness of the button text',
       },
-      { 
-        id: 'borderRadius', 
-        label: 'Border Radius', 
-        type: 'slider', 
-        min: 0, 
-        max: 32, 
-        step: 2, 
+      {
+        id: 'borderRadius',
+        label: 'Border Radius',
+        type: 'slider',
+        min: 0,
+        max: 32,
+        step: 2,
         unit: 'px',
-        description: 'Roundness of button corners'
+        description: 'Roundness of button corners',
       },
-      { 
-        id: 'backgroundColor', 
-        label: 'Background', 
+      {
+        id: 'backgroundColor',
+        label: 'Background',
         type: 'color',
-        description: 'Button background color'
+        description: 'Button background color',
       },
       {
         id: 'textColor',
         label: 'Text Color',
         type: 'color',
-        description: 'Button text color'
+        description: 'Button text color',
       },
       {
         id: 'paddingX',
@@ -93,7 +95,7 @@ function PageConfigurator() {
         max: 48,
         step: 2,
         unit: 'px',
-        description: 'Horizontal space inside the button'
+        description: 'Horizontal space inside the button',
       },
       {
         id: 'paddingY',
@@ -103,8 +105,8 @@ function PageConfigurator() {
         max: 24,
         step: 1,
         unit: 'px',
-        description: 'Vertical space inside the button'
-      }
+        description: 'Vertical space inside the button',
+      },
     ];
     setFields(buttonFields);
   }, [setTitle, setDescription, setFields]);
@@ -130,8 +132,23 @@ export default function ButtonsPage() {
         initialCustomization={defaultCustomization}
         customFields={[
           { id: 'buttonText', label: 'Button Text', type: 'text' },
-          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
-          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          {
+            id: 'fontSize',
+            label: 'Font Size',
+            type: 'slider',
+            min: 12,
+            max: 24,
+            step: 1,
+            unit: 'px',
+          },
+          {
+            id: 'fontWeight',
+            label: 'Font Weight',
+            type: 'slider',
+            min: 400,
+            max: 700,
+            step: 100,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
           { id: 'textColor', label: 'Text Color', type: 'color' },
         ]}
@@ -149,15 +166,17 @@ export default function ButtonsPage() {
               'hover:bg-opacity-90',
               'focus:outline-none focus:ring-2 focus:ring-offset-2'
             )}
-            style={{
-              '--paddingX': `${customization.paddingX}px`,
-              '--paddingY': `${customization.paddingY}px`,
-              '--borderRadius': `${customization.borderRadius}px`,
-              '--fontSize': `${customization.fontSize}px`,
-              '--fontWeight': customization.fontWeight,
-              '--backgroundColor': customization.backgroundColor,
-              '--textColor': customization.textColor,
-            } as React.CSSProperties}
+            style={
+              {
+                '--paddingX': `${customization.paddingX}px`,
+                '--paddingY': `${customization.paddingY}px`,
+                '--borderRadius': `${customization.borderRadius}px`,
+                '--fontSize': `${customization.fontSize}px`,
+                '--fontWeight': customization.fontWeight,
+                '--backgroundColor': customization.backgroundColor,
+                '--textColor': customization.textColor,
+              } as React.CSSProperties
+            }
           >
             {customization.buttonText}
           </button>
@@ -181,11 +200,34 @@ export default function ButtonsPage() {
         }}
         customFields={[
           { id: 'buttonText', label: 'Button Text', type: 'text' },
-          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
-          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          {
+            id: 'fontSize',
+            label: 'Font Size',
+            type: 'slider',
+            min: 12,
+            max: 24,
+            step: 1,
+            unit: 'px',
+          },
+          {
+            id: 'fontWeight',
+            label: 'Font Weight',
+            type: 'slider',
+            min: 400,
+            max: 700,
+            step: 100,
+          },
           { id: 'gradientFrom', label: 'Gradient Start', type: 'color' },
           { id: 'gradientTo', label: 'Gradient End', type: 'color' },
-          { id: 'hoverTranslateY', label: 'Hover Lift', type: 'slider', min: 0, max: 4, step: 1, unit: 'px' },
+          {
+            id: 'hoverTranslateY',
+            label: 'Hover Lift',
+            type: 'slider',
+            min: 0,
+            max: 4,
+            step: 1,
+            unit: 'px',
+          },
         ]}
       >
         {(customization: Partial<CustomizationSettings>) => (
@@ -201,16 +243,18 @@ export default function ButtonsPage() {
               'hover:-translate-y-[var(--hoverTranslateY)]',
               'focus:outline-none focus:ring-2 focus:ring-offset-2'
             )}
-            style={{
-              '--paddingX': `${customization.paddingX}px`,
-              '--paddingY': `${customization.paddingY}px`,
-              '--borderRadius': `${customization.borderRadius}px`,
-              '--fontSize': `${customization.fontSize}px`,
-              '--fontWeight': customization.fontWeight,
-              '--gradientFrom': customization.gradientFrom,
-              '--gradientTo': customization.gradientTo,
-              '--hoverTranslateY': `${customization.hoverTranslateY}px`,
-            } as React.CSSProperties}
+            style={
+              {
+                '--paddingX': `${customization.paddingX}px`,
+                '--paddingY': `${customization.paddingY}px`,
+                '--borderRadius': `${customization.borderRadius}px`,
+                '--fontSize': `${customization.fontSize}px`,
+                '--fontWeight': customization.fontWeight,
+                '--gradientFrom': customization.gradientFrom,
+                '--gradientTo': customization.gradientTo,
+                '--hoverTranslateY': `${customization.hoverTranslateY}px`,
+              } as React.CSSProperties
+            }
           >
             {customization.buttonText}
           </button>
@@ -235,8 +279,23 @@ export default function ButtonsPage() {
         }}
         customFields={[
           { id: 'buttonText', label: 'Button Text', type: 'text' },
-          { id: 'fontSize', label: 'Font Size', type: 'slider', min: 12, max: 24, step: 1, unit: 'px' },
-          { id: 'fontWeight', label: 'Font Weight', type: 'slider', min: 400, max: 700, step: 100 },
+          {
+            id: 'fontSize',
+            label: 'Font Size',
+            type: 'slider',
+            min: 12,
+            max: 24,
+            step: 1,
+            unit: 'px',
+          },
+          {
+            id: 'fontWeight',
+            label: 'Font Weight',
+            type: 'slider',
+            min: 400,
+            max: 700,
+            step: 100,
+          },
           { id: 'backgroundColor', label: 'Background', type: 'color' },
           { id: 'pulseColor', label: 'Pulse Color', type: 'color' },
           { id: 'hoverBackgroundColor', label: 'Hover Color', type: 'color' },
@@ -255,17 +314,19 @@ export default function ButtonsPage() {
               'hover:bg-[var(--hoverBackgroundColor)]',
               'group'
             )}
-            style={{
-              '--paddingX': `${customization.paddingX}px`,
-              '--paddingY': `${customization.paddingY}px`,
-              '--borderRadius': `${customization.borderRadius}px`,
-              '--fontSize': `${customization.fontSize}px`,
-              '--fontWeight': customization.fontWeight,
-              '--backgroundColor': customization.backgroundColor,
-              '--textColor': customization.textColor,
-              '--pulseColor': customization.pulseColor,
-              '--hoverBackgroundColor': customization.hoverBackgroundColor,
-            } as React.CSSProperties}
+            style={
+              {
+                '--paddingX': `${customization.paddingX}px`,
+                '--paddingY': `${customization.paddingY}px`,
+                '--borderRadius': `${customization.borderRadius}px`,
+                '--fontSize': `${customization.fontSize}px`,
+                '--fontWeight': customization.fontWeight,
+                '--backgroundColor': customization.backgroundColor,
+                '--textColor': customization.textColor,
+                '--pulseColor': customization.pulseColor,
+                '--hoverBackgroundColor': customization.hoverBackgroundColor,
+              } as React.CSSProperties
+            }
           >
             <span
               className={cn(

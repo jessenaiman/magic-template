@@ -1,14 +1,14 @@
-"use client";
+'use client';
 // MagicUI Page Transitions Demo using PreviewSurface/PreviewTile
 
-import React, { useState } from "react";
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { TextAnimate } from "@/components/magicui/text-animate";
-import { MorphingText } from "@/components/magicui/morphing-text";
-import { SpinningText } from "@/components/magicui/spinning-text";
-import { HyperText } from "@/components/magicui/hyper-text";
-import { WordRotate } from "@/components/magicui/word-rotate";
+import React, { useState } from 'react';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { BlurFade } from '@/components/magicui/blur-fade';
+import { TextAnimate } from '@/components/magicui/text-animate';
+import { MorphingText } from '@/components/magicui/morphing-text';
+import { SpinningText } from '@/components/magicui/spinning-text';
+import { HyperText } from '@/components/magicui/hyper-text';
+import { WordRotate } from '@/components/magicui/word-rotate';
 
 const magicuiTransitionCode = `
 import { BlurFade } from "@/components/magicui/blur-fade";
@@ -92,24 +92,28 @@ function Demo() {
 }
 `;
 
-function MagicUITransitionDemo({ customization }: { customization: Partial<Record<string, any>> }) {
-  const [page, setPage] = useState<"A" | "B">("A");
+function MagicUITransitionDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
+  const [page, setPage] = useState<'A' | 'B'>('A');
   const duration = customization.duration ?? 0.6;
-  const direction = customization.direction || "top";
-  const ease = customization.ease || "easeOut";
+  const direction = customization.direction || 'top';
+  const ease = customization.ease || 'easeOut';
 
   return (
     <div className="relative w-full h-40 flex flex-col items-center justify-center">
       <div className="mb-4 flex gap-4">
         <button
           className="px-4 py-2 rounded bg-blue-500 text-white font-medium transition-colors hover:bg-blue-600"
-          onClick={() => setPage("A")}
+          onClick={() => setPage('A')}
         >
           Go to Page A
         </button>
         <button
           className="px-4 py-2 rounded bg-purple-500 text-white font-medium transition-colors hover:bg-purple-600"
-          onClick={() => setPage("B")}
+          onClick={() => setPage('B')}
         >
           Go to Page B
         </button>
@@ -124,8 +128,10 @@ function MagicUITransitionDemo({ customization }: { customization: Partial<Recor
           }}
           key={page}
         >
-          <span className={`text-lg font-semibold ${page === "A" ? "text-blue-700" : "text-purple-700"}`}>
-            {page === "A" ? "Page A Content" : "Page B Content"}
+          <span
+            className={`text-lg font-semibold ${page === 'A' ? 'text-blue-700' : 'text-purple-700'}`}
+          >
+            {page === 'A' ? 'Page A Content' : 'Page B Content'}
           </span>
         </BlurFade>
       </div>
@@ -133,10 +139,14 @@ function MagicUITransitionDemo({ customization }: { customization: Partial<Recor
   );
 }
 
-function TextAnimateDemo({ customization }: { customization: Partial<Record<string, any>> }) {
+function TextAnimateDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
   const duration = customization.duration ?? 0.5;
-  const animation = customization.animation || "blurIn";
-  const by = customization.by || "word";
+  const animation = customization.animation || 'blurIn';
+  const by = customization.by || 'word';
 
   return (
     <div className="flex items-center justify-center h-40 w-full">
@@ -153,8 +163,8 @@ function TextAnimateDemo({ customization }: { customization: Partial<Record<stri
 }
 
 function MorphingTextDemo() {
-  const texts = ["Hello", "World", "React", "MagicUI", "Transitions"];
-  
+  const texts = ['Hello', 'World', 'React', 'MagicUI', 'Transitions'];
+
   return (
     <div className="flex items-center justify-center h-40 w-full">
       <MorphingText texts={texts} className="text-4xl font-bold" />
@@ -162,13 +172,17 @@ function MorphingTextDemo() {
   );
 }
 
-function SpinningTextDemo({ customization }: { customization: Partial<Record<string, any>> }) {
+function SpinningTextDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
   const duration = customization.duration ?? 8;
   const reverse = customization.reverse === true;
-  
+
   return (
     <div className="flex items-center justify-center h-40 w-full">
-      <SpinningText 
+      <SpinningText
         duration={duration}
         reverse={reverse}
         className="text-3xl font-bold"
@@ -179,9 +193,13 @@ function SpinningTextDemo({ customization }: { customization: Partial<Record<str
   );
 }
 
-function HyperTextDemo({ customization }: { customization: Partial<Record<string, any>> }) {
+function HyperTextDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
   const duration = customization.duration ?? 300;
-  
+
   return (
     <div className="flex items-center justify-center h-40 w-full">
       <HyperText
@@ -194,10 +212,14 @@ function HyperTextDemo({ customization }: { customization: Partial<Record<string
   );
 }
 
-function WordRotateDemo({ customization }: { customization: Partial<Record<string, any>> }) {
+function WordRotateDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
   const duration = customization.duration ?? 2500;
-  const words = ["First", "Second", "Third", "Fourth", "Fifth"];
-  
+  const words = ['First', 'Second', 'Third', 'Fourth', 'Fifth'];
+
   return (
     <div className="flex items-center justify-center h-40 w-full">
       <WordRotate
@@ -221,31 +243,33 @@ export default function MagicUIPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (s)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (s)',
+            type: 'slider',
             min: 0.2,
             max: 2,
             step: 0.05,
           },
           {
-            id: "direction",
-            label: "Direction (top or bottom)",
-            type: "text",
+            id: 'direction',
+            label: 'Direction (top or bottom)',
+            type: 'text',
           },
           {
-            id: "ease",
-            label: "Easing",
-            type: "text",
+            id: 'ease',
+            label: 'Easing',
+            type: 'text',
           },
         ]}
         initialCustomization={{
           duration: 0.6,
-          direction: "top",
-          ease: "easeOut",
+          direction: 'top',
+          ease: 'easeOut',
         }}
       >
-        {(customization) => <MagicUITransitionDemo customization={customization} />}
+        {customization => (
+          <MagicUITransitionDemo customization={customization} />
+        )}
       </PreviewTile>
 
       {/* Text Animate */}
@@ -257,33 +281,33 @@ export default function MagicUIPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (s)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (s)',
+            type: 'slider',
             min: 0.1,
             max: 1,
             step: 0.05,
           },
           {
-            id: "animation",
-            label: "Animation Type",
-            type: "text",
-            description: "blurIn, fadeIn, slideUp, etc."
+            id: 'animation',
+            label: 'Animation Type',
+            type: 'text',
+            description: 'blurIn, fadeIn, slideUp, etc.',
           },
           {
-            id: "by",
-            label: "Split By",
-            type: "text",
-            description: "word, character, line"
+            id: 'by',
+            label: 'Split By',
+            type: 'text',
+            description: 'word, character, line',
           },
         ]}
         initialCustomization={{
           duration: 0.5,
-          animation: "blurIn",
-          by: "word",
+          animation: 'blurIn',
+          by: 'word',
         }}
       >
-        {(customization) => <TextAnimateDemo customization={customization} />}
+        {customization => <TextAnimateDemo customization={customization} />}
       </PreviewTile>
 
       {/* Morphing Text */}
@@ -306,17 +330,17 @@ export default function MagicUIPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (s)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (s)',
+            type: 'slider',
             min: 2,
             max: 20,
             step: 0.5,
           },
           {
-            id: "reverse",
-            label: "Reverse Direction",
-            type: "switch",
+            id: 'reverse',
+            label: 'Reverse Direction',
+            type: 'switch',
           },
         ]}
         initialCustomization={{
@@ -324,7 +348,7 @@ export default function MagicUIPageTransitionsPage() {
           reverse: false,
         }}
       >
-        {(customization) => <SpinningTextDemo customization={customization} />}
+        {customization => <SpinningTextDemo customization={customization} />}
       </PreviewTile>
 
       {/* Hyper Text */}
@@ -336,9 +360,9 @@ export default function MagicUIPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (s)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (s)',
+            type: 'slider',
             min: 0.1,
             max: 1,
             step: 0.05,
@@ -348,7 +372,7 @@ export default function MagicUIPageTransitionsPage() {
           duration: 0.3,
         }}
       >
-        {(customization) => <HyperTextDemo customization={customization} />}
+        {customization => <HyperTextDemo customization={customization} />}
       </PreviewTile>
 
       {/* Word Rotate */}
@@ -360,9 +384,9 @@ export default function MagicUIPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (ms)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (ms)',
+            type: 'slider',
             min: 1000,
             max: 5000,
             step: 100,
@@ -372,7 +396,7 @@ export default function MagicUIPageTransitionsPage() {
           duration: 2500,
         }}
       >
-        {(customization) => <WordRotateDemo customization={customization} />}
+        {customization => <WordRotateDemo customization={customization} />}
       </PreviewTile>
     </>
   );

@@ -1,4 +1,12 @@
-import { useRef, useEffect, useState, useMemo, useId, FC, PointerEvent } from 'react';
+import {
+  useRef,
+  useEffect,
+  useState,
+  useMemo,
+  useId,
+  FC,
+  PointerEvent,
+} from 'react';
 
 interface CurvedLoopProps {
   marqueeText?: string;
@@ -15,11 +23,13 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   className,
   curveAmount = 400,
   direction = 'left',
-  interactive = true
+  interactive = true,
 }) => {
   const text = useMemo(() => {
     const hasTrailing = /\s|\u00A0$/.test(marqueeText);
-    return (hasTrailing ? marqueeText.replace(/\s+$/, '') : marqueeText) + '\u00A0';
+    return (
+      (hasTrailing ? marqueeText.replace(/\s+$/, '') : marqueeText) + '\u00A0'
+    );
   }, [marqueeText]);
 
   const measureRef = useRef<SVGTextElement | null>(null);
@@ -45,7 +55,8 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const ready = spacing > 0;
 
   useEffect(() => {
-    if (measureRef.current) setSpacing(measureRef.current.getComputedTextLength());
+    if (measureRef.current)
+      setSpacing(measureRef.current.getComputedTextLength());
   }, [text, className]);
 
   useEffect(() => {
@@ -63,7 +74,9 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     const step = () => {
       if (!dragRef.current && textPathRef.current) {
         const delta = dirRef.current === 'right' ? speed : -speed;
-        const currentOffset = parseFloat(textPathRef.current.getAttribute('startOffset') || '0');
+        const currentOffset = parseFloat(
+          textPathRef.current.getAttribute('startOffset') || '0'
+        );
         let newOffset = currentOffset + delta;
         const wrapPoint = spacing;
         if (newOffset <= -wrapPoint) newOffset += wrapPoint;
@@ -90,7 +103,9 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     const dx = e.clientX - lastXRef.current;
     lastXRef.current = e.clientX;
     velRef.current = dx;
-    const currentOffset = parseFloat(textPathRef.current.getAttribute('startOffset') || '0');
+    const currentOffset = parseFloat(
+      textPathRef.current.getAttribute('startOffset') || '0'
+    );
     let newOffset = currentOffset + dx;
     const wrapPoint = spacing;
     if (newOffset <= -wrapPoint) newOffset += wrapPoint;
@@ -105,7 +120,11 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     dirRef.current = velRef.current > 0 ? 'right' : 'left';
   };
 
-  const cursorStyle = interactive ? (dragRef.current ? 'grabbing' : 'grab') : 'auto';
+  const cursorStyle = interactive
+    ? dragRef.current
+      ? 'grabbing'
+      : 'grab'
+    : 'auto';
 
   return (
     <div
@@ -120,15 +139,30 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
         className="select-none w-full overflow-visible block aspect-[100/12] text-[6rem] font-bold uppercase leading-none"
         viewBox="0 0 1440 120"
       >
-        <text ref={measureRef} xmlSpace="preserve" style={{ visibility: 'hidden', opacity: 0, pointerEvents: 'none' }}>
+        <text
+          ref={measureRef}
+          xmlSpace="preserve"
+          style={{ visibility: 'hidden', opacity: 0, pointerEvents: 'none' }}
+        >
           {text}
         </text>
         <defs>
-          <path ref={pathRef} id={pathId} d={pathD} fill="none" stroke="transparent" />
+          <path
+            ref={pathRef}
+            id={pathId}
+            d={pathD}
+            fill="none"
+            stroke="transparent"
+          />
         </defs>
         {ready && (
           <text xmlSpace="preserve" className={`fill-white ${className ?? ''}`}>
-            <textPath ref={textPathRef} href={`#${pathId}`} startOffset={offset + 'px'} xmlSpace="preserve">
+            <textPath
+              ref={textPathRef}
+              href={`#${pathId}`}
+              startOffset={offset + 'px'}
+              xmlSpace="preserve"
+            >
               {totalText}
             </textPath>
           </text>

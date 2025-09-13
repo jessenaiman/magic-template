@@ -95,12 +95,12 @@ const defaultFieldConfigs: FieldConfig[] = [
     id: 'backgroundColor',
     label: 'Background',
     type: 'color',
-    description: 'Background (hex / rgb)'
+    description: 'Background (hex / rgb)',
   },
   {
     id: 'textColor',
     label: 'Text Color',
-    type: 'color'
+    type: 'color',
   },
   {
     id: 'borderRadius',
@@ -108,7 +108,7 @@ const defaultFieldConfigs: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 32,
-    step: 1
+    step: 1,
   },
   {
     id: 'padding',
@@ -116,7 +116,7 @@ const defaultFieldConfigs: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 48,
-    step: 2
+    step: 2,
   },
   {
     id: 'fontSize',
@@ -125,7 +125,7 @@ const defaultFieldConfigs: FieldConfig[] = [
     min: 10,
     max: 48,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'shadowIntensity',
@@ -133,14 +133,14 @@ const defaultFieldConfigs: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 24,
-    step: 2
+    step: 2,
   },
   {
     id: 'fontWeight',
     label: 'Bold Text',
     type: 'switch',
-    description: 'Toggle between normal (400) and semi-bold (600)'
-  }
+    description: 'Toggle between normal (400) and semi-bold (600)',
+  },
 ];
 
 export function PreviewCustomizationPanel({
@@ -153,12 +153,14 @@ export function PreviewCustomizationPanel({
   onSettingsChange,
   footer,
   allowReset = true,
-  actions
+  actions,
 }: PreviewCustomizationPanelProps) {
   const { state, updateCustomization, reset } = usePreviewContext();
   const [collapsed, setCollapsed] = React.useState(defaultCollapsed);
   // Local draft state for pending changes
-  const [draft, setDraft] = React.useState<CustomizationSettings>(state.customization);
+  const [draft, setDraft] = React.useState<CustomizationSettings>(
+    state.customization
+  );
 
   // Sync draft with context when panel opens or context changes
   React.useEffect(() => {
@@ -287,7 +289,7 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
               type="color"
               className="h-6 w-6 cursor-pointer rounded border bg-background"
               value={(settings as any)[field.id]}
-              onChange={(e) => onChange(field.id, e.target.value)}
+              onChange={e => onChange(field.id, e.target.value)}
             />
           </label>
           {field.description && (
@@ -341,7 +343,7 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
           maxLength={tf.maxLength}
           placeholder={tf.placeholder}
           description={tf.description}
-          onChange={(v) => onChange(tf.id, v)}
+          onChange={v => onChange(tf.id, v)}
         />
       );
     }
@@ -358,7 +360,7 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
           label={sw.label}
           checked={boolValue}
           description={sw.description}
-          onChange={(c) => onChange(sw.id, c)}
+          onChange={c => onChange(sw.id, c)}
         />
       );
     }
@@ -372,10 +374,10 @@ function FieldRenderer({ field, settings, onChange }: FieldRendererProps) {
           )}
           {cf.render({
             settings,
-            update: (patch) => {
+            update: patch => {
               // Pass patch upstream
               Object.entries(patch).forEach(([k, v]) => onChange(k, v));
-            }
+            },
           })}
           {cf.description && (
             <p className="text-[11px] text-muted-foreground leading-tight">

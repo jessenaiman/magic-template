@@ -45,7 +45,7 @@ export async function validateMagicUIComponents(): Promise<ValidationResult> {
       'SparklesText',
       'TextAnimate',
       'WarpBackground',
-      'WordRotate'
+      'WordRotate',
     ];
 
     // Try to import a few key components to verify installation
@@ -61,8 +61,8 @@ export async function validateMagicUIComponents(): Promise<ValidationResult> {
     // Check package.json for MagicUI dependencies
     const packageJsonPath = join(process.cwd(), 'package.json');
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-    const hasMagicUIDeps = Object.keys(packageJson.dependencies || {}).some(dep =>
-      dep.includes('magic') || dep.includes('magicui')
+    const hasMagicUIDeps = Object.keys(packageJson.dependencies || {}).some(
+      dep => dep.includes('magic') || dep.includes('magicui')
     );
 
     if (!hasMagicUIDeps) {
@@ -73,15 +73,15 @@ export async function validateMagicUIComponents(): Promise<ValidationResult> {
       status: issues.length === 0 ? 'success' : 'error',
       validated: issues.length === 0,
       version: '1.0.0', // Placeholder - would get from package.json
-      issues
+      issues,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return {
       status: 'error',
       validated: false,
-      issues: [`MagicUI validation failed: ${errorMessage}`]
+      issues: [`MagicUI validation failed: ${errorMessage}`],
     };
   }
 }
@@ -114,7 +114,7 @@ export async function validateShadcnComponents(): Promise<ValidationResult> {
       'Tooltip',
       'Popover',
       'Sheet',
-      'Sidebar'
+      'Sidebar',
     ];
 
     // Try to import a few key components to verify installation
@@ -130,8 +130,11 @@ export async function validateShadcnComponents(): Promise<ValidationResult> {
     // Check package.json for Shadcn dependencies
     const packageJsonPath = join(process.cwd(), 'package.json');
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-    const hasShadcnDeps = Object.keys(packageJson.dependencies || {}).some(dep =>
-      dep.includes('radix') || dep.includes('cmdk') || dep.includes('class-variance-authority')
+    const hasShadcnDeps = Object.keys(packageJson.dependencies || {}).some(
+      dep =>
+        dep.includes('radix') ||
+        dep.includes('cmdk') ||
+        dep.includes('class-variance-authority')
     );
 
     if (!hasShadcnDeps) {
@@ -142,15 +145,15 @@ export async function validateShadcnComponents(): Promise<ValidationResult> {
       status: issues.length === 0 ? 'success' : 'error',
       validated: issues.length === 0,
       version: '1.0.0', // Placeholder - would get from package.json
-      issues
+      issues,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return {
       status: 'error',
       validated: false,
-      issues: [`Shadcn validation failed: ${errorMessage}`]
+      issues: [`Shadcn validation failed: ${errorMessage}`],
     };
   }
 }
@@ -190,11 +193,15 @@ export async function validateAnimateUIComponents(): Promise<ValidationResult> {
       'SlidingNumber',
       'SplittingText',
       'TypingText',
-      'WritingText'
+      'WritingText',
     ];
 
     // Try to import a few key components to verify installation
-    const testImports = ['buttons/copy', 'components/avatar-group', 'text/counting-number'];
+    const testImports = [
+      'buttons/copy',
+      'components/avatar-group',
+      'text/counting-number',
+    ];
     for (const component of testImports) {
       try {
         await import(`@/components/animate-ui/${component}`);
@@ -206,8 +213,11 @@ export async function validateAnimateUIComponents(): Promise<ValidationResult> {
     // Check package.json for Animate-UI dependencies
     const packageJsonPath = join(process.cwd(), 'package.json');
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-    const hasAnimateUIDeps = Object.keys(packageJson.dependencies || {}).some(dep =>
-      dep.includes('animate') || dep.includes('motion') || dep.includes('framer')
+    const hasAnimateUIDeps = Object.keys(packageJson.dependencies || {}).some(
+      dep =>
+        dep.includes('animate') ||
+        dep.includes('motion') ||
+        dep.includes('framer')
     );
 
     if (!hasAnimateUIDeps) {
@@ -218,15 +228,15 @@ export async function validateAnimateUIComponents(): Promise<ValidationResult> {
       status: issues.length === 0 ? 'success' : 'error',
       validated: issues.length === 0,
       version: '1.0.0', // Placeholder - would get from package.json
-      issues
+      issues,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return {
       status: 'error',
       validated: false,
-      issues: [`Animate-UI validation failed: ${errorMessage}`]
+      issues: [`Animate-UI validation failed: ${errorMessage}`],
     };
   }
 }
@@ -254,7 +264,7 @@ export async function validateReactBitsComponents(): Promise<ValidationResult> {
       'ShinyText',
       'SplitText',
       'TextPressure',
-      'TextType'
+      'TextType',
     ];
 
     // Try to import a few key components to verify installation
@@ -270,8 +280,11 @@ export async function validateReactBitsComponents(): Promise<ValidationResult> {
     // Check package.json for ReactBits dependencies
     const packageJsonPath = join(process.cwd(), 'package.json');
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-    const hasReactBitsDeps = Object.keys(packageJson.dependencies || {}).some(dep =>
-      dep.includes('three') || dep.includes('ogl') || dep.includes('postprocessing')
+    const hasReactBitsDeps = Object.keys(packageJson.dependencies || {}).some(
+      dep =>
+        dep.includes('three') ||
+        dep.includes('ogl') ||
+        dep.includes('postprocessing')
     );
 
     if (!hasReactBitsDeps) {
@@ -282,15 +295,15 @@ export async function validateReactBitsComponents(): Promise<ValidationResult> {
       status: issues.length === 0 ? 'success' : 'error',
       validated: issues.length === 0,
       version: '1.0.0', // Placeholder - would get from package.json
-      issues
+      issues,
     };
-
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
     return {
       status: 'error',
       validated: false,
-      issues: [`ReactBits validation failed: ${errorMessage}`]
+      issues: [`ReactBits validation failed: ${errorMessage}`],
     };
   }
 }

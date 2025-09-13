@@ -45,8 +45,18 @@
   background: transparent;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  mask: radial-gradient(ellipse at center, black 0%, black 20%, transparent 80%);
-  -webkit-mask: radial-gradient(ellipse at center, black 0%, black 20%, transparent 80%);
+  mask: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 20%,
+    transparent 80%
+  );
+  -webkit-mask: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 20%,
+    transparent 80%
+  );
   z-index: -1;
   pointer-events: none;
 }
@@ -108,7 +118,11 @@
   font-weight: 500;
   padding: 0 0 0 1.4rem;
   height: calc(60px - 2px);
-  background: linear-gradient(135deg, rgba(124, 58, 237, 1), rgba(24, 47, 255, 0.6));
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 1),
+    rgba(24, 47, 255, 0.6)
+  );
   background-size: 200% 200%;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);

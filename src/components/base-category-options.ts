@@ -12,7 +12,7 @@ export const baseTextOptions: FieldConfig[] = [
     id: 'displayText',
     label: 'Text Content',
     type: 'text',
-    description: 'The actual text displayed in the component'
+    description: 'The actual text displayed in the component',
   },
   {
     id: 'fontSize',
@@ -21,7 +21,7 @@ export const baseTextOptions: FieldConfig[] = [
     min: 10,
     max: 48,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'fontWeight',
@@ -29,17 +29,17 @@ export const baseTextOptions: FieldConfig[] = [
     type: 'slider',
     min: 100,
     max: 900,
-    step: 100
+    step: 100,
   },
   {
     id: 'textColor',
     label: 'Text Color',
-    type: 'color'
+    type: 'color',
   },
   {
     id: 'backgroundColor',
     label: 'Background',
-    type: 'color'
+    type: 'color',
   },
   {
     id: 'borderRadius',
@@ -48,7 +48,7 @@ export const baseTextOptions: FieldConfig[] = [
     min: 0,
     max: 32,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'padding',
@@ -57,8 +57,8 @@ export const baseTextOptions: FieldConfig[] = [
     min: 0,
     max: 48,
     step: 4,
-    unit: 'px'
-  }
+    unit: 'px',
+  },
 ];
 
 /* ---------------- Buttons ---------------- */
@@ -68,7 +68,7 @@ export const baseButtonOptions: FieldConfig[] = [
     label: 'Button Text',
     type: 'text',
     description: 'Text displayed on the button',
-    placeholder: 'Click me'
+    placeholder: 'Click me',
   },
   {
     id: 'fontSize',
@@ -78,7 +78,7 @@ export const baseButtonOptions: FieldConfig[] = [
     max: 24,
     step: 1,
     unit: 'px',
-    description: 'Size of the button text'
+    description: 'Size of the button text',
   },
   {
     id: 'fontWeight',
@@ -87,19 +87,19 @@ export const baseButtonOptions: FieldConfig[] = [
     min: 400,
     max: 700,
     step: 100,
-    description: 'Thickness of the button text'
+    description: 'Thickness of the button text',
   },
   {
     id: 'textColor',
     label: 'Text Color',
     type: 'color',
-    description: 'Color of the button text'
+    description: 'Color of the button text',
   },
   {
     id: 'backgroundColor',
     label: 'Background',
     type: 'color',
-    description: 'Button background color'
+    description: 'Button background color',
   },
   {
     id: 'paddingX',
@@ -109,7 +109,7 @@ export const baseButtonOptions: FieldConfig[] = [
     max: 48,
     step: 2,
     unit: 'px',
-    description: 'Horizontal space inside the button'
+    description: 'Horizontal space inside the button',
   },
   {
     id: 'paddingY',
@@ -119,7 +119,7 @@ export const baseButtonOptions: FieldConfig[] = [
     max: 24,
     step: 1,
     unit: 'px',
-    description: 'Vertical space inside the button'
+    description: 'Vertical space inside the button',
   },
   {
     id: 'borderRadius',
@@ -128,7 +128,7 @@ export const baseButtonOptions: FieldConfig[] = [
     min: 0,
     max: 24,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'padding',
@@ -137,7 +137,7 @@ export const baseButtonOptions: FieldConfig[] = [
     min: 8,
     max: 32,
     step: 2,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'shadow',
@@ -146,8 +146,8 @@ export const baseButtonOptions: FieldConfig[] = [
     min: 0,
     max: 24,
     step: 2,
-    description: 'Drop shadow intensity'
-  }
+    description: 'Drop shadow intensity',
+  },
 ];
 
 /* ---------------- Cards / Containers ---------------- */
@@ -155,7 +155,7 @@ export const baseCardOptions: FieldConfig[] = [
   {
     id: 'backgroundColor',
     label: 'Background',
-    type: 'color'
+    type: 'color',
   },
   {
     id: 'borderRadius',
@@ -164,7 +164,7 @@ export const baseCardOptions: FieldConfig[] = [
     min: 0,
     max: 24,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'padding',
@@ -173,7 +173,7 @@ export const baseCardOptions: FieldConfig[] = [
     min: 8,
     max: 48,
     step: 4,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'shadow',
@@ -181,7 +181,7 @@ export const baseCardOptions: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 24,
-    step: 2
+    step: 2,
   },
   {
     id: 'gap',
@@ -190,8 +190,8 @@ export const baseCardOptions: FieldConfig[] = [
     min: 4,
     max: 32,
     step: 2,
-    unit: 'px'
-  }
+    unit: 'px',
+  },
 ];
 
 /* ---------------- Generic Animation Controls ---------------- */
@@ -203,7 +203,7 @@ export const baseAnimationOptions: FieldConfig[] = [
     min: 0.1,
     max: 3.0,
     step: 0.1,
-    unit: 's'
+    unit: 's',
   },
   {
     id: 'delay',
@@ -212,14 +212,14 @@ export const baseAnimationOptions: FieldConfig[] = [
     min: 0,
     max: 2.0,
     step: 0.1,
-    unit: 's'
+    unit: 's',
   },
   {
     id: 'playing',
     label: 'Playing',
     type: 'switch',
-    description: 'Play/pause the animation'
-  }
+    description: 'Play/pause the animation',
+  },
 ];
 
 /* ---------------- Backgrounds ---------------- */
@@ -227,13 +227,13 @@ export const baseBackgroundOptions: FieldConfig[] = [
   {
     id: 'backgroundColor',
     label: 'Background',
-    type: 'color'
+    type: 'color',
   },
   {
     id: 'accentColor',
     label: 'Accent Color',
     type: 'color',
-    description: 'Primary accent used by certain background effects'
+    description: 'Primary accent used by certain background effects',
   },
   {
     id: 'intensity',
@@ -241,7 +241,7 @@ export const baseBackgroundOptions: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 100,
-    step: 1
+    step: 1,
   },
   {
     id: 'speed',
@@ -249,7 +249,7 @@ export const baseBackgroundOptions: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 100,
-    step: 1
+    step: 1,
   },
   {
     id: 'opacity',
@@ -258,8 +258,8 @@ export const baseBackgroundOptions: FieldConfig[] = [
     min: 0,
     max: 100,
     step: 1,
-    description: 'Overall effect opacity (%)'
-  }
+    description: 'Overall effect opacity (%)',
+  },
 ];
 
 /* ---------------- Effects (generic visual effects) ---------------- */
@@ -270,7 +270,7 @@ export const baseEffectsOptions: FieldConfig[] = [
     type: 'slider',
     min: 0,
     max: 100,
-    step: 1
+    step: 1,
   },
   {
     id: 'blur',
@@ -279,7 +279,7 @@ export const baseEffectsOptions: FieldConfig[] = [
     min: 0,
     max: 20,
     step: 1,
-    unit: 'px'
+    unit: 'px',
   },
   {
     id: 'radius',
@@ -288,8 +288,8 @@ export const baseEffectsOptions: FieldConfig[] = [
     min: 0,
     max: 48,
     step: 1,
-    unit: 'px'
-  }
+    unit: 'px',
+  },
 ];
 
 /* ---------------- Page Transitions ---------------- */
@@ -301,20 +301,20 @@ export const basePageTransitionOptions: FieldConfig[] = [
     min: 0.1,
     max: 1.5,
     step: 0.05,
-    unit: 's'
+    unit: 's',
   },
   {
     id: 'easing',
     label: 'Easing',
     type: 'text',
-    placeholder: 'easeInOut'
+    placeholder: 'easeInOut',
   },
   {
     id: 'direction',
     label: 'Direction',
     type: 'text',
-    description: 'e.g., up | down | left | right'
-  }
+    description: 'e.g., up | down | left | right',
+  },
 ];
 
 /**
@@ -350,7 +350,9 @@ export function mergeWithBaseOptions(
   const base = BASE_FIELDS_BY_CATEGORY[category] ?? [];
   const merged = [...base];
   customOptions.forEach(customOption => {
-    const existingIndex = merged.findIndex(option => option.id === customOption.id);
+    const existingIndex = merged.findIndex(
+      option => option.id === customOption.id
+    );
     if (existingIndex >= 0) {
       merged[existingIndex] = customOption;
     } else {

@@ -71,23 +71,23 @@ function EffectsManagementBar() {
 
   // Theme toggle handlers
   const setLightTheme = React.useCallback(() => {
-    updateCustomization({ 
+    updateCustomization({
       backgroundColor: '#ffffff',
-      textColor: '#000000'
+      textColor: '#000000',
     });
   }, [updateCustomization]);
 
   const setDarkTheme = React.useCallback(() => {
-    updateCustomization({ 
+    updateCustomization({
       backgroundColor: '#121212',
-      textColor: '#ffffff'
+      textColor: '#ffffff',
     });
   }, [updateCustomization]);
 
   const setColorfulTheme = React.useCallback(() => {
-    updateCustomization({ 
+    updateCustomization({
       backgroundColor: '#f0f9ff',
-      textColor: '#0c4a6e'
+      textColor: '#0c4a6e',
     });
   }, [updateCustomization]);
 
@@ -107,7 +107,9 @@ function EffectsManagementBar() {
             padStart
             number={currentCategory + 1}
           />
-          <span className="text-muted-foreground">/ {EFFECT_CATEGORIES.length}</span>
+          <span className="text-muted-foreground">
+            / {EFFECT_CATEGORIES.length}
+          </span>
         </div>
         <button
           disabled={currentCategory === EFFECT_CATEGORIES.length - 1}

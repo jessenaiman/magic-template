@@ -1,9 +1,9 @@
-"use client";
+'use client';
 // Next.js Page Transitions Demo using PreviewSurface/PreviewTile
 
-import React, { useState } from "react";
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const nextjsTransitionCode = `
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,26 +30,30 @@ function Demo() {
 }
 `;
 
-function NextjsTransitionDemo({ customization }: { customization: Partial<Record<string, any>> }) {
-  const [page, setPage] = useState<"A" | "B">("A");
+function NextjsTransitionDemo({
+  customization,
+}: {
+  customization: Partial<Record<string, any>>;
+}) {
+  const [page, setPage] = useState<'A' | 'B'>('A');
   const duration = customization.duration || 0.5;
-  const ease = customization.ease || "easeInOut";
-  const direction = customization.direction || "horizontal";
+  const ease = customization.ease || 'easeInOut';
+  const direction = customization.direction || 'horizontal';
 
   // Slide direction: horizontal (x) or vertical (y)
   const getMotionProps = () => {
-    if (direction === "vertical") {
+    if (direction === 'vertical') {
       return {
-        initial: { opacity: 0, y: page === "A" ? -40 : 40 },
+        initial: { opacity: 0, y: page === 'A' ? -40 : 40 },
         animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: page === "A" ? 40 : -40 },
+        exit: { opacity: 0, y: page === 'A' ? 40 : -40 },
       };
     }
     // Default: horizontal
     return {
-      initial: { opacity: 0, x: page === "A" ? -40 : 40 },
+      initial: { opacity: 0, x: page === 'A' ? -40 : 40 },
       animate: { opacity: 1, x: 0 },
-      exit: { opacity: 0, x: page === "A" ? 40 : -40 },
+      exit: { opacity: 0, x: page === 'A' ? 40 : -40 },
     };
   };
 
@@ -58,13 +62,13 @@ function NextjsTransitionDemo({ customization }: { customization: Partial<Record
       <div className="mb-4 flex gap-4">
         <button
           className="px-4 py-2 rounded bg-blue-500 text-white font-medium transition-colors hover:bg-blue-600"
-          onClick={() => setPage("A")}
+          onClick={() => setPage('A')}
         >
           Go to Page A
         </button>
         <button
           className="px-4 py-2 rounded bg-pink-500 text-white font-medium transition-colors hover:bg-pink-600"
-          onClick={() => setPage("B")}
+          onClick={() => setPage('B')}
         >
           Go to Page B
         </button>
@@ -80,8 +84,10 @@ function NextjsTransitionDemo({ customization }: { customization: Partial<Record
               zIndex: 2,
             }}
           >
-            <span className={`text-lg font-semibold ${page === "A" ? "text-blue-700" : "text-pink-700"}`}>
-              {page === "A" ? "Page A Content" : "Page B Content"}
+            <span
+              className={`text-lg font-semibold ${page === 'A' ? 'text-blue-700' : 'text-pink-700'}`}
+            >
+              {page === 'A' ? 'Page A Content' : 'Page B Content'}
             </span>
           </motion.div>
         </AnimatePresence>
@@ -101,25 +107,27 @@ export default function NextjsPageTransitionsPage() {
         codeType="tsx"
         customFields={[
           {
-            id: "duration",
-            label: "Duration (s)",
-            type: "slider",
+            id: 'duration',
+            label: 'Duration (s)',
+            type: 'slider',
             min: 0.2,
             max: 2,
             step: 0.05,
           },
           {
-            id: "ease",
-            label: "Easing",
-            type: "text",
+            id: 'ease',
+            label: 'Easing',
+            type: 'text',
           },
         ]}
         initialCustomization={{
           duration: 0.5,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       >
-        {(customization) => <NextjsTransitionDemo customization={customization} />}
+        {customization => (
+          <NextjsTransitionDemo customization={customization} />
+        )}
       </PreviewTile>
     </>
   );

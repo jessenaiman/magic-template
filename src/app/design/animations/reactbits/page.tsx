@@ -1,11 +1,11 @@
 // ReactBits Animation Demo Page
-"use client";
-import { PreviewTile } from "@/components/preview/preview-tile";
-import LogoLoop from "@/components/LogoLoop";
-import ClickSpark from "@/components/ClickSpark";
-import MetaBalls from "@/components/MetaBalls";
-import FadeContent from "@/components/FadeContent";
-import Ribbons from "@/components/Ribbons";
+'use client';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import LogoLoop from '@/components/LogoLoop';
+import ClickSpark from '@/components/ClickSpark';
+import MetaBalls from '@/components/MetaBalls';
+import FadeContent from '@/components/FadeContent';
+import Ribbons from '@/components/Ribbons';
 
 export default function Page() {
   return (
@@ -20,9 +20,9 @@ export default function Page() {
           <div className="bg-white rounded shadow p-4">
             <LogoLoop
               logos={[
-                { src: "/assets/logos/vercel.svg", alt: "Vercel" },
-                { src: "/assets/logos/nextjs.svg", alt: "Next.js" },
-                { src: "/assets/logos/react.svg", alt: "React" },
+                { src: '/assets/logos/vercel.svg', alt: 'Vercel' },
+                { src: '/assets/logos/nextjs.svg', alt: 'Next.js' },
+                { src: '/assets/logos/react.svg', alt: 'React' },
               ]}
               speed={100}
               width={320}
@@ -41,7 +41,9 @@ export default function Page() {
         {() => (
           <div className="flex justify-center">
             <ClickSpark>
-              <button className="px-6 py-2 rounded bg-primary text-white">Click Me</button>
+              <button className="px-6 py-2 rounded bg-primary text-white">
+                Click Me
+              </button>
             </ClickSpark>
           </div>
         )}
@@ -66,7 +68,9 @@ export default function Page() {
       >
         {() => (
           <FadeContent>
-            <div className="text-lg font-semibold p-8 bg-white rounded shadow text-center">Fades In</div>
+            <div className="text-lg font-semibold p-8 bg-white rounded shadow text-center">
+              Fades In
+            </div>
           </FadeContent>
         )}
       </PreviewTile>

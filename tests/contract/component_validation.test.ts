@@ -10,7 +10,13 @@ import { describe, it, expect } from 'vitest';
  */
 
 describe('Component Validation Contract', () => {
-  const APPROVED_LIBRARIES = ['Next.js', 'MagicUI', 'Shadcn', 'Animate-UI', 'ReactBits'];
+  const APPROVED_LIBRARIES = [
+    'Next.js',
+    'MagicUI',
+    'Shadcn',
+    'Animate-UI',
+    'ReactBits',
+  ];
 
   describe('Library Validation', () => {
     it('should validate approved libraries', () => {
@@ -29,7 +35,9 @@ describe('Component Validation Contract', () => {
   describe('Component Library Installation', () => {
     it('should have MagicUI components installed', async () => {
       // This test will fail initially - no validation function exists yet
-      const { validateMagicUIComponents } = await import('../utils/component-validation');
+      const { validateMagicUIComponents } = await import(
+        '../utils/component-validation'
+      );
       const result = await validateMagicUIComponents();
 
       expect(result.status).toBe('success');
@@ -40,7 +48,9 @@ describe('Component Validation Contract', () => {
 
     it('should have Shadcn components installed', async () => {
       // This test will fail initially - no validation function exists yet
-      const { validateShadcnComponents } = await import('../utils/component-validation');
+      const { validateShadcnComponents } = await import(
+        '../utils/component-validation'
+      );
       const result = await validateShadcnComponents();
 
       expect(result.status).toBe('success');
@@ -51,7 +61,9 @@ describe('Component Validation Contract', () => {
 
     it('should have Animate-UI components installed', async () => {
       // This test will fail initially - no validation function exists yet
-      const { validateAnimateUIComponents } = await import('../utils/component-validation');
+      const { validateAnimateUIComponents } = await import(
+        '../utils/component-validation'
+      );
       const result = await validateAnimateUIComponents();
 
       expect(result.status).toBe('success');
@@ -62,7 +74,9 @@ describe('Component Validation Contract', () => {
 
     it('should have ReactBits components installed', async () => {
       // This test will fail initially - no validation function exists yet
-      const { validateReactBitsComponents } = await import('../utils/component-validation');
+      const { validateReactBitsComponents } = await import(
+        '../utils/component-validation'
+      );
       const result = await validateReactBitsComponents();
 
       expect(result.status).toBe('success');
@@ -96,7 +110,9 @@ describe('Component Validation Contract', () => {
   describe('CLI Installation Validation', () => {
     it('should validate CLI installation method', async () => {
       // This test will fail initially - CLI validation not implemented
-      const { validateCLIInstallation } = await import('../utils/cli-validation');
+      const { validateCLIInstallation } = await import(
+        '../utils/cli-validation'
+      );
       const result = await validateCLIInstallation();
 
       expect(result.status).toBe('success');
@@ -107,7 +123,9 @@ describe('Component Validation Contract', () => {
 
     it('should detect version conflicts', async () => {
       // This test will fail initially - version conflict detection not implemented
-      const { detectVersionConflicts } = await import('../utils/cli-validation');
+      const { detectVersionConflicts } = await import(
+        '../utils/cli-validation'
+      );
       const result = await detectVersionConflicts();
 
       expect(result.status).toBe('success');

@@ -1,11 +1,11 @@
 // MagicUI Animation Demo Page
-"use client";
-import { PreviewTile } from "@/components/preview/preview-tile";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { TextAnimate } from "@/components/magicui/text-animate";
-import { NumberTicker } from "@/components/magicui/number-ticker";
-import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
-import { MorphingText } from "@/components/magicui/morphing-text";
+'use client';
+import { PreviewTile } from '@/components/preview/preview-tile';
+import { BlurFade } from '@/components/magicui/blur-fade';
+import { TextAnimate } from '@/components/magicui/text-animate';
+import { NumberTicker } from '@/components/magicui/number-ticker';
+import { AnimatedShinyText } from '@/components/magicui/animated-shiny-text';
+import { MorphingText } from '@/components/magicui/morphing-text';
 
 export default function Page() {
   return (
@@ -19,7 +19,9 @@ export default function Page() {
         {() => (
           <div className="flex justify-center">
             <BlurFade>
-              <div className="text-lg font-semibold p-8 bg-white rounded shadow text-center">BlurFade Animation</div>
+              <div className="text-lg font-semibold p-8 bg-white rounded shadow text-center">
+                BlurFade Animation
+              </div>
             </BlurFade>
           </div>
         )}
@@ -30,11 +32,7 @@ export default function Page() {
         componentName="textanimate"
         code={`import { TextAnimate } from "@/components/magicui";\n<TextAnimate>Animated Text</TextAnimate>`}
       >
-        {() => (
-          <TextAnimate>
-            Animated Text
-          </TextAnimate>
-        )}
+        {() => <TextAnimate>Animated Text</TextAnimate>}
       </PreviewTile>
       <PreviewTile
         title="NumberTicker"
@@ -42,9 +40,7 @@ export default function Page() {
         componentName="numberticker"
         code={`import { NumberTicker } from "@/components/magicui";\n<NumberTicker value={2025} />`}
       >
-        {() => (
-          <NumberTicker value={2025} />
-        )}
+        {() => <NumberTicker value={2025} />}
       </PreviewTile>
       <PreviewTile
         title="AnimatedShinyText"
@@ -64,9 +60,7 @@ export default function Page() {
         componentName="morphingtext"
         code={`import { MorphingText } from "@/components/magicui";\n<MorphingText words={['Hello', 'World', 'MagicUI']} />`}
       >
-        {() => (
-          <MorphingText texts={['Hello', 'World', 'MagicUI']} />
-        )}
+        {() => <MorphingText texts={['Hello', 'World', 'MagicUI']} />}
       </PreviewTile>
     </>
   );

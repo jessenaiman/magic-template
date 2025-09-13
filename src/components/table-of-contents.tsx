@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { cn } from "@/app/lib/utils";
+import React, { useEffect, useState } from 'react';
+import { cn } from '@/app/lib/utils';
 
 interface Heading {
   id: string;
@@ -15,17 +15,17 @@ interface TableOfContentsProps {
 
 export function TableOfContents({ className }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
-  const [activeId, setActiveId] = useState<string>("");
+  const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    const headingElements = document.querySelectorAll("h1, h2");
+    const headingElements = document.querySelectorAll('h1, h2');
     const headingsArray: Heading[] = [];
 
-    headingElements.forEach((element) => {
+    headingElements.forEach(element => {
       if (element.id) {
         headingsArray.push({
           id: element.id,
-          text: element.textContent || "",
+          text: element.textContent || '',
           level: parseInt(element.tagName.charAt(1)),
         });
       }
@@ -37,7 +37,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       () => {
-        const headingPositions = headings.map((heading) => {
+        const headingPositions = headings.map(heading => {
           const element = document.getElementById(heading.id);
           return {
             id: heading.id,
@@ -46,12 +46,12 @@ export function TableOfContents({ className }: TableOfContentsProps) {
         });
 
         let activeHeading = headingPositions.find(
-          (heading) => heading.top >= 0 && heading.top <= 100
+          heading => heading.top >= 0 && heading.top <= 100
         );
 
         if (!activeHeading) {
           const headingsAbove = headingPositions
-            .filter((heading) => heading.top < 0)
+            .filter(heading => heading.top < 0)
             .sort((a, b) => b.top - a.top);
 
           activeHeading = headingsAbove[0];
@@ -59,7 +59,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
 
         if (!activeHeading) {
           const headingsBelow = headingPositions
-            .filter((heading) => heading.top > 100)
+            .filter(heading => heading.top > 100)
             .sort((a, b) => a.top - b.top);
 
           activeHeading = headingsBelow[0];
@@ -71,7 +71,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       },
       {
         root: null,
-        rootMargin: "-100px",
+        rootMargin: '-100px',
         threshold: 0,
       }
     );
@@ -84,7 +84,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
     });
 
     const handleScroll = () => {
-      const headingPositions = headings.map((heading) => {
+      const headingPositions = headings.map(heading => {
         const element = document.getElementById(heading.id);
         return {
           id: heading.id,
@@ -93,12 +93,12 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       });
 
       let activeHeading = headingPositions.find(
-        (heading) => heading.top >= -50 && heading.top <= 100
+        heading => heading.top >= -50 && heading.top <= 100
       );
 
       if (!activeHeading) {
         const headingsAbove = headingPositions
-          .filter((heading) => heading.top < -50)
+          .filter(heading => heading.top < -50)
           .sort((a, b) => b.top - a.top);
 
         activeHeading = headingsAbove[0];
@@ -115,13 +115,13 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       scrollTimeout = setTimeout(handleScroll, 10);
     };
 
-    window.addEventListener("scroll", throttledScroll, { passive: true });
+    window.addEventListener('scroll', throttledScroll, { passive: true });
 
     handleScroll();
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", throttledScroll);
+      window.removeEventListener('scroll', throttledScroll);
       if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [headings, activeId]);
@@ -135,11 +135,11 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       await navigator.clipboard.writeText(url);
     } catch (err) {
       console.error(err);
-      const textArea = document.createElement("textarea");
+      const textArea = document.createElement('textarea');
       textArea.value = url;
       document.body.appendChild(textArea);
       textArea.select();
-      document.execCommand("copy");
+      document.execCommand('copy');
       document.body.removeChild(textArea);
     }
 
@@ -151,7 +151,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -159,20 +159,20 @@ export function TableOfContents({ className }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <div className={cn("space-y-2", className)}>
+    <div className={cn('space-y-2', className)}>
       <h4 className="text-sm font-semibold text-foreground mb-4">
         On this page
       </h4>
       <nav>
         <ul className="space-y-2">
-          {headings.map((heading) => (
+          {headings.map(heading => (
             <li key={heading.id}>
               <button
                 onClick={() => handleClick(heading.id)}
                 className={cn(
-                  "block w-full text-left text-sm transition-colors hover:text-foreground text-muted-foreground",
+                  'block w-full text-left text-sm transition-colors hover:text-foreground text-muted-foreground',
                   {
-                    "text-primary font-medium underline underline-offset-4":
+                    'text-primary font-medium underline underline-offset-4':
                       activeId === heading.id,
                   }
                 )}

@@ -35,7 +35,7 @@ export function PreviewPropTable({
   showCopyButtons = true,
   filter,
   onCopy,
-  stickyHeader = true
+  stickyHeader = true,
 }: PreviewPropTableProps) {
   const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
   const copyTimer = React.useRef<number | null>(null);
@@ -46,13 +46,16 @@ export function PreviewPropTable({
     };
   }, []);
 
-  const handleCopy = (prop: PreviewPropRow, field: 'name' | 'type' | 'default') => {
+  const handleCopy = (
+    prop: PreviewPropRow,
+    field: 'name' | 'type' | 'default'
+  ) => {
     const value =
       field === 'name'
         ? prop.name
         : field === 'type'
-        ? prop.type
-        : prop.default ?? '';
+          ? prop.type
+          : (prop.default ?? '');
     try {
       navigator.clipboard.writeText(value);
       setCopiedKey(`${prop.name}:${field}`);
@@ -83,10 +86,12 @@ export function PreviewPropTable({
         </span>
       </div>
 
-      <div className={cn(
-        'relative overflow-x-auto rounded-md border bg-background/50',
-        'shadow-sm'
-      )}>
+      <div
+        className={cn(
+          'relative overflow-x-auto rounded-md border bg-background/50',
+          'shadow-sm'
+        )}
+      >
         <table
           className={cn(
             'w-full border-collapse text-xs',
@@ -98,11 +103,13 @@ export function PreviewPropTable({
               <Th sticky={stickyHeader}>Property</Th>
               <Th sticky={stickyHeader}>Type</Th>
               <Th sticky={stickyHeader}>Default</Th>
-              <Th sticky={stickyHeader} className="w-1/2 min-w-[220px]">Description</Th>
+              <Th sticky={stickyHeader} className="w-1/2 min-w-[220px]">
+                Description
+              </Th>
             </tr>
           </thead>
           <tbody>
-            {filtered.map((prop) => (
+            {filtered.map(prop => (
               <tr
                 key={prop.name}
                 className={cn(
@@ -139,7 +146,9 @@ export function PreviewPropTable({
                   />
                 </Td>
                 <Td className="align-top text-[11px]">
-                  {prop.description || <span className="text-muted-foreground/60">—</span>}
+                  {prop.description || (
+                    <span className="text-muted-foreground/60">—</span>
+                  )}
                 </Td>
               </tr>
             ))}
@@ -170,7 +179,8 @@ function Th({ className, children, sticky, ...rest }: ThProps) {
     <th
       className={cn(
         'px-3 py-2 text-left font-medium',
-        sticky && 'sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-muted/70',
+        sticky &&
+          'sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-muted/70',
         className
       )}
       {...rest}
@@ -185,7 +195,14 @@ interface TdProps extends React.HTMLAttributes<HTMLTableCellElement> {
   subdued?: boolean;
   highlight?: boolean;
 }
-function Td({ className, mono, subdued, highlight, children, ...rest }: TdProps) {
+function Td({
+  className,
+  mono,
+  subdued,
+  highlight,
+  children,
+  ...rest
+}: TdProps) {
   return (
     <td
       className={cn(
@@ -215,16 +232,20 @@ function Copyable({ value, active, onCopy, show }: CopyableProps) {
       {show && (
         <button
           type="button"
-            aria-label="Copy"
-            className={cn(
-              'h-4 w-4 rounded opacity-0 outline-none ring-offset-background transition-all',
-              'focus-visible:ring-1 focus-visible:ring-ring focus-visible:opacity-100',
-              'group-hover:opacity-60 hover:opacity-100',
-              active && 'text-green-500 opacity-100'
-            )}
-            onClick={onCopy}
+          aria-label="Copy"
+          className={cn(
+            'h-4 w-4 rounded opacity-0 outline-none ring-offset-background transition-all',
+            'focus-visible:ring-1 focus-visible:ring-ring focus-visible:opacity-100',
+            'group-hover:opacity-60 hover:opacity-100',
+            active && 'text-green-500 opacity-100'
+          )}
+          onClick={onCopy}
         >
-          {active ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+          {active ? (
+            <Check className="h-3 w-3" />
+          ) : (
+            <Copy className="h-3 w-3" />
+          )}
         </button>
       )}
     </span>

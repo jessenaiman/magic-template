@@ -3,10 +3,11 @@ export default function BackgroundsPage() {
     <div className="space-y-8">
       <div className="max-w-2xl">
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Explore a curated collection of dynamic background patterns and effects. 
-          From subtle gradients to interactive meshes, each implementation showcases 
-          modern design techniques with a focus on performance and customization. 
-          Select a technology stack above to explore specific implementations.
+          Explore a curated collection of dynamic background patterns and
+          effects. From subtle gradients to interactive meshes, each
+          implementation showcases modern design techniques with a focus on
+          performance and customization. Select a technology stack above to
+          explore specific implementations.
         </p>
         <div className="mt-4 flex gap-2">
           <div className="rounded-lg border bg-card p-3 text-sm text-card-foreground shadow-sm">

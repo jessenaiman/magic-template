@@ -1,23 +1,23 @@
 'use client';
 
-import { motion } from "motion/react";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import { MotionProvider, useMotion } from "@/components/motion-provider";
+import { motion } from 'motion/react';
+import { FlickeringGrid } from '@/components/magicui/flickering-grid';
+import { MotionProvider, useMotion } from '@/components/motion-provider';
 
-import HeroLanding from "@/components/landing/HeroLanding";
-import { ToolExplorer } from "@/components/landing/ToolExplorer";
-import WorkshopValue from "@/components/landing/WorkshopValue";
-import SandboxTeaser from "@/components/landing/SandboxTeaser";
-import ProfessionalPathways from "@/components/landing/ProfessionalPathways";
-import PricingTiers from "@/components/landing/pricing-tiers";
-import { ResourceCards } from "@/components/resource-cards";
-import ClosingCta from "@/components/landing/ClosingCta";
-import { useParticlePositions } from "@/app/hooks/use-particle-positions";
+import HeroLanding from '@/components/landing/HeroLanding';
+import { ToolExplorer } from '@/components/landing/ToolExplorer';
+import WorkshopValue from '@/components/landing/WorkshopValue';
+import SandboxTeaser from '@/components/landing/SandboxTeaser';
+import ProfessionalPathways from '@/components/landing/ProfessionalPathways';
+import PricingTiers from '@/components/landing/pricing-tiers';
+import { ResourceCards } from '@/components/resource-cards';
+import ClosingCta from '@/components/landing/ClosingCta';
+import { useParticlePositions } from '@/app/hooks/use-particle-positions';
 
 // Animation helpers (kept simple for type safety)
 const sectionFade = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 function LandingPageContent() {
@@ -25,13 +25,13 @@ function LandingPageContent() {
   const positions = useParticlePositions();
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-          {/* Skip link for keyboard users */}
-          <a
-            href="#main-hero-heading"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
-          >
-            Skip to main content
-          </a>
+      {/* Skip link for keyboard users */}
+      <a
+        href="#main-hero-heading"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
+      >
+        Skip to main content
+      </a>
       {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         <FlickeringGrid
@@ -49,10 +49,8 @@ function LandingPageContent() {
 
       <div className="relative z-10">
         {/* Navigation */}
-        <header
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
-        >
-        </header>        {/* Main Flow */}
+        <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50"></header>{' '}
+        {/* Main Flow */}
         <main role="main" className="pt-10 md:pt-12">
           {/* HERO */}
           <HeroLanding />
@@ -80,7 +78,7 @@ function LandingPageContent() {
             <WorkshopValue />
           </motion.div>
 
-            {/* SANDBOX TEASER */}
+          {/* SANDBOX TEASER */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -141,7 +139,10 @@ function LandingPageContent() {
 
       {/* Decorative floating particles (disabled when user prefers reduced motion) */}
       {!reduce && (
-        <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          aria-hidden="true"
+        >
           {positions.map((position, i) => (
             <div
               key={i}
@@ -149,7 +150,7 @@ function LandingPageContent() {
               style={{
                 left: position.left,
                 top: position.top,
-                transform: 'scale(0)'
+                transform: 'scale(0)',
               }}
             />
           ))}

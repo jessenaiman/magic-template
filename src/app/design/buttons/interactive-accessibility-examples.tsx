@@ -2,14 +2,7 @@
 
 import { PreviewTile } from '@/components/preview/preview-tile';
 import { PreviewGrid } from '@/components/preview/preview-grid';
-import {
-  Heart,
-  BookOpen,
-  Sun,
-  Moon,
-  AlertCircle,
-  Loader2
-} from 'lucide-react';
+import { Heart, BookOpen, Sun, Moon, AlertCircle, Loader2 } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -29,9 +22,9 @@ const ToggleButton = ({
   initialState = false,
   onIcon: OnIcon = Sun,
   offIcon: OffIcon = Moon,
-  onLabel = "On",
-  offLabel = "Off",
-  className = "",
+  onLabel = 'On',
+  offLabel = 'Off',
+  className = '',
   ...props
 }: ToggleButtonProps) => {
   const [isToggled, setIsToggled] = useState(initialState);
@@ -41,19 +34,21 @@ const ToggleButton = ({
       type="button"
       onClick={() => setIsToggled(!isToggled)}
       className={[
-        "flex items-center gap-3 px-4 py-3 rounded-lg font-medium",
-        "transition-all duration-300 ease-in-out",
-        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+        'flex items-center gap-3 px-4 py-3 rounded-lg font-medium',
+        'transition-all duration-300 ease-in-out',
+        'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
         isToggled
-          ? "bg-blue-600 text-white shadow-lg"
-          : "bg-gray-100 text-gray-700 hover:bg-gray-200",
-        className
-      ].join(" ")}
+          ? 'bg-blue-600 text-white shadow-lg'
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200',
+        className,
+      ].join(' ')}
       aria-checked={isToggled}
       role="switch"
       {...props}
     >
-  {isToggled ? React.createElement(OnIcon, { className: "h-5 w-5" }) : React.createElement(OffIcon, { className: "h-5 w-5" })}
+      {isToggled
+        ? React.createElement(OnIcon, { className: 'h-5 w-5' })
+        : React.createElement(OffIcon, { className: 'h-5 w-5' })}
       <span>{isToggled ? onLabel : offLabel}</span>
     </button>
   );
@@ -70,7 +65,7 @@ const LoadingButton = ({
   children,
   isLoading = false,
   disabled = false,
-  className = "",
+  className = '',
   ...props
 }: LoadingButtonProps) => {
   const [internalLoading, setInternalLoading] = useState(false);
@@ -89,25 +84,26 @@ const LoadingButton = ({
       onClick={handleClick}
       disabled={loading || disabled}
       className={[
-        "relative flex items-center justify-center gap-2 px-6 py-3",
-        "bg-blue-600 text-white font-medium rounded-lg",
-        "transition-all duration-300",
-        "hover:bg-blue-700",
-        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-        "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600",
-        className
-      ].join(" ")}
+        'relative flex items-center justify-center gap-2 px-6 py-3',
+        'bg-blue-600 text-white font-medium rounded-lg',
+        'transition-all duration-300',
+        'hover:bg-blue-700',
+        'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+        'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600',
+        className,
+      ].join(' ')}
       aria-busy={loading}
       {...props}
     >
       {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-      <span className={loading ? "opacity-70" : ""}>{children}</span>
+      <span className={loading ? 'opacity-70' : ''}>{children}</span>
     </button>
   );
 };
 
 // Confirmation Button Implementation
-interface ConfirmationButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ConfirmationButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   onConfirm?: () => void;
   confirmText?: string;
   children: ReactNode;
@@ -116,7 +112,7 @@ interface ConfirmationButtonProps extends ButtonHTMLAttributes<HTMLButtonElement
 function ConfirmationButton({
   children,
   onConfirm,
-  confirmText = "Are you sure?",
+  confirmText = 'Are you sure?',
   ...props
 }: ConfirmationButtonProps) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -167,7 +163,10 @@ interface FavoriteButtonProps {
   onToggle?: (favorited: boolean) => void;
 }
 
-function FavoriteButton({ initialFavorited = false, onToggle }: FavoriteButtonProps) {
+function FavoriteButton({
+  initialFavorited = false,
+  onToggle,
+}: FavoriteButtonProps) {
   const [isFavorited, setIsFavorited] = useState(initialFavorited);
   const handleToggle = () => {
     setIsFavorited(!isFavorited);
@@ -177,10 +176,12 @@ function FavoriteButton({ initialFavorited = false, onToggle }: FavoriteButtonPr
     <button
       onClick={handleToggle}
       className={`relative group p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 ${isFavorited ? 'bg-pink-100 text-pink-600' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-      aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+      aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
       aria-pressed={isFavorited}
     >
-      <Heart className={`h-5 w-5 transition-all duration-300 transform ${isFavorited ? 'fill-current scale-110' : 'group-hover:scale-110'}`} />
+      <Heart
+        className={`h-5 w-5 transition-all duration-300 transform ${isFavorited ? 'fill-current scale-110' : 'group-hover:scale-110'}`}
+      />
       {isFavorited && (
         <div className="absolute inset-0 rounded-full bg-pink-500 opacity-20 animate-ping" />
       )}
@@ -194,11 +195,15 @@ interface AccessibleButtonProps {
   shortcut?: string;
 }
 
-function AccessibleButton({ children, description, shortcut }: AccessibleButtonProps) {
+function AccessibleButton({
+  children,
+  description,
+  shortcut,
+}: AccessibleButtonProps) {
   return (
     <button
       className="relative px-6 py-3 bg-green-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-      aria-describedby={description ? "button-description" : undefined}
+      aria-describedby={description ? 'button-description' : undefined}
       title={shortcut ? `${children} (${shortcut})` : undefined}
     >
       <BookOpen className="inline-block w-4 h-4 mr-2" />
@@ -221,9 +226,12 @@ export default function InteractiveAccessibilityExamplesPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Interactive & Accessible Buttons</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Interactive & Accessible Buttons
+        </h1>
         <p className="text-muted-foreground">
-          Modern button implementations with full accessibility support, interactive states, and enhanced user experience patterns.
+          Modern button implementations with full accessibility support,
+          interactive states, and enhanced user experience patterns.
         </p>
       </div>
 
@@ -310,12 +318,10 @@ export default function InteractiveAccessibilityExamplesPage() {
   );
 };`}
         >
-          <LoadingButton isLoading={false}>
-            Click to Load
-          </LoadingButton>
+          <LoadingButton isLoading={false}>Click to Load</LoadingButton>
         </PreviewTile>
 
-<PreviewTile
+        <PreviewTile
           title="Confirmation Button"
           description="Dangerous actions with confirmation dialog"
           componentName="confirmation-button"
@@ -357,9 +363,7 @@ export default function InteractiveAccessibilityExamplesPage() {
   );
 };`}
         >
-          <ConfirmationButton>
-            Delete Item
-          </ConfirmationButton>
+          <ConfirmationButton>Delete Item</ConfirmationButton>
         </PreviewTile>
 
         <PreviewTile
@@ -404,7 +408,9 @@ export default function InteractiveAccessibilityExamplesPage() {
         >
           <FavoriteButton
             onToggle={(favorited: boolean) =>
-              console.log(`${favorited ? 'Added to' : 'Removed from'} favorites`)
+              console.log(
+                `${favorited ? 'Added to' : 'Removed from'} favorites`
+              )
             }
           />
         </PreviewTile>
@@ -449,29 +455,65 @@ export default function InteractiveAccessibilityExamplesPage() {
       </PreviewGrid>
 
       <div className="mt-8 p-6 bg-muted rounded-lg">
-        <h3 className="text-lg font-semibold mb-4">Accessibility Best Practices</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          Accessibility Best Practices
+        </h3>
         <div className="space-y-4">
           <div>
             <h4 className="font-medium mb-2">ARIA Attributes</h4>
             <ul className="text-muted-foreground text-sm space-y-1">
-              <li>• Use <code className="bg-background px-2 py-1 rounded">aria-pressed</code> for toggle buttons</li>
-              <li>• Use <code className="bg-background px-2 py-1 rounded">aria-busy</code> for loading states</li>
-              <li>• Use <code className="bg-background px-2 py-1 rounded">aria-label</code> for buttons without text</li>
-              <li>• Use <code className="bg-background px-2 py-1 rounded">aria-describedby</code> for additional context</li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">
+                  aria-pressed
+                </code>{' '}
+                for toggle buttons
+              </li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">
+                  aria-busy
+                </code>{' '}
+                for loading states
+              </li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">
+                  aria-label
+                </code>{' '}
+                for buttons without text
+              </li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">
+                  aria-describedby
+                </code>{' '}
+                for additional context
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="font-medium mb-2">Focus Management</h4>
             <ul className="text-muted-foreground text-sm space-y-1">
               <li>• Always provide visible focus indicators</li>
-              <li>• Use <code className="bg-background px-2 py-1 rounded">focus:ring-2</code> for keyboard navigation</li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">
+                  focus:ring-2
+                </code>{' '}
+                for keyboard navigation
+              </li>
               <li>• Ensure focus order follows visual layout</li>
             </ul>
           </div>
           <div>
             <h4 className="font-medium mb-2">Screen Reader Support</h4>
             <ul className="text-muted-foreground text-sm space-y-1">
-              <li>• Use <code className="bg-background px-2 py-1 rounded">sr-only</code> class for screen reader only content</li>
+              <li>
+                • Use{' '}
+                <code className="bg-background px-2 py-1 rounded">sr-only</code>{' '}
+                class for screen reader only content
+              </li>
               <li>• Provide meaningful button labels and descriptions</li>
               <li>• Announce state changes clearly</li>
             </ul>

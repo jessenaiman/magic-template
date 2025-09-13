@@ -7,37 +7,24 @@
         "@modelcontextprotocol/server-filesystem",
         "/home/adam/Dev/magic-template/"
       ],
-      "alwaysAllow": [
-        "directory_tree"
-      ]
+      "alwaysAllow": ["directory_tree"]
     },
     "desktop-commander": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@wonderwhy-er/desktop-commander@latest"
-      ]
+      "args": ["-y", "@wonderwhy-er/desktop-commander@latest"]
     },
     "memory": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ]
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
     },
     "context7": {
       "type": "streamable-http",
       "url": "https://mcp.context7.com/mcp",
-      "alwaysAllow": [
-        "resolve-library-id"
-      ]
+      "alwaysAllow": ["resolve-library-id"]
     },
     "@magicuidesign/mcp": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@magicuidesign/mcp@latest"
-      ]
+      "args": ["-y", "@magicuidesign/mcp@latest"]
     }
   }
 }

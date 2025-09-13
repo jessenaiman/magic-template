@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, {
   useRef,
@@ -6,10 +6,10 @@ import React, {
   useCallback,
   useState,
   MutableRefObject,
-} from "react";
-import { gsap } from "gsap";
-import CountUp from "@/components/CountUp";
-import "./landing/FeatureCards/FeatureCards.css";
+} from 'react';
+import { gsap } from 'gsap';
+import CountUp from '@/components/CountUp';
+import './landing/FeatureCards/FeatureCards.css';
 
 /**
  * NOTE:
@@ -26,7 +26,7 @@ interface ParticleCardProps {
 
 const ParticleCard: React.FC<ParticleCardProps> = ({
   children,
-  className = "",
+  className = '',
   disableAnimations = false,
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -37,8 +37,8 @@ const ParticleCard: React.FC<ParticleCardProps> = ({
   const particlesInit = useRef(false);
 
   const createParticle = useCallback((x: number, y: number) => {
-    const el = document.createElement("div");
-    el.className = "particle";
+    const el = document.createElement('div');
+    el.className = 'particle';
     el.style.cssText = `
       position:absolute;width:4px;height:4px;border-radius:50%;
       background:rgba(132,0,255,1);box-shadow:0 0 6px rgba(132,0,255,.6);
@@ -59,14 +59,14 @@ const ParticleCard: React.FC<ParticleCardProps> = ({
   }, [createParticle]);
 
   const clearParticles = useCallback(() => {
-    timeoutsRef.current.forEach((id) => clearTimeout(id));
+    timeoutsRef.current.forEach(id => clearTimeout(id));
     timeoutsRef.current = [];
-    particlesRef.current.forEach((p) => {
+    particlesRef.current.forEach(p => {
       gsap.to(p, {
         scale: 0,
         opacity: 0,
         duration: 0.3,
-        ease: "back.in(1.7)",
+        ease: 'back.in(1.7)',
         onComplete: () => {
           if (p.parentNode) {
             p.parentNode.removeChild(p);
@@ -89,20 +89,25 @@ const ParticleCard: React.FC<ParticleCardProps> = ({
         particlesRef.current.push(clone);
 
         gsap.set(clone, { scale: 0, opacity: 0 });
-        gsap.to(clone, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" });
+        gsap.to(clone, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.3,
+          ease: 'back.out(1.7)',
+        });
         gsap.to(clone, {
           x: (Math.random() - 0.5) * 100,
           y: (Math.random() - 0.5) * 100,
           rotation: Math.random() * 360,
           duration: 2 + Math.random() * 2,
-          ease: "none",
+          ease: 'none',
           repeat: -1,
           yoyo: true,
         });
         gsap.to(clone, {
           opacity: 0.3,
           duration: 1.5,
-          ease: "power2.inOut",
+          ease: 'power2.inOut',
           repeat: -1,
           yoyo: true,
         });
@@ -124,12 +129,12 @@ const ParticleCard: React.FC<ParticleCardProps> = ({
     };
 
     const node = cardRef.current;
-    node.addEventListener("mouseenter", handleIn);
-    node.addEventListener("mouseleave", handleOut);
+    node.addEventListener('mouseenter', handleIn);
+    node.addEventListener('mouseleave', handleOut);
     return () => {
       isHoveredRef.current = false;
-      node.removeEventListener("mouseenter", handleIn);
-      node.removeEventListener("mouseleave", handleOut);
+      node.removeEventListener('mouseenter', handleIn);
+      node.removeEventListener('mouseleave', handleOut);
       clearParticles();
     };
   }, [animateParticles, clearParticles, disableAnimations]);
@@ -138,7 +143,7 @@ const ParticleCard: React.FC<ParticleCardProps> = ({
     <div
       ref={cardRef}
       className={`${className} particle-container feature-card`}
-      style={{ position: "relative", overflow: "hidden" }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
       {children}
     </div>
@@ -160,8 +165,8 @@ const GlobalSpotlight: React.FC<GlobalSpotlightProps> = ({
   useEffect(() => {
     if (disableAnimations || !gridRef?.current) return;
 
-    const spotlight = document.createElement("div");
-    spotlight.className = "global-spotlight";
+    const spotlight = document.createElement('div');
+    spotlight.className = 'global-spotlight';
     spotlight.style.cssText = `
       position:fixed;width:800px;height:800px;border-radius:50%;pointer-events:none;
       background:radial-gradient(circle,rgba(132,0,255,.15) 0%,rgba(132,0,255,.08) 15%,
@@ -173,7 +178,9 @@ const GlobalSpotlight: React.FC<GlobalSpotlightProps> = ({
 
     const move = (e: MouseEvent) => {
       if (!spotlightRef.current || !gridRef.current) return;
-      const section = gridRef.current.closest(".features-section") as HTMLElement | null;
+      const section = gridRef.current.closest(
+        '.features-section'
+      ) as HTMLElement | null;
       const rect = section?.getBoundingClientRect();
       const inside =
         !!rect &&
@@ -183,11 +190,16 @@ const GlobalSpotlight: React.FC<GlobalSpotlightProps> = ({
         e.clientY <= rect.bottom;
 
       isInsideSectionRef.current = inside;
-      const cards = gridRef.current.querySelectorAll<HTMLElement>(".feature-card");
+      const cards =
+        gridRef.current.querySelectorAll<HTMLElement>('.feature-card');
 
       if (!inside) {
-        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
-        cards.forEach((card) => card.style.setProperty("--glow-intensity", "0"));
+        gsap.to(spotlightRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+        cards.forEach(card => card.style.setProperty('--glow-intensity', '0'));
         return;
       }
 
@@ -195,12 +207,13 @@ const GlobalSpotlight: React.FC<GlobalSpotlightProps> = ({
       const prox = 100;
       const fade = 150;
 
-      cards.forEach((card) => {
+      cards.forEach(card => {
         const r = card.getBoundingClientRect();
         const cx = r.left + r.width / 2;
         const cy = r.top + r.height / 2;
         const d =
-          Math.hypot(e.clientX - cx, e.clientY - cy) - Math.max(r.width, r.height) / 2;
+          Math.hypot(e.clientX - cx, e.clientY - cy) -
+          Math.max(r.width, r.height) / 2;
         const ed = Math.max(0, d);
         minDist = Math.min(minDist, ed);
 
@@ -209,43 +222,47 @@ const GlobalSpotlight: React.FC<GlobalSpotlightProps> = ({
         let glow = 0;
         if (ed <= prox) glow = 1;
         else if (ed <= fade) glow = (fade - ed) / (fade - prox);
-        card.style.setProperty("--glow-x", `${rx}%`);
-        card.style.setProperty("--glow-y", `${ry}%`);
-        card.style.setProperty("--glow-intensity", glow.toString());
+        card.style.setProperty('--glow-x', `${rx}%`);
+        card.style.setProperty('--glow-y', `${ry}%`);
+        card.style.setProperty('--glow-intensity', glow.toString());
       });
 
       gsap.to(spotlightRef.current, {
         left: e.clientX,
         top: e.clientY,
         duration: 0.1,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
       const target =
         minDist <= prox
           ? 0.8
           : minDist <= fade
-          ? ((fade - minDist) / (fade - prox)) * 0.8
-          : 0;
+            ? ((fade - minDist) / (fade - prox)) * 0.8
+            : 0;
       gsap.to(spotlightRef.current, {
         opacity: target,
         duration: target > 0 ? 0.2 : 0.5,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
     };
 
     const leave = () => {
       isInsideSectionRef.current = false;
       gridRef.current
-        ?.querySelectorAll<HTMLElement>(".feature-card")
-        .forEach((card) => card.style.setProperty("--glow-intensity", "0"));
-      gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
+        ?.querySelectorAll<HTMLElement>('.feature-card')
+        .forEach(card => card.style.setProperty('--glow-intensity', '0'));
+      gsap.to(spotlightRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
     };
 
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseleave", leave);
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseleave', leave);
     return () => {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseleave", leave);
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseleave', leave);
       spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
     };
   }, [gridRef, disableAnimations]);
@@ -260,8 +277,8 @@ const FeatureCards: React.FC = () => {
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   return (
@@ -270,7 +287,10 @@ const FeatureCards: React.FC = () => {
         <GlobalSpotlight gridRef={gridRef} disableAnimations={isMobile} />
 
         <div className="bento-grid" ref={gridRef}>
-          <ParticleCard className="feature-card card1" disableAnimations={isMobile}>
+          <ParticleCard
+            className="feature-card card1"
+            disableAnimations={isMobile}
+          >
             <div className="messages-gif-wrapper">
               <img
                 src="/assets/messages.gif"
@@ -278,25 +298,31 @@ const FeatureCards: React.FC = () => {
                 className="messages-gif"
               />
             </div>
-            <h2>{isMobile ? "110" : <CountUp to={110} />}%</h2>
+            <h2>{isMobile ? '110' : <CountUp to={110} />}%</h2>
             <h3>Free & Open Source</h3>
             <p>Loved by developers around the world</p>
           </ParticleCard>
 
-            <ParticleCard className="feature-card card2" disableAnimations={isMobile}>
-              <div className="components-gif-wrapper">
-                <img
-                  src="/assets/components.gif"
-                  alt="Components animation"
-                  className="components-gif"
-                />
-              </div>
-              <h2>{isMobile ? "100" : <CountUp to={100} />}+</h2>
-              <h3>Creative Components</h3>
-              <p>Growing weekly & only getting better</p>
-            </ParticleCard>
+          <ParticleCard
+            className="feature-card card2"
+            disableAnimations={isMobile}
+          >
+            <div className="components-gif-wrapper">
+              <img
+                src="/assets/components.gif"
+                alt="Components animation"
+                className="components-gif"
+              />
+            </div>
+            <h2>{isMobile ? '100' : <CountUp to={100} />}+</h2>
+            <h3>Creative Components</h3>
+            <p>Growing weekly & only getting better</p>
+          </ParticleCard>
 
-          <ParticleCard className="feature-card card4" disableAnimations={isMobile}>
+          <ParticleCard
+            className="feature-card card4"
+            disableAnimations={isMobile}
+          >
             <div className="switch-gif-wrapper">
               <img
                 src="/assets/switch.gif"
@@ -304,7 +330,7 @@ const FeatureCards: React.FC = () => {
                 className="switch-gif"
               />
             </div>
-            <h2>{isMobile ? "2" : <CountUp to={2} />}</h2>
+            <h2>{isMobile ? '2' : <CountUp to={2} />}</h2>
             <h3>Styling Options</h3>
             <p>CSS or Tailwind, switch with one click</p>
           </ParticleCard>

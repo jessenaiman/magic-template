@@ -18,14 +18,14 @@ const DisplayHeader = ({ activeItem }) => {
         {
           scale: 0,
           width: 0,
-          opacity: 0
+          opacity: 0,
         },
         {
           scale: 1,
           width: '100px',
           opacity: 1,
           duration: 0.8,
-          ease: 'back.out(1)'
+          ease: 'back.out(1)',
         }
       );
     }
@@ -40,20 +40,28 @@ const DisplayHeader = ({ activeItem }) => {
 
         <div className="nav-cta-group">
           <nav className="landing-nav-items" ref={navRef}>
-            <Link className={`nav-link ${activeItem === 'home' && 'active-link'}`} to="/">
+            <Link
+              className={`nav-link ${activeItem === 'home' && 'active-link'}`}
+              to="/"
+            >
               Home
             </Link>
             <Link className="nav-link" to="/text-animations/split-text">
               Docs
             </Link>
-            <Link className={`nav-link ${activeItem === 'showcase' && 'active-link'}`} to="/showcase">
+            <Link
+              className={`nav-link ${activeItem === 'showcase' && 'active-link'}`}
+              to="/showcase"
+            >
               Showcase
             </Link>
           </nav>
 
           <button
             className="cta-button"
-            onClick={() => window.open('https://github.com/DavidHDev/react-bits', '_blank')}
+            onClick={() =>
+              window.open('https://github.com/DavidHDev/react-bits', '_blank')
+            }
           >
             Star On GitHub
             <span ref={starCountRef} style={{ opacity: 0 }}>

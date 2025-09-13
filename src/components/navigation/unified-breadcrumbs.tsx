@@ -46,9 +46,7 @@ export function UnifiedBreadcrumbs({
                 )}
               </BreadcrumbItem>
               {!isLast && (
-                <BreadcrumbSeparator>
-                  {separator}
-                </BreadcrumbSeparator>
+                <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>
               )}
             </React.Fragment>
           );
